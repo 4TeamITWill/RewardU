@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-xdfdfdff
+fgfgfgfgfzzzzzzzzzzzzzzzzzzzzzzz
 <!-- 변수 center에 받아온 값이 있으면 변수에 저장하고 null이면 기본(main.jsp)값 넣어줌-->
 <c:set var="center" value="${param.center }"/>
 <c:if test="${center == null }">
