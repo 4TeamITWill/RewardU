@@ -13,15 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-//테스트를 위해 임의로 설정한 값 (실제로는 DB에서 값을 가져옴)
-	int current_money = 4550;
-	int goal_money = 10000;
-	float percentage = ((float)current_money/goal_money) * 100;
-	int current_money2 = 1450000;
-	int goal_money2 = 2000000;
-	float percentage2 = ((float)current_money2/goal_money2) * 100;
-%>
 
 	<div id="main">
 		<!-- 캐러셀 -->	
@@ -58,9 +49,7 @@
 						</div>			
 					</div>
 					<div class="contents_sub contents_bottom">	
-						<!-- 목표금액 대비 현재금액의 % 를 span의 width: % 값으로 줘서 실제 %만큼 길이가 늘어남 -->
-						<span class="current_money" style="width: <%=percentage%>%;"><%=percentage%>%</span>
-						현재금액:<%=current_money %>, 목표금액:<%=goal_money %>
+						
 					</div>	
 				</div>	
 				<!-- 2번 그림 -->		
@@ -80,9 +69,7 @@
 						</div>			
 					</div>
 					<div class="contents_sub contents_bottom">	
-						<!-- 목표금액 대비 현재금액의 % 를 span의 width: % 값으로 줘서 실제 %만큼 길이가 늘어남 -->
-						<span class="current_money" style="width: <%=percentage2%>%;"><%=percentage2%>%</span>
-						현재금액:<%=current_money2%>, 목표금액:<%=goal_money2%>			
+								
 					</div>	
 				</div>
 				<!-- 3번 그림 -->		
@@ -102,9 +89,7 @@
 						</div>			
 					</div>
 					<div class="contents_sub contents_bottom">	
-						<!-- 목표금액 대비 현재금액의 % 를 span의 width: % 값으로 줘서 실제 %만큼 길이가 늘어남 -->
-						<span class="current_money" style="width:100%;">100%</span>
-						현재금액:3000000, 목표금액:3000000		
+							
 					</div>	
 				</div>				
 			</div>		
