@@ -27,10 +27,10 @@
 		<!-- 캐러셀 -->	
 		 <div id="carousel_section">
 	        <ul>
-	            <li > <img src="img/1.jpg"> </li>
-	            <li > <img src="img/2.jpg"> </li>
-	            <li > <img src="img/3.jpg"> </li>
-	            <li > <img src="img/cat.jpg"> </li>
+	            <li > <img src="img/desk.jpg"> </li>
+	            <li > <img src="img/creative.jpg"> </li>
+	            <li > <img src="img/network.jpg"> </li>
+	            <li > <img src="img/startup.jpg"> </li>
 	        </ul>
 	    </div>	
 	
