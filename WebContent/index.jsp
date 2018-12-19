@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/reset.css" rel="stylesheet">
-<link href="css/main2.css" rel="stylesheet">
+<!--  <link href="css/reset.css" rel="stylesheet">-->
+<link href="css/main3.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/carousel.js"></script>
-<title>Insert title here</title>
+<title>리듀 RewardU | 메인화면</title>
 </head>
 <body>
 
-<!-- 변수 center에 받아온 값이 있으면 변수에 저장하고 null이면 기본(main.jsp)값 넣어줌-->
+<!-- 변수 center에 받아온 값이 있으면 변수에 저장하고 null이면 기본(main.js00p)값 넣어줌-->
 <c:set var="center" value="${param.center }"/>
 <c:if test="${center == null }">
 	<c:set var="center" value="main.jsp"/>
