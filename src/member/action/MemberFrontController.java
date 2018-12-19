@@ -40,7 +40,7 @@ public class MemberFrontController extends HttpServlet{
 			
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("member/join.jsp");
+			forward.setPath("./index.jsp?center=./member/join.jsp");
 			
 	//Join		
 		}else if (command.equals("/MemberJoinAction.me")) {
@@ -66,7 +66,7 @@ public class MemberFrontController extends HttpServlet{
 			
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("member/login.jsp");
+			forward.setPath("./index.jsp?center=./member/login.jsp");
 			
 	//Login
 		}else if (command.equals("/MemberLoginAction.me")){
@@ -102,7 +102,7 @@ public class MemberFrontController extends HttpServlet{
 			
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("member/mypage.jsp");
+			forward.setPath("./index.jsp?center=./member/mypage.jsp");
 			
 		}else if (command.equals("/MemberMypageAction.me")) {
 			action = new MemberMypageAction();
@@ -111,14 +111,22 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
+	//Member Modify	
 		}else if (command.equals("/MemberModifyAction.me")) {
+			
+			action = new MemberModifyAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		
 	//Member delete		
 		}else if (command.equals("/MemberDelete.me")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("member/deleteform.jsp");
+			forward.setPath("./member/deleteform.jsp");
 			
 		}else if (command.equals("/MemberDeleteAction.me")) {
 			action = new MemberDeleteAction();
@@ -131,7 +139,7 @@ public class MemberFrontController extends HttpServlet{
 		}else if (command.equals("/MemberFind_ID_PW.me")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("member/find_id_pw.jsp");
+			forward.setPath("./index.jsp?center=./member/find_id_pw.jsp");
 			
 		}else if (command.equals("/MemberFindIdAction.me")) {
 			action = new MemberFindIdAction();
@@ -142,7 +150,6 @@ public class MemberFrontController extends HttpServlet{
 			}
 			
 		}
-		
 		
 		
 		if(forward!=null){

@@ -5,11 +5,16 @@ html, body {
 	width : 100%;
 }
 
-a {
-	text-decoration : none;
+
+body{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff
 }
 
-li {list-style: none;}
+
 
 /* top */
 
@@ -21,9 +26,12 @@ li {list-style: none;}
 }
 
 #top .top_container {
-	width : 60%;
+	width : 1000px;
 	margin : 0 auto;
 	display : flex;
+	flex-direction : row;
+	color : #aaa;
+	line-height: 50px;
 }
 
 /* 메뉴,로그인, 회원가입 부분 */
@@ -33,19 +41,24 @@ li {list-style: none;}
 }
 
 #top .top_logo {
-	font-size : 1.9rem;
-	flex : 1.6;
+	/*font-size : 1.9rem;*/
+	flex : 3.3;
 }
 
 #top .top_menu {
-	flex : 2;
+	flex : 3.3;
 	position : relative;
-	width : 83px;
+	width : 100px;
 	cursor : pointer;
 }
 
+.h {
+	flex : 3.3;
+	line-height: none;
+}
+
 #top .top_menu .hamburger {	
-	width : 40px;
+	width : 50px;
 	height : 100%;
 	padding : 5px;	
 }
@@ -86,7 +99,7 @@ li {list-style: none;}
 
 #top .top_member {
 	text-align : right;
-	flex : 6.4;
+	flex : 3.3;
 	color : #aaa;
 }
 
@@ -261,17 +274,20 @@ li {list-style: none;}
 /* footer */
 
 #footer {
+	
 	border-top : 0.4px solid rgba(150,150,150,0.4);
-	height : 600px;
+	height : auto;
 	background-color : rgba(230,230,230,0.3);
 }
 
 #footer .footer_container1 {
 	width : 65%;	
 	margin : 0 auto;
-	padding : 3rem 5px;
+	padding : 1.7rem 5px;
 	border-bottom : 0.5px solid rgba(150,150,150,0.5);
 }
+
+
 
 #footer .footer_container1 h2 {
 	line-height : 1.4rem;
@@ -300,7 +316,7 @@ li {list-style: none;}
 #footer .footer_container2 {
 	width : 65%;	
 	margin : 0 auto;
-	padding : 2rem 5px;
+	padding : 0.1rem 5px 2rem 5px;
 	border-bottom : 0.5px solid rgba(150,150,150,0.5);
 }
 

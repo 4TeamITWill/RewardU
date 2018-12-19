@@ -6,9 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>리듀 | 회원아이디, 비밀번호 찾기</title>
 <link href="css/etc.css" rel="stylesheet">
+<style type="text/css">
+
+.container {
+	margin: 70px 200px;
+	border: 1px solid red;
+}
+</style>
+
 </head>
 <body>
-<jsp:include page="../top.jsp"/>
+
 
 <div class="wrap">
 
@@ -16,25 +24,25 @@
 	<div id="find_id_form">
 		<h2>아이디 찾기</h2>
 		<form action="./MemberFindIdAction.me" id="find_id" method="post">
-		<!-- phone --><input type="text" name="user_phone" placeholder="가입시 입력했던 연락처를 입력해 주세요 " class="inp-field"><br>
+		<!-- phone --><input type="text" name="user_phone" placeholder="가입시 기입했던 연락처를 입력해 주세요 " class="inp-field"><br>
 	<!-- date of Birth --><input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" class="inp-field w120">
-			<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w110">
-			<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w110"><br>
+			<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w108">
+			<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w108"><br>
 		
-		<input type="submit" value="아이디 찾기">
+		<input type="submit" value="아이디 찾기" class="btn">
 		</form>
 	</div>
 	
 	<div id="find_pw_form">
 		<h2>비밀번호 찾기</h2>
-		<form action="" id="find_pw" method="post">
+		<form action="./MemberFindPwAction.me" id="find_pw" method="post">
 		<!-- id --><input type="text" name="user_id" placeholder="이메일 아이디" class="inp-field"><br>
-		<!-- phone --><input type="text" name="user_phone" placeholder="가입시 입력했던 연락처를 입력해 주세요 " class="inp-field"><br>
+		<!-- phone --><input type="text" name="user_phone" placeholder="가입시 기입했던 연락처를 입력해 주세요 " class="inp-field"><br>
 	<!-- date of Birth --><input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" class="inp-field w120">
-			<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w110">
-			<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w110"><br>
+			<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w108">
+			<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w108"><br>
 		
-		<input type="submit" value="비밀번호 찾기">
+		<input type="submit" value="비밀번호 찾기" class="btn">
 		</form>
 	</div>
 </div><!-- container -->

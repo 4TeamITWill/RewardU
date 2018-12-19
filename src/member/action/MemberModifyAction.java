@@ -14,19 +14,32 @@ public class MemberModifyAction implements Action {
 		System.out.println("MemberModifyAction ()");
 		
 		request.setCharacterEncoding("utf-8");
-		
-		ActionForward forward = new ActionForward();
-		
-		MemberDAO mdao = new MemberDAO();
-		
 		HttpSession session = request.getSession();
-	
+		
 		String user_id = (String)session.getAttribute("id");
 		
 		MemberBean mbean = new MemberBean();
+		System.out.println(request.getParameter("user_content"));
+		mbean.setUser_id(user_id);
+		mbean.setUser_name(request.getParameter("user_name"));
+		mbean.setUser_phone(request.getParameter("user_phone"));
+		mbean.setUser_content(request.getParameter("user_content"));
+		mbean.setBirthyyyy(request.getParameter("birthyyyy"));
+		mbean.setBirthmm(request.getParameter("birthmm"));
+		mbean.setBirthdd(request.getParameter("birthdd"));
+		
+		MemberDAO mdao = new MemberDAO();
+		
+		mdao.updateUser(mbean);
+		
+		request.setAttribute("mbean", mbean);
+		
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("./index.jsp?center=./member/mypage.jsp");
 		
 		
-		return null;
+		return forward;
 	}
 
 }

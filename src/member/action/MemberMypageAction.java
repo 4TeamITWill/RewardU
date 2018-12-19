@@ -34,7 +34,7 @@ public class MemberMypageAction implements Action{
 		session.setAttribute("mbean", mbean);
 		
 		forward.setRedirect(true);
-		forward.setPath("./MemberMypage.me");
+		forward.setPath("./index.jsp?center=./member/mypage.jsp");
 		
 		
 		return forward;

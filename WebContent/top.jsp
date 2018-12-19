@@ -5,7 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
+
+a {
+	text-decoration : none;
+}
+
+li {list-style: none;}
 
 a {text-decoration: none;}
 .hr{align: center;
@@ -14,22 +21,28 @@ a {text-decoration: none;}
 fieldset{border:0;}
 .margin5{margin-top: 10px;}
 
+.h .dropdown01 li {
+	display: inline-block;
+	line-height: none;
+	color: #aaa;
+}
+
 </style>
 
 </head>
 <body>
 	<div id="top">
 		<div class="top_container">
-			<div class="top_sub top_logo">
-				<a href="index.jsp" >리듀</a>
-			</div>
 			<div class="h">
 				<ul class="dropdown01">
-					<li >펀딩시작하기</li>
-					<li >리듀란?</li>
-					<li >NEWS</li>
+					<li><a>펀딩시작하기</a></li>
+					<li><a>리듀란?</a></li>
+					<li><a>NEWS</a></li>
 				</ul>				
-			</div>			
+			</div>	
+			<div class="top_sub top_logo" align="center">
+				<a href="index.jsp" ><img src="img/logo02.png" width="135"></a>
+			</div>		
 			<div class="top_sub top_member">
 				
 	<%
