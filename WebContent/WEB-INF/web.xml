@@ -11,6 +11,15 @@
   	<url-pattern>*.me</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>MessageFrontController</servlet-name>
+  	<servlet-class>message.action.MessageFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MessageFrontController</servlet-name>
+  	<url-pattern>*.message</url-pattern>
+  </servlet-mapping>
+  
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

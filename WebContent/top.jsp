@@ -1,3 +1,4 @@
+<%@page import="message.db.MessageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,8 +57,13 @@ fieldset{border:0;}
 	
 	<%						
 		}else{
+				MessageDAO mdao = new MessageDAO();
+				//int count = mdao.getCountMessage(id); //해당 id가 받은 메시지가 몇 개인지 반환
+				int dontReadCount = mdao.getCountDontRead(id); //해당 id가 받은 메시지 중 안읽은 메시지가 몇 개인지 반환
 	%>
-			
+				<a href="./MemberMessage.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
+		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
+		 		
 				<a href="./MemberMypageAction.me">마이페이지</a>&nbsp;&nbsp;
 			
 				<a href="./MemberLogout.me">로그아웃</a>
