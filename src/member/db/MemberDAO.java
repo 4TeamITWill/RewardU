@@ -155,6 +155,7 @@ public class MemberDAO {
 				mbean.setUser_phone(rs.getString("user_phone"));
 				mbean.setUser_photo(rs.getString("user_photo"));
 				mbean.setUser_regDate(rs.getTimestamp("user_regDate"));
+				mbean.setUser_content(rs.getString("user_content"));
 				mbean.setBirthyyyy(year);
 				mbean.setBirthmm(month);
 				mbean.setBirthdd(day);
@@ -224,7 +225,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String user_id= "";
+		String user_id=null;
 		String sql = "";
 		
 		try {
@@ -256,6 +257,79 @@ public class MemberDAO {
 		return user_id;
 	}//findId
 	
+	
+	public void updateUser(MemberBean mbean){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "update user set user_name=?, user_phone=?, user_content=? where user_id=?";
+			
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mbean.getUser_name());
+			pstmt.setString(2, mbean.getUser_phone());
+			pstmt.setString(3, mbean.getUser_content());
+			pstmt.setString(4, mbean.getUser_id());
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//finally
+		
+	}//updateUser
+	
+	
+	public void updatePw(MemberBean mbean){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			
+			sql = "update user set user_pw=? where user_id=?";
+			
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mbean.getUser_pw());
+			pstmt.setString(2, mbean.getUser_id());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//finally
+		
+	}//updatePw
 	
 	
 }

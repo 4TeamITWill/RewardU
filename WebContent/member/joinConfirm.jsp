@@ -23,19 +23,23 @@
 		<form action="./Main.me" id="join" method="post">
 		
 		<fieldset >
+		<!-- id -->
 			<input type="text" name="user_id" placeholder="이메일 주소 입력" value="${requestScope.mbean.user_id }" class="inp-field"><br>
+		<!-- name -->	
 			<input type="text" name="user_name" value="${mbean.user_name }" class="inp-field"><br>
 			<!-- <input type="password" name="user_pw" class="inp-field"><br>
 			<input type="password" name="user_pw2" class="inp-field"><br> -->
-			<input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" value="${mbean.birthyyyy }" class="inp-field w120">|
-				<input type="text" name="birthmm" maxlength="2" placeholder="MM" value="${mbean.birthmm }" class="inp-field w110">|
-				<input type="text" name="birthdd" maxlength="2" placeholder="DD" value="${mbean.birthdd }" class="inp-field w110">
+		<!-- date of Birth -->	
+		  &nbsp;<input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" value="${mbean.birthyyyy }" class="inp-field w120">
+				<input type="text" name="birthmm" maxlength="2" placeholder="MM" value="${mbean.birthmm }" class="inp-field w108">
+				<input type="text" name="birthdd" maxlength="2" placeholder="DD" value="${mbean.birthdd }" class="inp-field w108">
 			<br>
+		<!-- phone -->
 			<input type="text" name="user_phone" value="${mbean.user_phone }" class="inp-field">
 			
 		</fieldset>
 		<fieldset>
-			<input type="submit" value="메인으로" class="btn w354">
+			<input type="submit" value="메인으로" class="btn1 w354">
 			
 		</fieldset>
 		

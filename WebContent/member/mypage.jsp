@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>리듀 | Mypage</title>
 <link href="css/main3.css" rel="stylesheet">
+<link href="css/etc.css" rel="stylesheet">
 
 
 
@@ -22,12 +23,17 @@
 <style type="text/css">
 .container{ align: center;
 }
+
+.margin{margin-top: 100px;}
+.margin2{margin-top: 50px;}
+.margin3{margin-top: 20px;}
+.margin4{margin-bottom: 100px;}
+
 </style>
 
 
 </head>
 <body>
-<jsp:include page="../top.jsp"/>
 
 <div class="wrap">
 
@@ -35,23 +41,38 @@
 	
 	<div id="mypage_content" align="center">
 	<h2>마이페이지</h2>
-	<form action="./MemberModifyAction.me">
-		<fieldset >
+	<form action="./MemberModifyAction.me" method="post">
 		
-				id<input type="text" name="user_id" value="${sessionScope.id }" readonly><br>
-				Name<input type="text" name="user_name" value="<%=mbean.getUser_name()%> "><br>
-				DOB<input type="text" name="birthyyyy" value="${mbean.birthyyyy }">|
-				<input type="text" name="birthmm" value="${mbean.birthmm }">|
-				<input type="text" name="birthdd" value="${mbean.birthdd }"><br>
-				phone<input type="text" name="user_phone" value="${mbean.user_phone }">
+		<!-- profile photo -->
+				<img src="img/usernull.png" width="200" height="200"><br>
+				<input type="button" value="프로필 사진 수정"><br>
+				<div class="margin3"></div>
+		<fieldset>
+		<!-- id -->
+				<input type="text" name="user_id" value="${sessionScope.id }" class="inp-field" readonly><br>
+		<!-- name -->
+				<input type="text" name="user_name" value="<%=mbean.getUser_name()%> " class="inp-field"><br>
+		<!-- date of Birth -->
+				<input type="text" name="birthyyyy" value="${mbean.birthyyyy }" class="inp-field w120">
+				<input type="text" name="birthmm" value="${mbean.birthmm }" class="inp-field w108">
+				<input type="text" name="birthdd" value="${mbean.birthdd }" class="inp-field w108"><br>
+		<!-- phone -->
+				<input type="text" name="user_phone" value="${mbean.user_phone }" class="inp-field"><br>
+		<!-- content --> 자기소개 및 하고싶은 말<br>
+				<textarea rows="6" cols="47" name="user_content">
+					${mbean.user_content }
+				</textarea>
 			
 			</fieldset>
 			<fieldset>
-				<input type="submit" value="정보수정">
-				<input type="button" value="메인으로" onclick="location.href='./Main.me'">
-				<input type="button" value="회원탈퇴" onclick="location.href='./MemberDelete.me'">
+				<input type="submit" value="정보수정" class="btn1 w175">
+				<input type="button" value="메인으로" class="btn w175" onclick="location.href='./Main.me'">
 			</fieldset>
+					
 	</form>
+	
+		<h5><a href="./MemberDelete.me">회원탈퇴</a></h5>
+		
 	</div><!-- mypage_content -->
 
 </div><!-- container -->
@@ -59,6 +80,5 @@
 </div><!-- wrap -->
 
 
-<jsp:include page="../footer.jsp"/>
 </body>
 </html>

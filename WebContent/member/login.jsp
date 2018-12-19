@@ -18,39 +18,57 @@
 		border: 1px solid red;
 		margin: 0 auto;
 		background-color: #fff;
+		box-shadow: 20px #aaa;
 }
-.wrap{background-color: #aaa;}
+
+#loginForm .formh2 {
+	margin-left: 20px;
+}
+
+#login_content {
+	border: 1px solid;
+	width: 400px;
+	font-size: 14px;
+}
+
+
+.wrap{background-color: #ddd;
+	 padding: 150px 200px;
+}
+
 
 </style>
 </head>
 <body>
-<jsp:include page="../top.jsp"/>
 
 <div class="wrap">
 
 
 <div class="container" align="center">
-<h2>리듀 로그인</h2>
+
 	<div id="loginForm">
-	<div class="margin2"></div>
-	<form action="./MemberLoginAction.me" method="post">
-	
-		<fieldset>
-	
-		<input type="text" name="user_id" placeholder="이메일 아이디" class="inp-field"><br>
-		<input type="password" name="user_pw" placeholder="비밀번호" class="inp-field"><br>
-	
-		<input type="submit" value="로그인" class="btn w354">
-		</fieldset>
-	
-	</form>
-	<br>
-		<a href="MemberFind_ID_PW.me">아이디 찾기</a> | <a href="#">비밀번호 찾기</a>
+		<div class="margin3"></div>
+	<div id="login_content">
+		<h2 class="formh2" align="left">리듀 로그인</h2>
+		<form action="./MemberLoginAction.me" method="post">
+		
+			<fieldset>
+		
+			<input type="text" name="user_id" placeholder="이메일 아이디" class="inp-field"><br>
+			<input type="password" name="user_pw" placeholder="비밀번호" class="inp-field"><br>
+		
+			<input type="submit" value="로그인" class="btn1 w354">
+			</fieldset>
+		
+		</form>
+		<br>
+			<a href="MemberFind_ID_PW.me">아이디 찾기 | 비밀번호 찾기</a>
+		</div><!-- login_content -->
 	<div class="margin2"></div>
 	</div><!-- loginForm -->
 
-<div class="margin4"></div>
-	아직 리듀 계정이 없나요? <a href="#">회원가입</a>
+
+	<h6>아직 리듀 계정이 없나요? <a href="#">회원가입</a></h6>
 	<br><Br>
 
 </div><!-- container -->
@@ -59,7 +77,6 @@
 </div><!-- wrap -->
 
 
-<jsp:include page="../footer.jsp"/>
 
 </body>
 </html>

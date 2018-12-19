@@ -27,29 +27,43 @@ public class MemberFindIdAction implements Action{
 		
 		
 		MemberDAO mdao = new MemberDAO();
-		
 		user_id = mdao.findId(mbean);
+		
+		mbean.setUser_id(user_id);
+		
+		
 		
 		request.setAttribute("mbean", mbean);
 		
+		
+		System.out.println(user_id);
+		
 		if(user_id==null){
+			System.out.println("---noooooooooo--");
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.print("alert('일치하는 아이디가 없습니다.')");
 			//out.println("history.back();");
 			out.println("</script>");
-		}else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.print("alert('회원님의 아이디는 입니다.')");
-			//out.println("history.back();");
-			out.println("</script>");
+		}else{
+			System.out.println("---yessssss--");
 			
-		}
-	
-		return null;
+			ActionForward forward = new ActionForward();
+			
+			
+			forward.setRedirect(false);
+			
+			forward.setPath("member/idConfirm.jsp");
+			//out.println("<script>");
+			//out.print("alert('회원님의 아이디는' + user_id + '입니다.')");
+			//out.println("history.back();");
+			//out.println("</script>");
+			return forward;
+		}	
+		
+	return null;
+		
 	}
 
 }
