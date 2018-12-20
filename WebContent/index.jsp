@@ -15,7 +15,7 @@
 <title>리듀 RewardU | 메인화면</title>
 </head>
 <body>
-
+ㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹ
 <!-- 변수 center에 받아온 값이 있으면 변수에 저장하고 null이면 기본(main.js00p)값 넣어줌-->
 <c:set var="center" value="${param.center }"/>
 <c:if test="${center == null }">
