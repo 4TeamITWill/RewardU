@@ -9,10 +9,6 @@
 
 <style type="text/css">
 
-a {
-	text-decoration : none;
-}
-
 li {list-style: none;}
 
 a {text-decoration: none;}
@@ -24,7 +20,6 @@ fieldset{border:0;}
 
 .h .dropdown01 li {
 	display: inline-block;
-	line-height: none;
 	color: #aaa;
 }
 
@@ -36,9 +31,9 @@ fieldset{border:0;}
 		<div class="top_container">
 			<div class="h">
 				<ul class="dropdown01">
-					<li><a>펀딩시작하기</a></li>
-					<li><a>리듀란?</a></li>
-					<li><a>NEWS</a></li>
+					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;
+					<li><a class="top_menu">리듀란?</a></li>&nbsp;
+					<li><a class="top_menu">NEWS</a></li>&nbsp;
 				</ul>				
 			</div>	
 			<div class="top_sub top_logo" align="center">
@@ -80,8 +75,16 @@ fieldset{border:0;}
 	<!-- <div class="hr" height="50" >&nbsp;</div>	 -->
 		<!-- 펼쳐지는 메뉴부분 -->
 		<div class="slidedown_menu">
-			<div>
-				메뉴 들어가면 됨
+			<div class="menuLine_container">
+				<div class="menuLine" >
+					<a class = "menu_boss">리워드</a><a href="링크넣기">리워드 게시판</a><a href="링크넣기">리워드 신청하기</a>
+				</div>
+				<div class="menuLine">
+					<a class = "menu_boss">소식</a><a href="링크넣기">회사 소식</a><a href="링크넣기">리워드 소식</a>
+				</div>	
+				<div class="menuLine">
+					<a class = "menu_boss" >안내</a><a href="링크넣기">이용가이드</a><a href="링크넣기">회사 소개</a><a href="링크넣기">공지사항</a>
+				</div>	
 			</div>
 		</div>
 	

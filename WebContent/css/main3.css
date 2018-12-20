@@ -31,7 +31,6 @@ body{
 	display : flex;
 	flex-direction : row;
 	color : #aaa;
-	line-height: 50px;
 }
 
 /* 메뉴,로그인, 회원가입 부분 */
@@ -54,7 +53,6 @@ body{
 
 .h {
 	flex : 3.3;
-	line-height: none;
 }
 
 #top .top_menu .hamburger {	
@@ -85,8 +83,8 @@ body{
 .slidedown_menu {
 	display : none;
 	position : absolute;
-	background-color : #e6deed;
-	color : white;
+	background-color : rgba(255,255,255,0.7);
+	color : #8000ff;
 	height : 300px;
 	width : 100%;
 	z-index : 1;
@@ -105,6 +103,27 @@ body{
 
 #top .top_member a{
 	color : #aaa;
+}
+
+.menuLine_container {
+	display : flex;
+}
+
+.menuLine_container .menuLine {
+	display : flex;
+	flex-direction : column;
+	line-height : 1.6rem;
+	text-align : center;
+}
+
+.menu_boss {
+	font-weight : bold;
+	font-size : 1.2rem;
+	margin-bottom : 1.2rem;
+}
+
+.menuLine a {
+	color : #8000ff;
 }
 
 /* main */
