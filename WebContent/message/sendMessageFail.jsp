@@ -13,6 +13,6 @@
 	대상 ID가 존재해야합니다. <br/>
 	제목이 20자 이하여야합니다. <br/>
 	내용이 500자 이하여야합니다.<br/>
-	<a href="./MemberMessage.message">메시지함으로 돌아가기</a>
+	<a href="./MemberMessage_ReceiveList.message">메시지함으로 돌아가기</a>
 </body>
 </html>

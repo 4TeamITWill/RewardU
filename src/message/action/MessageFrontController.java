@@ -42,15 +42,47 @@ public class MessageFrontController extends HttpServlet{
 		//자식 Action 객체들을 담을 인터페이스 타입의 참조변수 선언
 		Action action=null;
 		
-		//메시지박스의 'Message' 클릭시, 메시지보내기 성공 후
-		if(command.equals("/MemberMessage.message")){
+		//마이페이지에서 메시지함 클릭시, 메시지보내기 성공 후  -> 받은 메시지함
+		if(command.equals("/MemberMessage_ReceiveList.message")){
 		
+			String pageNum = request.getParameter("pageNum");
+			//만약 현재선택한 페이지 번호가 없으면 1페이지로 처리
+			if(pageNum == null){pageNum = "1";}
+			
 			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
 			forward=new ActionForward();
 			//페이지 이동 방식 여부 값 false로 저장-> RequestDispatcher  forward() 방식
 			forward.setRedirect(false);
 			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
-			forward.setPath("./index.jsp?center=message/messageBox.jsp");
+			forward.setPath("./index.jsp?center=message/messageBox_receivelist.jsp&pageNum="+pageNum);
+		} 
+		//보낸 메시지 클릭시 -> 보낸 메시지함
+		else if(command.equals("/MemberMessage_SendList.message")){
+		
+			String pageNum = request.getParameter("pageNum");
+			//만약 현재선택한 페이지 번호가 없으면 1페이지로 처리
+			if(pageNum == null){pageNum = "1";}
+			
+			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
+			forward=new ActionForward();
+			//페이지 이동 방식 여부 값 false로 저장-> RequestDispatcher  forward() 방식
+			forward.setRedirect(false);
+			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
+			forward.setPath("./index.jsp?center=message/messageBox_sendlist.jsp&pageNum="+pageNum);
+		} 
+		//메시지 보관함 클릭시 -> 메시지 보관함
+		else if(command.equals("/MemberMessage_StoreList.message")){
+			
+			String pageNum = request.getParameter("pageNum");
+			//만약 현재선택한 페이지 번호가 없으면 1페이지로 처리
+			if(pageNum == null){pageNum = "1";}
+			
+			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
+			forward=new ActionForward();
+			//페이지 이동 방식 여부 값 false로 저장-> RequestDispatcher  forward() 방식
+			forward.setRedirect(false);
+			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
+			forward.setPath("./index.jsp?center=message/messageBox_storelist.jsp&pageNum="+pageNum);
 		} 
 		//메시지보내기 클릭시 메시지 양식 폼으로 이동
 		else if(command.equals("/SendMessage.message")){
@@ -100,6 +132,16 @@ public class MessageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//메시지함에서 체크한것 보관버튼을 눌렀을 시
+		else if(command.equals("/StoreMessageCheckbox.message")){
+			//메시지를 삭제를 위한 Action객체 생성
+			action = new StoreMessageCheckboxAction();
+			try {
+				forward=action.execute(request, response);			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//메시지 답변하기버튼을 눌렀을 시
 		else if(command.equals("/AnswerMessage.message")){
 			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
@@ -109,7 +151,7 @@ public class MessageFrontController extends HttpServlet{
 			//이동할 페이지 경로(회원가입 페이지) 주소값 저장
 			forward.setPath("./index.jsp?center=message/answerMessage.jsp");
 		}
-		
+		//메시지 내용을 불러오는 작업을 진행할 시
 		else if(command.equals("/ContentMessageAction.message")){
 			//메시지를 내용을 담기 위한 Action객체 생성
 			action=new ContentMessageAction();
@@ -119,7 +161,7 @@ public class MessageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
+		//메시지 제목을 눌렀을 시 -> 메시지 내용보여주는 화면으로
 		else if(command.equals("/ContentMessage.message")){
 			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
 			forward=new ActionForward();

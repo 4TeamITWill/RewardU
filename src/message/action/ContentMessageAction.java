@@ -15,15 +15,20 @@ public class ContentMessageAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		//클릭한 메시지 번호를 받아옴
 		int no = Integer.parseInt(request.getParameter("no"));
+		//구분 값 받아옴( receive, send, store)
+		String divide = request.getParameter("divide");
 
 		MessageDTO mdto = new MessageDTO();
 		MessageDAO mdao = new MessageDAO();
-		mdto = mdao.getMessage(no); //해당번호의 메시지 정보를 얻어옴
-		mdao.updateReadStatus(no); //read_status 값을 1로 변경하여 읽은 메시지로 처리
+		
+		mdto = mdao.getMessage(no,divide); //해당번호의 메시지 정보를 얻어옴
+		if(divide.equals("receive")){mdao.updateReadStatus(no); }//read_status 값을 1로 변경하여 읽은 메시지로 처리
 		
 		//세션객체 생성
 		HttpSession session=request.getSession();
-		session.setAttribute("mdto", mdto);
+		//세션저장
+		session.setAttribute("mdto", mdto); 
+		session.setAttribute("divide", divide);
 		
 		//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
 		ActionForward forward=new ActionForward();
