@@ -83,7 +83,7 @@ body{
 .slidedown_menu {
 	display : none;
 	position : absolute;
-	background-color : rgba(255,255,255,0.7);
+	background-color : rgba(255,255,255,0.8);
 	color : #8000ff;
 	height : 300px;
 	width : 100%;

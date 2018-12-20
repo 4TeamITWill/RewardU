@@ -44,7 +44,7 @@
 			</div>
 			<div class="btn_line">
 				<!-- 링크 href 지정해주기 나중에 연결 -->
-				<a class="ybtn" href="수정페이지">정보 수정</a>&nbsp;&nbsp;
+				<a class="ybtn" href="./MemberMypageAction.me">정보 수정</a>&nbsp;&nbsp;
 				<a class="ybtn" href="비밀번호 변경페이지">비밀번호 변경</a>
 			</div>
 		</div>

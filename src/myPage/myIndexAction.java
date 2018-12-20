@@ -39,7 +39,7 @@ public class myIndexAction implements myAction {
 		request.setAttribute("invelist", invelist);		
 		
 		myActionForward forward = new myActionForward();
-		forward.setPath("./index.jsp?center=./myPage.jsp");
+		forward.setPath("./index.jsp?center=./myInfo.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

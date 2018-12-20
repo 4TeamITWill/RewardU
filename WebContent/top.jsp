@@ -65,7 +65,7 @@ fieldset{border:0;}
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
-					<a href="./MemberMypageAction.me">마이페이지</a>&nbsp;&nbsp;
+					<a href="./myPage.my">마이페이지</a>&nbsp;&nbsp;
 	<%
 		 		}
 	%>
@@ -85,13 +85,20 @@ fieldset{border:0;}
 		<div class="slidedown_menu">
 			<div class="menuLine_container">
 				<div class="menuLine" >
-					<a class = "menu_boss">리워드</a><a href="링크넣기">리워드 게시판</a><a href="링크넣기">리워드 신청하기</a>
+					<a class = "menu_boss">리워드</a>
+					<a href="링크넣기">리워드 게시판</a>
+					<a href="링크넣기">리워드 신청하기</a>
 				</div>
 				<div class="menuLine">
-					<a class = "menu_boss">소식</a><a href="링크넣기">회사 소식</a><a href="링크넣기">리워드 소식</a>
+					<a class = "menu_boss">소식</a>
+					<a href="링크넣기">회사 소식</a>
+					<a href="링크넣기">리워드 소식</a>
 				</div>	
 				<div class="menuLine">
-					<a class = "menu_boss" >안내</a><a href="링크넣기">이용가이드</a><a href="링크넣기">회사 소개</a><a href="링크넣기">공지사항</a>
+					<a class = "menu_boss" >안내</a>
+					<a href="링크넣기">이용가이드</a>
+					<a href="링크넣기">회사 소개</a>
+					<a href="링크넣기">공지사항</a>
 				</div>	
 			</div>
 		</div>
