@@ -63,9 +63,17 @@ fieldset{border:0;}
 	%>
 				<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
 		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
-		 		
-				<a href="./MemberMypageAction.me">마이페이지</a>&nbsp;&nbsp;
-			
+	<% 	
+		 		if(id.equals("rewardu4@gmail.com")){
+	%>
+					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp;
+	<%
+		 		} else {
+	%>
+					<a href="./MemberMypageAction.me">마이페이지</a>&nbsp;&nbsp;
+	<%
+		 		}
+	%>
 				<a href="./MemberLogout.me">로그아웃</a>
 	<%				
 		}	
