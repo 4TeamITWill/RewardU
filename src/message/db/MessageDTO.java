@@ -3,14 +3,15 @@ package message.db;
 import java.sql.Timestamp;
 
 public class MessageDTO {
-	
-	private int no;
-	private String toID;
-	private String fromID;
-	private String subject;
-	private String content;
-	private Timestamp reg_date;
-	private int read_status;
+	/*기본적으로 message_xxx 테이블에 사용될 DTO  (xxx == receive, send, store)*/
+	private int no; //메시지 번호
+	private String toID; //보낸 사람 ID
+	private String fromID; //받는 사람 ID
+	private String subject; //메시지 제목
+	private String content; //메시지 내용
+	private Timestamp reg_date; //보낸 날짜
+	private int read_status; //읽은 상태 (안읽은 메시지 0 , 읽은 메시지 1)
+	private String storeID; //message_store 테이블에만 존재함. 보관함에 메시지를 저장한 당사자ID
 	
 	//getter, setter
 	public int getNo() {
@@ -54,6 +55,12 @@ public class MessageDTO {
 	}
 	public void setRead_status(int read_status) {
 		this.read_status = read_status;
+	}
+	public String getStoreID() {
+		return storeID;
+	}
+	public void setStoreID(String storeID) {
+		this.storeID = storeID;
 	}
 	
 }

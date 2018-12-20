@@ -46,7 +46,7 @@ public class SendMessageAction implements Action{
 			//sendRedirect() <-이방식은 이동할 페이지 주소 경로 노출 함.
 			forward.setRedirect(false);
 			//메시지함으로 이동할 페이지 주소 저장
-			forward.setPath("./MemberMessage.message");
+			forward.setPath("./MemberMessage_ReceiveList.message");
 			
 		} else {//실패시
 			forward.setRedirect(false);

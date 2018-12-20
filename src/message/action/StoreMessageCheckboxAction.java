@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
 import message.db.MessageDAO;
 
-public class DeleteMessageCheckboxAction implements Action{
-
+public class StoreMessageCheckboxAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//한글처리
@@ -19,7 +17,7 @@ public class DeleteMessageCheckboxAction implements Action{
 		//구분 값 받아옴( receive, send, store)
 		String divide = request.getParameter("divide");
 		
-		//삭제를 위해 체크된 메시지 번호들을 넘겨받음
+		//보관을 위해 체크된 메시지 번호들을 넘겨받음
 		String[] no_checkbox = request.getParameterValues("messageCheck");
 		
 		if(no_checkbox != null){//체크된것이 하나라도 존재한다면
@@ -29,8 +27,8 @@ public class DeleteMessageCheckboxAction implements Action{
 				list.add(Integer.parseInt(val));
 			}
 			MessageDAO mdao = new MessageDAO();
-			//삭제될 메시지번호들을 담은 리스트를 전달하여 삭제작업 진행
-			mdao.deleteMessageCheckbox(list,id,divide);
+			//보관될 메시지번호들을 담은 리스트를 전달하여 보관작업 진행
+			mdao.storeMessageCheckbox(list,id,divide);
 			
 			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
 			ActionForward forward=new ActionForward();

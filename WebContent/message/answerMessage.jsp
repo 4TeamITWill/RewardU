@@ -16,27 +16,29 @@
 	String fromID = request.getParameter("fromID");
 %>
 
+<section class="messageAnswer_sec"><!-- TOP과 FOOTER 사이를 차지하는 공간. -->
+<div class="answer_div">
 
 <form action="./SendMessageAction.message" method="post">
+<!-- 보내는 사람은 사용자 본인 고정 -->
+<input type="hidden" name="toID" value="<%=id%>"> 
 
-<fieldset>
-	<label>보내는 사람 ID : </label> 
-	<input type="text" name="toID" value="<%=id%>" readonly>
+<fieldset class="answer_FS">
+	<!-- 사용자가 답변을 보내는 것이기에 받는사람의 ID는 readonly -->
 	<label>받는사람 ID : </label>
 	<input type="text" name="fromID" value="<%=fromID%>" readonly>
 	<label>제목 : </label>
 	<input type="text" name="subject">
 	<br/>
-	<label>내용 : </label>
-	<textarea rows="10" cols="40" name="content"></textarea>
-</fieldset>
-
-<fieldset>
+	<!-- 내용 -->
+	<textarea rows="10" cols="40" name="content" class="answer_TA"></textarea>
+	<br/>
 	<input type="submit" value="Send" class="submit">
 	<input type="reset" value="Cancel" class="cancel">
-</fieldset>	
+</fieldset>
+
 </form>
-
-
+</div><!-- class="answer_div" -->
+</section>
 </body>
 </html>

@@ -61,7 +61,7 @@ fieldset{border:0;}
 				//int count = mdao.getCountMessage(id); //해당 id가 받은 메시지가 몇 개인지 반환
 				int dontReadCount = mdao.getCountDontRead(id); //해당 id가 받은 메시지 중 안읽은 메시지가 몇 개인지 반환
 	%>
-				<a href="./MemberMessage.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
+				<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
 		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
 		 		
 				<a href="./MemberMypageAction.me">마이페이지</a>&nbsp;&nbsp;
