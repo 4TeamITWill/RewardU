@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+
+.messageBox_sec,.messageContent_sec,.messageSend_sec,.messageAnswer_sec{ 
+	position: relative;
+	height: 600px; text-align: center;
+}
+
+
+
+/* messageBox.jsp */
+.sendMessage_btn{
+	
+}
+.messageBox_div{ position: absolute;
+	width: 1100px; height: auto; text-align: center;
+	left: 20%; top: 15%;
+} 
+.messageBtn_div{
+	float: right;
+}
+.message_content{
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+.subject_a{
+	text-decoration: none;
+	color: black;
+}
+.readMessage{
+	color: aabbcc;
+	opacity: 0.6;
+}
+.page_control{
+	position: absolute;
+	left: 50%;
+}
+.page_control a{
+	text-decoration: none;
+	color: black;
+}
+.message_table{
+	width="1000"; align="center";
+	border-bottom: 3px groove #c0c0c0;
+	bo
+}
+.message_table tr{
+	height: 40px;
+}
+.message_table .table_header{
+	background-color: #c0c0c0;
+}
+.distinc_div{/* 보낸메시지, 받은 메시지, 메시기 보관함을 감싸고 있는 div */
+	position: absolute;
+	right: 1px;
+}
+.distinc_div a{text-decoration: none; color: black;}
+.msglist_span{/* 보낸메시지, 받은 메시지, 메시기 보관함 각 span */
+	background-color: #dbdbdb;
+	width: 200px; 
+	display: inline-block;
+}
+.msglist_active{/* 보낸, 받은 , 보관 중 눌렀을 때 적용될 효과 */
+	background-color: white;
+	border: 1px groove #dbdbdb;
+}
+
+
+/* contentMessage.jsp */
+.content_div{ position: absolute;
+	width: 500px; height: auto; text-align: center;
+	left: 37%; top: 15%;
+} 
+.content_func{width: 15%;}
+. class="content_result"{width: auto;}
+.content_table td{
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+.content_btn{
+	float: right;
+	text-align: center;
+}
+
+/* sendMessage.jsp + answerMessage.jsp */
+.send_div,.answer_div{ position: absolute;
+	width: 530px; height: auto; text-align: center;
+	left: 37%; top: 15%;
+} 
+.send_TA,.answer_TA{width: 500px; height: 250px;}
+.send_FS,.answer_FS{float: left;}
