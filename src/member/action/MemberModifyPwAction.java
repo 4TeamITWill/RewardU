@@ -7,40 +7,33 @@ import javax.servlet.http.HttpSession;
 import member.db.MemberBean;
 import member.db.MemberDAO;
 
-public class MemberModifyAction implements Action {
+public class MemberModifyPwAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("MemberModifyAction ()");
+		System.out.println("MemberModifyPwAction ()");
 		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
 		String user_id = (String)session.getAttribute("id");
+		String user_pw = request.getParameter("user_pw");
+		String user_pw3 = request.getParameter("user_pw3");
 		
 		MemberBean mbean = new MemberBean();
-
-		//System.out.println(request.getParameter("user_content"));
 		
-
 		mbean.setUser_id(user_id);
-		mbean.setUser_name(request.getParameter("user_name"));
-		mbean.setUser_phone(request.getParameter("user_phone"));
-		mbean.setUser_content(request.getParameter("user_content"));
-		mbean.setBirthyyyy(request.getParameter("birthyyyy"));
-		mbean.setBirthmm(request.getParameter("birthmm"));
-		mbean.setBirthdd(request.getParameter("birthdd"));
+		
 		
 		MemberDAO mdao = new MemberDAO();
 		
-		mdao.updateUser(mbean);
+		mdao.updatePw(user_id, user_pw, user_pw3);
 		
 		request.setAttribute("mbean", mbean);
-		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./index.jsp?center=./member/mypage.jsp");
 		
+		forward.setRedirect(false);
+		forward.setPath("./Main.me");
 		
 		return forward;
 	}
