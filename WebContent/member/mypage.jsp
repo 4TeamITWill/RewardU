@@ -66,12 +66,16 @@
 			</fieldset>
 			<fieldset>
 				<input type="submit" value="정보수정" class="btn1 w175">
+
+				<!-- <input type="button" value="비밀번호 수정" class="btn w175" onclick="location.href='./Main.me'"> -->
+
 				<input type="button" value="메인으로" class="btn w175" onclick="location.href='./Main.me'">
 			</fieldset>
 					
 	</form>
-	
-		<h5><a href="./MemberDelete.me">회원탈퇴</a></h5>
+
+		<h5><a href="./MemberModifyPw.me">비밀번호 수정하기</a> &nbsp;| &nbsp;<a href="./MemberDelete.me">리듀 회원탈퇴</a></h5>
+
 		
 	</div><!-- mypage_content -->
 

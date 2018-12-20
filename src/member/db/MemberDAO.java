@@ -288,6 +288,7 @@ public class MemberDAO {
 			try {
 				if(pstmt != null) pstmt.close();
 				if(con != null) con.close();
+
 	
 			} catch (SQLException e) {
 				throw new RuntimeException(e.getMessage());
@@ -331,5 +332,68 @@ public class MemberDAO {
 		
 	}//updatePw
 	
+
 	
+	
+	public int updatePw(String user_id, String user_pw, String user_pw3){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		int check = 0;
+		
+		MemberBean mbean = null;
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select user_pw from user where user_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				if(user_pw.equals(rs.getString("user_pw"))){
+					check=1;
+					
+				sql = "update user set user_pw=? where user_id=?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, user_pw3);
+				pstmt.setString(2, user_id);
+				pstmt.executeUpdate();
+				
+				}else {
+					check=0;
+				}
+			}//if
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//finally
+		return check;
+	}//updatePw
+	
+	public String randomNum() {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < 6; i++) {
+			int n = (int)(Math.random() * 10);
+			sb.append(n);
+		}
+		return sb.toString();
+	}//randomNum()
 }

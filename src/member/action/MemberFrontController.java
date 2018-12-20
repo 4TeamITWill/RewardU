@@ -121,8 +121,25 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		
-	//Member delete		
+
+		}else if (command.equals("/MemberModifyPw.me")) {
+			
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./index.jsp?center=./member/modifyPw.jsp");
+			
+	
+		}else if (command.equals("/MemberModifyPwAction.me")) {
+			
+			action = new MemberModifyPwAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+	//Member delete			
+
 		}else if (command.equals("/MemberDelete.me")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
