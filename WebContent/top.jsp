@@ -64,12 +64,12 @@ fieldset{border:0;}
 				<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
 		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
 	<% 	
-		 		if(id.equals("rewardu4@gmail.com")){
-	%>
-					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp;
+		 		if(id.equals("rewardu4@gmail.com")){ //접속한 id가 관리자 계정rewardu4@gmail.com 일 경우
+	%>				<!-- 마이페이지 대신 관리자페이지가 나타남 -->
+					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp; 
 	<%
-		 		} else {
-	%>
+		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
+	%>			
 					<a href="./MemberMypageAction.me">마이페이지</a>&nbsp;&nbsp;
 	<%
 		 		}
