@@ -364,3 +364,183 @@ body{
     list-style: none;
     width: 100%;  
 }
+
+/* myPage 부분 */
+
+#myPage_main {
+	padding-top : 6rem;
+	padding-bottom : 6rem;
+	width : 1000px;
+	margin : 0 auto;
+}
+
+.myPage_top_container {
+	display : flex;
+	justify-content : space-between;
+}
+
+.myPage_top_1 {
+	box-sizing : border-box;
+	border : 3px solid #b44af7;
+	padding : 1.5rem 2rem;
+	width : 650px;
+}
+
+.myPage_top_2 {
+	box-sizing : border-box;
+	width : 300px;
+	position : relative;
+	border : 3px solid #b44af7;
+}
+
+.info_container {
+	display : flex;
+	margin : 0.6rem;
+}
+
+.my_key {
+	width : 20%;
+}
+
+.my_value {
+	width : 60%;
+}
+
+.my_profile_value {
+	position : relative;
+	width : 100%;
+	height : 250px;
+}
+
+.photo_container:HOVER>.overblack {
+	position : absolute;
+	height : 100%;
+	width : 100%;
+	background-color : rgba(0,0,0,0.6);
+	cursor : pointer;
+	border-radius : 50%;
+}
+
+.photo_container:HOVER>.overblack:after {
+	height : 100%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	content : "이미지 변경";
+	font-size : 1.2rem;
+	color : rgba(255,255,255,1);
+}
+
+.photo_container {
+	position : absolute;
+	left : 50%;
+	top : 50%;
+	transform : translate(-50%, -50%);
+	border-radius : 50%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	width : 200px;
+	height : 200px;
+	overflow : hidden;
+	border : 2px solid #c0c0c0;
+}
+
+.myPage_mid {
+	margin-top : 4rem;
+}
+
+.myPage_mid_content {
+	width : 100%;
+	display : grid;
+	grid-template-columns : 1fr 1fr 1fr;	
+	grid-gap : 3rem;
+	justify-items : center;
+}
+
+.myPage_goodlist {
+	border : 0.3px solid rgba(0,0,0,0.2);	
+	width : 280px;		
+}
+
+.myPage_goodlist .goodlist_imgContainer {
+	overflow : hidden;	
+	position : relative;
+	display : flex;
+	justify-content : center;
+	
+}
+
+.goodlist_imgContainer .back {
+	box-sizing : border-box;
+	position : absolute;
+	padding : 0 1rem;	
+	padding-top : 4rem;
+	left : 0;
+	top : 50%;
+	transform : translateY(-50%);
+	width : 100%;
+	height : 55%;	
+	color : rgba(255,255,255,0.9);
+	background-color : rgba(0,0,0,0.7);
+}
+
+.goodlist_imgContainer .back .good_subject {
+	font-size : 1.3rem;
+	font-weight : 600;
+	text-align : center;
+}
+
+.goodlist_imgContainer .back .good_price {
+	text-align : center;
+	margin-top : 2rem;
+	font-size : 0.95rem;
+}
+
+.myPage_goodlist .goodlist_imgContainer img {
+	height : 290px;
+}
+
+.goodlist_contentsContainer {
+	height : 40px;
+	background-color : rgba(230,230,230,0.4);
+}
+.goodlist_contentsContainer .good_id {
+	height : 100%;
+	line-height : 40px;
+	text-align : center;
+	font-size : 1.1rem;
+}
+
+.myPage_bot {
+	margin-top : 4rem;
+}
+
+.myPage_bot_content {
+	border : 0.5px solid rgba(0,0,0,0.2);
+}
+
+.btn_line {
+	padding : 1rem 0;
+	text-align : center;
+}
+
+.ybtn {
+	border-radius : 5px;
+	display : inline-block;
+	width : 120px;
+	height : 40px;
+	line-height : 40px;
+	background-color : #ccc;
+	color : rgba(0,0,0,0.8);
+	font-weight : bold;
+	text-align : center;	
+	cursor : pointer;
+}
+
+.ybtn:HOVER {
+	background-color : #8245fe;
+	color : rgba(255,255,255,0.9);
+}
+
+/*------------------------*/

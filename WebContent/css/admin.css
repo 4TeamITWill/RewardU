@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+a {
+	cursor : pointer;
+}
+
+/* 게시판 부분 */
+
+.ad_board_top, .ad_board_list {
+	display : flex;
+	border : 1px solid;
+}
+
+.ad_board_top > div:nth-of-type(1), .ad_board_list > div:nth-of-type(1) {
+	flex : 1.5;
+}
+.ad_board_top > div:nth-of-type(2), .ad_board_list > div:nth-of-type(2) {
+	flex : 1.5;
+}
+.ad_board_top > div:nth-of-type(3), .ad_board_list > div:nth-of-type(3) {
+	flex : 5;
+}
+.ad_board_top > div:nth-of-type(4), .ad_board_list > div:nth-of-type(4){
+	flex : 2;
+}
