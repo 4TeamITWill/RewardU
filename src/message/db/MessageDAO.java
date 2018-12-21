@@ -298,6 +298,83 @@ public class MessageDAO {
 		
 	}//storeMessageCheckbox()끝
 	
+	//메시지 내용에서 보관버튼 눌렀을시 기존 메시지는 삭제되면서 동시에 보관함에 등록하는 메소드
+		public void storeMessageButton(int no, String id, String divide){
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			MessageDTO mdto = new MessageDTO();
+			int maxNum = 1;
+			
+			try {
+				con = getConnection();
+				//구분값에 따라 메시지 검색
+				if(divide.equals("receive")){
+					sql = "select * from message_receive where no=? and fromID=?";
+				} else if(divide.equals("send")){
+					sql = "select * from message_send where no=? and toID=?";
+				}
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, no);
+				pstmt.setString(2, id);
+				
+				rs = pstmt.executeQuery(); //SELECT
+				
+				if(rs.next()){ //MessageDTO 객체에 검색한 값 저장
+					mdto.setNo(rs.getInt("no"));
+					mdto.setToID(rs.getString("toID"));
+					mdto.setFromID(rs.getString("fromID"));
+					mdto.setSubject(rs.getString("subject"));
+					mdto.setContent(rs.getString("content"));
+					mdto.setReg_date(rs.getTimestamp("reg_date"));
+					mdto.setRead_status(rs.getInt("read_status"));
+					mdto.setStoreID(id);
+				}
+				
+				//message_store에 최고 번호를 찾는 작업
+				sql = "select max(no) from message_store where storeID=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				//메시지 받은게 없으면 첫 번째 번호는 1로 설정 아니면 기존것의 +1
+				if(rs.next()){
+					maxNum=rs.getInt(1)+1;
+				}else{
+					maxNum=1;} 
+				
+				//이후 INSERT 진행				
+				sql = "insert into message_store(no,toID,fromID,subject,content,reg_date,read_status,storeID)"
+					+" values(?,?,?,?,?,?,?,?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, maxNum);
+				pstmt.setString(2, mdto.getToID());
+				pstmt.setString(3, mdto.getFromID());
+				pstmt.setString(4, mdto.getSubject());
+				pstmt.setString(5, mdto.getContent());
+				pstmt.setTimestamp(6, mdto.getReg_date());
+				pstmt.setInt(7, mdto.getRead_status());
+				pstmt.setString(8, mdto.getStoreID());
+				
+				pstmt.executeUpdate(); //INSERT
+				
+				//보관함에 메시지 INSERT하고 난 뒤에 해당 메시지 삭제
+				deleteMessageButton(no, id, divide);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (con != null)con.close();
+					if (pstmt != null)pstmt.close();
+					if (rs != null)rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}//storeMessageButton()끝
+	
 	//체크된 메시지들을 한번에 삭제할 때 사용하는 메소드
 	public void deleteMessageCheckbox(ArrayList<Integer> list, String id, String divide){
 		

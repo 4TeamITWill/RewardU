@@ -123,7 +123,7 @@ if(count > 0){ //메시지가 존재 한다면
 <!-- <a href="./SendMessage.message" ><img alt="메시지보내기" src="img/message_img/send_msg.PNG" class="sendMessage_img"> </a> -->
 
 <!-- 클릭하면 체크된 메시지들이 삭제된다.-->
-<input type="button" value="삭제" onclick="deleteMsg();">
+<input type="button" value="삭제하기" onclick="deleteMsg();">
 <!-- 클릭하면 체크된 메시지들이 보관함으로 간다 -->
 <input type="button" value="보관하기" onclick="storeMsg();">
 </div>

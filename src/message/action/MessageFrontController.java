@@ -142,6 +142,16 @@ public class MessageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//메시지 내용에서 해당 메시지 보관버튼을 눌렀을 시
+		else if(command.equals("/StoreMessageButton.message")){
+			//메시지를 삭제를 위한 Action객체 생성
+			action=new StoreMessageButtonAction();
+			try {
+				forward=action.execute(request, response);			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//메시지 답변하기버튼을 눌렀을 시
 		else if(command.equals("/AnswerMessage.message")){
 			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
