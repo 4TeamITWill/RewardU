@@ -50,7 +50,7 @@
 		</div>
 		
 		<div class="myPage_mid">
-			<div class="subject"><a href="myPageGood.me">나의 관심사</a></div>
+			<div class="subject"><a href="myPageGood.my">나의 관심사</a></div>
 			<div class="myPage_mid_content">
 				<c:forEach var="good" items="${goodlist }" begin="0" end="2">
 					<div class="myPage_goodlist">

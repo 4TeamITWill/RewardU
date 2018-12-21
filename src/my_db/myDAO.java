@@ -75,8 +75,34 @@ public class myDAO {
 		return mbean;
 	}//getUser() 메소드 끝
 	
+	//좋아요 누른 전체 글 개수 리턴하는 getGoodCount() 메소드
+	public int getGoodCount(String user_id){
+		
+		int count = 0;
+		String sql ="";
+		
+		try {
+			
+			con=getConnection();
+			sql = "select count(*) from good g inner join board b on g.pd_no = b.pd_no where g.user_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) count = rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			freeResource();
+		}
+		
+		return count;
+	}
+	
 	//user_id를 넣고 board테이블과 JOIN해서 해당 id가 좋아요 누른 board를 가져오는 getGoodBoard() 메소드
-	public ArrayList<BoardBean> getGoodBoard(String user_id) {
+	public ArrayList<BoardBean> getGoodBoard(String user_id, int startRow, int pageSize) {
 		
 		ArrayList<BoardBean> goodlist = new ArrayList<BoardBean>();
 		BoardBean bbean = null;
@@ -85,15 +111,37 @@ public class myDAO {
 		try {
 			con = getConnection();
 			
-			sql = "select b.pd_no, b.user_id, b.pd_category, b.pd_start, b.pd_end, b.pd_goalmoney, b.pd_curmoney, b.pd_subject from good g inner join board b on g.pd_no = b.pd_no where g.user_id = ?";
+			sql = "select b.pd_no, b.user_id, b.pd_category, b.pd_start, b.pd_end, b.pd_good, b.pd_count, "
+					+ "b.pd_file, b.pd_realfile, b.pd_goalmoney, b.pd_curmoney, b.pd_participant, b.pd_result, "
+					+ "b.pd_permit, b.pd_content, b.pd_subject, b.pd_opcontent1, b.pd_opcontent2, b.pd_opcontent3, "
+					+ "b.pd_opprice1, b.pd_opprice2, b.pd_opprice3, b.pd_rate, b.pd_ratecount from good g inner join board b "
+					+ "on g.pd_no = b.pd_no where g.user_id = ? order by b.pd_no desc limit = ?,?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				bbean = new BoardBean();
 				
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				bbean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bbean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bbean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bbean.setPd_content(rs.getString("pd_content"));
+				bbean.setPd_permit(rs.getInt("pd_permit"));
+				bbean.setPd_result(rs.getInt("pd_result"));
+				bbean.setPd_participant(rs.getInt("pd_participant"));
+				bbean.setPd_realfile(rs.getString("pd_realfile"));
+				bbean.setPd_file(rs.getString("pd_file"));
+				bbean.setPd_count(rs.getInt("pd_count"));
+				bbean.setPd_good(rs.getInt("pd_good"));
 				bbean.setPd_no(rs.getInt("pd_no"));
 				bbean.setUser_id(rs.getString("user_id"));
 				bbean.setPd_category(rs.getString("pd_category"));
@@ -113,6 +161,63 @@ public class myDAO {
 		return goodlist;
 	}//getGoodBoard() 메소드 끝
 	
+	//startRow,pageSize 없이 전체목록받아오기 getGoodBoard() 메소드 오버로딩
+	public ArrayList<BoardBean> getGoodBoard(String user_id) {
+		
+		ArrayList<BoardBean> goodlist = new ArrayList<BoardBean>();
+		BoardBean bbean = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "select b.pd_no, b.user_id, b.pd_category, b.pd_start, b.pd_end, b.pd_good, b.pd_count, "
+					+ "b.pd_file, b.pd_realfile, b.pd_goalmoney, b.pd_curmoney, b.pd_participant, b.pd_result, "
+					+ "b.pd_permit, b.pd_content, b.pd_subject, b.pd_opcontent1, b.pd_opcontent2, b.pd_opcontent3, "
+					+ "b.pd_opprice1, b.pd_opprice2, b.pd_opprice3, b.pd_rate, b.pd_ratecount from good g inner join board b "
+					+ "on g.pd_no = b.pd_no where g.user_id = ? order by b.pd_no desc";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				bbean = new BoardBean();
+				
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				bbean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bbean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bbean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bbean.setPd_content(rs.getString("pd_content"));
+				bbean.setPd_permit(rs.getInt("pd_permit"));
+				bbean.setPd_result(rs.getInt("pd_result"));
+				bbean.setPd_participant(rs.getInt("pd_participant"));
+				bbean.setPd_realfile(rs.getString("pd_realfile"));
+				bbean.setPd_file(rs.getString("pd_file"));
+				bbean.setPd_count(rs.getInt("pd_count"));
+				bbean.setPd_good(rs.getInt("pd_good"));
+				bbean.setPd_no(rs.getInt("pd_no"));
+				bbean.setUser_id(rs.getString("user_id"));
+				bbean.setPd_category(rs.getString("pd_category"));
+				bbean.setPd_start(rs.getTimestamp("pd_start"));		
+				bbean.setPd_end(rs.getTimestamp("pd_end"));
+				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
+				bbean.setPd_curmoney(rs.getString("pd_curmoney"));
+				bbean.setPd_subject(rs.getString("pd_subject"));
+				
+				goodlist.add(bbean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return goodlist;
+	}//getGoodBoard() 메소드 끝
 	//투자리스트 가져오기 getRewardBoard() 메소드
 	public ArrayList<InvestBean> getRewardBoard(String user_id) {
 		

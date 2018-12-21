@@ -4,10 +4,11 @@ import java.sql.Timestamp;
 
 public class BoardBean {
 
-	private int pd_no, pd_good, pd_count, pd_participant, pd_result, pd_permit, pd_opprice1, pd_opprice2, pd_opprice3;
+	private int pd_no, pd_good, pd_count, pd_participant, pd_result, pd_permit, pd_opprice1, pd_opprice2, pd_opprice3, pd_ratecount;
 	private String user_id, pd_name, pd_category, pd_file, pd_realfile, pd_goalmoney,
 							pd_curmoney, pd_content, pd_subject, pd_opcontent1, pd_opcontent2, pd_opcontent3;
 	private Timestamp pd_start, pd_end;
+	private double pd_rate;
 	
 	public int getPd_no() {
 		return pd_no;
@@ -146,6 +147,18 @@ public class BoardBean {
 	}
 	public void setPd_end(Timestamp pd_end) {
 		this.pd_end = pd_end;
+	}
+	public double getPd_rate() {
+		return pd_rate;
+	}
+	public void setPd_rate(double pd_rate) {
+		this.pd_rate = pd_rate;
+	}
+	public int getPd_ratecount() {
+		return pd_ratecount;
+	}
+	public void setPd_ratecount(int pd_ratecount) {
+		this.pd_ratecount = pd_ratecount;
 	}
 	
 }	

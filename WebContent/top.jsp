@@ -18,6 +18,7 @@ a {text-decoration: none;}
 fieldset{border:0;}
 .margin5{margin-top: 10px;}
 
+.h ul {padding : 0;}
 .h .dropdown01 li {
 	display: inline-block;
 	color: #aaa;
@@ -29,7 +30,7 @@ fieldset{border:0;}
 <body>
 	<div id="top">
 		<div class="top_container">
-			<div class="h">
+			<div class="h top_sub">
 				<ul class="dropdown01">
 					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;
 					<li><a class="top_menu">리듀란?</a></li>&nbsp;

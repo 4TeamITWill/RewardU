@@ -26,7 +26,7 @@ body{
 }
 
 #top .top_container {
-	width : 1000px;
+	width : 1200px;
 	margin : 0 auto;
 	display : flex;
 	flex-direction : row;
@@ -36,25 +36,19 @@ body{
 /* 메뉴,로그인, 회원가입 부분 */
 #top .top_sub {
 	color : #aaa;
-	line-height : 50px;
-}
-
-#top .top_logo {
-	/*font-size : 1.9rem;*/
-	flex : 3.3;
+	flex : 1;
 }
 
 #top .top_menu {
-	flex : 3.3;
 	position : relative;
 	width : 100px;
 	cursor : pointer;
 }
 
 .h {
-	flex : 3.3;
+	text-align : left;
 }
-
+/*
 #top .top_menu .hamburger {	
 	width : 50px;
 	height : 100%;
@@ -69,7 +63,7 @@ body{
 	border-radius : 1px;
 	margin : 4px;
 }
-
+*/
 .dropdown,.dropdown > ul {
     box-sizing:border-box;
     display: inline;}
@@ -97,8 +91,8 @@ body{
 
 #top .top_member {
 	text-align : right;
-	flex : 3.3;
 	color : #aaa;
+	line-height : 50px;
 }
 
 #top .top_member a{

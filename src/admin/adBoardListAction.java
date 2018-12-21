@@ -17,7 +17,7 @@ public class adBoardListAction implements adAction {
 		
 		int count = bdao.getBoardCount();
 		
-		int pageSize = 3;
+		int pageSize = 10;
 
 		String currentPage1 = request.getParameter("currentPage1");
 		
