@@ -180,9 +180,7 @@ public class MessageFrontController extends HttpServlet{
 			//이동할 페이지 경로(회원가입 페이지) 주소값 저장
 			forward.setPath("./index.jsp?center=message/contentMessage.jsp");
 		}
-		
-		
-		
+
 		//------------------------------------------------------------------------------------------------------
 		//주소 이동
 		if(forward!=null){ //new ActionForward()객체가 존재 하고..

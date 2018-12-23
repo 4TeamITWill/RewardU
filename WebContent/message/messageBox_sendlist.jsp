@@ -96,13 +96,17 @@ if(count > 0){ //메시지가 존재 한다면
 		//글 내용이 존재 한다면 내용 엔터처리해서 얻기
 		if(mdto.getContent() != null){
 			Content = mdto.getContent().replace("\r\n", "<br/>");}
+		//만약 사용자가 보낸 메시지를 받은사람이 관리자이면 보여지는 이름을 관리자로 변경
+		String fromID = mdto.getFromID();
+		if(fromID.equals("rewardu4@gmail.com")){
+			fromID = "관리자";}
 %>
 		<tr align="center">
-			<td width="5%"><%=mdto.getNo()%></td>
-			<td width="8%"><%=mdto.getFromID()%></td>
-			<td width="23%"><a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=send"><%=mdto.getSubject()%></a></td>
-			<td width="15%"><%=sdf.format(mdto.getReg_date()) %></td>
-			<td width="5%"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
+			<td width="80px"><%=mdto.getNo()%></td>
+			<td width="230px"><%=fromID%></td>
+			<td width="500px"><a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=send"><%=mdto.getSubject()%></a></td>
+			<td width="170px"><%=sdf.format(mdto.getReg_date()) %></td>
+			<td width="100px"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>
 <%
 	}//for()끝
@@ -162,20 +166,20 @@ if(count > 0){ //메시지가 존재 한다면
 		//[이전] 시작페이지 번호가 한 화면에 보여줄 페이지수보다 클 때..
 		if(startPage > pageBlock){
 %>
-			<a href="./MemberMessage.message?pageNum=<%=startPage-pageBlock%>">이전</a>
+			<a href="./MemberMessage_SendList.message?pageNum=<%=startPage-pageBlock%>">이전</a>
 <%			
 		}
 		// [1][2][3]...[10]
 		for(int i=startPage; i<=endPage; i++){
 %>
-			<a href="./MemberMessage.message?pageNum=<%=i%>"><%=i%></a> 
+			<a href="./MemberMessage_SendList.message?pageNum=<%=i%>"><%=i%></a> 
 <%
 		}
 		
 		//[다음] 끝페이지번호가 전체페이수보다 작을 때...
 		if(endPage < pageCount){
 %>
-			<a href="./MemberMessage.message?pageNum=<%=startPage+pageBlock%>">다음</a>
+			<a href="./MemberMessage_SendList.message?pageNum=<%=startPage+pageBlock%>">다음</a>
 <%
 		}	
 	}
