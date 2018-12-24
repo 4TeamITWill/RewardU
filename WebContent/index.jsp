@@ -28,5 +28,7 @@
 
 <jsp:include page="footer.jsp"/>
 
+<jsp:include page="quick_menu.jsp"/>
+
 </body>
 </html>

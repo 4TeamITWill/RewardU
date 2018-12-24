@@ -49,6 +49,8 @@
 		<!-- 번호와 아이디를 넘겨주어 해당 메시지를 삭제 할 수 있도록함 -->
 		<input type="button" value="삭제" onclick="location.href='./DeleteMessageButton.message?id=<%=id%>&no=<%=mdto.getNo()%>&divide=<%=divide%>'">
 		
+		<input type="button" value="보관" onclick="location.href='./StoreMessageButton.message?id=<%=id%>&no=<%=mdto.getNo()%>&divide=<%=divide%>'">
+		
 		<!-- 답변을 작성하는 사용자기준에서는 메시지를 받을 사람(fromID)이 곧 자신에게 메시지를 보낸 사람(toID)이므로  fromID변수값에 getToID값을 넣어서 전달하여준다. -->
 <%		//그리고 받은 메시지에서 눌렀을 시에만 답변하기가 보이도록 한다. 보낸메시지와 보관메시지를 눌러서 내용으로 들어온 경우 답변 불가
 		if(divide.equals("receive")){
