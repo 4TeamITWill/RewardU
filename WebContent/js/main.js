@@ -6,7 +6,7 @@ $(document).ready(function(){
 	});
 	
 	
-	/*퀵 메뉴*/
+	/* -------------------------퀵 메뉴 시작------------------------- */
 	//요약 :기본 문서 상단에서 퀵 메뉴가 이동한 거릿값을 구한다.
 	var defaultTop=parseInt($("#quick_menu").css("top"));
 	//브라우저(window)에 스크롤바가 이동 될때마다
@@ -19,15 +19,34 @@ $(document).ready(function(){
 	});
 	
 	//메시지 모양 버튼을 클릭하면 메시지 입력할 수 있는 창이 나타남
-	$(".quick_img").click(function() {
+	$(".msg_box").click(function() {
 		$(".quick_msg").slideToggle();
-		$(".quick_img").slideToggle();
+		$(".msg_box").slideToggle();
+		$(".quick_label").text("1:1문의");
 	});
-	//'x'모양 버튼을 클릭하면 메시지 입력창이 사라지고 다시 메시지 모양 버튼생김
+	//메시지 모양 버튼에 마우스 오버시 텍스트 출력
+	$(".msg_box").mouseover(function() {
+		$(".quick_label").text("1:1문의");});
+	//메시지 모양 버튼에 마우스 떠났을 시 텍스트 초기화
+	$(".msg_box").mouseleave(function() {
+		$(".quick_label").text("");});
+	
+	
+	//닫기버튼을 클릭하면 메시지 입력창이 사라지고 다시 메시지 모양 버튼생김
 	$(".quit_btn").click(function() {
 		$(".quick_msg").slideToggle();
-		$(".quick_img").slideToggle();
+		$(".msg_box").slideToggle();
 	});
+	//닫기버튼에 마우스 오버 시
+	$(".quit_btn").mouseover(function() {
+		$(".quit_btn").attr("src",$(".quit_btn").attr("src").replace("_off.png","_on.png"));
+	});
+	//닫기버튼에 마우스가 벗어났을 시
+	$(".quit_btn").mouseleave(function() {
+		$(".quit_btn").attr("src",$(".quit_btn").attr("src").replace("_on.png","_off.png"));
+	});
+	/* -------------------------퀵 메뉴 끝------------------------- */
+	
 	
 });//$(document).ready 끝
 
