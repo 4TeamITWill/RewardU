@@ -10,27 +10,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <title>Insert title here</title>
-<style type="text/css">
-/* 퀵메뉴 */
-#quick_menu {
-	width: 95px;
-	text-align: center;
-	position: absolute;
-	bottom: 0px;
-	right: 0.5%;
-}
-.quick_msg{border: 1px solid red;
-	position: absolute;
-	bottom: 0px;
-	right: 5%;
-	width: 300px; height: 300px;
-	display: none; 
-}
-.quit_btn{width: 30px; height: 15px;}
-</style>
 
 <script type="text/javascript">
-	$(document).ready(function() { //문의넣기의 전송버튼 눌렀을 시
+	$(document).ready(function() { 
+		//문의넣기의 전송버튼 눌렀을 시
 		$("#send").on("click", function() {
 			
 				$.ajax(
@@ -56,13 +39,23 @@
 					} //중괄호의 닫는 부분 
 				); //ajax닫는부분
 		});// $.ajax메소드의 닫는 부분
+		
+		//다시쓰기버튼 눌렀을 시
+		$("#rewrite").on("click", function name() {
+			$("#subject").val("");
+			$("#content").val("");
+		});
 	});//ready함수 닫는 부분 	
 </script>
 
 </head>
 <body>
 <!-- id세션 받기 -->
-<%String id = (String)session.getAttribute("id"); %>
+<%
+	String id = (String)session.getAttribute("id"); 
+	
+if(id != null){
+%>
 <div id="quick_menu">
 	<!-- 
 	<h3>
@@ -72,20 +65,20 @@
 		
 		<li>
 			<a> <!-- 메시지모양 버튼 -->
-				<img src="img/messageIcon.png" width="50px" height="50px" class="quick_img" alt="메시지 보내기" />
+				<img src="img/messageIcon.png" class="quick_img" alt="메시지 보내기" />
 			</a>
 		</li>
 		<li>
 			<div class="quick_msg">
 				<!-- 닫기 버튼 이미지 -->
-				<img src="img/quit.png" class="quit_btn"><br/>
-				<!-- 보내는 사람 : 사용자, 받는 사람 : 관리자 로 고정 -->
+				<br/>1:1 문의 보내기<img src="img/quit.png" class="quit_btn"><br/>
+				<!-- 보내는 사람 : 사용자, 받는 사람 : 관리자(rewardu4@gmail.com 로 고정 -->
 				<input type="hidden" name="toID" id="toID" value="<%=id%>">
 				<input type="hidden" name="fromID" id="fromID" value="rewardu4@gmail.com">
 				<input type="text" name="subject" id="subject" placeholder="제목">
-				<textarea name="content" id="content" placeholder="문의사항"></textarea>
+				<textarea name="content" id="content" placeholder="문의사항"></textarea><br/>
 				<input type="button" value="전송" id="send">
-		
+				<input type="button" value="다시쓰기" id="rewrite">
 			</div>
 		</li>
 		<!-- <li>
@@ -95,5 +88,8 @@
 		</li> -->
 	</ul>
 </div>
+<%
+}//if(id != null) 끝
+%>
 </body>
 </html>
