@@ -24,6 +24,11 @@ $(document).ready(function(){
 		$(".quick_img").slideToggle();
 	});
 	
+	$(".quit_btn").click(function() {
+		$(".quick_msg").slideToggle();
+		$(".quick_img").slideToggle();
+	});
+	
 });//$(document).ready 끝
 
 

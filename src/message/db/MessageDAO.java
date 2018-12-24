@@ -67,7 +67,7 @@ public class MessageDAO {
 				pstmt.setTimestamp(6, mdto.getReg_date());
 				pstmt.setInt(7, 0);
 				
-				pstmt.executeUpdate();
+				result = pstmt.executeUpdate(); //작업이 정상적으로 완료되면 1을 반환하여 result에 1을 대입
 				
 				/*--------------------------message_send에 INSERT작업--------------------------*/	
 				/*다음 작업은 접속한 사용자가 보낸 메시지들의 번호 중 가장 큰 번호를 찾는 작업*/
@@ -96,9 +96,7 @@ public class MessageDAO {
 				pstmt.setInt(7, 0);
 				
 				result = pstmt.executeUpdate(); //작업이 정상적으로 완료되면 1을 반환하여 result에 1을 대입
-			} else {
-				result = 0; //문제가 있을시 0 대입
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
