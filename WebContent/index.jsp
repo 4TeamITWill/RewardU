@@ -24,6 +24,7 @@
  
 <jsp:include page="top.jsp"/>
 
+
 <jsp:include page="${center }"/>
 
 <jsp:include page="footer.jsp"/>
