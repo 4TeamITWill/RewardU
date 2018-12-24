@@ -99,7 +99,7 @@ public class myDAO {
 		}
 		
 		return count;
-	}
+	}//getGoodCount() 메소드 끝
 	
 	//user_id를 넣고 board테이블과 JOIN해서 해당 id가 좋아요 누른 board를 가져오는 getGoodBoard() 메소드
 	public ArrayList<BoardBean> getGoodBoard(String user_id, int startRow, int pageSize) {
@@ -110,13 +110,8 @@ public class myDAO {
 		
 		try {
 			con = getConnection();
-			
-			sql = "select b.pd_no, b.user_id, b.pd_category, b.pd_start, b.pd_end, b.pd_good, b.pd_count, "
-					+ "b.pd_file, b.pd_realfile, b.pd_goalmoney, b.pd_curmoney, b.pd_participant, b.pd_result, "
-					+ "b.pd_permit, b.pd_content, b.pd_subject, b.pd_opcontent1, b.pd_opcontent2, b.pd_opcontent3, "
-					+ "b.pd_opprice1, b.pd_opprice2, b.pd_opprice3, b.pd_rate, b.pd_ratecount from good g inner join board b "
-					+ "on g.pd_no = b.pd_no where g.user_id = ? order by b.pd_no desc limit = ?,?";
-			
+						
+			sql = "select b.pd_no, b.user_id, b.pd_category, b.pd_start, b.pd_end, b.pd_good, b.pd_count, b.pd_file, b.pd_realfile, b.pd_goalmoney, b.pd_curmoney, b.pd_participant, b.pd_result, b.pd_permit, b.pd_content, b.pd_subject, b.pd_opcontent1, b.pd_opcontent2, b.pd_opcontent3, b.pd_opprice1, b.pd_opprice2, b.pd_opprice3, b.pd_rate, b.pd_ratecount from good g inner join board b on g.pd_no = b.pd_no where g.user_id = ? order by b.pd_no desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
 			pstmt.setInt(2, startRow);
@@ -218,6 +213,34 @@ public class myDAO {
 		}
 		return goodlist;
 	}//getGoodBoard() 메소드 끝
+	
+	//좋아요 누른 전체 글 개수 리턴하는 getRewardCount() 메소드
+		public int getRewardCount(String user_id){
+			
+			int count = 0;
+			
+			String sql ="";
+			
+			try {
+				
+				con=getConnection();
+				sql = "select count(*) from investmentList where user_id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) count = rs.getInt(1);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally{
+				freeResource();
+			}
+			
+			return count;
+		}
+		
 	//투자리스트 가져오기 getRewardBoard() 메소드
 	public ArrayList<InvestBean> getRewardBoard(String user_id) {
 		
@@ -230,7 +253,7 @@ public class myDAO {
 			
 			con = getConnection();
 			
-			sql = "select * from investmentList where user_id = ?";
+			sql = "select * from investmentList where user_id = ? order by pd_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
@@ -273,5 +296,61 @@ public class myDAO {
 		return invelist;
 	}//getRewardBoard()메소드 끝
 	
+	//투자리스트 가져오기 getRewardBoard() 메소드 오버로딩
+		public ArrayList<InvestBean> getRewardBoard(String user_id, int startRow, int pageSize) {
+			
+			ArrayList<InvestBean> invelist = new ArrayList<InvestBean>();
+			InvestBean ibean = null;
+			String sql = "";
+			double percent = 0.0;
+			
+			try{
+				
+				con = getConnection();
+				
+				sql = "select * from investmentList where user_id = ? order by pd_no desc limit = ?,?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					ibean = new InvestBean();
+					
+					ibean.setInv_account(rs.getString("inv_account"));
+					ibean.setInv_addr(rs.getString("inv_addr"));
+					ibean.setInv_confirm(rs.getInt("inv_confirm"));
+					ibean.setInv_date(rs.getTimestamp("inv_date"));
+					ibean.setInv_name(rs.getString("inv_name"));
+					ibean.setInv_orderno(rs.getInt("inv_orderno"));
+					ibean.setInv_phone(rs.getString("inv_phone"));
+					ibean.setInv_price(rs.getInt("inv_price"));
+					ibean.setInv_qty(rs.getInt("inv_qty"));
+					ibean.setInv_username(rs.getString("inv_username"));
+					ibean.setPd_no(rs.getInt("pd_no"));
+					ibean.setUser_id(rs.getString("user_id"));
+					
+					BoardDAO bdao = new BoardDAO();
+					BoardBean bbean = bdao.getBoard(ibean.getPd_no());
+									
+					ibean.setPd_result(bbean.getPd_result());
+					
+					percent = (Double.parseDouble(bbean.getPd_curmoney())/Double.parseDouble(bbean.getPd_goalmoney()))*100;
+					
+					ibean.setInv_percent((int)percent);				
+					
+					invelist.add(ibean);
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				freeResource();
+			}
+			
+			return invelist;
+		}//getRewardBoard()메소드 끝
 	
 }

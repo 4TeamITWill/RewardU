@@ -6,23 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
+</head>	
 <body>
-	<div id="myGoodList_main">
-		<div class="myGoodList_menu">
+	<div id="myRewardList_main">
+		<div class="myRewardList_menu">
 			<div class="menu_1">마이페이지</div>
 			<div class="menu_2">좋아요</div>
 			<div class="menu_3">투자목록</div>
 		</div>		
-		<div class="myGoodList_content">
-			<div class="good_subject">좋아요</div>
-			<div class="myGoodList_content_">
-				<c:forEach var="good" items="${goodlist }">
-					<div class="good_content">
-						<div class="content_0"><img src=""></div>
-						<div class="content_1">&nbsp;${good.pd_subject }</div>					
-						<div class="content_2">&nbsp;${good.user_id }</div>
-						<div class="content_3">${good.pd_rate }&nbsp;&nbsp;</div>
+		<div class="myRewardList_content">
+			<div class="reward_subject">투자 목록</div>
+			<div class="myRewardList_content_">
+				<c:forEach var="invest" items="${invelist }">
+					<div class="reward_content">
+						<div>이미지</div>
+						<div>제목, 설명</div>
+						<div>가격</div>
+						<div>모금율</div>
 					</div>				
 				</c:forEach>
 				<c:if test="${count <= 0 }">

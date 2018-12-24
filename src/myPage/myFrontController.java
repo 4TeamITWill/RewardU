@@ -32,6 +32,11 @@ public class myFrontController extends HttpServlet{
 			
 			forward = action.execute(request, response);
 			
+		}else if(command.equals("/myPageReward.my")){
+			
+			action = new myRewardListAction();
+			
+			forward = action.execute(request, response);
 		}
 		
 		if(forward != null){

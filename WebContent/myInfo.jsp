@@ -45,7 +45,6 @@
 			<div class="btn_line">
 				<!-- 링크 href 지정해주기 나중에 연결 -->
 				<a class="ybtn" href="./MemberMypageAction.me">정보 수정</a>&nbsp;&nbsp;
-				<a class="ybtn" href="비밀번호 변경페이지">비밀번호 변경</a>
 			</div>
 		</div>
 		
@@ -57,15 +56,13 @@
 						<div class="goodlist_imgContainer">
 							<img src="./img/cat.jpg">
 							<div class="back">	
-								<div class="good_subject">${good.pd_subject }</div>						
+								<div class="good_subject">${good.pd_subject }</div>
+								<div class="good_id">${good.user_id }</div>					
 								<div class="good_price">
 								(현재)<fmt:formatNumber value="${good.pd_curmoney }" type="number"/> /
 								(목표)<fmt:formatNumber value="${good.pd_goalmoney }" type="number"/>
 								</div>	
 							</div>
-						</div>
-						<div class="goodlist_contentsContainer">																	
-							<div class="good_id">${good.user_id }</div>
 						</div>
 					</div>
 					
@@ -73,7 +70,7 @@
 			</div>
 		</div>
 		<div class="myPage_bot">
-			<div class="subject">투자 목록</div>
+			<div class="subject"><a href="myPageReward.my">투자 목록</a></div>
 			<div class="myPage_bot_content">
 				<div class="myPage_invelist">
 					<div style="display : flex; font-size : 1.1rem; font-weight : bold; height : 40px; line-height : 40px;">
