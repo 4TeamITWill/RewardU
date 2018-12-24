@@ -22,7 +22,7 @@ public class BoardDAO {
 		return con;
 	}
 	
-	//게시글 개수 가져오기 getBoardCount() 메소드
+	//寃뚯떆湲� 媛쒖닔 媛��졇�삤湲� getBoardCount() 硫붿냼�뱶
 	public int getBoardCount(){
 		
 		Connection con = null;
@@ -56,9 +56,9 @@ public class BoardDAO {
 		}
 		
 		return count;
-	}//getBoardCount() 메소드 끝
+	}//getBoardCount() 硫붿냼�뱶 �걹
 	
-	//글리스트 전체 받아오기 getBoardList() 메소드
+	//湲�由ъ뒪�듃 �쟾泥� 諛쏆븘�삤湲� getBoardList() 硫붿냼�뱶
 	public ArrayList<BoardBean> getBoardList(int startRow, int pageSize){
 		
 		ArrayList<BoardBean> list = new ArrayList<>();		
@@ -125,9 +125,9 @@ public class BoardDAO {
 		
 		return list;
 		
-	}//getBoardList() 메소드 끝
+	}//getBoardList() 硫붿냼�뱶 �걹
 	
-	//글 하나의 상세정보 보기 getBoard() 메소드
+	//湲� �븯�굹�쓽 �긽�꽭�젙蹂� 蹂닿린 getBoard() 硫붿냼�뱶
 	public BoardBean getBoard(int pd_no){
 		
 		BoardBean bbean = null;
@@ -185,9 +185,9 @@ public class BoardDAO {
 		}
 		
 		return bbean;
-	}//getBoard() 메소드 끝
+	}//getBoard() 硫붿냼�뱶 �걹
 	
-	//admin 판매글 승인 boardPermit() 메소드
+	//admin �뙋留ㅺ� �듅�씤 boardPermit() 硫붿냼�뱶
 	public void boardPermit(int pd_no){
 		
 		Connection con = null;
@@ -241,7 +241,73 @@ public class BoardDAO {
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
-		}
+		}	
+	}
+	public ArrayList<BoardBean> getPermitList(String center){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		
+		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+		
+		try{
+			con = getConnection();
+			sql = "";
+			if(center.equals("pd_category")){
+				 sql = "select * from board where pd_permit = 1 order by pd_category";
+			}else if(center.equals("pd_start")){
+				 sql = "select * from board where pd_permit = 1 order by pd_start";
+			}else if(center.equals("pd_end")){
+				 sql = "select * from board where pd_permit = 1 order by pd_end";
+			}else if(center.equals("pd_curMoney")){
+				 sql = "select * from board where pd_permit = 1 order by pd_curMoney";
+			}else if(center.equals("pd_goalMoney")){
+				 sql = "select * from board where pd_permit = 1 order by pd_goalMoney";
+			}
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BoardBean bBean = new BoardBean();
+				
+				bBean.setPd_no(rs.getInt("pd_no"));
+				bBean.setUser_id(rs.getString("user_id"));
+				bBean.setPd_name(rs.getString("pd_name"));
+				bBean.setPd_category(rs.getString("pd_category"));
+				bBean.setPd_start(rs.getTimestamp("pd_start"));
+				bBean.setPd_end(rs.getTimestamp("pd_end"));
+				bBean.setPd_good(rs.getInt("pd_good"));
+				bBean.setPd_count(rs.getInt("pd_count"));
+				bBean.setPd_file(rs.getString("pd_file"));
+				bBean.setPd_realfile(rs.getString("pd_realFile"));
+				bBean.setPd_goalmoney(rs.getString("pd_goalMoney"));
+				bBean.setPd_curmoney(rs.getString("pd_curMoney"));
+				bBean.setPd_participant(rs.getInt("pd_participant"));
+				bBean.setPd_result(rs.getInt("pd_result"));
+				bBean.setPd_permit(rs.getInt("pd_permit"));
+				bBean.setPd_content(rs.getString("pd_content"));
+				bBean.setPd_subject(rs.getString("pd_subject"));
+				bBean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bBean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bBean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bBean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bBean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bBean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				
+				list.add(bBean);
+			}
+			con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		return list;
 	}
 }
