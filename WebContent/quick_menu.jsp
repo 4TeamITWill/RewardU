@@ -54,7 +54,7 @@
 <%
 	String id = (String)session.getAttribute("id"); 
 	
-if(id != null){
+if(id != null){//사용자가 로그인한 상태일 때만 문의하기 메시지가 생성됨!
 %>
 <div id="quick_menu">
 	<!-- 
@@ -63,15 +63,16 @@ if(id != null){
 	</h3> -->
 	<ul>
 		
-		<li>
+		<li class="msg_box">
+			<label class="quick_label"></label>
 			<a> <!-- 메시지모양 버튼 -->
-				<img src="img/messageIcon.png" class="quick_img" alt="메시지 보내기" />
+				<img src="img/messageIcon.png" class="msg_img" alt="메시지 보내기" />
 			</a>
 		</li>
 		<li>
 			<div class="quick_msg">
 				<!-- 닫기 버튼 이미지 -->
-				<br/>1:1 문의 보내기<img src="img/quit.png" class="quit_btn"><br/>
+				<br/>1:1 문의 보내기<img src="img/quit_off.png" class="quit_btn"><br/>
 				<!-- 보내는 사람 : 사용자, 받는 사람 : 관리자(rewardu4@gmail.com 로 고정 -->
 				<input type="hidden" name="toID" id="toID" value="<%=id%>">
 				<input type="hidden" name="fromID" id="fromID" value="rewardu4@gmail.com">
