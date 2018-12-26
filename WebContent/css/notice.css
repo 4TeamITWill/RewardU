@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+.notice_sec{
+	position: relative;
+	height: 1100px; text-align: center;}
+.writeNotice_sec,.contentNotice_sec{
+	position: relative; 
+	height: 600px; text-align: center;}
+	
+/* notice.jsp */
+.notice_div{
+	position: absolute;
+	width: 700px; height: auto; text-align: center;
+	left: 30%; top: 15%;
+}
+.notices{text-align: left; border-bottom: 2px groove gray;}
+.notices a{text-decoration: none; color: black;}
+.admin_div{
+	position: absolute; right: 10%;
+	width: 100px; 
+}
+.notice_head{
+	position: absolute;
+	left:45%; top:8%;
+}
+/* writeNotice.jsp */
+.writeNotice_div{
+	position: absolute;
+	width: 700px; height: auto; text-align: center;
+	left: 30%; top: 15%;
+}
+.writeNotice_table{border: 1px groove gray; border-radius: 2%;}
+.writeNotice_sub{
+	width: 500px; height: 30px; border-radius: 5%;
+}
+.writeNotice_con{
+	width: 500px; height: 300px; border-radius: 1%;
+}
+
+/* contentNotice.jsp */
+.contentNotice_div{
+	position: absolute; border: none;
+	width: 1000px; height: auto; text-align: center;
+	left: 23%; top: 15%;
+}
+.contentNotice_btnDiv{
+	position: absolute;
+	right: 1%;
+	width: 300px; 
+}
+
