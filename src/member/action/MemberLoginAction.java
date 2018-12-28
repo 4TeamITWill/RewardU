@@ -25,7 +25,7 @@ public class MemberLoginAction implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.print("alert('¾ÆÀÌµð³ª ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.')");
+			out.print("alert('ë°˜ê°‘ìŠµë‹ˆë‹¤')");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();
@@ -37,7 +37,7 @@ public class MemberLoginAction implements Action{
 			
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.print("alert('¾ÆÀÌµð³ª ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.')");
+			out.print("alert('ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.')");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();

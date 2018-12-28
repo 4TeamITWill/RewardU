@@ -40,7 +40,7 @@
 		<div class="contentNotice_btnDiv">
 			<input type="button" value="돌아가기" onclick="location.href='./Notice.no'">
 <%
-			if(id.equals("rewardu4@gmail.com")){
+			if(id != null && id.equals("rewardu4@gmail.com")){
 %>
 			<input type="button" value="삭제" onclick="location.href='./DeleteNoticeAction.no?no=<%=ndto.getNo()%>'">
 <%
