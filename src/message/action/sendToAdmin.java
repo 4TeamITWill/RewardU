@@ -1,4 +1,4 @@
-package member.action;
+package message.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;

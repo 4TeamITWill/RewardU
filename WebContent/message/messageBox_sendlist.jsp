@@ -109,6 +109,7 @@ if(count > 0){ //메시지가 존재 한다면
 			<td width="100px"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>
 <%
+	
 	}//for()끝
 } else {//if() 메시지가 없을 경우 count==0
 %>
