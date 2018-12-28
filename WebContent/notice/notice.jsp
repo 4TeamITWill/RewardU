@@ -120,13 +120,13 @@ if(count > 0){ //공지사항 글이 있다면
 
 </div><!-- class="notice_div -->
 <%
-	if(id.equals("rewardu4@gmail.com")){
+	if(id != null && id.equals("rewardu4@gmail.com")){
 %>
 	<div class="admin_div">
 		<input type="button" value="공지 등록" onclick="location.href='./WriteNotice.no'"/>
 	</div>
 <%
-	}
+	} else{}
 %>
 </section>
 
