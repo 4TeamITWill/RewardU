@@ -13,7 +13,7 @@ li {list-style: none;}
 
 a {text-decoration: none;}
 .hr{align: center;
-	width: 100%; height: 3.5px;
+	width: 100%; height: 5px;
 	background: linear-gradient(90deg, #b44af7, #82caff);  }
 fieldset{border:0;}
 .margin5{margin-top: 10px;}
@@ -66,7 +66,7 @@ fieldset{border:0;}
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
-					<a href="./myPage.my">마이페이지</a>&nbsp;&nbsp;
+					<a id="goMypage" style="cursor : pointer;">마이페이지</a>&nbsp;&nbsp;
 	<%
 		 		}
 	%>
@@ -86,17 +86,17 @@ fieldset{border:0;}
 		<div class="slidedown_menu">
 			<div class="menuLine_container">
 				<div class="menuLine" >
-					<a class = "menu_boss">리워드</a>
+					<a class = "menu_boss">펀딩시작하기</a>
 					<a href="링크넣기">리워드 게시판</a>
 					<a href="링크넣기">리워드 신청하기</a>
 				</div>
 				<div class="menuLine">
-					<a class = "menu_boss">소식</a>
+					<a class = "menu_boss">리듀란?</a>
 					<a href="링크넣기">회사 소식</a>
 					<a href="링크넣기">리워드 소식</a>
 				</div>	
 				<div class="menuLine">
-					<a class = "menu_boss" >안내</a>
+					<a class = "menu_boss" >NEWS</a>
 					<a href="링크넣기">이용가이드</a>
 					<a href="링크넣기">회사 소개</a>
 					<a href="링크넣기">공지사항</a>

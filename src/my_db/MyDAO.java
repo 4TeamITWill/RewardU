@@ -16,7 +16,7 @@ import admin_db.BoardBean;
 import admin_db.BoardDAO;
 import admin_db.MemberBean;
 
-public class myDAO {
+public class MyDAO {
 
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -114,7 +114,7 @@ public class myDAO {
 			sql = "select b.pd_no, b.user_id, b.pd_category, b.pd_start, b.pd_end, b.pd_good, b.pd_count, b.pd_file, b.pd_realfile, b.pd_goalmoney, b.pd_curmoney, b.pd_participant, b.pd_result, b.pd_permit, b.pd_content, b.pd_subject, b.pd_opcontent1, b.pd_opcontent2, b.pd_opcontent3, b.pd_opprice1, b.pd_opprice2, b.pd_opprice3, b.pd_rate, b.pd_ratecount from good g inner join board b on g.pd_no = b.pd_no where g.user_id = ? order by b.pd_no desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
-			pstmt.setInt(2, startRow);
+			pstmt.setInt(2, startRow-1);
 			pstmt.setInt(3, pageSize);
 			rs = pstmt.executeQuery();
 			
@@ -308,11 +308,11 @@ public class myDAO {
 				
 				con = getConnection();
 				
-				sql = "select * from investmentList where user_id = ? order by pd_no desc limit = ?,?";
+				sql = "select * from investmentList where user_id = ? order by pd_no desc limit ?,?";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user_id);
-				pstmt.setInt(2, startRow);
+				pstmt.setInt(2, startRow-1);
 				pstmt.setInt(3, pageSize);
 				rs = pstmt.executeQuery();
 				
@@ -334,12 +334,16 @@ public class myDAO {
 					
 					BoardDAO bdao = new BoardDAO();
 					BoardBean bbean = bdao.getBoard(ibean.getPd_no());
-									
+					//ibean의 pd_no값으로 BoardBean의 result값도 같이뽑음				
 					ibean.setPd_result(bbean.getPd_result());
 					
 					percent = (Double.parseDouble(bbean.getPd_curmoney())/Double.parseDouble(bbean.getPd_goalmoney()))*100;
-					
+					//BoardBean의 curmoney와 goalmoney를 이용해 퍼센테이지 구하기
 					ibean.setInv_percent((int)percent);				
+					
+					//BoardBean에서 subject와 content 뽑아내기
+					ibean.setPd_subject(bbean.getPd_subject());
+					ibean.setPd_content(bbean.getPd_content());
 					
 					invelist.add(ibean);
 				}
@@ -352,5 +356,54 @@ public class myDAO {
 			
 			return invelist;
 		}//getRewardBoard()메소드 끝
+		
+		//임시저장된 글 목록 ArrayList로 가져오기
+		public ArrayList<SaveBoard> getSaveList(String user_id) {
+		
+			ArrayList<SaveBoard> savelist = new ArrayList<>();
+			SaveBoard sBoard = null;
+			String sql = "";
+			
+			try {
+				con = getConnection();
+				sql = "select * from saveboard where user_id = ? order by pd_no desc";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					sBoard = new SaveBoard();
+					
+					sBoard.setPd_category(rs.getString("pd_category"));
+					sBoard.setPd_content(rs.getString("pd_content"));
+					sBoard.setPd_curmoney(rs.getString("pd_curmoney"));
+					sBoard.setPd_end(rs.getTimestamp("pd_end"));
+					sBoard.setPd_file(rs.getString("pd_file"));
+					sBoard.setPd_goalmoney(rs.getString("pd_goalmoney"));
+					sBoard.setPd_no(rs.getInt("pd_no"));
+					sBoard.setPd_opcontent1(rs.getString("pd_opcontent1"));
+					sBoard.setPd_opcontent2(rs.getString("pd_opcontent2"));
+					sBoard.setPd_opcontent3(rs.getString("pd_opcontent3"));
+					sBoard.setPd_opprice1(rs.getString("pd_opprice1"));
+					sBoard.setPd_opprice2(rs.getString("pd_opprice2"));
+					sBoard.setPd_opprice3(rs.getString("pd_opprice3"));
+					sBoard.setPd_realfile(rs.getString("pd_realfile"));
+					sBoard.setPd_subject(rs.getString("pd_subject"));
+					sBoard.setUser_id(rs.getString("user_id"));
+					
+					savelist.add(sBoard);
+					
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				freeResource();
+			}
+			
+			return savelist;
+		}
 	
+		
 }

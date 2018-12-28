@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import my_db.InvestBean;
-import my_db.myDAO;
+import my_db.MyDAO;
 
 public class myRewardListAction implements myAction {
 
@@ -20,7 +20,7 @@ public class myRewardListAction implements myAction {
 		//String user_id = (String)session.getAttribute("id");
 		String user_id = "id";
 		
-		myDAO mydao = new myDAO();
+		MyDAO mydao = new MyDAO();
 		
 		int count = mydao.getRewardCount(user_id);
 		

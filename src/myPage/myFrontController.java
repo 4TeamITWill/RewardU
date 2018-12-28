@@ -20,11 +20,23 @@ public class myFrontController extends HttpServlet{
 		myActionForward forward = null;
 		myAction action = null;
 		
-		if(command.equals("/myPage.my")){
+		if(command.equals("/myIndex.my")){
+			
+			forward= new myActionForward();
+			forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/myPage.my")){
 			
 			action = new myIndexAction();
 			
 			forward = action.execute(request, response);
+			
+		}else if(command.equals("/mySavedList.my")){
+			
+			action = new mySavedListAction();
+			
+			forward=action.execute(request, response);
 			
 		}else if(command.equals("/myPageGood.my")){
 			
