@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>메시지 전송 실패</title>
 </head>
 <body>
 	메시지 전송을 실패했습니다.<br/>
