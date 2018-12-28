@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>공지 등록</title>
 </head>
 <body>
 <section class="writeNotice_sec"><!-- TOP과 FOOTER 사이를 차지하는 공간. -->
