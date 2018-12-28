@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 
 html, body {
-	height : 100%;
 	width : 100%;
 }
 
@@ -11,7 +10,9 @@ body{
     font-size: 16px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff
+    background-color: #fff;
+    margin : 0;
+    position : relative;
 }
 
 
@@ -82,6 +83,7 @@ body{
 	height : 300px;
 	width : 100%;
 	z-index : 1;
+	box-shadow :0 1px 2px 0 #333;
 }
 
 .slidedown_menu div {
@@ -107,7 +109,8 @@ body{
 	display : flex;
 	flex-direction : column;
 	line-height : 1.6rem;
-	text-align : center;
+	text-align : left;
+	padding-left : 7rem;
 }
 
 .menu_boss {
@@ -117,7 +120,7 @@ body{
 }
 
 .menuLine a {
-	color : #8000ff;
+	color : rgba(0,0,0,0.8);
 }
 
 /* main */
@@ -381,29 +384,30 @@ body{
 /* myPage 부분 */
 
 #myPage_main {
-	padding-top : 6rem;
-	padding-bottom : 6rem;
+	padding-top : 2rem;
+	padding-bottom : 4rem;
 	width : 1000px;
 	margin : 0 auto;
 }
 
 .myPage_top_container {
 	display : flex;
-	justify-content : space-between;
+	box-sizing : border-box;
+	width : 100%;
+	background-color : rgba(200,200,200,0.4);
 }
 
 .myPage_top_1 {
-	box-sizing : border-box;
-	border : 3px solid #b44af7;
-	padding : 1.5rem 2rem;
-	width : 650px;
+	flex : 6;
+	padding : 1.5rem 0;
+	padding-left : 3rem;	
+		
 }
 
 .myPage_top_2 {
-	box-sizing : border-box;
-	width : 300px;
+	flex : 4;
 	position : relative;
-	border : 3px solid #b44af7;
+	padding-right : 3rem;
 }
 
 .info_container {
@@ -412,36 +416,18 @@ body{
 }
 
 .my_key {
-	width : 20%;
+	font-weight : bold;
+	flex : 2;
 }
 
 .my_value {
-	width : 60%;
+	flex : 6;
 }
 
 .my_profile_value {
 	position : relative;
 	width : 100%;
 	height : 250px;
-}
-
-.photo_container:HOVER>.overblack {
-	position : absolute;
-	height : 100%;
-	width : 100%;
-	background-color : rgba(0,0,0,0.6);
-	cursor : pointer;
-	border-radius : 50%;
-}
-
-.photo_container:HOVER>.overblack:after {
-	height : 100%;
-	display : flex;
-	justify-content : center;
-	align-items : center;
-	content : "이미지 변경";
-	font-size : 1.2rem;
-	color : rgba(255,255,255,1);
 }
 
 .photo_container {
@@ -453,8 +439,8 @@ body{
 	display : flex;
 	justify-content : center;
 	align-items : center;
-	width : 200px;
-	height : 200px;
+	width : 150px;
+	height : 150px;
 	overflow : hidden;
 	border : 2px solid #c0c0c0;
 }
@@ -463,17 +449,22 @@ body{
 	margin-top : 2rem;
 }
 
+.myPage_mid a {
+	color : #000;
+	flex : 1;
+}
+
 .myPage_mid_content {
 	width : 100%;
 	display : grid;
-	grid-template-columns : 1fr 1fr 1fr;	
-	grid-gap : 3rem;
+	grid-template-columns : 1fr 1fr 1fr 1fr;	
+	grid-gap : 2rem;
 	justify-items : center;
 }
 
 .myPage_goodlist {
 	border : 0.3px solid rgba(0,0,0,0.2);	
-	width : 280px;		
+	width : 260px;		
 }
 
 .myPage_goodlist .goodlist_imgContainer {
@@ -548,7 +539,7 @@ body{
 }
 
 .ybtn:HOVER {
-	background-color : #8245fe;
+	background-color : #1e8eff;
 	color : rgba(255,255,255,0.9);
 }
 
@@ -557,16 +548,16 @@ body{
 /* 좋아요 페이지 */
 
 #myGoodList_main, #myRewardList_main {
-	width : 100%;
-	display : flex;	
+	width : 1200px;
+	display : flex;
+	margin : 0 auto;	
 }
 
 .myGoodList_menu, .myRewardList_menu {
 	box-sizing : border-box;
 	flex : 1.5;
-	border-right : 2px solid;
+	border-right : 0.5px solid rgba(100,100,100,0.9);
 	padding : 6rem 2rem;	
-	background-color : rgba(200,200,200,0.1);
 }
 
 .myGoodList_menu div, .myRewardList_menu div {
@@ -582,9 +573,14 @@ body{
 
 .myGoodList_content_ {
 	display : grid;
-	grid-template-columns : 1fr 1fr 1fr 1fr;
+	grid-template-columns : 200px 200px 200px 200px;
 	grid-template-rows : 300px 300px;
-	grid-gap : 1rem;
+	grid-gap : 3rem;
+	margin-bottom : 2rem;
+}
+
+.myRewardList_content_ {
+	margin-bottom : 2rem;
 }
 
 .good_subject, .reward_subject {
@@ -623,7 +619,157 @@ body{
 	text-align : center;
 }
 
+.myGood_board_page a {
+	margin : 0 auto;	
+}
+
 .subject a {
 	color : #000;
 }
 
+.reward_content {
+	display:flex;
+	padding : 1rem 1rem;
+	height : 150px;
+	border-bottom : 2px solid;
+}
+
+.reward_content>div:not(.reward_content_1) {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+
+.reward_content_1 {
+	flex : 6;
+	display : grid;
+	grid-template-columns : 150px 1fr;
+	cursor : pointer;
+}
+
+.reward_content_2 {
+	flex : 2;
+}
+
+.reward_content_3 {
+	flex : 1;
+}
+
+.reward_content_4 {
+	flex : 1;
+}
+
+.reward_imgcontainer {
+	width : 150px; height : 150px;
+	overflow : hidden;
+}
+
+.reward_imgcontainer img {
+	width : 150px; height : 150px;
+}
+
+.reward_contentcontainer {
+	padding : 0.4rem 0.7rem;
+}
+
+.reward_contentcontainer>div:nth-of-type(1) {
+	font-size : 1.2rem;
+}
+
+.reward_contentcontainer>div:nth-of-type(2) {
+	margin-top : 0.7rem;
+}
+
+.bt {
+	display : block;
+	flex : 1;
+	text-align : center;
+	cursor : pointer;
+	background-color : #ccc;
+}
+
+.bt-on {
+	background-color : #1e8eff;
+	color : white;
+}
+
+#savedList_main {
+	width : 1000px; 
+	margin : 0 auto;
+}
+
+#savedList_main .savedList_desc {
+	margin-top : 2rem;
+	padding : 2rem 1rem;
+	background-color : rgba(200,200,200,0.4);
+	font-weight : bold;
+}
+
+
+
+/* 모달 창 부분 */
+
+.modal_back {
+	display : none;
+	width : 100%;
+	height : 100%;
+	position : absolute;
+	left : 0;
+	top : 0;
+}
+
+.modal_back .modal {
+	background-color : #ffffff;
+	width : 300px;
+	height : 350px;
+	position : absolute;
+	top : 50px;	
+	box-shadow : 1px 1px 5px 0 #000;
+	transform : translateX(45%);
+}
+
+.modal_back .modal::AFTER {
+	display : block;
+	content : "";
+	border-color:transparent transparent #804040 transparent;
+	border-style:solid; 
+	border-width:20px;
+	position : absolute;
+	top:-40px;
+	left : 50%;
+	transform : translateX(-50%);		
+}
+
+.modal_img_container {
+	height : 180px; 
+	background-color : #804040;
+	border-bottom : 1px solid #fff;
+	position : relative;
+	cursor : pointer;
+}
+
+.modal_img_container .modal_img {
+	width : 100px;
+	height : 100px;
+	border-radius : 50%;
+	background-color : #fff;
+	position : absolute;
+	left : 5%;
+	top : 50%;
+	transform : translateY(-50%);
+}
+
+.modal_content {
+	margin-top : 0.5rem;
+	margin-left : 2rem;
+	cursor : pointer;
+}
+
+.modal_content a {
+	color : rgba(100,100,100,0.9);
+}
+
+.modal_content a:HOVER {
+	color : rgba(0,0,0,1);
+	font-weight : bold;
+}

@@ -17,33 +17,50 @@
 		<div class="myRewardList_content">
 			<div class="reward_subject">투자 목록</div>
 			<div class="myRewardList_content_">
-				<c:forEach var="invest" items="${invelist }">
+				<div style="height : 40px; line-height : 40px; text-align : center; 
+								display:flex; border-bottom : 2px solid; border-top : 1px solid;">
+						<div style="flex : 6;">상품</div>
+						<div style="flex : 2;">가격</div>
+						<div style="flex : 1;">모금율</div>
+						<div style="flex : 1;">변경</div>
+					</div>
+					<c:forEach var="invest" items="${invelist }">
 					<div class="reward_content">
-						<div>이미지</div>
-						<div>제목, 설명</div>
-						<div>가격</div>
-						<div>모금율</div>
+						<div class="reward_content_1" onclick ="location.href='./myPageReward.my'">
+							<div class="reward_imgcontainer">
+								<img src="./img/cat.jpg">
+							</div>
+							<div class="reward_contentcontainer">
+								<div>${invest.pd_subject }</div>
+								<div>${invest.pd_content }</div>
+							</div>	
+						</div>
+						<div class="reward_content_2">${invest.inv_price }</div>
+						<div class="reward_content_3">${invest.inv_percent }%</div>
+						<div class="reward_content_4">
+							<input type="button" value="취소" class=""/>
+						</div>
 					</div>				
-				</c:forEach>
-				<c:if test="${count <= 0 }">
-					<div>좋아요한 게시글이 없습니다.</div>
-				</c:if>					
+				</c:forEach>									
 			</div>
+			<c:if test="${count <= 0 }">
+				<div>리워드한 게시글이 없습니다.</div>
+			</c:if>
 			<!-- 페이징 부분 -->
 				<div class="myGood_board_page">
 					<c:if test="${startPage > pageBlock }">
-						<a href="myPageGood.my?currentPage1=${startPage-pageBlock }">이전</a>
+						<a href="myPageReward.my?currentPage1=${startPage-pageBlock }">이전</a>
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
+						<a href="myPageReward.my?currentPage1=${i}" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a href="myPageGood.my?currentPage1=${i}">${i }</a>
+						<a href="myPageReward.my?currentPage1=${i}">${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">
-						<a hef="myPageGood.my?currentPage1=${startPage+5 }">다음</a>
+						<a href="myPageReward.my?currentPage1=${startPage+5 }">다음</a>
 					</c:if>
 				</div>		
 		</div>	

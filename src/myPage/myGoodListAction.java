@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import admin_db.BoardBean;
-import my_db.myDAO;
+import my_db.MyDAO;
 
 public class myGoodListAction implements myAction {
 
 	@Override
 	public myActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		myDAO mydao = new myDAO();
+		MyDAO mydao = new MyDAO();
 		
 		HttpSession session = request.getSession();
 		
