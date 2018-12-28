@@ -98,7 +98,7 @@ fieldset{border:0;}
 					<a class = "menu_boss" >안내</a>
 					<a href="링크넣기">이용가이드</a>
 					<a href="링크넣기">회사 소개</a>
-					<a href="링크넣기">공지사항</a>
+					<a href="./Notice.no">공지사항</a>
 				</div>	
 			</div>
 		</div>
