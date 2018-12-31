@@ -50,8 +50,7 @@
 
 <div class="container" align="center">
 	
-	<div id="mypage_content" align="center">
-	<h2>마이페이지</h2>
+	<div id="mypage_content" align="center" style="padding : 2rem 0;">
 	<form action="./MemberModifyAction.me" method="post">
 		
 		<!-- profile photo -->
