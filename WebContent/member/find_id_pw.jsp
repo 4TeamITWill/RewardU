@@ -8,9 +8,19 @@
 <link href="css/etc.css" rel="stylesheet">
 <style type="text/css">
 
+.margin{margin-top: 100px;}
+.margin2{margin-top: 50px;}
+.margin3{margin-top: 20px;}
+.margin4{margin-bottom: 100px;}
+
 .container {
 	margin: 70px 200px;
 	border: 1px solid red;
+}
+
+#find_id_form #form_font_left {
+ text-align: left;
+
 }
 </style>
 
@@ -24,27 +34,40 @@
 	<div id="find_id_form">
 		<h2>아이디 찾기</h2>
 		<form action="./MemberFindIdAction.me" id="find_id" method="post">
-		<!-- phone --><input type="text" name="user_phone" placeholder="가입시 기입했던 연락처를 입력해 주세요 " class="inp-field"><br>
-	<!-- date of Birth --><input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" class="inp-field w120">
-			<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w108">
-			<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w108"><br>
+	<!-- phone -->
+		<div id="form_font_left" align="left">연락처</div>
+		<input type="text" name="user_phone" placeholder="가입시 기입했던 연락처를 '-'없이 입력해 주세요 " class="inp-field"><br>
+	<!-- date of Birth -->
+		<div id="form_font_left" align="left">생년월일</div>
+		<input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" class="inp-field w120">
+		<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w108">
+		<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w108"><br>
 		
-		<input type="submit" value="아이디 찾기" class="btn">
+		<input type="submit" value="아이디 찾기" class="btn1">
 		</form>
-	</div>
+	</div><!-- find_id_form -->
+	
+	<div class="margin2"></div>
 	
 	<div id="find_pw_form">
 		<h2>비밀번호 찾기</h2>
 		<form action="./MemberFindPwAction.me" id="find_pw" method="post">
-		<!-- id --><input type="text" name="user_id" placeholder="이메일 아이디" class="inp-field"><br>
-		<!-- phone --><input type="text" name="user_phone" placeholder="가입시 기입했던 연락처를 입력해 주세요 " class="inp-field"><br>
-	<!-- date of Birth --><input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" class="inp-field w120">
+	<!-- id -->
+		<div id="form_font_left" align="left">아이디</div>
+		<input type="text" name="user_id" placeholder="ex) example@rewardu.com" class="inp-field"><br>
+	<!-- phone -->
+		<div id="form_font_left" align="left">연락처</div>
+		<input type="text" name="user_phone" placeholder="가입시 기입했던 연락처를 '-'없이 입력해 주세요 " class="inp-field"><br>
+	<!-- date of Birth -->
+			<div id="form_font_left" align="left">생년월일</div>
+			<input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" class="inp-field w120">
 			<input type="text" name="birthmm" maxlength="2" placeholder="MM" class="inp-field w108">
 			<input type="text" name="birthdd" maxlength="2" placeholder="DD" class="inp-field w108"><br>
 		
-		<input type="submit" value="비밀번호 찾기" class="btn">
-		</form>
-	</div>
+		<input type="submit" value="비밀번호 찾기" class="btn1">
+		</form>	
+	</div><!-- find_pw_form -->
+	
 </div><!-- container -->
 </div><!-- wrap -->
 

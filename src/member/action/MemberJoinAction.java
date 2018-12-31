@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import email.SMTPAuthenticatior;
 import member.db.MemberBean;
 import member.db.MemberDAO;
 import member.action.ActionForward;
@@ -44,6 +45,12 @@ public class MemberJoinAction implements Action{
 			System.out.println("---Join null---");
 			return null;
 		}
+		
+		String user_id = request.getParameter("user_id");
+		String rewardu_policy = request.getParameter("rewardu_policy");
+		
+		SMTPAuthenticatior smtp = new SMTPAuthenticatior();
+		smtp.testsending(user_id, rewardu_policy);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
