@@ -103,10 +103,6 @@
 					<!-- <input type="button" onclick="winopen();" value="첨부하기"><br/> -->
 						<button>첨부하기</button><br/>
 						<input type="text" id="pd_realFile" name="pd_realFile"><br/>
-						미리보기<br/>
-						<div class="thum">
-						<img src="./upload/back.jpg" id="img">
-						</div>
 					</td>		
 				</tr>
 				

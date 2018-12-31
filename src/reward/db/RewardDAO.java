@@ -245,7 +245,6 @@ public class RewardDAO {
 	return v; //saveBoard객체들을 저장하고 있는 백터 자체를 리턴
 }
 
-
 	
 	//수정할 보드정보를 DB로 부터 select.....
 			public SaveBoard getSaveBoard(int pd_no) {
