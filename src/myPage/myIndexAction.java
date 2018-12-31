@@ -19,8 +19,8 @@ public class myIndexAction implements myAction {
 		
 		HttpSession session = request.getSession();
 		
-		String user_id = "id";
-		//String user_id = (String)session.getAttribute("user_id");
+		//String user_id = "id";
+		String user_id = (String)session.getAttribute("id");
 		
 		//일단 user_id 테스트용으로 지정
 		if(user_id.equals("") || user_id == null){

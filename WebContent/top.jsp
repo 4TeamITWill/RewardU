@@ -12,11 +12,9 @@
 li {list-style: none;}
 
 a {text-decoration: none;}
-
 .hr{align: center;
 	width: 100%; height: 5px;
 	background: linear-gradient(90deg, #b44af7, #82caff);  }
-	
 fieldset{border:0;}
 .margin5{margin-top: 10px;}
 
@@ -46,7 +44,7 @@ fieldset{border:0;}
 				
 	<%
 		String id = (String)session.getAttribute("id");
-
+		String admin = (String)session.getAttribute("admin");
 	
 		if(id==null){
 	%>
@@ -60,7 +58,7 @@ fieldset{border:0;}
 				int dontReadCount = mdao.getCountDontRead(id); //해당 id가 받은 메시지 중 안읽은 메시지가 몇 개인지 반환
 	%>
 				<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
-		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font><!-- 안읽은 메시지 개수를 나타냄 -->
+		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
 	<% 	
 		 		if(id.equals("rewardu4@gmail.com")){ //접속한 id가 관리자 계정rewardu4@gmail.com 일 경우
 	%>				<!-- 마이페이지 대신 관리자페이지가 나타남 -->
@@ -88,7 +86,7 @@ fieldset{border:0;}
 		<div class="slidedown_menu">
 			<div class="menuLine_container">
 				<div class="menuLine" >
-					<a class = "menu_boss">리워드</a>
+					<a class = "menu_boss">펀딩시작하기</a>
 					<a href="./PermitList.ad">리워드 게시판</a>
 					<a href="링크넣기">리워드 신청하기</a>
 				</div>

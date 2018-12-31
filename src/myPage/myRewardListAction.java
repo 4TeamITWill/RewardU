@@ -17,8 +17,8 @@ public class myRewardListAction implements myAction {
 		HttpSession session = request.getSession();
 		
 		//세션에 있는 아이디로 검색해서 id 받아옴
-		//String user_id = (String)session.getAttribute("id");
-		String user_id = "id";
+		String user_id = (String)session.getAttribute("id");
+		//String user_id = "id";
 		
 		MyDAO mydao = new MyDAO();
 		
