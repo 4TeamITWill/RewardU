@@ -20,7 +20,7 @@ body{
 /* top */
 
 #top {
-	height : 50px;	
+	height : 65px;	
 	background-color : none;
 	padding : 0.4rem 0;
 	
@@ -30,8 +30,8 @@ body{
 	width : 1200px;
 	margin : 0 auto;
 	display : flex;
-	flex-direction : row;
 	color : #aaa;
+	height : 100%;
 }
 
 /* 메뉴,로그인, 회원가입 부분 */
@@ -93,7 +93,7 @@ body{
 #top .top_member {
 	text-align : right;
 	color : #aaa;
-	line-height : 50px;
+	line-height : 65px;
 }
 
 #top .top_member a{
@@ -762,32 +762,20 @@ body{
 	top : 0;
 }
 
-.modal_back .modal {
+.modal_back .modal_my {
 	background-color : #ffffff;
 	width : 300px;
 	height : 350px;
 	position : absolute;
-	top : 50px;	
+	top : 75px;	
 	box-shadow : 1px 1px 5px 0 #000;
 	transform : translateX(45%);
-}
-
-.modal_back .modal::AFTER {
-	display : block;
-	content : "";
-	border-color:transparent transparent #804040 transparent;
-	border-style:solid; 
-	border-width:20px;
-	position : absolute;
-	top:-40px;
-	left : 50%;
-	transform : translateX(-50%);		
+	z-index : 999;
 }
 
 .modal_img_container {
 	height : 180px; 
-	background-color : #804040;
-	border-bottom : 1px solid #fff;
+	border-bottom : 1px solid #ccc;
 	position : relative;
 	cursor : pointer;
 }
@@ -801,19 +789,20 @@ body{
 	left : 5%;
 	top : 50%;
 	transform : translateY(-50%);
+	border : 1px solid #888;
 }
 
-.modal_content {
+.modal_content_my {
 	margin-top : 0.5rem;
 	margin-left : 2rem;
 	cursor : pointer;
 }
 
-.modal_content a {
+.modal_content_my a {
 	color : rgba(100,100,100,0.9);
 }
 
-.modal_content a:HOVER {
+.modal_content_my a:HOVER {
 	color : rgba(0,0,0,1);
 	font-weight : bold;
 }

@@ -16,12 +16,25 @@ a {text-decoration: none;}
 	width: 100%; height: 5px;
 	background: linear-gradient(90deg, #b44af7, #82caff);  }
 fieldset{border:0;}
-.margin5{margin-top: 10px;}
 
-.h ul {padding : 0;}
+
+.h ul {padding : 0; height : 100%; margin : 0; line-height : 65px;}
 .h .dropdown01 li {
 	display: inline-block;
 	color: #aaa;
+	height : 100%;
+}
+
+.msg_font {
+	background-color: red;
+	border-radius: 50%;
+	font-weight: none;
+	color: #fff;
+	font-size: 10pt;
+	height: 20pt;
+	line-height: 20pt;
+	position : relative;
+	bottom : 10px;
 }
 
 </style>
@@ -31,7 +44,7 @@ fieldset{border:0;}
 	<div id="top">
 		<div class="top_container">
 			<div class="h top_sub">
-				<ul class="dropdown01">
+				<ul class="dropdown01" >
 					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;&nbsp;
 					<li><a class="top_menu">리듀란?</a></li>&nbsp;&nbsp;
 					<li><a class="top_menu">NEWS</a></li>&nbsp;&nbsp;
@@ -69,8 +82,9 @@ fieldset{border:0;}
 		 		}
 	%>		
 				
-				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span></a> <!-- 클릭하면 메시지함으로 -->
-		 		<font style="color: red; font-weight: bold; font-size: 13pt;"><%=dontReadCount%></font>
+				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span>
+				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span></a> <!-- 클릭하면 메시지함으로 -->
+		 		
 	<%				
 		}	
 	%>		
@@ -78,7 +92,7 @@ fieldset{border:0;}
 			</div>			
 		</div>			
 	</div>
-	<div class="margin5"></div>
+	
 	<div class="hr"></div>
 
 	<!-- <div class="hr" height="50" >&nbsp;</div>	 -->
@@ -87,19 +101,20 @@ fieldset{border:0;}
 			<div class="menuLine_container">
 				<div class="menuLine" >
 					<a class = "menu_boss">펀딩시작하기</a>
-					<a href="링크넣기">리워드 게시판</a>
-					<a href="링크넣기">리워드 신청하기</a>
+					<a href="링크넣기"  style ="color : #555; font-weight : 550;">리워드 게시판</a>
+					<a href="링크넣기"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 				</div>
 				<div class="menuLine">
 					<a class = "menu_boss">리듀란?</a>
-					<a href="링크넣기">회사 소식</a>
-					<a href="링크넣기">리워드 소식</a>
-				</div>	
-				<div class="menuLine">
-					<a class = "menu_boss" >NEWS</a>
 					<a href="링크넣기">이용가이드</a>
 					<a href="링크넣기">회사 소개</a>
 					<a href="링크넣기">공지사항</a>
+					
+				</div>	
+				<div class="menuLine">
+					<a class = "menu_boss" >NEWS</a>
+					<a href="링크넣기">회사 소식</a>
+					<a href="링크넣기">리워드 소식</a>
 				</div>	
 			</div>
 		</div>
