@@ -387,7 +387,7 @@ body{
 }
 
 .myindex_top {
-	border-bottom : 1px solid #333;
+	border-bottom : 0.5px solid rgba(50,50,50,0.6);
 	box-sizing : border-box;
 }
 
@@ -575,28 +575,18 @@ body{
 
 /* 좋아요 페이지 */
 
+#myIndex_bottom {
+	background-color : rgba(240,240,240,0.3);
+}
+
 #myGoodList_main, #myRewardList_main {
-	width : 1200px;
-	display : flex;
+	width : 1000px;
 	margin : 0 auto;	
-}
-
-.myGoodList_menu, .myRewardList_menu {
-	box-sizing : border-box;
-	flex : 1.5;
-	border-right : 0.5px solid rgba(100,100,100,0.9);
-	padding : 6rem 2rem;	
-}
-
-.myGoodList_menu div, .myRewardList_menu div {
-	text-align : right;
-	margin-top : 1rem;
 }
 
 .myGoodList_content, .myRewardList_content {
 	box-sizing : border-box;
 	padding : 2rem;
-	flex : 8.5;
 }
 
 .myGoodList_content_ {
@@ -609,6 +599,17 @@ body{
 
 .myRewardList_content_ {
 	margin-bottom : 2rem;
+}
+
+.reward_img_container {
+	overflow : hidden;
+	width : 140px; height : 100px;
+	display : flex;
+	justify-content : center;
+}
+
+.reward_img_container img {
+	height : 100px;
 }
 
 .good_subject, .reward_subject {

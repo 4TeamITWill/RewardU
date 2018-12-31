@@ -8,22 +8,23 @@
 <title>Insert title here</title>
 </head>	
 <body>
-	<div id="myRewardList_main">
-		<div class="myRewardList_menu">
-			<div class="menu_1">마이페이지</div>
-			<div class="menu_2">좋아요</div>
-			<div class="menu_3">투자목록</div>
-		</div>		
+	<div id="myRewardList_main">	
 		<div class="myRewardList_content">
-			<div class="reward_subject">투자 목록</div>
+			<div class="reward_subject">투자현황</div>
+			
 			<div class="myRewardList_content_">
-				<div style="height : 40px; line-height : 40px; text-align : center; 
-								display:flex; border-bottom : 2px solid; border-top : 1px solid;">
-						<div style="flex : 6;">상품</div>
-						<div style="flex : 2;">가격</div>
-						<div style="flex : 1;">모금율</div>
-						<div style="flex : 1;">변경</div>
+				<div style="width : 100%; display : grid; grid-template-columns : 140px 1fr; border : 1px solid; height : 140px;
+									align-items : center; padding-left : 1rem;">
+					<div class="reward_img_container">
+						<img src="img/cat.jpg">
 					</div>
+					<div class="reward_content_container">
+						
+					</div>
+					
+					
+					
+				</div>
 					<c:forEach var="invest" items="${invelist }">
 					<div class="reward_content">
 						<div class="reward_content_1" onclick ="location.href='./myPageReward.my'">
