@@ -22,11 +22,6 @@ public class myIndexAction implements myAction {
 		//String user_id = "id";
 		String user_id = (String)session.getAttribute("id");
 		
-		//일단 user_id 테스트용으로 지정
-		if(user_id.equals("") || user_id == null){
-			user_id = "id";
-		}
-		
 		MyDAO mydao = new MyDAO();
 		
 		MemberBean mbean = mydao.getUser(user_id);

@@ -19,8 +19,8 @@ public class myGoodListAction implements myAction {
 		HttpSession session = request.getSession();
 		
 		//세션에 있는 아이디로 검색해서 id 받아옴
-		//String user_id = (String)session.getAttribute("id");		
-		String user_id = "id";		
+		String user_id = (String)session.getAttribute("id");		
+		//String user_id = "id";		
 		
 		/* 페이징 부분 작업 */
 		int count = mydao.getGoodCount(user_id);		

@@ -46,6 +46,16 @@
     <servlet-name>notice</servlet-name>
     <url-pattern>*.no</url-pattern>
   </servlet-mapping>
+
+   <servlet>
+  	<servlet-name>RewardController</servlet-name>
+  	<servlet-class>reward.action.RewardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RewardController</servlet-name>
+  	<url-pattern>*.fu</url-pattern>
+  </servlet-mapping>
+
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
