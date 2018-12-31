@@ -8,12 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="myGoodList_main">
-		<div class="myGoodList_menu">
-			<div class="menu_1">마이페이지</div>
-			<div class="menu_2">좋아요</div>
-			<div class="menu_3">투자목록</div>
-		</div>		
+	<div id="myGoodList_main">	
 		<div class="myGoodList_content">
 			<div class="good_subject">좋아요</div>
 			<div class="myGoodList_content_">
