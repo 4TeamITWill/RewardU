@@ -11,6 +11,8 @@
 <link href="css/message.css" rel="stylesheet"/>
 <link href="css/etc.css" rel="stylesheet"/>
 <link href="css/notice.css" rel="stylesheet"/>
+<link href="css/fontello-embedded.css" rel="stylesheet" />
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/carousel.js"></script>
@@ -28,7 +30,7 @@
 
 <jsp:include page="${center }"/>
 
-<!-- Modal 부분 -->
+		<!-- Modal 부분 -->
 		<div class="modal_back" id="modal_back">
 			<div class="modal_back_1200" style="width : 1200px; display : flex; margin : 0 auto;">
 			<div style="flex : 1; height : 0;" ></div>
@@ -51,12 +53,11 @@
 			</div>	
 		</div>	
 
-<jsp:include page="quick_menu.jsp"/>
-
 <jsp:include page="footer.jsp"/>
 
-<script type="text/javascript">
+<jsp:include page="quick_menu.jsp"/>
 
+<script>
 	//모달 창 부분 자바스크립트 제이쿼리
 	$("#goMypage").click(function(){	
 		$(".modal_back").css("display","block");
@@ -74,6 +75,6 @@
 		}
 	}
 	
-</script>
+</script>	
 </body>
 </html>

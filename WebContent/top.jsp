@@ -32,16 +32,16 @@ fieldset{border:0;}
 		<div class="top_container">
 			<div class="h top_sub">
 				<ul class="dropdown01">
-					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;
-					<li><a class="top_menu">리듀란?</a></li>&nbsp;
-					<li><a class="top_menu">NEWS</a></li>&nbsp;
+					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;&nbsp;
+					<li><a class="top_menu">리듀란?</a></li>&nbsp;&nbsp;
+					<li><a class="top_menu">NEWS</a></li>&nbsp;&nbsp;
 				</ul>				
 			</div>	
 			<div class="top_sub top_logo" align="center">
 				<a href="index.jsp" ><img src="img/logo02.png" width="135"></a>
 			</div>		
 			<div class="top_sub top_member">
-				
+			<span class="icon-search">검색</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;	
 	<%
 		String id = (String)session.getAttribute("id");
 		String admin = (String)session.getAttribute("admin");
@@ -66,10 +66,11 @@ fieldset{border:0;}
 					<a id="goMypage" style="cursor : pointer;">마이페이지</a>&nbsp;&nbsp;
 	<%
 		 		}
-	%>
-			<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
-			<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
-	<%	
+
+	%>		
+				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span></a> <!-- 클릭하면 메시지함으로 -->
+		 		<font style="color: red; font-weight: bold; font-size: 13pt;"><%=dontReadCount%></font>
+	<%				
 		}	
 	%>		
 				

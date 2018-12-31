@@ -17,11 +17,10 @@ public class myIndexAction implements myAction {
 	@Override
 	public myActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		HttpSession session = request.getSession();
-		
-		//String user_id = "id";
+		HttpSession session = request.getSession();	
+
 		String user_id = (String)session.getAttribute("id");
-		
+
 		MyDAO mydao = new MyDAO();
 		
 		MemberBean mbean = mydao.getUser(user_id);
@@ -34,7 +33,9 @@ public class myIndexAction implements myAction {
 		request.setAttribute("invelist", invelist);		
 		
 		myActionForward forward = new myActionForward();
-		forward.setPath("./myPage/myInfo.jsp");
+
+		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
+		
 		forward.setRedirect(false);
 		
 		return forward;

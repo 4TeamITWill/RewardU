@@ -8,52 +8,54 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id = "myindex_main">
+		<div class="myindex_top">
+			<div class="myindex_subject">마이 페이지</div>
+			<div class="myindex_tab">
+				<a href="myPageReward.my" class="link link1">투자현황</a>&nbsp;&nbsp;
+				<a href="myPageGood.my" class="link link2">나의 관심사</a>&nbsp;&nbsp;
+				<a href="mySavedList.my" class="link link3">개설프로젝트</a>&nbsp;&nbsp;
+				<a href="MemberMypageAction.me" class="link link4">개인정보 설정</a>&nbsp;&nbsp;
+			</div>	
+		</div>
 	
-	<div style="display : flex; width : 1000px; margin:0 auto; justify-content : center; 
-					box-sizing : border-box; height : 50px; line-height : 50px; margin-top : 3rem;">
-		<a onclick ="myPageAjax();" class="bt" id="myLink" >마이페이지</a>
-		<a onclick ="savedListAjax();" class="bt" id="savedLink">개설 프로젝트</a>
-	</div>
-	<div id="myIndex">
-	
-	</div>
-	
-<script>
-
-myPageAjax();
-
-function myPageAjax(){
 		
-	$("#myLink").addClass("bt-on");
-	$("#savedLink").removeClass("bt-on");
+		<c:set var="myPage_center" value="${myPage_center }"/>
+		<c:if test="${myPage_center == null}">
+			<c:set var="myPage_center" value="myInfo.jsp" />
+		</c:if>
+		<div id="myIndex_bottom">
+			<jsp:include page="${myPage_center }"></jsp:include>
+		</div>
+	</div>
 	
-// 	document.getElementById("myLink").style.border="1px solid";
-// 	document.getElementById("savedLink").style.border="";
-	
-	$.ajax({
-		url : "myPage.my",
-		success : function(data){
-			document.getElementById("myIndex").innerHTML = data;
-		}
-	});
-}
-
-function savedListAjax(){
-		
-	$("#myLink").removeClass("bt-on");
-	$("#savedLink").addClass("bt-on");
-	
-// 	document.getElementById("savedLink").style.border="1px solid";
-// 	document.getElementById("myLink").style.border="";
-	
-	$.ajax({
-		url : "mySavedList.my",
-		success : function(data){
-			document.getElementById("myIndex").innerHTML = data;
-		}
-	});
-}
-
-</script>		
+<!-- myPage_center 값으로 어디서 온 응답인지 판별 후 탭에 밑줄 그어주기 -->	
+<%
+	if(request.getAttribute("myPage_center") == "myRewardList.jsp"){
+%>
+		<script>
+			$(".link1").css("border-bottom","4px solid #b44af7");
+		</script>
+<%			
+	}else if(request.getAttribute("myPage_center") == "myGoodList.jsp"){
+%>
+		<script>
+			$(".link2").css("border-bottom", "4px solid #b44af7")
+		</script>
+<%		
+	}else if(request.getAttribute("myPage_center") == "savedList.jsp"){
+%>
+		<script>
+			$(".link3").css("border-bottom", "4px solid #b44af7");
+		</script>
+<%
+	}else if(request.getAttribute("myPage_center") == "../member/mypage.jsp"){
+%>
+		<script>
+			$(".link4").css("border-bottom", "4px solid #b44af7");
+		</script>
+<%		
+	}
+%>	
 </body>
 </html>
