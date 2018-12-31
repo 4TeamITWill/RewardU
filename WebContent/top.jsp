@@ -12,9 +12,11 @@
 li {list-style: none;}
 
 a {text-decoration: none;}
+
 .hr{align: center;
-	width: 100%; height: 3.5px;
+	width: 100%; height: 5px;
 	background: linear-gradient(90deg, #b44af7, #82caff);  }
+	
 fieldset{border:0;}
 .margin5{margin-top: 10px;}
 
@@ -43,7 +45,7 @@ fieldset{border:0;}
 				
 	<%
 		String id = (String)session.getAttribute("id");
-		String admin = (String)session.getAttribute("admin");
+
 	
 		if(id==null){
 	%>

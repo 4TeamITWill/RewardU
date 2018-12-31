@@ -44,10 +44,10 @@
 		</fieldset>
 		
 		</form>
-	</div>
+	</div><!-- join_content -->
 
 
-</div>
+</div><!-- container -->
 
 </div><!-- wrap -->
 
