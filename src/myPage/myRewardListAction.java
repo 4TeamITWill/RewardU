@@ -16,10 +16,8 @@ public class myRewardListAction implements myAction {
 		
 		HttpSession session = request.getSession();
 		
-		//세션에 있는 아이디로 검색해서 id 받아옴
-		//String user_id = (String)session.getAttribute("id");
-		String user_id = "id";
-		
+		String user_id = (String)session.getAttribute("id");
+				
 		MyDAO mydao = new MyDAO();
 		
 		int count = mydao.getRewardCount(user_id);
@@ -51,9 +49,11 @@ public class myRewardListAction implements myAction {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("pageBlock", pageBlock);
 		
+		request.setAttribute("myPage_center", "myRewardList.jsp");
+		
 		myActionForward forward = new myActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./index.jsp?center=./myPage/myRewardList.jsp");
+		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
 		
 		return forward;
 	}

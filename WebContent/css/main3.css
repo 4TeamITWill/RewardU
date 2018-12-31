@@ -79,7 +79,6 @@ body{
 	display : none;
 	position : absolute;
 	background-color : rgba(255,255,255,0.8);
-	color : #8000ff;
 	height : 300px;
 	width : 100%;
 	z-index : 1;
@@ -383,10 +382,40 @@ body{
 
 /* myPage 부분 */
 
+#myindex_main {
+	width : 100%;
+}
+
+.myindex_top {
+	border-bottom : 1px solid #333;
+	box-sizing : border-box;
+}
+
+.myindex_subject {
+	font-size : 2.1rem;
+	font-weight : 600;
+	height : 120px;
+	line-height : 120px;
+	width : 300px;
+	margin : 0 auto;
+	text-align : center;
+}
+
+.myindex_tab {
+	width : 1200px;
+	margin : 0 auto;
+	display : flex;
+	justify-content : flex-end;
+}
+
+.myindex_tab a {
+	color : #000;
+}
+
 #myPage_main {
 	padding-top : 2rem;
 	padding-bottom : 4rem;
-	width : 1000px;
+	width : 800px;
 	margin : 0 auto;
 }
 
@@ -457,14 +486,14 @@ body{
 .myPage_mid_content {
 	width : 100%;
 	display : grid;
-	grid-template-columns : 1fr 1fr 1fr 1fr;	
+	grid-template-columns : 1fr 1fr 1fr;	
 	grid-gap : 2rem;
 	justify-items : center;
 }
 
 .myPage_goodlist {
 	border : 0.3px solid rgba(0,0,0,0.2);	
-	width : 260px;		
+	width : 240px;		
 }
 
 .myPage_goodlist .goodlist_imgContainer {
@@ -531,7 +560,7 @@ body{
 	width : 120px;
 	height : 40px;
 	line-height : 40px;
-	background-color : #ccc;
+	border : 1px solid #ccc;
 	color : rgba(0,0,0,0.8);
 	font-weight : bold;
 	text-align : center;	
@@ -539,8 +568,7 @@ body{
 }
 
 .ybtn:HOVER {
-	background-color : #aaa;
-	color : rgba(0,0,0,0.9);
+	color : rgba(0,0,0,1);
 }
 
 /*------------------------*/
@@ -630,7 +658,7 @@ body{
 .reward_content {
 	display:flex;
 	padding : 1rem 1rem;
-	height : 150px;
+	height : 120px;
 	border-bottom : 2px solid;
 }
 
@@ -660,8 +688,11 @@ body{
 }
 
 .reward_imgcontainer {
-	width : 150px; height : 150px;
+	height : 120px;
 	overflow : hidden;
+	display : flex;
+	justify-content : center;
+	align-items : center;
 }
 
 .reward_imgcontainer img {
@@ -682,28 +713,38 @@ body{
 
 .bt {
 	display : block;
-	width : 200px;
+	width : 160px;
 	text-align : center;
 	cursor : pointer;
 	background-color : #ccc;
 }
 
-.bt-on {
-	
-	background-color : #aaa;
-	border : 1px solid #aaa;
-	color : white;
+.bt-on {	
+	background-color : #b44af7;
+	border : #b749f8;
 }
 
 #savedList_main {
-	width : 1000px; 
+	width : 100%; 
+}	
+
+.savedList_top {
+	width : 1000px;
+	margin : 0 auto;
+}
+
+.savedList_bottom {
+	background-color : #eee;
+	padding : 2rem 0;
+}
+
+.savedList_bottom_content {
+	width : 1000px;
 	margin : 0 auto;
 }
 
 #savedList_main .savedList_desc {
-	margin-top : 2rem;
-	padding : 2rem 1rem;
-	background-color : rgba(200,200,200,0.4);
+	padding : 1rem 1rem;
 	font-weight : bold;
 }
 

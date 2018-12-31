@@ -9,6 +9,7 @@
 <!--  <link href="css/reset.css" rel="stylesheet">-->
 <link href="css/main3.css" rel="stylesheet">
 <link href="css/message.css" rel="stylesheet"/>
+<link href="css/fontello-embedded.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/carousel.js"></script>
@@ -70,7 +71,7 @@
 			modal.style.top ="";
 		}
 	}
-
+	
 </script>	
 </body>
 </html>

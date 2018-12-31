@@ -30,11 +30,12 @@ public class MemberMypageAction implements Action{
 		
 		mbean = mdao.getMember(user_id);
 		
+		request.setAttribute("myPage_center", "../member/mypage.jsp");
 		
 		session.setAttribute("mbean", mbean);
 		
-		forward.setRedirect(true);
-		forward.setPath("./index.jsp?center=./member/mypage.jsp");
+		forward.setRedirect(false);
+		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
 		
 		
 		return forward;

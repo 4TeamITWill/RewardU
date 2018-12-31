@@ -90,7 +90,6 @@ public class BoardDAO {
 				bbean.setPd_file(rs.getString("pd_file"));
 				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
 				bbean.setPd_good(rs.getInt("pd_good"));
-				bbean.setPd_name(rs.getString("pd_name"));
 				bbean.setPd_no(rs.getInt("pd_no"));
 				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
 				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
@@ -105,6 +104,8 @@ public class BoardDAO {
 				bbean.setPd_start(rs.getTimestamp("pd_start"));
 				bbean.setPd_subject(rs.getString("pd_subject"));
 				bbean.setUser_id(rs.getString("user_id"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
 				
 				list.add(bbean);
 				
@@ -127,6 +128,8 @@ public class BoardDAO {
 		
 	}//getBoardList() 메소드 끝
 	
+	
+		
 	//글 하나의 상세정보 보기 getBoard() 메소드
 	public BoardBean getBoard(int pd_no){
 		
@@ -154,7 +157,6 @@ public class BoardDAO {
 				bbean.setPd_file(rs.getString("pd_file"));
 				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
 				bbean.setPd_good(rs.getInt("pd_good"));
-				bbean.setPd_name(rs.getString("pd_name"));
 				bbean.setPd_no(rs.getInt("pd_no"));
 				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
 				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
@@ -168,7 +170,9 @@ public class BoardDAO {
 				bbean.setPd_result(rs.getInt("pd_result"));
 				bbean.setPd_start(rs.getTimestamp("pd_start"));
 				bbean.setPd_subject(rs.getString("pd_subject"));
-				bbean.setUser_id(rs.getString("user_id"));				
+				bbean.setUser_id(rs.getString("user_id"));		
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
 				
 			}
 			
@@ -216,6 +220,7 @@ public class BoardDAO {
 		}
 	}
 
+	//게시글 거절 메소드
 	public void boardDeny(int pd_no) {
 		
 		Connection con = null;
@@ -243,5 +248,5 @@ public class BoardDAO {
 			}
 		}
 		
-	}
+	}//boardDeny() 메소드 끝
 }
