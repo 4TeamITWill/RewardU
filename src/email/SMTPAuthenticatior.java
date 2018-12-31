@@ -83,6 +83,113 @@ public class SMTPAuthenticatior extends Authenticator {
 		
 	}//sendEmail
 	
+	public int testsending(String user_id, String rewardu_policy) {
+		
+		String from = "rewardu4@gmail.com";
+		String subject = "리듀  RewardU 회원가입 테스트중입니다 ㅅㅂ";
+		String content = "회원님의 인증번호는 "+rewardu_policy;
+		
+		Properties p = new Properties(); // 정보를 담을 객체
+		 
+		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
+		 
+		p.put("mail.smtp.port", "465");
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.socketFactory.port", "465");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		p.put("mail.smtp.socketFactory.fallback", "false");
+		// SMTP 서버에 접속하기 위한 정보들
+		 
+		try{
+		    Authenticator auth = new SMTPAuthenticatior();
+		    Session ses = Session.getInstance(p, auth);
+		     
+		    ses.setDebug(true);
+		     
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    msg.setSubject(subject); // 제목
+		     
+		    Address fromAddr = new InternetAddress(from);
+		    msg.setFrom(fromAddr); // 보내는 사람
+		     
+		    Address toAddr = new InternetAddress(user_id);
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
+		     
+		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
+		     
+		    Transport.send(msg); // 전송
+		    
+		    return 1;
+		    
+		} catch(Exception e){
+		    e.printStackTrace();
+		    System.out.println(e);
+		    // 오류 발생시 뒤로 돌아가도록
+		    return 0; 
+		}
+		
+	}//testsending
+	
+	public int sendPw(String user_id, String user_pw) {
+		
+		String from = "rewardu4@gmail.com";
+		String subject = "리듀  RewardU 회원 비밀번호 입니다.";
+		String content = "<div width='200' height='300px' align='center' style='background-color: #aaa;'>";
+			   content += "<h2>&nbsp;&nbsp;</h2>";
+			   content += "<span style='background-color:white; color:#b44af7; font-size: 30px; font-weight: bold;'>"; 
+			   content += "&nbsp; 리듀 <i>RewardU</i> &nbsp; </span>"; 
+			   content += "<br><br>";
+			   content += "<font size='3' color='white'>회원님의 비밀번호는 <b>"+ user_pw + " </b>입니다.<br>";
+			   content += " 비밀번호를 마이페이지에서 재설정 해주시길 권장합니다.</font>";
+			   content += "<h2>&nbsp;&nbsp;</h2>";
+			   content += " </div>";
+		
+		Properties p = new Properties(); // 정보를 담을 객체
+		 
+		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
+		 
+		p.put("mail.smtp.port", "465");
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.socketFactory.port", "465");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		p.put("mail.smtp.socketFactory.fallback", "false");
+		// SMTP 서버에 접속하기 위한 정보들
+		 
+		try{
+		    Authenticator auth = new SMTPAuthenticatior();
+		    Session ses = Session.getInstance(p, auth);
+		     
+		    ses.setDebug(true);
+		     
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    msg.setSubject(subject); // 제목
+		     
+		    Address fromAddr = new InternetAddress(from);
+		    msg.setFrom(fromAddr); // 보내는 사람
+		     
+		    Address toAddr = new InternetAddress(user_id);
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
+		     
+		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
+		     
+		    Transport.send(msg); // 전송
+		    
+		    return 1;
+		    
+		} catch(Exception e){
+		    e.printStackTrace();
+		    System.out.println(e);
+		    // 오류 발생시 뒤로 돌아가도록
+		    return 0; 
+		}
+		
+	}//testsending
+	
+	
 	public int sendMyinfo(String to, String content){
 		
 		String from = "rewardu4@gmail.com";

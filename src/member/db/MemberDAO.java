@@ -258,6 +258,62 @@ public class MemberDAO {
 	}//findId
 	
 	
+	public MemberBean findPw(MemberBean mbean){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String user_pw=null;
+		
+		MemberBean mbean1 =null;
+		
+		int result = -1;
+		String sql = "";
+		
+		try {
+			String user_id = mbean.getUser_id();
+			String user_phone = mbean.getUser_phone();
+			String user_birth = combinedDOB(mbean);
+			
+			con = getConnection();
+			
+			sql = "select user_pw from user where user_id=? and user_phone=? and user_birth=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, user_phone);
+			pstmt.setString(3, combinedDOB(mbean));
+			
+			rs = pstmt.executeQuery();
+			
+			/*while(rs.next()){
+				user_pw = rs.getString("user_pw");
+			}*/
+			
+			if(rs.next()){
+				result=1;
+				mbean1 = new MemberBean();
+				user_pw = rs.getString("user_pw");
+				mbean1.setUser_pw(user_pw);
+				//System.out.println(user_id+" "+user_phone+" "+user_birth);
+				
+				//System.out.println(user_pw);
+				return mbean1;
+			}else{
+				mbean1 = new MemberBean();
+				result=0;
+				return mbean1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		return null;
+	}//findPw
+	
+	
 	public void updateUser(MemberBean mbean){
 		
 		Connection con = null;
@@ -297,42 +353,6 @@ public class MemberDAO {
 		
 	}//updateUser
 	
-	
-	public void updatePw(MemberBean mbean){
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "";
-		
-		try {
-			
-			sql = "update user set user_pw=? where user_id=?";
-			
-			con = getConnection();
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, mbean.getUser_pw());
-			pstmt.setString(2, mbean.getUser_id());
-			
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(con != null) con.close();
-	
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}//finally
-		
-	}//updatePw
-	
-
 	
 	
 	public int updatePw(String user_id, String user_pw, String user_pw3){
@@ -387,6 +407,7 @@ public class MemberDAO {
 		}//finally
 		return check;
 	}//updatePw
+	
 	
 	public String randomNum() {
 		StringBuffer sb = new StringBuffer();

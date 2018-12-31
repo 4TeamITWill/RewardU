@@ -12,6 +12,16 @@
         margin-bottom: 10px;
 }
 
+.inp-field_nomargin {
+        width: 350px;
+        height: 38px;
+        border: 1px solid #aaa;
+        color: #999;
+        font-size: 14px;
+        text-indent: 12px;
+        line-height: 38px;
+}
+
 .btn {     
         height: 42px;
         border: 1px solid #aaa; 
@@ -24,11 +34,25 @@
         margin-bottom: 10px;
 }
 
+.btn_nomargin {     
+        height: 42px;
+        border: 1px solid #aaa; 
+        background-color: #aaa;
+        color: white;
+        font-size: 14px;
+        text-indent: none;
+        line-height: 38px;
+        cursor: pointer;
+}
+
 .btn1 {     
         height: 42px;
         border: 1px solid #82caff; 
         color: #434d5b;
         background-color: #82caff;
+        /*border: white;
+        color: white;
+        background: linear-gradient(90deg, #b44af7, #82caff);*/
         font-size: 14px;
         text-indent: none;
         line-height: 38px;
@@ -60,4 +84,7 @@
 .w235 {width: 235px !important}
 .w175 {width: 175px !important}
 .w120 {width: 120px !important}
+.w118 {width: 118px !important}
 .w108 {width: 108px !important}
+
+
