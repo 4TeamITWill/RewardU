@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class BoardBean {
 
 	private int pd_no, pd_good, pd_count, pd_participant, pd_result, pd_permit, pd_opprice1, pd_opprice2, pd_opprice3, pd_ratecount;
-	private String user_id, pd_name, pd_category, pd_file, pd_realfile, pd_goalmoney,
+	private String user_id, pd_category, pd_file, pd_realfile, pd_goalmoney,
 							pd_curmoney, pd_content, pd_subject, pd_opcontent1, pd_opcontent2, pd_opcontent3;
 	private Timestamp pd_start, pd_end;
 	private double pd_rate;
@@ -69,12 +69,6 @@ public class BoardBean {
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
-	}
-	public String getPd_name() {
-		return pd_name;
-	}
-	public void setPd_name(String pd_name) {
-		this.pd_name = pd_name;
 	}
 	public String getPd_category() {
 		return pd_category;

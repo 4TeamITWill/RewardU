@@ -247,7 +247,7 @@ public class BoardDAO {
 			}
 		}	
 	}
-	public ArrayList<BoardBean> getPermitList(String center){
+	public ArrayList<BoardBean> getPermitList(String center, int startRow, int pageSize){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -259,24 +259,25 @@ public class BoardDAO {
 			con = getConnection();
 			sql = "";
 			if(center.equals("pd_category")){
-				 sql = "select * from board where pd_permit = 1 order by pd_category";
+				 sql = "select * from board where pd_permit = 1 order by pd_category limit ?,?";
 			}else if(center.equals("pd_start")){
-				 sql = "select * from board where pd_permit = 1 order by pd_start";
+				 sql = "select * from board where pd_permit = 1 order by pd_start limit ?,?";
 			}else if(center.equals("pd_end")){
-				 sql = "select * from board where pd_permit = 1 order by pd_end";
+				 sql = "select * from board where pd_permit = 1 order by pd_end limit ?,?";
 			}else if(center.equals("pd_curMoney")){
-				 sql = "select * from board where pd_permit = 1 order by pd_curMoney";
+				 sql = "select * from board where pd_permit = 1 order by pd_curMoney limit ?,?";
 			}else if(center.equals("pd_goalMoney")){
-				 sql = "select * from board where pd_permit = 1 order by pd_goalMoney";
+				 sql = "select * from board where pd_permit = 1 order by pd_goalMoney limit ?,?";
 			}
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BoardBean bBean = new BoardBean();
 				
 				bBean.setPd_no(rs.getInt("pd_no"));
 				bBean.setUser_id(rs.getString("user_id"));
-				bBean.setPd_name(rs.getString("pd_name"));
 				bBean.setPd_category(rs.getString("pd_category"));
 				bBean.setPd_start(rs.getTimestamp("pd_start"));
 				bBean.setPd_end(rs.getTimestamp("pd_end"));
@@ -315,4 +316,39 @@ public class BoardDAO {
 		return list;
 	}
 
-	}//boardDeny() 메소드 끝
+	public int getPermitListCount() {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int count = 0;
+		String sql = "";
+		
+		try {
+			con = getConnection();			
+			
+				sql = "select count(*) from board where pd_permit=1";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return count;
+	}
+}//BoardDAO 끝
+
