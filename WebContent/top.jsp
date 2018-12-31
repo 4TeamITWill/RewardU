@@ -56,10 +56,7 @@ fieldset{border:0;}
 				MessageDAO mdao = new MessageDAO();
 				//int count = mdao.getCountMessage(id); //해당 id가 받은 메시지가 몇 개인지 반환
 				int dontReadCount = mdao.getCountDontRead(id); //해당 id가 받은 메시지 중 안읽은 메시지가 몇 개인지 반환
-	%>
-				<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
-		 		<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
-	<% 	
+				
 		 		if(id.equals("rewardu4@gmail.com")){ //접속한 id가 관리자 계정rewardu4@gmail.com 일 경우
 	%>				<!-- 마이페이지 대신 관리자페이지가 나타남 -->
 					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp; 
@@ -70,8 +67,9 @@ fieldset{border:0;}
 	<%
 		 		}
 	%>
-				<a href="./MemberLogout.me">로그아웃</a>
-	<%				
+			<a href="./MemberMessage_ReceiveList.message">메시지함</a> <!-- 클릭하면 메시지함으로 -->
+			<font style="color: red; font-weight: bold; font-size: 15pt;"><%=dontReadCount%></font>
+	<%	
 		}	
 	%>		
 				
