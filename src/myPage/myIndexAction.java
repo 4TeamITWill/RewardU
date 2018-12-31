@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import admin_db.BoardBean;
 import admin_db.MemberBean;
 import my_db.InvestBean;
-import my_db.myDAO;
+import my_db.MyDAO;
 
 public class myIndexAction implements myAction {
 
@@ -27,7 +27,7 @@ public class myIndexAction implements myAction {
 			user_id = "id";
 		}
 		
-		myDAO mydao = new myDAO();
+		MyDAO mydao = new MyDAO();
 		
 		MemberBean mbean = mydao.getUser(user_id);
 		ArrayList<BoardBean> goodlist = mydao.getGoodBoard(user_id);
@@ -39,7 +39,7 @@ public class myIndexAction implements myAction {
 		request.setAttribute("invelist", invelist);		
 		
 		myActionForward forward = new myActionForward();
-		forward.setPath("./index.jsp?center=./myInfo.jsp");
+		forward.setPath("./myPage/myInfo.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

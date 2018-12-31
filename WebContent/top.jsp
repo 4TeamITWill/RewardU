@@ -20,6 +20,7 @@ a {text-decoration: none;}
 fieldset{border:0;}
 .margin5{margin-top: 10px;}
 
+.h ul {padding : 0;}
 .h .dropdown01 li {
 	display: inline-block;
 	color: #aaa;
@@ -31,7 +32,7 @@ fieldset{border:0;}
 <body>
 	<div id="top">
 		<div class="top_container">
-			<div class="h">
+			<div class="h top_sub">
 				<ul class="dropdown01">
 					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;
 					<li><a class="top_menu">리듀란?</a></li>&nbsp;
@@ -67,7 +68,7 @@ fieldset{border:0;}
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
-					<a href="./myPage.my">마이페이지</a>&nbsp;&nbsp;
+					<a id="goMypage" style="cursor : pointer;">마이페이지</a>&nbsp;&nbsp;
 	<%
 		 		}
 	%>
@@ -92,12 +93,12 @@ fieldset{border:0;}
 					<a href="링크넣기">리워드 신청하기</a>
 				</div>
 				<div class="menuLine">
-					<a class = "menu_boss">소식</a>
+					<a class = "menu_boss">리듀란?</a>
 					<a href="링크넣기">회사 소식</a>
 					<a href="링크넣기">리워드 소식</a>
 				</div>	
 				<div class="menuLine">
-					<a class = "menu_boss" >안내</a>
+					<a class = "menu_boss" >NEWS</a>
 					<a href="링크넣기">이용가이드</a>
 					<a href="링크넣기">회사 소개</a>
 					<a href="./Notice.no">공지사항</a>

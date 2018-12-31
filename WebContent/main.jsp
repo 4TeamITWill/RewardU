@@ -182,11 +182,9 @@
 				<div class="box_grid box_grid4">넣으면 됨!!</div>
 				
 				
-			</div>
-			
-			
-			
-		</div>
+			</div>			
+		</div>		
 	</div>
+	
 </body>
 </html>

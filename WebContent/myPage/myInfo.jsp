@@ -7,8 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+
 	<div id="myPage_main">
 		<div class="myPage_top">
 			<div class="subject">내 정보</div>
@@ -28,11 +30,11 @@
 					</div>	
 					<div class="info_container">
 						<div class="my_key">소개글</div>
-						<div class="my_value">${memberBean.user_content }</div><br/>
+<%-- 						<div class="my_value">${memberBean.user_content }</div> --%>
+						<div class="my_value">소개글 소개소개 소개소개소개 소개소개소개소개개쇅쇄곳개</div><br/>
 					</div>											
 				</div>			
 				<div class="myPage_top_2">
-					<div class="my_profile_key">프로필 사진</div>
 					<div class="my_profile_value">
 						<div class="photo_container">
 							<div class="overblack"></div>
@@ -45,42 +47,46 @@
 			<div class="btn_line">
 				<!-- 링크 href 지정해주기 나중에 연결 -->
 				<a class="ybtn" href="./MemberMypageAction.me">정보 수정</a>&nbsp;&nbsp;
-				<a class="ybtn" href="비밀번호 변경페이지">비밀번호 변경</a>
+				<a class="ybtn" href="./MemberMypageAction.me">비밀번호 변경</a>
 			</div>
 		</div>
 		
 		<div class="myPage_mid">
-			<div class="subject"><a href="myPageGood.me">나의 관심사</a></div>
+			<div>
+				<a class="subject">나의 관심사</a>
+			</div>
 			<div class="myPage_mid_content">
 				<c:forEach var="good" items="${goodlist }" begin="0" end="2">
 					<div class="myPage_goodlist">
 						<div class="goodlist_imgContainer">
 							<img src="./img/cat.jpg">
 							<div class="back">	
-								<div class="good_subject">${good.pd_subject }</div>						
+								<div class="good_subject">${good.pd_subject }</div>
+								<div class="good_id">${good.user_id }</div>					
 								<div class="good_price">
 								(현재)<fmt:formatNumber value="${good.pd_curmoney }" type="number"/> /
 								(목표)<fmt:formatNumber value="${good.pd_goalmoney }" type="number"/>
 								</div>	
 							</div>
 						</div>
-						<div class="goodlist_contentsContainer">																	
-							<div class="good_id">${good.user_id }</div>
-						</div>
 					</div>
 					
 				</c:forEach>
+				
+				<div onclick="location.href='myPageGood.my'"
+						style="border : 1px solid rgba(100,100,100,0.8); display : flex; align-items : center; cursor : pointer;">&nbsp;전체글 보기&nbsp;</div>
+				
 			</div>
 		</div>
 		<div class="myPage_bot">
-			<div class="subject">투자 목록</div>
+			<div class="subject"><a href="myPageReward.my">투자 목록</a></div>
 			<div class="myPage_bot_content">
 				<div class="myPage_invelist">
 					<div style="display : flex; font-size : 1.1rem; font-weight : bold; height : 40px; line-height : 40px;">
 						<div style="flex : 3.3; text-align : center;">프로젝트명</div><div style="flex : 3.3; text-align : center;">모금율</div><div style="flex : 3.3; text-align : center;">진행여부</div>
 					</div>
 					<c:forEach var="invest" items="${invelist }" begin="0" end="2">
-						<div style="display : flex; margin-top : 0.5rem; background-color : rgba(230,70,130,0.6); font-size : 1.1rem; height : 50px; line-height : 50px;">
+						<div style="display : flex; margin-top : 0.5rem; background-color : #1e8eff; font-size : 1.1rem; height : 50px; line-height : 50px;">
 							<div style="flex : 3.3; text-align : center;">${invest.inv_name }</div>
 							<div style="flex : 3.3; text-align : center;">${invest.inv_percent }%</div>
 							<!-- 진행여부값은 숫자로 가져올거기 때문에 여기서 걸러주기 -->
@@ -97,11 +103,5 @@
 		</div>
 	</div>	
 	
-	
-<script>
-
-
-
-</script>	
 </body>
 </html>
