@@ -54,10 +54,10 @@
 		
 		<form action="" method="post" id="f" name="form">
 			
-			<table border="3" width="70%">
+			<table border="0" width="70%">
 				<tr>
 					<td colspan="2">
-						<input type="text" name="pd_no" value="${requestScope.saveB.pd_no}">
+						<input type="hidden" name="pd_no" value="${requestScope.saveB.pd_no}">
 					</td>
 				</tr>
 	
@@ -139,7 +139,7 @@
 			</table>
 			<br/><br/>
 			<h2>seller정보</h2>
-			<table border="3">	
+			<table border="0" >	
 				<tr align="center">	
 					<td>회사이름</td>
 					<td><input type="text" name="company" value="${requestScope.saveS.company}"></td>
@@ -165,17 +165,23 @@
 				</tr>
 					
 				<tr align="center">	
-					<td>계좌 등록</td>
-					<td>
+					<td>계좌번호</td>
+					<td align="left">
 						은행<select name="sellerBank">
 							<option value="국민">국민</option>
 							<option value="농협">농협</option>
 							<option value="우리">우리</option>
 							<option value="신한">신한</option>
 						</select>
-						계좌번호<input type="text" name="sellerAcount" value="${requestScope.saveS.sellerAcount}">
 					</td>
-				</tr>		
+				</tr>	
+				<tr align="center">
+					<td>
+					</td>
+					<td>
+						<input type="text" name="sellerAcount" value="${requestScope.saveS.sellerAcount}" placeholder="계좌번호를 입력해주세요.">
+					</td>
+				</tr>	
 			</table><br/>	
 						<input id="save" type="submit" value="저장하기"> &nbsp;&nbsp;
 						<input id="reward" type="submit" value="펀딩 신청하기">

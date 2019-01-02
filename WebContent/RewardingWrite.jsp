@@ -47,7 +47,7 @@
 <body>
 	<center>
 	<h1>펀딩오픈 신청하기</h1><br/>
-	<h2>board정보</h2>
+	<h2 align="center">board정보</h2>
 	<!--
 		신청하기 버튼을 누르면 게시글 정보와 판매자 정보가 각각 테이블에 추가된다.
 	 -->
@@ -57,26 +57,26 @@
 			<%String id = (String)session.getAttribute("id");%>
 
 			
-			<table border="3" width="70%">
+			<table border="0">
 				
-				<tr align="center">	
-					<td>판매자ID</td>
-					<td><input type="text" name="user_id" value="${id}" readonly="readonly"></td>
+				<tr>	
+					<td align="right"> 판매자ID</td>
+					<td align="left"><input type="text" name="user_id" value="${id}" readonly="readonly" ></td>
 				</tr>
 				
-				<tr align="center">	
-					<td>프로젝트 제목(상품명)</td>
-					<td><input type="text" name="pd_subject"></td>
+				<tr>	
+					<td align="right"> 프로젝트 제목(상품명)</td>
+					<td align="left"><input type="text" name="pd_subject" size="81"></td>
 				</tr>
 					
-				<tr align="center">		
-					<td>상품설명</td>
-					<td><textarea name="pd_content" id="textAreaContent" rows="10" cols="100"></textarea></td>
+				<tr>		
+					<td align="right"> 상품설명</td>
+					<td align="left"><textarea name="pd_content" id="textAreaContent"></textarea></td>
 				</tr>
 					
-				<tr align="center">	
-					<td>카테고리</td>
-					<td>
+				<tr>	
+					<td align="right"> 카테고리</td>
+					<td align="left">
 						<select name="pd_category">
 							<option value="패션뷰티">패션·뷰티</option>
 							<option value="테크가전">테크·가전</option>
@@ -92,51 +92,61 @@
 					</td>
 				</tr>
 					
-				<tr align="center">		
-					<td>목표금액</td>
-					<td><input type="text" name="pd_goalMoney">원</td>
+				<tr>		
+					<td align="right"> 목표금액</td>
+					<td align="left"><input type="text" name="pd_goalMoney">원</td>
 				</tr>
 					
-				<tr align="center">
-					<td>대표 이미지</td>
-					<td><input type="text" name="pd_file" readonly="readonly">
+				<tr>
+					<td align="right"> 대표 이미지</td>
+					<td align="left"><input type="text" name="pd_file" readonly="readonly">
 					<!-- <input type="button" onclick="winopen();" value="첨부하기"><br/> -->
 						<button>첨부하기</button><br/>
-						<input type="text" id="pd_realFile" name="pd_realFile"><br/>
 					</td>		
 				</tr>
+				<tr>
+					<td align="right">실제파일(히든예정)</td>
+					<td align="left">
+						<input type="text" id="pd_realFile" name="pd_realFile"><br/>
+					</td>
+				</tr>
 				
-				<tr align="center">
-					<td>마감일</td>
+				<tr>
+					<td align="right">마감일</td>
 					<td><input type="date" name="pd_end"></td>			
 				</tr>	
-				
-				<tr align="center">
-					<td colspan="2">리워드<br/>
-					</td>
+			</table>
+			
+			<br/><br/>
+			
+			<h2 align="center">리워드<br/><font size="2">*리워드는 최소 1개, 최대 3개까지 등록가능합니다.</font></h2>
+			
+			
+			<table>
+				<tr>
+					<td width="100">리워드1</td>
+					<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가격 <input type="text" name="pd_opprice1">원<br/>
+									리워드 명<input type="text" name="pd_opcontent1"><br/>
+									리워드 설명(컬럼추가예정)<br/></td>
 				</tr>
-				<tr align="center">
-					<td>리워드1</td>
-					<td>가격 <input type="text" name="pd_opprice1"><br/>
-						리워드 명<input type="text" name="pd_opcontent1">
-					</td>	
+				<tr>	
+					<td width="100">리워드2</td>
+					<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가격 <input type="text" name="pd_opprice2">원<br/>
+									리워드 명<input type="text" name="pd_opcontent2"><br/>
+									리워드 설명(컬럼추가예정)<br/></td>
 				</tr>
-				<tr align="center">	
-					<td>리워드2</td>
-					<td>가격 <input type="text" name="pd_opprice2"><br/>
-						리워드 명<input type="text" name="pd_opcontent2">
-					</td>
-				</tr>
-				<tr align="center">	
-					<td>리워드3</td>
-					<td>가격 <input type="text" name="pd_opprice3"><br/>
-						리워드 명<input type="text" name="pd_opcontent3">
-					</td>
+				<tr>	
+					<td width="100">리워드3</td>
+					<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가격 <input type="text" name="pd_opprice3">원<br/>
+									리워드 명<input type="text" name="pd_opcontent3"><br/>
+									리워드 설명(컬럼추가예정)<br/></td>
 				</tr>
 			</table>
+			
 			<br/><br/>
-			<h2>seller정보</h2>
-			<table border="3" width="50%">	
+			
+			<h2 align="center">seller정보</h2>
+			<table>	
 				<tr align="center">	
 					<td>회사이름</td>
 					<td><input type="text" name="company"></td>
@@ -162,15 +172,21 @@
 				</tr>
 					
 				<tr align="center">	
-					<td>계좌 등록</td>
-					<td>
+					<td>계좌번호</td>
+					<td align="left">
 						은행<select name="sellerBank">
 							<option value="국민">국민</option>
 							<option value="농협">농협</option>
 							<option value="우리">우리</option>
 							<option value="신한">신한</option>
 						</select>
-						계좌번호<input type="text" name="sellerAcount">
+					</td>
+				</tr>
+				<tr align="center">
+					<td>
+					</td>
+					<td>
+						<input type="text" name="sellerAcount" placeholder="계좌번호를 입력해주세요.">
 					</td>
 				</tr>		
 			</table><br/>	
@@ -180,8 +196,7 @@
 					
 			
 		</form>	
-	</center>	
-	
+	</center>
 	
 	
 	

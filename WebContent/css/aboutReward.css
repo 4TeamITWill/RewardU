@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+						/* 상단 드랍메뉴 중  '리듀란?'  목록에 있는것과 관련된 css들을 모아놓은 곳 */
+
+
+/* ----------------------------------------리워드란?---------------------------------------- */
+.aboutReward_sec{ 
+	position: relative;
+	height: auto; text-align: center;
+	font-family: 'Viga', sans-serif;
+	text-shadow: gray;
+}
+.aboutReward_title{
+	font-size: 2.5em;
+	font-weight: bold;
+}
+.aboutReward_head{
+	border-bottom: 2px groove #deddda;
+	display:inline-block;
+	text-align: left;	width: 1200px;
+	padding-bottom: 2%;
+	font-weight: bold;
+}
+.aboutReward_content{border-bottom: 2px groove #deddda; margin:4% 0 4% 0;
+	width: 1200px; height: 800px;
+	display:inline-block;
+	position: relative;
+}
+.aboutReward_top{
+	width: 1200px; height: 150px; text-align: left;
+	position: absolute;	
+	font-weight: bold;
+}
+.aboutReward_left{
+	width: 600px; height: 600px; text-align: left;
+	position: absolute;
+	top: 220px; left: 100px;
+	font-weight: bold;
+}
+.aboutReward_right{
+	width: 400px; height: 500px;
+	position: absolute;
+	top: 200px; left: 650px;
+}
+.aboutReward_right img{width: 400px; height: 500px;}
+.viewReward_btn{
+	border-radius:10%;
+	border: 1px solid #b44af7;
+	background-color: white;
+	color: #b44af7;	font-weight: bold;
+	width: 140px; height: 35px;
+	cursor: pointer;
+}
+/* -------------------------------------------------------------------------------- */
+
+
+
+
+/* ----------------------------------------공지사항---------------------------------------- */
+.notice_sec{
+	position: relative;
+	height: 1100px; text-align: center;}
+.writeNotice_sec,.contentNotice_sec{
+	position: relative; 
+	height: 600px; text-align: center;}
+	
+/* notice.jsp */
+.notice_div{
+	position: absolute;
+	width: 700px; height: auto; text-align: center;
+	left: 30%; top: 15%;
+}
+.notices{text-align: left; border-bottom: 2px groove gray;}
+.notices a{text-decoration: none; color: black;}
+.admin_div{
+	position: absolute; right: 10%;
+	width: 100px; 
+}
+.notice_head{
+	position: absolute;
+	left:45%; top:8%;
+}
+/* writeNotice.jsp */
+.writeNotice_div{
+	position: absolute;
+	width: 700px; height: auto; text-align: center;
+	left: 30%; top: 15%;
+}
+.writeNotice_table{border: 1px groove gray; border-radius: 2%;}
+.writeNotice_sub{
+	width: 500px; height: 30px; border-radius: 5%;
+}
+.writeNotice_con{
+	width: 500px; height: 300px; border-radius: 1%;
+}
+
+/* contentNotice.jsp */
+.contentNotice_div{
+	position: absolute; border: none;
+	width: 1000px; height: auto; text-align: center;
+	left: 23%; top: 15%;
+}
+.contentNotice_btnDiv{
+	position: absolute;
+	right: 1%;
+	width: 300px; 
+}
+/* -------------------------------------------------------------------------------- */
+

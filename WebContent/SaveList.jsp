@@ -1,3 +1,6 @@
+<%@page import="reward.db.SaveBoard"%>
+<%@page import="java.util.Vector"%>
+<%@page import="reward.db.RewardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -21,11 +24,25 @@
 			<td>삭제</td>
 		</tr>
 		
-		<c:forEach var="saveBoard" items="${requestScope.v}">
+	
+			<c:forEach var="saveBoard" items="${requestScope.v}" varStatus="a">	
 			<tr>
 				<td>${saveBoard.user_id}</td>
 				<td>${saveBoard.pd_no}</td>
-				<td><img src="./upload/sm_${saveBoard.pd_realFile}"></td>
+				<td>
+				
+		          <!--이미지 null이면 기본이미지뜨게 추가!!!-->
+					<c:choose>
+						<c:when test="${saveBoard.pd_realFile eq ''}">
+							<img src="./upload/sm_no_img.jpg">
+						</c:when>
+						<c:otherwise>
+							 <img src="./upload/sm_${saveBoard.pd_realFile}">
+						</c:otherwise>
+					</c:choose> 
+			
+				
+				</td>
 				<td>${saveBoard.pd_subject}</td>
 				<td>
 					<button onclick="location.href='RewardingSaveGet.fu?user_id=${saveBoard.user_id}&pd_no=${saveBoard.pd_no}'">
@@ -38,8 +55,10 @@
 					</button>
 				</td>
 			</tr>
+			</c:forEach>
 		
-		</c:forEach>
+			
+
 	</table>
 </body>
 </html>

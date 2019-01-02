@@ -39,6 +39,23 @@ fieldset{border:0;}
 
 </style>
 
+<script type="text/javascript">
+	function logIn(){
+		alert("로그인을 해주세요.");
+		location.href="./MemberLogin.me";
+	}
+	
+	function check(){
+		if(document.search.keyWord.value == ""){ 
+			alert("검색어를 입력하세요.");
+			document.search.keyWord.focus();
+			return;
+		}
+	
+	document.search.submit();
+	}
+</script>
+
 </head>
 <body>
 	<div id="top">
@@ -54,7 +71,9 @@ fieldset{border:0;}
 				<a href="index.jsp" ><img src="img/logo02.png" width="135"></a>
 			</div>		
 			<div class="top_sub top_member">
-			<span class="icon-search">검색</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+			<form action="./getSearchListAction.fu" name="search" method="post">
+				<input type="text" name="keyWord">
+				<span class="icon-search"><input type="button" value="찾기" onclick="check();"> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 	<%
 		String id = (String)session.getAttribute("id");
 		String admin = (String)session.getAttribute("admin");
@@ -91,7 +110,7 @@ fieldset{border:0;}
 				}
 		}	
 	%>		
-				
+			</form>
 			</div>			
 		</div>			
 	</div>
@@ -107,9 +126,9 @@ fieldset{border:0;}
 					<a href="./PermitList.ad"  style ="color : #555; font-weight : 550;">리워드 게시판</a>
 					<%
 						id = (String)session.getAttribute("id");
-						if(id==null){	
+						if(id==null){//로그인한 상태가 아닐 때 리워드 신청을 하면 로그인페이지로 이동하게끔
 					%>
-						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
+						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;" onclick="logIn();">리워드 신청하기</a>
 					<%
 						}else{
 					%>	
@@ -121,7 +140,7 @@ fieldset{border:0;}
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
 					<a href="링크넣기">이용가이드</a>
-					<a href="링크넣기">리워드란?</a>
+					<a href="./AboutReward.ar">리워드란?</a>
 					<a href="링크넣기">리듀 소개</a>					
 					<a href="./Notice.no">공지사항</a>	
 				</div>	
