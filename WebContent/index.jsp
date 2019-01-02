@@ -10,8 +10,9 @@
 <link href="css/main3.css" rel="stylesheet">
 <link href="css/message.css" rel="stylesheet"/>
 <link href="css/etc.css" rel="stylesheet"/>
-<link href="css/notice.css" rel="stylesheet"/>
+<link href="css/aboutReward.css" rel="stylesheet"/>
 <link href="css/fontello-embedded.css" rel="stylesheet" />
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
@@ -46,7 +47,7 @@
 					</div>
 					<div class="modal_content_my"><a href="myPageReward.my">투자 현황</a></div>
 					<div class="modal_content_my"><a href="myPageGood.my">나의 관심사</a></div>
-					<div class="modal_content_my"><a href="myPageGood.my">개설 프로젝트</a></div>
+					<div class="modal_content_my"><a href="mySavedList.my">개설 프로젝트</a></div>
 					<div class="modal_content_my"><a href="MemberMypageAction.me">개인정보 설정</a></div>
 					<div class="modal_content_my"><a href="MemberLogout.me">로그아웃</a></div>
 				</div>	

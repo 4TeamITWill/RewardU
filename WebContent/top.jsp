@@ -107,7 +107,7 @@ fieldset{border:0;}
 					<a href="./PermitList.ad"  style ="color : #555; font-weight : 550;">리워드 게시판</a>
 					<%
 						id = (String)session.getAttribute("id");
-						if(id==null){	
+						if(id==null){//로그인한 상태가 아닐 때 리워드 신청을 하면 로그인페이지로 이동하게끔
 					%>
 						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 					<%
@@ -121,7 +121,7 @@ fieldset{border:0;}
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
 					<a href="링크넣기">이용가이드</a>
-					<a href="링크넣기">리워드란?</a>
+					<a href="./AboutReward.ar">리워드란?</a>
 					<a href="링크넣기">리듀 소개</a>					
 					<a href="./Notice.no">공지사항</a>	
 				</div>	
