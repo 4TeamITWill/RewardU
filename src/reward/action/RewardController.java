@@ -192,6 +192,22 @@ public class RewardController extends HttpServlet{
 				
 			}
 		
+			//검색버튼 눌렀을때..
+			else if(command.equals("/getSearchListAction.fu")) {
+
+				action = new getSearchListAction(); 
+	
+				try {
+	
+				 forward = action.excute(req, resp);
+	
+				} catch (Exception e) {
+	
+				e.printStackTrace();
+	
+				}
+			}
+		
 		
 		//주소로 이동 하는 부분
 				if (forward != null) {

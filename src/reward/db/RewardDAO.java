@@ -496,5 +496,150 @@ public class RewardDAO {
 				return result;
 			}
 			
+		//검색어를 전달받아 검색어에 해당하는 글개수를 DB로부터 가져와서 글개수 리턴 하는 메소드
+		public int getSearchCount(String keyWord) {
+
+			int count = 0;
+
+			Connection con = null;
+
+			String sql = "";
+
+			PreparedStatement pstmt = null;
+
+			ResultSet rs = null;
+
+			try{
 	
+				 //DB연결
+	
+				con = getConnection();
+	
+				//select구문 작성
+	
+				//검색어에 해당하는 게시판 글개수 가져오기 count(*)
+	
+				 sql = "select count(*) from board join seller on board.pd_no=seller.pd_no "
+						+ "where pd_permit=1 and pd_subject like ?";
+	
+				 pstmt = con.prepareStatement(sql);
+	
+				pstmt.setString(1, "%" + keyWord + "%");
+	
+				rs = pstmt.executeQuery();
+	
+				if(rs.next()){
+					count = rs.getInt(1);
+				}
+			}catch(Exception err){
+				err.printStackTrace();
+			}finally {
+			//자원해제 
+				try {
+	
+				 if(rs != null) rs.close();
+	
+				if(pstmt != null) pstmt.close();
+	
+				if(con != null) con.close();
+			} catch (SQLException e) {e.printStackTrace();}}return count;}
+			
+			
+			//관리자가 승인한(permit--> 1)인 게시물중 검색
+			public Vector<RewardBean> getSearchList(String keyWord) {
+
+			Connection con = null;
+
+			String sql = "";
+
+			PreparedStatement pstmt = null;
+
+			ResultSet rs = null;
+
+			Vector<RewardBean> v = new Vector <RewardBean>();
+
+			 RewardBean dto = null;
+
+			try {
+			//db연결
+			con= getConnection();
+
+			//만약 검색어를 입력하지 않았다면?
+			//keyWord == null || keyWord.isEmpty()는 액션에서 해주기..
+
+			if(keyWord != null){//만약 검색어를 입력 했다면?
+				// keyWord를 가진 데이터를 검색하는데..
+	
+				//pd_end-pd_start를 기준으로 하여 오름차순 정렬하여  검색!
+	
+				sql = "select * from board join seller on board.pd_no=seller.pd_no "
+				+ "where pd_permit=1 and pd_subject like '%" + keyWord + "%' order by pd_end-pd_start asc";
+			}
+			//??를제외한  select구문을 담은 PreparedStatement객체 얻기 pstmt = con.prepareStatement(sql);
+			//PreparedStatement객체를 이용해 Select실행후 그결과를 ResultSet객체에 담아서 얻기rs = pstmt.executeQuery();
+			// ResultSet객체에 테이블 형식으로 저장된 검색한 글정보들을 반복하여 뽑아내서
+
+			// BoardDto객체의 각각의 변수에 저장, 그리고 각각의 BoardDto객체들을 하나씪 백터에 추가 
+
+			while(rs.next()){
+				dto = new RewardBean();
+	
+				dto.setPd_no(Integer.parseInt(rs.getString("pd_no")));
+	
+				dto.setUser_id(rs.getString("user_id"));
+	
+				dto.setPd_category
+	
+				(rs.getString("pd_category"));
+	
+				 dto.setPd_start
+	
+				(rs.getTimestamp("pd_start"));
+	
+				 dto.setPd_end(rs.getString("pd_end"));
+				 dto.setPd_good(rs.getInt("pd_good"));
+				 dto.setPd_count(rs.getInt("pd_count"));
+				 dto.setPd_file(rs.getString("pd_file"));
+				 dto.setPd_realFile(rs.getString("pd_realFile"));
+				 dto.setPd_goalMoney(rs.getString("Pd_goalMoney"));
+				 dto.setPd_curMoney(rs.getString("pd_curMoney"));
+				 dto.setPd_participant(rs.getInt("pd_participant"));
+				 dto.setPd_result(rs.getInt("pd_result"));
+				 dto.setPd_permit(rs.getInt("pd_permit"));
+				 dto.setPd_content(rs.getString("pd_content"));
+				 dto.setPd_opcontent1(rs.getString("pd_opcontent1")); 
+				 dto.setPd_opcontent2(rs.getString("pd_opcontent2")); 
+				 dto.setPd_opcontent3(rs.getString("pd_opcontent3")); 
+				 dto.setPd_opprice1(rs.getString("pd_opprice1")); 
+				 dto.setPd_opprice2(rs.getString("pd_opprice2"));
+				 dto.setPd_opprice3(rs.getString("pd_opprice3"));
+				 dto.setPd_rate(rs.getDouble("pd_rate"));
+				 dto.setPd_rateCount(rs.getInt("pd_rateCount"));
+				 dto.setCompany(rs.getString("company"));
+	
+				 //필요하면 seller정보 더 넣기
+	
+				 //백터에 BoardDto객체 추가 
+				 v.add(dto);
+			 }//while반복문 끝
+			 } catch (Exception e) {
+				 System.out.println("getSearchList()메소드에서 오류 : " + e);
+			  } finally {
+				 try {
+	
+				 if(pstmt != null) pstmt.close();
+	
+				 if(con != null) con.close();
+	
+				 if(rs != null) rs.close();
+	
+				 } catch (SQLException e) {
+	
+				 e.printStackTrace();
+	
+				 }
+			 }
+
+			 return v; //DB로부터 검색하여 가져온 전체글 들(Board객체들)을 백터에 담아 백터 자체를 리턴
+		}//getSearchCount끝
 }
