@@ -39,7 +39,8 @@
 				<div class="modal_my" id="modal_my">
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
 						<div class="modal_img"></div>
-						<div style="color : #888; position : absolute; left : 41%; top : 50%; transform : translateY(-50%);">
+						<div style="color : #aaa; position : absolute; left : 42%; top : 50%; 
+										transform : translateY(-50%); font-size : 14px;">
 							${sessionScope.name }<br/>
 							${sessionScope.id }
 						</div>										

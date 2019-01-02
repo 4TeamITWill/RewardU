@@ -769,29 +769,29 @@ body{
 }
 
 .modal_img_container .modal_img {
-	width : 100px;
-	height : 100px;
+	width : 80px;
+	height : 80px;
 	border-radius : 50%;
 	background-color : #fff;
 	position : absolute;
-	left : 5%;
+	left : 7%;
 	top : 50%;
 	transform : translateY(-50%);
 	border : 1px solid #888;
 }
 
 .modal_content_my {
-	margin-top : 0.5rem;
+	margin-top : 0.6rem;
 	margin-left : 2rem;
 	cursor : pointer;
 }
 
 .modal_content_my a {
-	color : rgba(100,100,100,0.9);
+	font-size : 14px;
+	color : #aaa;
 }
 
 .modal_content_my a:HOVER {
-	color : rgba(0,0,0,1);
 	font-weight : bold;
 }
 

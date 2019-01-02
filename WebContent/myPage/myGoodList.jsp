@@ -10,15 +10,22 @@
 <body>
 	<div id="myGoodList_main">	
 		<div class="myGoodList_content">
-			<div class="good_subject">좋아요</div>
+			<div class="good_subject">좋아요</div>			
 			
-			<form action="" method="get">
+				<input type="button" value="삭제" onclick="delGood();"/>
+			
+				
 				<c:if test="${count > 0 }">
-					<div class="myGoodList_content_">
+					<form method="get" name="fr">
+					<div class="myGoodList_content_">					
 						<c:forEach var="good" items="${goodlist }">							
-							<div class="good_content">
-							<input type="hidden" name="pd_no" value="${good.pd_no }">
-							<input type="checkbox"/>
+							<div class="good_content">							
+										
+						
+							<input type="checkbox"  name ="delcheck" value="${good.pd_no }"/>	
+								
+						
+								${good.pd_no }					
 								<div class="content_0"><img src=""></div>
 								<div class="content content_1">${good.user_id }</div>					
 								<div class="content content_2">${good.pd_subject }</div>
@@ -26,11 +33,15 @@
 								<div class="content content_4">
 									<div>${good.pd_rate } / 5 </div><div style="font-weight : bold; color : #f34;"> ~${good.pd_endf }</div>
 								</div>
+																							
+								<button type="button" onclick="reward('${good.pd_no}');" >투자하기</button>	
+								
 							</div>							
-						</c:forEach>						
+						</c:forEach>										
 					</div>	
+					</form>	
 				</c:if>	
-			</form>
+			
 			
 			<c:if test="${count <= 0 }">
 				<div>좋아요한 게시글이 없습니다.</div>
@@ -50,10 +61,29 @@
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">
-						<a hef="myPageGood.my?currentPage1=${startPage+5 }">다음</a>
+						<a href="myPageGood.my?currentPage1=${startPage+5 }">다음</a>
 					</c:if>
 				</div>		
 		</div>	
 	</div>
+	
+<script>
+
+function reward(pd_no){
+	
+	location.href="goReward.my?pd_no="+pd_no;
+	
+}
+
+function delGood(){
+	
+	document.fr.action = "myGoodDel.my";
+	document.fr.submit();	
+	
+}
+
+</script>	
+	
+	
 </body>
 </html>
