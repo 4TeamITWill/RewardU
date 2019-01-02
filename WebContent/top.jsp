@@ -16,12 +16,25 @@ a {text-decoration: none;}
 	width: 100%; height: 5px;
 	background: linear-gradient(90deg, #b44af7, #82caff);  }
 fieldset{border:0;}
-.margin5{margin-top: 10px;}
 
-.h ul {padding : 0;}
+
+.h ul {padding : 0; height : 100%; margin : 0; line-height : 65px;}
 .h .dropdown01 li {
 	display: inline-block;
 	color: #aaa;
+	height : 100%;
+}
+
+.msg_font {
+	background-color: #fc291e;
+	border-radius: 50%;
+	font-weight: none;
+	color: #fff;
+	font-size: 9pt;
+	height: 20pt;
+	line-height: 20pt;
+	position : relative;
+	bottom : 10px;
 }
 
 </style>
@@ -31,7 +44,7 @@ fieldset{border:0;}
 	<div id="top">
 		<div class="top_container">
 			<div class="h top_sub">
-				<ul class="dropdown01">
+				<ul class="dropdown01" >
 					<li><a class="top_menu">펀딩시작하기</a></li>&nbsp;&nbsp;
 					<li><a class="top_menu">리듀란?</a></li>&nbsp;&nbsp;
 					<li><a class="top_menu">NEWS</a></li>&nbsp;&nbsp;
@@ -41,7 +54,7 @@ fieldset{border:0;}
 				<a href="index.jsp" ><img src="img/logo02.png" width="135"></a>
 			</div>		
 			<div class="top_sub top_member">
-			<span class="icon-search">검색</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;	
+			<span class="icon-search">검색</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 	<%
 		String id = (String)session.getAttribute("id");
 		String admin = (String)session.getAttribute("admin");
@@ -67,17 +80,22 @@ fieldset{border:0;}
 	<%
 		 		}
 
-	%>		
-				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span></a> <!-- 클릭하면 메시지함으로 -->
-		 		<font style="color: red; font-weight: bold; font-size: 13pt;"><%=dontReadCount%></font>
-	<%				
+	%>			
+				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span>
+	<%
+				//받은 메세지가 0이면 숫자안뜸 1이상이면 뜸
+				if(dontReadCount > 0){	
+	%>							
+				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span></a> <!-- 클릭하면 메시지함으로 -->	
+	<%		
+				}
 		}	
 	%>		
 				
 			</div>			
 		</div>			
 	</div>
-	<div class="margin5"></div>
+	
 	<div class="hr"></div>
 
 	<!-- <div class="hr" height="50" >&nbsp;</div>	 -->
@@ -85,34 +103,32 @@ fieldset{border:0;}
 		<div class="slidedown_menu">
 			<div class="menuLine_container">
 				<div class="menuLine" >
-					<a class = "menu_boss">펀딩시작하기</a>
-					<a href="./PermitList.ad">리워드 게시판</a>
-					<!-- <a href="./RewardingWrite.fu">펀딩시작하기</a> -->
+					<a class = "menu_boss" style="font-size : 1.1rem;">펀딩시작하기</a>
+					<a href="./PermitList.ad"  style ="color : #555; font-weight : 550;">리워드 게시판</a>
 					<%
 						id = (String)session.getAttribute("id");
-						if(id==null){
-							
+						if(id==null){	
 					%>
-					
-						<a href="./MemberLogin.me">펀딩시작하기</a>
+						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 					<%
 						}else{
 					%>	
-						<a href="./RewardingWrite.fu">펀딩시작하기</a>
+						<a href="./RewardingWrite.fu"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 					<%
 						}
-					%>	
+					%>
 				</div>
 				<div class="menuLine">
-					<a class = "menu_boss">리듀란?</a>
-					<a href="링크넣기">회사 소식</a>
-					<a href="링크넣기">리워드 소식</a>
+					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
+					<a href="링크넣기">이용가이드</a>
+					<a href="링크넣기">리워드란?</a>
+					<a href="링크넣기">리듀 소개</a>					
+					<a href="./Notice.no">공지사항</a>	
 				</div>	
 				<div class="menuLine">
-					<a class = "menu_boss" >NEWS</a>
-					<a href="링크넣기">이용가이드</a>
-					<a href="링크넣기">회사 소개</a>
-					<a href="./Notice.no">공지사항</a>
+					<a class = "menu_boss" style="font-size : 1.1rem;">NEWS</a>
+					<a href="링크넣기">리듀 소식</a>					
+					<a href="링크넣기">리워드 소식</a>
 				</div>	
 			</div>
 		</div>

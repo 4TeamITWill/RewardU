@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 
 public class MemberDAO {
 	
@@ -101,10 +103,11 @@ public class MemberDAO {
 				if(user_pw.equals(rs.getString("user_pw"))){
 					check = 1;
 				}else {
-					check = 0;
+					check = 0; //incorrect password
 				}
 			}else {
-				check = -1;
+				check = -1;	//incorrect id
+				System.out.println("noooo incorrect id " + check);
 			}
 			
 		} catch (Exception e) {

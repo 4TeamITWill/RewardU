@@ -36,18 +36,19 @@
 			<div style="flex : 1; height : 0;" ></div>
 			<div style="flex : 1; height : 0;"></div>
 			<div style="flex : 1; height : 0;">
-				<div class="modal" id="modal">
+				<div class="modal_my" id="modal_my">
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
 						<div class="modal_img"></div>
-						<div style="color : #fff; position : absolute; left : 41%; top : 50%; transform : translateY(-50%);">
+						<div style="color : #888; position : absolute; left : 41%; top : 50%; transform : translateY(-50%);">
+							${sessionScope.name }<br/>
 							${sessionScope.id }
 						</div>										
 					</div>
-					<div class="modal_content"><a href="myPageReward.my">투자 현황</a></div>
-					<div class="modal_content"><a href="myPageGood.my">나의 관심사</a></div>
-					<div class="modal_content"><a href="myPageGood.my">개설 프로젝트</a></div>
-					<div class="modal_content"><a href="MemberMypageAction.me">개인정보 설정</a></div>
-					<div class="modal_content"><a href="MemberLogout.me">로그아웃</a></div>
+					<div class="modal_content_my"><a href="myPageReward.my">투자 현황</a></div>
+					<div class="modal_content_my"><a href="myPageGood.my">나의 관심사</a></div>
+					<div class="modal_content_my"><a href="myPageGood.my">개설 프로젝트</a></div>
+					<div class="modal_content_my"><a href="MemberMypageAction.me">개인정보 설정</a></div>
+					<div class="modal_content_my"><a href="MemberLogout.me">로그아웃</a></div>
 				</div>	
 			</div>
 			</div>	
@@ -61,11 +62,11 @@
 	//모달 창 부분 자바스크립트 제이쿼리
 	$("#goMypage").click(function(){	
 		$(".modal_back").css("display","block");
-		$(".modal").animate({"top" : "65px"},150);	
+		$(".modal_my").animate({"top" : "80px"},150);	
 	});
 	
 	var modal_back = document.getElementById("modal_back");
-	var modal = document.getElementById("modal");
+	var modal = document.getElementById("modal_my");
 	
 	//모달 창 닫기 배경부분 클릭시 닫기
 	window.onclick = function(e){

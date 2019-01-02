@@ -16,21 +16,22 @@ public class myIndexAction implements myAction {
 
 	@Override
 	public myActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		HttpSession session = request.getSession();	
 
-		String user_id = (String)session.getAttribute("id");
-
-		MyDAO mydao = new MyDAO();
+		HttpSession session = request.getSession();
 		
-		MemberBean mbean = mydao.getUser(user_id);
-		ArrayList<BoardBean> goodlist = mydao.getGoodBoard(user_id);
-		ArrayList<InvestBean> invelist = mydao.getRewardBoard(user_id);
+//		String user_id = (String)session.getAttribute("id");
+				
+//		MyDAO mydao = new MyDAO();
 		
-		request.setAttribute("memberBean", mbean);
-		request.setAttribute("goodlist", goodlist);
-		request.setAttribute("goodlistSize", goodlist.size());
-		request.setAttribute("invelist", invelist);		
+//		MemberBean mbean = mydao.getUser(user_id);
+//		ArrayList<BoardBean> goodlist = mydao.getGoodBoard(user_id);
+//		ArrayList<InvestBean> invelist = mydao.getRewardBoard(user_id);
+		
+//		request.setAttribute("memberBean", mbean);
+//		request.setAttribute("goodlist", goodlist);
+//		request.setAttribute("goodlistSize", goodlist.size());
+//		request.setAttribute("invelist", invelist);		
+		request.setAttribute("myPage_center", null);
 		
 		myActionForward forward = new myActionForward();
 

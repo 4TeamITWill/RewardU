@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class InvestBean {
 
-	private String user_id, inv_name, inv_username, inv_addr, inv_phone, inv_account, pd_subject, pd_content;
+	private String user_id, inv_name, inv_username, inv_addr, inv_phone, inv_account, pd_subject, pd_content, inv_datef;
 	private int pd_no, inv_orderno, inv_qty, inv_price, inv_confirm, pd_result, inv_percent;
 	private Timestamp inv_date;
 	
@@ -103,6 +103,12 @@ public class InvestBean {
 	}
 	public void setPd_content(String pd_content) {
 		this.pd_content = pd_content;
+	}
+	public String getInv_datef() {
+		return inv_datef;
+	}
+	public void setInv_datef(String inv_datef) {
+		this.inv_datef = inv_datef;
 	}
 
 }

@@ -11,21 +11,33 @@
 	<div id="myGoodList_main">	
 		<div class="myGoodList_content">
 			<div class="good_subject">좋아요</div>
-			<div class="myGoodList_content_">
-				<c:forEach var="good" items="${goodlist }">
-					<div class="good_content">
-						<div class="content_0"><img src=""></div>
-						<div class="content_1">&nbsp;${good.pd_subject }</div>					
-						<div class="content_2">&nbsp;${good.user_id }</div>
-						<div class="content_3">${good.pd_rate }&nbsp;&nbsp;</div>
-					</div>				
-				</c:forEach>
-				<c:if test="${count <= 0 }">
-					<div>좋아요한 게시글이 없습니다.</div>
-				</c:if>					
-			</div>
+			
+			<form action="" method="get">
+				<c:if test="${count > 0 }">
+					<div class="myGoodList_content_">
+						<c:forEach var="good" items="${goodlist }">							
+							<div class="good_content">
+							<input type="hidden" name="pd_no" value="${good.pd_no }">
+							<input type="checkbox"/>
+								<div class="content_0"><img src=""></div>
+								<div class="content content_1">${good.user_id }</div>					
+								<div class="content content_2">${good.pd_subject }</div>
+								<div class="content content_3">${good.pd_category }</div>
+								<div class="content content_4">
+									<div>${good.pd_rate } / 5 </div><div style="font-weight : bold; color : #f34;"> ~${good.pd_endf }</div>
+								</div>
+							</div>							
+						</c:forEach>						
+					</div>	
+				</c:if>	
+			</form>
+			
+			<c:if test="${count <= 0 }">
+				<div>좋아요한 게시글이 없습니다.</div>
+			</c:if>					
+			
 			<!-- 페이징 부분 -->
-				<div class="myGood_board_page">
+				<div class="my_board_page">
 					<c:if test="${startPage > pageBlock }">
 						<a href="myPageGood.my?currentPage1=${startPage-pageBlock }">이전</a>
 					</c:if>				

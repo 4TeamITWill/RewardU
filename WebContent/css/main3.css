@@ -20,7 +20,7 @@ body{
 /* top */
 
 #top {
-	height : 50px;	
+	height : 65px;	
 	background-color : none;
 	padding : 0.4rem 0;
 	
@@ -30,8 +30,8 @@ body{
 	width : 1200px;
 	margin : 0 auto;
 	display : flex;
-	flex-direction : row;
 	color : #aaa;
+	height : 100%;
 }
 
 /* 메뉴,로그인, 회원가입 부분 */
@@ -93,7 +93,7 @@ body{
 #top .top_member {
 	text-align : right;
 	color : #aaa;
-	line-height : 50px;
+	line-height : 65px;
 }
 
 #top .top_member a{
@@ -109,17 +109,18 @@ body{
 	flex-direction : column;
 	line-height : 1.6rem;
 	text-align : left;
-	padding-left : 7rem;
+	padding-left : 7.6rem;
 }
 
 .menu_boss {
 	font-weight : bold;
-	font-size : 1.2rem;
-	margin-bottom : 1.2rem;
+	font-size : 1.1rem;
+	margin-bottom : 1.1rem;
 }
 
 .menuLine a {
-	color : rgba(0,0,0,0.8);
+	color : #555;
+	font-size : 15px;
 }
 
 /* main */
@@ -386,7 +387,11 @@ body{
 	width : 100%;
 }
 
-.myindex_top {
+#myIndex_bottom {
+	
+}
+
+#myindex_top {
 	border-bottom : 0.5px solid rgba(50,50,50,0.6);
 	box-sizing : border-box;
 }
@@ -394,8 +399,8 @@ body{
 .myindex_subject {
 	font-size : 2.1rem;
 	font-weight : 600;
-	height : 120px;
-	line-height : 120px;
+	height : 140px;
+	line-height : 150px;
 	width : 300px;
 	margin : 0 auto;
 	text-align : center;
@@ -575,10 +580,6 @@ body{
 
 /* 좋아요 페이지 */
 
-#myIndex_bottom {
-	background-color : rgba(240,240,240,0.3);
-}
-
 #myGoodList_main, #myRewardList_main {
 	width : 1000px;
 	margin : 0 auto;	
@@ -586,7 +587,7 @@ body{
 
 .myGoodList_content, .myRewardList_content {
 	box-sizing : border-box;
-	padding : 2rem;
+	padding : 4rem 2rem;
 }
 
 .myGoodList_content_ {
@@ -598,18 +599,46 @@ body{
 }
 
 .myRewardList_content_ {
-	margin-bottom : 2rem;
+	margin-top : 2rem;
+	margin-bottom : 3rem;
 }
 
 .reward_img_container {
 	overflow : hidden;
-	width : 140px; height : 100px;
+	width : 120px; height : 80px;
 	display : flex;
 	justify-content : center;
 }
 
 .reward_img_container img {
-	height : 100px;
+	height : 80px;
+}
+
+.reward_content_container {
+	padding-left : 1.5rem;
+}
+
+.reward_desc_container {
+	padding : 1rem 1rem;
+}
+
+.reward_desc {
+	display : flex;
+	margin : 0.7rem 0;
+	height : 25px;
+	line-height : 25px;
+}
+
+.reward_desc>div:nth-of-type(1) {
+	flex : 2;
+	font-size : 0.9rem;
+	font-weight : 550;
+}
+
+.reward_desc>div:nth-of-type(2) {
+	flex : 8;
+	font-weight : bold;
+	color : rgba(50,50,50,0.8);
 }
 
 .good_subject, .reward_subject {
@@ -618,8 +647,12 @@ body{
 	margin : 0.8rem 0;
 }
 
+.good_content .content{
+	padding : 0 0.3rem;
+}
+
 .good_content .content_0 {
-	height : 70%;
+	height : 60%;
 }
 
 .good_content img {
@@ -627,89 +660,43 @@ body{
 	background-color : #48f;
 	width : 100%;
 	height : 100%;
-	border : none;
+	border : 0;
 }
 
 .good_content .content_1 {
-	font-size : 1.3rem;
-	font-weight : bold;
+	font-size : 1.1rem;
+	margin-top : 0.4rem;
 }
 
 .good_content .content_2 {
-	font-size : 1.1rem;
-	
+	font-size : 1.2rem;
+	font-weight : bold;
 }
 
 .good_content .content_3 {
-	text-align : right;
+	color : #34f;
 }
 
-.myGood_board_page {
+.good_content .content_4 {
+	display : flex;
+	justify-content : space-between;
+}
+
+.my_board_page {
 	text-align : center;
+	display : flex;
+	margin : 1.5rem auto;
+	height : 30px;
+	line-height : 30px;
+	justify-content : center;
 }
 
-.myGood_board_page a {
-	margin : 0 auto;	
+.my_board_page a {
+	margin : 0 5px;
 }
 
 .subject a {
 	color : #000;
-}
-
-.reward_content {
-	display:flex;
-	padding : 1rem 1rem;
-	height : 120px;
-	border-bottom : 2px solid;
-}
-
-.reward_content>div:not(.reward_content_1) {
-	display : flex;
-	justify-content : center;
-	align-items : center;
-}
-
-.reward_content_1 {
-	flex : 6;
-	display : grid;
-	grid-template-columns : 150px 1fr;
-	cursor : pointer;
-}
-
-.reward_content_2 {
-	flex : 2;
-}
-
-.reward_content_3 {
-	flex : 1;
-}
-
-.reward_content_4 {
-	flex : 1;
-}
-
-.reward_imgcontainer {
-	height : 120px;
-	overflow : hidden;
-	display : flex;
-	justify-content : center;
-	align-items : center;
-}
-
-.reward_imgcontainer img {
-	width : 150px; height : 150px;
-}
-
-.reward_contentcontainer {
-	padding : 0.4rem 0.7rem;
-}
-
-.reward_contentcontainer>div:nth-of-type(1) {
-	font-size : 1.2rem;
-}
-
-.reward_contentcontainer>div:nth-of-type(2) {
-	margin-top : 0.7rem;
 }
 
 .bt {
@@ -753,6 +740,7 @@ body{
 
 /* 모달 창 부분 */
 
+/* 호준 */
 .modal_back {
 	display : none;
 	width : 100%;
@@ -762,32 +750,20 @@ body{
 	top : 0;
 }
 
-.modal_back .modal {
+.modal_back .modal_my {
 	background-color : #ffffff;
 	width : 300px;
 	height : 350px;
 	position : absolute;
-	top : 50px;	
+	top : 75px;	
 	box-shadow : 1px 1px 5px 0 #000;
 	transform : translateX(45%);
-}
-
-.modal_back .modal::AFTER {
-	display : block;
-	content : "";
-	border-color:transparent transparent #804040 transparent;
-	border-style:solid; 
-	border-width:20px;
-	position : absolute;
-	top:-40px;
-	left : 50%;
-	transform : translateX(-50%);		
+	z-index : 999;
 }
 
 .modal_img_container {
 	height : 180px; 
-	background-color : #804040;
-	border-bottom : 1px solid #fff;
+	border-bottom : 1px solid #ccc;
 	position : relative;
 	cursor : pointer;
 }
@@ -801,19 +777,100 @@ body{
 	left : 5%;
 	top : 50%;
 	transform : translateY(-50%);
+	border : 1px solid #888;
 }
 
-.modal_content {
+.modal_content_my {
 	margin-top : 0.5rem;
 	margin-left : 2rem;
 	cursor : pointer;
 }
 
-.modal_content a {
+.modal_content_my a {
 	color : rgba(100,100,100,0.9);
 }
 
-.modal_content a:HOVER {
+.modal_content_my a:HOVER {
 	color : rgba(0,0,0,1);
 	font-weight : bold;
 }
+
+/*다원*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content - Box */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius : 0.2em;
+  width: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: #56595e;
+  float: right;
+  padding-right: 9px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  text-align: left;
+  font-size: 13px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #b44af7, #82caff);
+  color: white;
+}
+
+.modal-body {
+	padding: 25px 15px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/*-------------------------------------------*/
