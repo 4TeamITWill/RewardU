@@ -26,11 +26,11 @@ fieldset{border:0;}
 }
 
 .msg_font {
-	background-color: red;
+	background-color: #fc291e;
 	border-radius: 50%;
 	font-weight: none;
 	color: #fff;
-	font-size: 10pt;
+	font-size: 9pt;
 	height: 20pt;
 	line-height: 20pt;
 	position : relative;
@@ -54,7 +54,7 @@ fieldset{border:0;}
 				<a href="index.jsp" ><img src="img/logo02.png" width="135"></a>
 			</div>		
 			<div class="top_sub top_member">
-			<span class="icon-search">검색</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;	
+			<span class="icon-search">검색</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 	<%
 		String id = (String)session.getAttribute("id");
 		String admin = (String)session.getAttribute("admin");
@@ -83,9 +83,14 @@ fieldset{border:0;}
 	%>		
 				
 				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span>
+	<%
+				//받은 메세지가 0이면 숫자안뜸 1이상이면 뜸
+				if(dontReadCount > 0){	
+	%>							
 				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span></a> <!-- 클릭하면 메시지함으로 -->
 		 		
-	<%				
+	<%		
+				}
 		}	
 	%>		
 				
@@ -100,20 +105,21 @@ fieldset{border:0;}
 		<div class="slidedown_menu">
 			<div class="menuLine_container">
 				<div class="menuLine" >
-					<a class = "menu_boss">펀딩시작하기</a>
+					<a class = "menu_boss" style="font-size : 1.1rem;">펀딩시작하기</a>
 					<a href="링크넣기"  style ="color : #555; font-weight : 550;">리워드 게시판</a>
 					<a href="링크넣기"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 				</div>
 				<div class="menuLine">
-					<a class = "menu_boss">리듀란?</a>
+					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
 					<a href="링크넣기">이용가이드</a>
-					<a href="링크넣기">회사 소개</a>
+					<a href="링크넣기">리워드란?</a>
+					<a href="링크넣기">리듀 소개</a>					
 					<a href="링크넣기">공지사항</a>
 					
 				</div>	
 				<div class="menuLine">
-					<a class = "menu_boss" >NEWS</a>
-					<a href="링크넣기">회사 소식</a>
+					<a class = "menu_boss" style="font-size : 1.1rem;">NEWS</a>
+					<a href="링크넣기">리듀 소식</a>					
 					<a href="링크넣기">리워드 소식</a>
 				</div>	
 			</div>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import admin_db.BoardBean;
+import admin_db.SellerBean;
 import my_db.MyDAO;
 
 public class myGoodListAction implements myAction {

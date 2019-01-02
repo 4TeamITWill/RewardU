@@ -23,7 +23,7 @@ public class myRewardListAction implements myAction {
 		int count = mydao.getRewardCount(user_id);
 		
 		/* 페이징 할 변수들 셋팅 */
-		int pageSize = 5;
+		int pageSize = 2;
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		String currentPage1 = request.getParameter("currentPage1");
 		

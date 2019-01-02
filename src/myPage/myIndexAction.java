@@ -20,18 +20,19 @@ public class myIndexAction implements myAction {
 		HttpSession session = request.getSession();
 		
 		
-		String user_id = (String)session.getAttribute("id");
+//		String user_id = (String)session.getAttribute("id");
 				
-		MyDAO mydao = new MyDAO();
+//		MyDAO mydao = new MyDAO();
 		
-		MemberBean mbean = mydao.getUser(user_id);
-		ArrayList<BoardBean> goodlist = mydao.getGoodBoard(user_id);
-		ArrayList<InvestBean> invelist = mydao.getRewardBoard(user_id);
+//		MemberBean mbean = mydao.getUser(user_id);
+//		ArrayList<BoardBean> goodlist = mydao.getGoodBoard(user_id);
+//		ArrayList<InvestBean> invelist = mydao.getRewardBoard(user_id);
 		
-		request.setAttribute("memberBean", mbean);
-		request.setAttribute("goodlist", goodlist);
-		request.setAttribute("goodlistSize", goodlist.size());
-		request.setAttribute("invelist", invelist);		
+//		request.setAttribute("memberBean", mbean);
+//		request.setAttribute("goodlist", goodlist);
+//		request.setAttribute("goodlistSize", goodlist.size());
+//		request.setAttribute("invelist", invelist);		
+		request.setAttribute("myPage_center", null);
 		
 		myActionForward forward = new myActionForward();
 		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
