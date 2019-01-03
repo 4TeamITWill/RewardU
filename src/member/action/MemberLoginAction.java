@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.db.MemberBean;
 import member.db.MemberDAO;
 
 public class MemberLoginAction implements Action{
@@ -16,10 +17,13 @@ public class MemberLoginAction implements Action{
 		System.out.println("MemberLoginAction ()");
 		
 		String user_id = request.getParameter("user_id");
-		String user_name = request.getParameter("user_name");
 		String user_pw = request.getParameter("user_pw");
 		
 		MemberDAO mdao = new MemberDAO();
+		
+		MemberBean mbean = mdao.getMember(user_id);
+		//ìœ ì €ë„¤ìž„ ë°›ì•„ì˜¤ê¸°
+		String user_name = mbean.getUser_name();
 		
 		int check = mdao.userCheck(user_id, user_pw);
 		
@@ -31,7 +35,7 @@ public class MemberLoginAction implements Action{
 			request.setAttribute("login", 1);
 			
 			out.println("<script>");
-			//out.println("alert('¾ÆÀÌµð³ª ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.')");
+			//out.println("alert('ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.')");
 			out.println("location.href='./MemberLogin.me?login=1';");
 			out.println("</script>");
 			
@@ -49,7 +53,7 @@ public class MemberLoginAction implements Action{
 			request.setAttribute("login", 2);
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			//out.println("alert('ÀÏÄ¡ÇÏ´Â ¾ÆÀÌµð°¡ ¾ø½À´Ï´Ù.')");
+			//out.println("alert('ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.')");
 			out.println("location.href='./MemberLogin.me?login=2';");
 			out.println("</script>");
 

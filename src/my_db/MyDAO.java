@@ -508,4 +508,28 @@ public class MyDAO {
 		
 	}//getBoardList() 메소드 끝
 
+	//좋아요 삭제 delGood() 메소드
+	public int delGood(int pd_no) {
+		
+		int result = 0;
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			sql = "delete from good where pd_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+		return result;
+	}
+
 }

@@ -25,7 +25,6 @@ public class getSearchListAction implements Action {
 		int count = rdao.getSearchCount(keyWord);
 		
 		request.setAttribute("v", vector);
-		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);

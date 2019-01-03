@@ -43,6 +43,11 @@ public class myFrontController extends HttpServlet{
 			action = new myRewardListAction();
 			
 			forward = action.execute(request, response);
+		}else if(command.equals("/myGoodDel.my")){
+			
+			action = new myGoodDelAction();
+			
+			forward = action.execute(request, response);
 		}
 		
 		if(forward != null){
