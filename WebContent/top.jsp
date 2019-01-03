@@ -9,6 +9,17 @@
 
 <style type="text/css">
 
+::-webkit-input-placeholder { font-size : 16px; color: #CCC; }
+
+/* Firefox 4-18 */
+:-moz-placeholder { font-size : 16px; color: #CCC; }
+
+/* Firefox 19+ */
+::-moz-placeholder { font-size : 16px; color: #CCC; }
+
+/* IE10+ */
+:-ms-input-placeholder { font-size : 16px; color: #CCC; }
+
 li {list-style: none;}
 
 a {text-decoration: none;}
@@ -45,15 +56,25 @@ fieldset{border:0;}
 		location.href="./MemberLogin.me";
 	}
 	
-	function check(){
-		if(document.search.keyWord.value == ""){ 
-			alert("검색어를 입력하세요.");
-			document.search.keyWord.focus();
-			return;
+	//검색창 엔터눌렀을때 검색되기
+	function enterCheck(val){
+		
+		if(event.keyCode == 13){
+			//빈칸인지 검사
+			if(val == ""){
+				alert("검색어를 입력하세요.");				
+				document.search.keyWord.focus();
+				event.preventDefault();
+				return;
+			}else{		
+				document.search.action = "./getSearchListAction.fu";
+				document.search.submit();
+			}
 		}
-	
-	document.search.submit();
+		
+		
 	}
+	
 </script>
 
 </head>
@@ -71,9 +92,8 @@ fieldset{border:0;}
 				<a href="index.jsp" ><img src="img/logo02.png" width="135"></a>
 			</div>		
 			<div class="top_sub top_member">
-			<form action="./getSearchListAction.fu" name="search" method="post">
-				<input type="text" name="keyWord">
-				<span class="icon-search"><input type="button" value="찾기" onclick="check();"> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+			
+				<span class="icon-search" style="cursor : pointer;">검색</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 	<%
 		String id = (String)session.getAttribute("id");
 		String admin = (String)session.getAttribute("admin");
@@ -110,9 +130,18 @@ fieldset{border:0;}
 				}
 		}	
 	%>		
-			</form>
+			
 			</div>			
 		</div>			
+	</div>
+	
+	<!-- searchBar 부분(돋보기 클릭시 상단에 뜨는) -->
+	<div id="searchBar">
+		<form name="search" method="post">	
+			<input type="text" name="keyWord" class="search" placeholder="검색하고 싶은 프로젝트를 입력해주세요"
+						onkeydown="enterCheck(this.value);" style="padding-left : 20px;">
+		</form>
+		<span class="x" onclick="searchclose();">&times;</span>		
 	</div>
 	
 	<div class="hr"></div>
@@ -152,6 +181,30 @@ fieldset{border:0;}
 			</div>
 		</div>
 	
+	
+<script>
+
+	//검색버튼 눌렀을때 검색창 뜨게 하기
+	$(".icon-search").click(function(){
+		$("#top").css("visibility", "hidden");
+		$("#searchBar").css("display","flex");
+		$(".search").animate({"width":"750px"},800);
+	});
+	//검색버튼 닫기 눌렀을때 다시 top메뉴 뜨기
+	function searchclose(){
+		
+		$(".search").animate({"width":"0px"},800);		
+	
+		setTimeout("hi()",800);
+	}
+	
+	function hi(){		
+		$("#top").css("visibility","visible");	
+		$("#searchBar").css("display","none");
+		$(".search").val("");
+	}
+	//------------------------------------------------검색부분
+</script>	
 
 </body>
 </html>

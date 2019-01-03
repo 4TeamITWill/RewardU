@@ -12,20 +12,17 @@
 		<div class="myGoodList_content">
 			<div class="good_subject">좋아요</div>			
 			
-				<input type="button" value="삭제" onclick="delGood();"/>
-			
+			<div style="display : flex; justify-content : flex-end; margin-bottom : 1rem;">
+				<input style="width : 80px; height : 30px;"type="button" value="삭제" onclick="delGood();"/>
+			</div>
 				
 				<c:if test="${count > 0 }">
 					<form method="get" name="fr">
 					<div class="myGoodList_content_">					
-						<c:forEach var="good" items="${goodlist }">							
-							<div class="good_content">							
-										
-						
-							<input type="checkbox"  name ="delcheck" value="${good.pd_no }"/>	
-								
-						
-								${good.pd_no }					
+						<c:forEach var="good" items="${goodlist }">
+																										
+							<div class="good_content">	
+								<input type="checkbox"  name ="delcheck" value="${good.pd_no }" style="width : 15px; height : 15px;"/>											
 								<div class="content_0"><img src=""></div>
 								<div class="content content_1">${good.user_id }</div>					
 								<div class="content content_2">${good.pd_subject }</div>
@@ -34,9 +31,10 @@
 									<div>${good.pd_rate } / 5 </div><div style="font-weight : bold; color : #f34;"> ~${good.pd_endf }</div>
 								</div>
 																							
-								<button type="button" onclick="reward('${good.pd_no}');" >투자하기</button>	
+								<a class="mybtn" onclick="reward('${good.pd_no}');" style="cursor : pointer;">투자하기</a>	
 								
-							</div>							
+							</div>	
+												
 						</c:forEach>										
 					</div>	
 					</form>	
