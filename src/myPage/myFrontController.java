@@ -26,9 +26,15 @@ public class myFrontController extends HttpServlet{
 			
 			forward = action.execute(request, response);
 			
-		}else if(command.equals("/mySavedList.my")){
+		}else if(command.equals("/mySellPro.my")){
 			
-			action = new mySavedListAction();
+			action = new mySellIndex();
+			
+			forward=action.execute(request, response);
+			
+		}else if(command.equals("/mySellList.my")){
+			
+			action = new mySellListAction();
 			
 			forward=action.execute(request, response);
 			

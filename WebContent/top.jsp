@@ -71,8 +71,6 @@ fieldset{border:0;}
 				document.search.submit();
 			}
 		}
-		
-		
 	}
 	
 </script>
@@ -115,37 +113,34 @@ fieldset{border:0;}
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
-					<a id="goMypage" style="cursor : pointer;">마이페이지</a>&nbsp;&nbsp;
-	<%
-		 		}
-
-	%>			
-				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span>
+				<a id="goMypage" style="cursor : pointer;">마이페이지</a>&nbsp;&nbsp;
+							
+				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span></a>
 	<%
 				//받은 메세지가 0이면 숫자안뜸 1이상이면 뜸
 				if(dontReadCount > 0){	
 	%>							
-				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span></a> <!-- 클릭하면 메시지함으로 -->	
+				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span><!-- 클릭하면 메시지함으로 -->		
 	<%		
 				}
+		 	}
 		}	
 	%>		
-			
 			</div>			
 		</div>			
 	</div>
-	
+		
 	<!-- searchBar 부분(돋보기 클릭시 상단에 뜨는) -->
 	<div id="searchBar">
 		<form name="search" method="post">	
-			<input type="text" name="keyWord" class="search" placeholder="검색하고 싶은 프로젝트를 입력해주세요"
+			<input type="text" name="keyWord" class="search" placeholder="원하는 프로젝트를 검색해 보세요"
 						onkeydown="enterCheck(this.value);" style="padding-left : 20px;">
 		</form>
 		<span class="x" onclick="searchclose();">&times;</span>		
-	</div>
-	
+	</div>	
+	<!-- --------------------------------------- -->	
 	<div class="hr"></div>
-
+	
 	<!-- <div class="hr" height="50" >&nbsp;</div>	 -->
 		<!-- 펼쳐지는 메뉴부분 -->
 		<div class="slidedown_menu">
@@ -186,7 +181,7 @@ fieldset{border:0;}
 
 	//검색버튼 눌렀을때 검색창 뜨게 하기
 	$(".icon-search").click(function(){
-		$("#top").css("visibility", "hidden");
+		$(".top_container").css("display", "none");
 		$("#searchBar").css("display","flex");
 		$(".search").animate({"width":"750px"},800);
 	});
@@ -195,11 +190,11 @@ fieldset{border:0;}
 		
 		$(".search").animate({"width":"0px"},800);		
 	
-		setTimeout("hi()",800);
+		setTimeout("hi()",750);
 	}
 	
 	function hi(){		
-		$("#top").css("visibility","visible");	
+		$(".top_container").css("display","flex");	
 		$("#searchBar").css("display","none");
 		$(".search").val("");
 	}
