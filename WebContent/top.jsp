@@ -86,7 +86,7 @@ fieldset{border:0;}
 			<div class="menuLine_container">
 				<div class="menuLine" >
 					<a class = "menu_boss">리워드</a>
-					<a href="./PermitList.ad">리워드 게시판</a>
+					<a href="PermitList.ad">리워드 게시판</a>
 					<a href="링크넣기">리워드 신청하기</a>
 				</div>
 				<div class="menuLine">

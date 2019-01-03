@@ -94,6 +94,13 @@ public class adFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else if(command.equals("/PermitListcategory.ad")){
+			action = new adPermitcategoryAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}else if(command.equals("/PermitMore.ad")){
 			action = new adPermitMoreAction();
 			try{

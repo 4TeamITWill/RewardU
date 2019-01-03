@@ -15,13 +15,16 @@ public class adPermitAction implements adAction {
 	public adActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		
-		String center = request.getParameter("center");
-		if(center == null){
-			center = "pd_start";
-		}
+/*		String Context = request.getContextPath();
+		System.out.println(Context);
+		StringBuffer URL = request.getRequestURL();
+		System.out.println(URL);
+		String URI = request.getRequestURI();
+		System.out.println(URI);
+		String Path = request.getServletPath();
+		System.out.println(Path);*/
 		
 		BoardDAO bDAO = new BoardDAO();
-		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
 		//페이징 처리
 		//한 페이지 에 보여줄 글 목록 수
 		int pageSize = 9; 
@@ -61,8 +64,24 @@ public class adPermitAction implements adAction {
 		int endRow = currentPage * pageSize;
 		//페이징 처리 끝
 		//리스트 조회 limit으로 startRow , pageSize
+		
+		
+		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+		
+		String category = request.getParameter("category");
+		System.out.println(category);
+		
+		String select = request.getParameter("select");
+		String order = request.getParameter("order");
+		if(category == "all"){
+			category = "";
+		}
+		if(order == null){
+			order = "pd_start";
+		}
+		
 		if(listCount > 0){
-			list = bDAO.getPermitList(center,startRow,pageSize);
+			list = bDAO.getPermitList(select,order,startRow,pageSize);
 		}else{
 			list = null;
 		}
@@ -93,9 +112,10 @@ public class adPermitAction implements adAction {
 		System.out.println(endPage+"END");
 		request.setAttribute("list", list);
 		
+		
 		adActionForward forward = new adActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./index.jsp?center=Reward/RewardMain.jsp&opt="+center);
+		forward.setPath("./index.jsp?center=Reward/RewardMain.jsp&opt="+order+"&select="+select+"&category="+category);
 		
 		return forward;
 	}
