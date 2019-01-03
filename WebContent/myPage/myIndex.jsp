@@ -14,7 +14,7 @@
 			<div class="myindex_tab">
 				<a href="myPageReward.my" class="link link1" id="link1">투자현황</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="myPageGood.my" class="link link2">나의 관심사</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="mySavedList.my" class="link link3">개설프로젝트</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="mySellPro.my" class="link link3">개설프로젝트</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="MemberMypageAction.me" class="link link4">개인정보 설정</a>&nbsp;&nbsp;&nbsp;&nbsp;
 			</div>	
 		</div>
@@ -55,7 +55,7 @@
 			$(".link2").css("border-bottom", "4px solid #b44af7")
 		</script>
 <%		
-	}else if(request.getAttribute("myPage_center") == "savedList.jsp"){
+	}else if(request.getAttribute("myPage_center") == "mySellIndex.jsp"){
 %>
 		<script>
 			$(".link3").css("border-bottom", "4px solid #b44af7");

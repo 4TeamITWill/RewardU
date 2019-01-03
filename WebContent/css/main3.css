@@ -15,8 +15,6 @@ body{
     position : relative;
 }
 
-
-
 /* top */
 
 #top {
@@ -614,14 +612,19 @@ body{
 
 /* 좋아요 페이지 */
 
-#myGoodList_main, #myRewardList_main {
+#myGoodList_main {
 	width : 1000px;
 	margin : 0 auto;	
 }
 
+#myRewardList_main {
+	width : 900px;
+	margin : 0 auto;
+}
+
 .myGoodList_content, .myRewardList_content {
 	box-sizing : border-box;
-	padding : 4rem 1.5rem;
+	padding : 4rem 0;
 }
 
 .myGoodList_content_ {
@@ -666,13 +669,14 @@ body{
 
 .reward_desc>div:nth-of-type(1) {
 	flex : 2;
-	font-size : 0.9rem;
+	font-size : 13px;
 	font-weight : 550;
 }
 
 .reward_desc>div:nth-of-type(2) {
 	flex : 8;
 	font-weight : bold;
+	font-size : 17px;
 	color : rgba(50,50,50,0.8);
 }
 
@@ -704,7 +708,7 @@ body{
 }
 
 .good_content .content_1 {
-	font-size : 1.1rem;
+	font-size : 15px;
 	margin-top : 0.4rem;
 }
 
@@ -715,11 +719,13 @@ body{
 
 .good_content .content_3 {
 	color : #34f;
+	font-size : 14px;
 }
 
 .good_content .content_4 {
 	display : flex;
 	justify-content : space-between;
+	margin-top : 7px;
 }
 
 .mybtn {
@@ -766,7 +772,7 @@ body{
 }	
 
 .savedList_top {
-	width : 1000px;
+	width : 800px;
 	margin : 0 auto;
 }
 
@@ -776,16 +782,47 @@ body{
 }
 
 .savedList_bottom_content {
-	width : 1000px;
+	width : 800px;
+	height : 150px;
 	margin : 0 auto;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	border : 0.5px solid rgba(170,170,170,0.6);
+
+}
+
+.savedList_bottom_content {
+	text-align : center;
+}
+
+.savedList_bottom_content>div:nth-of-type(1) {
+	flex : 5;
+	border-right : 0.5px solid rgba(170,170,170,0.6);
+	text-align : left;
+}
+
+.savedList_bottom_content>div:nth-of-type(2) {
+	flex : 2;
+	border-right : 0.5px solid rgba(170,170,170,0.6);
+	
+}
+
+.savedList_bottom_content>div:nth-of-type(3) {
+	flex : 1;
+	
+	border-right : 0.5px solid rgba(170,170,170,0.6);
+}
+
+.savedList_bottom_content>div:nth-of-type(4) {
+	flex : 1;
+	
 }
 
 #savedList_main .savedList_desc {
 	padding : 1rem 1rem;
 	font-weight : bold;
 }
-
-
 
 /* 모달 창 부분 */
 
