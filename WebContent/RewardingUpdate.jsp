@@ -179,7 +179,7 @@
 					<td>
 					</td>
 					<td>
-						<input type="text" name="sellerAcount" value="${requestScope.saveS.sellerAcount}" placeholder="계좌번호를 입력해주세요.">
+						<input type="text" name="sellerAccount" value="${requestScope.saveS.sellerAccount}" placeholder="계좌번호를 입력해주세요.">
 					</td>
 				</tr>	
 			</table><br/>	

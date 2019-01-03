@@ -51,7 +51,7 @@ public class SaveAction implements Action{
 		saveS.setCompany_tell(request.getParameter("company_tell"));
 		saveS.setCompany_fax(request.getParameter("company_fax"));
 		saveS.setCompany_addr(request.getParameter("company_addr"));
-		saveS.setSellerAcount(request.getParameter("sellerAcount"));
+		saveS.setSellerAccount(request.getParameter("sellerAccount"));
 		
 		
 		//저장 성공여부를 담을 변수 선언

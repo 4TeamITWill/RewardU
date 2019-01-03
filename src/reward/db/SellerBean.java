@@ -12,7 +12,7 @@ public class SellerBean {
 	private String company_tell;
 	private String company_fax;
 	private Timestamp seller_date; /*판매자가 처음 등록된 날짜*/
-	private String sellerAcount;
+	private String sellerAccount;
 	
 	
 /*	public String getUser_id() {
@@ -63,11 +63,11 @@ public class SellerBean {
 	public void setSeller_date(Timestamp seller_date) {
 		this.seller_date = seller_date;
 	}
-	public String getSellerAcount() {
-		return sellerAcount;
+	public String getSellerAccount() {
+		return sellerAccount;
 	}
-	public void setSellerAcount(String sellerAcount) {
-		this.sellerAcount = sellerAcount;
+	public void setSellerAccount(String sellerAccount) {
+		this.sellerAccount = sellerAccount;
 	}
 	
 	

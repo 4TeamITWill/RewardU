@@ -65,7 +65,7 @@ public class RewardDAO {
 			pstmt.executeUpdate();
 			
 			
-			sql = "insert into seller(user_id, company_no, company, company_addr, company_tell, company_fax, sellerAcount, seller_date)"
+			sql = "insert into seller(user_id, company_no, company, company_addr, company_tell, company_fax, sellerAccount, seller_date)"
 					+ " values(?, ?, ?, ?, ?, ?, ?, now())";
 			//seller_date는 판매자의 첫 게시물이 등록(관리자가 승인)되는 날짜로 들어가기때문에 
 			// 여기 insert()에서는 now로 하였음..
@@ -78,7 +78,7 @@ public class RewardDAO {
 			pstmt.setString(4, sb.getCompany_addr());
 			pstmt.setString(5, sb.getCompany_tell());
 			pstmt.setString(6, sb.getCompany_fax());
-			pstmt.setString(7, sb.getSellerAcount());
+			pstmt.setString(7, sb.getSellerAccount());
 			
 			result = pstmt.executeUpdate(); //DB작업 성공하면 1, 실패시 0리턴
 			
@@ -150,7 +150,7 @@ public class RewardDAO {
 			pstmt.executeUpdate();
 			
 			
-			sql = "insert into SaveSeller(user_id, company_no, company, company_addr, company_tell, company_fax, sellerAcount, seller_date)"
+			sql = "insert into SaveSeller(user_id, company_no, company, company_addr, company_tell, company_fax, sellerAccount, seller_date)"
 					+ " values(?, ?, ?, ?, ?, ?, ?, now())";
 			//seller_date는 판매자의 첫 게시물이 등록(관리자가 승인)되는 날짜로 들어가기때문에 
 			// 여기 insert()에서는 now로 하였음..
@@ -163,7 +163,7 @@ public class RewardDAO {
 			pstmt.setString(4, saveS.getCompany_addr());
 			pstmt.setString(5, saveS.getCompany_tell());
 			pstmt.setString(6, saveS.getCompany_fax());
-			pstmt.setString(7, saveS.getSellerAcount());
+			pstmt.setString(7, saveS.getSellerAccount());
 			
 			result = pstmt.executeUpdate(); //DB작업 성공하면 1, 실패시 0리턴
 			
@@ -336,7 +336,7 @@ public class RewardDAO {
 					 saveS.setCompany_tell(rs.getString("company_tell"));
 					 saveS.setCompany_fax(rs.getString("company_fax"));
 					 saveS.setCompany_addr(rs.getString("company_addr"));
-					 saveS.setSellerAcount(rs.getString("sellerAcount"));
+					 saveS.setSellerAccount(rs.getString("sellerAccount"));
 					
 				}
 				
@@ -398,7 +398,7 @@ public class RewardDAO {
 					pstmt.executeUpdate();
 					
 					
-					sql = "update SaveSeller set company_no=?, company=?, company_addr=?, company_tell=?, company_fax=?, sellerAcount=? where user_id=? and pd_no=?";
+					sql = "update SaveSeller set company_no=?, company=?, company_addr=?, company_tell=?, company_fax=?, sellerAccount=? where user_id=? and pd_no=?";
 					//seller_date는 판매자의 첫 게시물이 등록(관리자가 승인)되는 날짜로 들어가기때문에 
 					// 여기 insert()에서는 now로 하였음..
 					pstmt = con.prepareStatement(sql);
@@ -408,7 +408,7 @@ public class RewardDAO {
 					pstmt.setString(3, saveS.getCompany_addr());
 					pstmt.setString(4, saveS.getCompany_tell());
 					pstmt.setString(5, saveS.getCompany_fax());
-					pstmt.setString(6, saveS.getSellerAcount());
+					pstmt.setString(6, saveS.getSellerAccount());
 					pstmt.setString(7, saveB.getUser_id());
 					pstmt.setInt(8, saveB.getPd_no());
 					
@@ -561,64 +561,55 @@ public class RewardDAO {
 			 RewardBean dto = null;
 
 			try {
-			//db연결
-			con= getConnection();
-
-			//만약 검색어를 입력하지 않았다면?
-			//keyWord == null || keyWord.isEmpty()는 액션에서 해주기..
-
-			if(keyWord != null){//만약 검색어를 입력 했다면?
-				// keyWord를 가진 데이터를 검색하는데..
+				//db연결
+				con= getConnection();
 	
-				//pd_end-pd_start를 기준으로 하여 오름차순 정렬하여  검색!
+				//만약 검색어를 입력하지 않았다면?
+				//keyWord == null || keyWord.isEmpty()는 액션에서 해주기..
 	
-				sql = "select * from board join seller on board.pd_no=seller.pd_no "
-				+ "where pd_permit=1 and pd_subject like '%" + keyWord + "%' order by pd_end-pd_start asc";
-			}
-			//??를제외한  select구문을 담은 PreparedStatement객체 얻기 pstmt = con.prepareStatement(sql);
-			//PreparedStatement객체를 이용해 Select실행후 그결과를 ResultSet객체에 담아서 얻기rs = pstmt.executeQuery();
-			// ResultSet객체에 테이블 형식으로 저장된 검색한 글정보들을 반복하여 뽑아내서
-
-			// BoardDto객체의 각각의 변수에 저장, 그리고 각각의 BoardDto객체들을 하나씪 백터에 추가 
+				if(keyWord != null){//만약 검색어를 입력 했다면?
+					// keyWord를 가진 데이터를 검색하는데..
+		
+					//pd_end-pd_start를 기준으로 하여 오름차순 정렬하여  검색!
+		
+					sql = "select * from board join seller on board.pd_no=seller.pd_no "
+					+ "where pd_permit=1 and pd_subject like '%" + keyWord + "%' order by pd_end-pd_start asc";
+				}
+				//??를제외한  select구문을 담은 PreparedStatement객체 얻기 pstmt = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
+				//PreparedStatement객체를 이용해 Select실행후 그결과를 ResultSet객체에 담아서 얻기rs = pstmt.executeQuery();
+				rs = pstmt.executeQuery();
+				// ResultSet객체에 테이블 형식으로 저장된 검색한 글정보들을 반복하여 뽑아내서
+				// BoardDto객체의 각각의 변수에 저장, 그리고 각각의 BoardDto객체들을 하나씪 백터에 추가 
 
 			while(rs.next()){
 				dto = new RewardBean();
 	
 				dto.setPd_no(Integer.parseInt(rs.getString("pd_no")));
-	
 				dto.setUser_id(rs.getString("user_id"));
-	
-				dto.setPd_category
-	
-				(rs.getString("pd_category"));
-	
-				 dto.setPd_start
-	
-				(rs.getTimestamp("pd_start"));
-	
-				 dto.setPd_end(rs.getString("pd_end"));
-				 dto.setPd_good(rs.getInt("pd_good"));
-				 dto.setPd_count(rs.getInt("pd_count"));
-				 dto.setPd_file(rs.getString("pd_file"));
-				 dto.setPd_realFile(rs.getString("pd_realFile"));
-				 dto.setPd_goalMoney(rs.getString("Pd_goalMoney"));
-				 dto.setPd_curMoney(rs.getString("pd_curMoney"));
-				 dto.setPd_participant(rs.getInt("pd_participant"));
-				 dto.setPd_result(rs.getInt("pd_result"));
-				 dto.setPd_permit(rs.getInt("pd_permit"));
-				 dto.setPd_content(rs.getString("pd_content"));
-				 dto.setPd_opcontent1(rs.getString("pd_opcontent1")); 
-				 dto.setPd_opcontent2(rs.getString("pd_opcontent2")); 
-				 dto.setPd_opcontent3(rs.getString("pd_opcontent3")); 
-				 dto.setPd_opprice1(rs.getString("pd_opprice1")); 
-				 dto.setPd_opprice2(rs.getString("pd_opprice2"));
-				 dto.setPd_opprice3(rs.getString("pd_opprice3"));
-				 dto.setPd_rate(rs.getDouble("pd_rate"));
-				 dto.setPd_rateCount(rs.getInt("pd_rateCount"));
-				 dto.setCompany(rs.getString("company"));
-	
+				dto.setPd_category(rs.getString("pd_category"));
+				dto.setPd_start(rs.getTimestamp("pd_start"));
+				dto.setPd_end(rs.getString("pd_end"));
+				dto.setPd_good(rs.getInt("pd_good"));
+				dto.setPd_count(rs.getInt("pd_count"));
+				dto.setPd_file(rs.getString("pd_file"));
+				dto.setPd_realFile(rs.getString("pd_realFile"));
+				dto.setPd_goalMoney(rs.getString("Pd_goalMoney"));
+				dto.setPd_curMoney(rs.getString("pd_curMoney"));
+				dto.setPd_participant(rs.getInt("pd_participant"));
+				dto.setPd_result(rs.getInt("pd_result"));
+				dto.setPd_permit(rs.getInt("pd_permit"));
+				dto.setPd_content(rs.getString("pd_content"));
+				dto.setPd_opcontent1(rs.getString("pd_opcontent1")); 
+				dto.setPd_opcontent2(rs.getString("pd_opcontent2")); 
+				dto.setPd_opcontent3(rs.getString("pd_opcontent3")); 
+				dto.setPd_opprice1(rs.getString("pd_opprice1")); 
+				dto.setPd_opprice2(rs.getString("pd_opprice2"));
+				dto.setPd_opprice3(rs.getString("pd_opprice3"));
+				dto.setPd_rate(rs.getDouble("pd_rate"));
+				dto.setPd_rateCount(rs.getInt("pd_rateCount"));
+				dto.setCompany(rs.getString("company"));
 				 //필요하면 seller정보 더 넣기
-	
 				 //백터에 BoardDto객체 추가 
 				 v.add(dto);
 			 }//while반복문 끝
@@ -626,17 +617,11 @@ public class RewardDAO {
 				 System.out.println("getSearchList()메소드에서 오류 : " + e);
 			  } finally {
 				 try {
-	
-				 if(pstmt != null) pstmt.close();
-	
-				 if(con != null) con.close();
-	
-				 if(rs != null) rs.close();
-	
+					 if(pstmt != null) pstmt.close();
+					 if(con != null) con.close();
+					 if(rs != null) rs.close();
 				 } catch (SQLException e) {
-	
-				 e.printStackTrace();
-	
+					 e.printStackTrace();
 				 }
 			 }
 

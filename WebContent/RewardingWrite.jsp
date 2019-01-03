@@ -186,7 +186,7 @@
 					<td>
 					</td>
 					<td>
-						<input type="text" name="sellerAcount" placeholder="계좌번호를 입력해주세요.">
+						<input type="text" name="sellerAccount" placeholder="계좌번호를 입력해주세요.">
 					</td>
 				</tr>		
 			</table><br/>	

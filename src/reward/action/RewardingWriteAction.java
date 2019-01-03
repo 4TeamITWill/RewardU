@@ -54,7 +54,7 @@ public class RewardingWriteAction implements Action {
 		sb.setCompany_tell(request.getParameter("company_tell"));
 		sb.setCompany_fax(request.getParameter("company_fax"));
 		sb.setCompany_addr(request.getParameter("company_addr"));
-		sb.setSellerAcount(request.getParameter("sellerAcount"));
+		sb.setSellerAccount(request.getParameter("sellerAccount"));
 		
 		
 		
