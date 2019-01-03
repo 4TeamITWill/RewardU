@@ -1,5 +1,7 @@
 package member.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,15 +29,37 @@ public class MemberModifyPwAction implements Action{
 		
 		MemberDAO mdao = new MemberDAO();
 		
-		mdao.updatePw(user_id, user_pw, user_pw3);
+		int check = mdao.updatePw(user_id, user_pw, user_pw3);
+		
 		
 		request.setAttribute("mbean", mbean);
-		ActionForward forward = new ActionForward();
 		
-		forward.setRedirect(false);
-		forward.setPath("./Main.me");
+		if(check==1){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			//request.setAttribute("mpw", 1);
+			
+			out.println("<script>");
+			out.println("alert('비밀번호 변경이 완료되었습니다.')");
+			out.println("location.href='./Main.me'");
+			out.println("</script>");
+			
+			return null;
+		}else {
+			response.setContentType("text/html; charset=UTF-8");
+			request.setAttribute("mpw", 2);
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			//out.println("alert('기존 비밀번호와 입력값이 일치하지 않습니다.')");
+			out.println("location.href='./MemberModifyPw.me?mpw=2;'");
+			out.println("</script>");
+			
+			return null;
+		}
 		
-		return forward;
+		
+
+		
 	}
 
 }

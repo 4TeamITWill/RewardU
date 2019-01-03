@@ -36,25 +36,25 @@ public class MemberDeleteAction implements Action{
 			PrintWriter out = response.getWriter();
 						
 			
-			out.println("<script>");
-			out.print("alert('탈퇴가 완료 되었습니다.')");
-			
-			out.println("</script>");
-			out.close();
-			session.invalidate();
-			
 			/*ActionForward forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath("./Main.me");
-			
 			return forward;*/
+			out.println("<script>");
+			out.println("alert('탈퇴가 완료 되었습니다.')");
+			out.println("location.href='./Main.me';");
+			out.println("</script>");
+
+			session.invalidate();
 			
+			
+			return null;
 		}else {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 		
 			out.println("<script>");
-			out.print("alert('비밀번호가 일치하지 않습니다.')");
+			out.println("alert('비밀번호가 일치하지 않습니다.')");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();

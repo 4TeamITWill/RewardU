@@ -390,10 +390,12 @@ public class MemberDAO {
 				
 				pstmt.setString(1, user_pw3);
 				pstmt.setString(2, user_id);
-				pstmt.executeUpdate();
 				
+				pstmt.executeUpdate();
+					System.out.println("okay");
 				}else {
 					check=0;
+					System.out.println("pw wrong");
 				}
 			}//if
 			

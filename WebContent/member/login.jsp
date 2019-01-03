@@ -18,13 +18,13 @@ body { }
 .margin3{margin-top: 20px;}
 .margin4{margin-bottom: 100px;}
     
-#loginForm{width: 430px; hegiht:450px; 
+#loginForm{width: 430px; 
 		border: 1px solid #aaa;
 		margin: 0 auto;
 		background-color: #fff;
 		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
-}
+
 
 
 #login_content {
@@ -35,8 +35,8 @@ body { }
 }
 
 #login_content .formh2 {
-	padding-top: 5px;
-	margin-left: 38px;
+	padding-top: 1px;
+	margin-left: 23px;
 }
 
 
@@ -91,10 +91,11 @@ body { }
 			}else if (loginVal == "2") {
 				$('#checkMessage').html('일치하는 아이디가 없습니다.');
 				$('#myModal').show();
-			}else {
+			}
+			/* else {
 				$('#checkMessage').html('방가방가');
 				$('#myModal').show();
-			}
+			} */
 
 	});
 	 

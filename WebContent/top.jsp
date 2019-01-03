@@ -170,8 +170,8 @@ fieldset{border:0;}
 				</div>	
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">NEWS</a>
-					<a href="링크넣기">리듀 소식</a>					
-					<a href="링크넣기">리워드 소식</a>
+					<a href="./NewsAction.news">리듀 소식</a>					
+					<a href="#">리워드 소식</a>
 				</div>	
 			</div>
 		</div>
