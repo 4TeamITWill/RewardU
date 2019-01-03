@@ -13,10 +13,14 @@ public class adPermitMoreAction implements adAction {
 	@Override
 	public adActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub	
-		String center = request.getParameter("center");
-		System.out.println(center);
-		if(center == null){
-			center = "pd_start";
+		String category = request.getParameter("category");
+		System.out.println(category);
+		String select = request.getParameter("select");
+		System.out.println(select);
+		String order = request.getParameter("order");
+		System.out.println(order);
+		if(order == null){
+			order = "pd_start";
 		}
 		
 		BoardDAO bDAO = new BoardDAO();
@@ -28,18 +32,14 @@ public class adPermitMoreAction implements adAction {
 		int pageGroupSize = 5;
 		//현재 페이지 번호
 		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null){
-			pageNum = "1";
-		}
-		
+		System.out.println("pageNum: "+pageNum);
 		int currentPage = Integer.parseInt(pageNum);
-		if(currentPage < 1){
-			currentPage = 1;
-		}
+		System.out.println("currentPage: "+currentPage);
 		//총 목록 개수
-		int listCount = bDAO.getPermitListCount();
-		
+		int listCount = bDAO.getPermitMoreListCount(category, select);
+		System.out.println("listCount: "+listCount);
 		int number = listCount-(currentPage-1)*pageSize;
+		System.out.println("number: "+number);
 		//페이지 그룹 개수(1그룹에 5개 페이지)
 		int pageGroupCount = listCount/(pageSize*pageGroupSize)+( listCount % (pageSize*pageGroupSize) == 0 ? 0 : 1);
 		//페이지 그룹의 번호(1그룹 의 번호는 1, 2그룹의 번호는 2 ...)
@@ -61,7 +61,7 @@ public class adPermitMoreAction implements adAction {
 		//페이징 처리 끝
 		//리스트 조회 limit으로 startRow , pageSize
 		if(listCount > 0){
-			list = bDAO.getPermitList(center,startRow,pageSize);
+			list = bDAO.getPermitCategoryList(category, select, order, startRow, pageSize);
 		}else{
 			list = null;
 		}

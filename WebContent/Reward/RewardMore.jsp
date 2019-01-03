@@ -11,11 +11,8 @@
 			<table id="table"  width="1000" border="0" align="center">
 				<c:forEach var="list" items="${requestScope.list}" varStatus="status">				
 				<c:if test="${status.index mod 3 eq 0 }">
-				
 				<tr id="tr">
 				</c:if>
-					${status.index }
-					${number }	
 					<td align="center" width="333">
 						<a href="#">
 							<img src="./img/1.jpg" width="280" border="0">
@@ -30,7 +27,7 @@
 				       			<span>${list.pd_category }</span>
 				        	</a>
 				        	<a>
-				        		"point"
+				        		"oint"
 				        	</a>
 			        	</div>
 					</td>
