@@ -18,9 +18,15 @@
 	String id = (String)session.getAttribute("id");
 	//mdto세션값 받기
 	MessageDTO mdto = new MessageDTO();
+	/* 
 	mdto = (MessageDTO)session.getAttribute("mdto");
 	//구분값 얻기
 	String divide=(String)session.getAttribute("divide");
+	 */
+	 
+	mdto = (MessageDTO)request.getAttribute("mdto");
+	String divide = (String)request.getAttribute("divide");
+	
 	//엔터처리한 값을 받기 위한 Content
 	String Content = null;
 	//글 내용이 존재 한다면 내용 엔터처리해서 얻기

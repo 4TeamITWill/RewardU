@@ -443,7 +443,7 @@ public class MessageDAO {
 	}//deleteMessageButton()끝
 	
 	//넘겨받은 번호에 해당하는 메시지 정보를 담은 DTO객체를 반환하는 메소드
-	public MessageDTO getMessage(int no, String divide){
+	public MessageDTO getMessage(int no, String divide, String id){
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;
@@ -453,14 +453,15 @@ public class MessageDAO {
 			con = getConnection();
 			//구분값에 따라 검색 쿼리문을 설정
 			if(divide.equals("receive")){
-				sql = "select * from message_receive where no=?";
+				sql = "select * from message_receive where no=? and fromID=?";
 			}else if(divide.equals("send")){
-				sql = "select * from message_send where no=?";
+				sql = "select * from message_send where no=? and toID=?";
 			}else if(divide.equals("store")){
-				sql = "select * from message_store where no=?";
+				sql = "select * from message_store where no=? and storeID=?";
 			}
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			//검색 값이 존재한다면
 			if(rs.next()){
@@ -472,8 +473,9 @@ public class MessageDAO {
 				mdto.setContent(rs.getString("content"));
 				mdto.setReg_date(rs.getTimestamp("reg_date"));
 				mdto.setRead_status(rs.getInt("read_status"));
+				if(divide.equals("store")){mdto.setStoreID(rs.getString("storeID"));}
 				return mdto;
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

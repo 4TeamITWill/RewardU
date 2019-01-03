@@ -107,7 +107,9 @@ if(count > 0){ //메시지가 존재 한다면
 		<tr align="center">
 			<td width="80px"><%=mdto.getNo()%></td>
 			<td width="230px"><%=toID%></td>
-			<td width="500px"><a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive"><%=mdto.getSubject()%></a></td>
+			<td width="500px">
+			<a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive&id=<%=id%>"><%=mdto.getSubject()%></a>
+			</td>
 			<td width="170px"><%=sdf.format(mdto.getReg_date()) %></td>
 			<td width="100px"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>
@@ -117,7 +119,9 @@ if(count > 0){ //메시지가 존재 한다면
 		<tr align="center">
 			<td class="readMessage" width="5%"><%=mdto.getNo()%></td>
 			<td class="readMessage" width="8%"><%=mdto.getToID()%></td>
-			<td class="readMessage" width="23%"><a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive"><%=mdto.getSubject()%></a></td>
+			<td class="readMessage" width="23%">
+			<a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive&id=<%=id%>"><%=mdto.getSubject()%></a>
+			</td>
 			<td class="readMessage" width="15%"><%=sdf.format(mdto.getReg_date()) %></td>
 			<td width="5%"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>

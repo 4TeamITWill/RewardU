@@ -104,7 +104,9 @@ if(count > 0){ //메시지가 존재 한다면
 		<tr align="center">
 			<td width="200px"><%=toID%></td>
 			<td width="200px"><%=fromID%></td>
-			<td width="500px"><a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=store"><%=mdto.getSubject()%></a></td>
+			<td width="500px">
+			<a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=store&id=<%=id%>"><%=mdto.getSubject()%></a>
+			</td>
 			<td width="170px"><%=sdf.format(mdto.getReg_date()) %></td>
 			<td width="100px"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>
