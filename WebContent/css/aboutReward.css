@@ -83,15 +83,15 @@
 /* writeNotice.jsp */
 .writeNotice_div{
 	position: absolute;
-	width: 700px; height: auto; text-align: center;
-	left: 30%; top: 15%;
+	width: 1100px; height: auto; text-align: center;
+	left: 21%; top: 15%;
 }
 .writeNotice_table{border: 1px groove gray; border-radius: 2%;}
 .writeNotice_sub{
-	width: 500px; height: 30px; border-radius: 5%;
+	width: 900px; height: 30px; border-radius: 5%;
 }
 .writeNotice_con{
-	width: 500px; height: 300px; border-radius: 1%;
+	width: 900px; height: 300px; border-radius: 1%;
 }
 
 /* contentNotice.jsp */
