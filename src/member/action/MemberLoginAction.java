@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.db.MemberBean;
 import member.db.MemberDAO;
 
 public class MemberLoginAction implements Action{
@@ -16,10 +17,15 @@ public class MemberLoginAction implements Action{
 		System.out.println("MemberLoginAction ()");
 		
 		String user_id = request.getParameter("user_id");
-		String user_name = request.getParameter("user_name");
 		String user_pw = request.getParameter("user_pw");
 		
 		MemberDAO mdao = new MemberDAO();
+		
+		MemberBean mbean = mdao.getMember(user_id);
+		
+		String user_name = mbean.getUser_name();
+		
+		
 		
 		int check = mdao.userCheck(user_id, user_pw);
 		

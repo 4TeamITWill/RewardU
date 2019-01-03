@@ -9,20 +9,30 @@
 <link href="css/etc.css" rel="stylesheet">
 <style type="text/css">
 
+.wrap {background-color: #ddd;
+padding: 150px 200px;}
+
 .margin{margin-top: 100px;}
 .margin2{margin-top: 50px;}
 .margin3{margin-top: 20px;}
 .margin4{margin-bottom: 100px;}
+
+#deleteForm{width: 430px; height:300px; 
+		border: 1px solid #aaa;
+		margin: 0 auto;
+		background-color: #fff;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
 
 
 </style>
 </head>
 <body>
 
-<jsp:include page="../top.jsp"/>
-
 <div class="wrap">
 	<div class="container" align="center">
+	<!-- <div class="margin"></div> -->
+		<div id="deleteForm">
 		<h2>회원탈퇴</h2>
 		<form action="./MemberDeleteAction.me">
 		<!-- id -->	
@@ -34,6 +44,7 @@
 			<input type="submit" value="탈퇴하기" class="btn w175">
 			<input type="button" value="메인으로" class="btn1 w175" onclick="location.href='./Main.me'">
 		</form>
+		</div><!-- deleteForm -->
 	</div><!-- container -->
 </div><!-- wrap -->
 </body>
