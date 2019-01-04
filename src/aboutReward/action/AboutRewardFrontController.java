@@ -46,6 +46,13 @@ public class AboutRewardFrontController extends HttpServlet{
 			forward.setRedirect(false);
 			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
 			forward.setPath("./index.jsp?center=aboutReward/aboutReward.jsp");
+		} else if(command.equals("/Guide.ar")){
+			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
+			forward=new ActionForward();
+			//페이지 이동 방식 여부 값 false로 저장-> RequestDispatcher  forward() 방식
+			forward.setRedirect(false);
+			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
+			forward.setPath("./index.jsp?center=aboutReward/Guide.jsp");
 		}
 		
 		

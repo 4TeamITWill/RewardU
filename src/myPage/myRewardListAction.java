@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import my_db.InvestBean;
+import invest_db.InvestBean;
 import my_db.MyDAO;
 
 public class myRewardListAction implements myAction {

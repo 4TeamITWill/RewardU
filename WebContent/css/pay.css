@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+center{position: relative;
+	min-height: 700px;
+}
+
+.option_list{border: 2px groove gray; 
+	text-align: left;
+	position: absolute;
+	left: 33%; top:15%;
+	min-width: 600px; min-height: 500px;
+}
+.option1_div,.option2_div,.option3_div{display: none;}
+
+
+

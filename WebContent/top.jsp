@@ -163,7 +163,7 @@ fieldset{border:0;}
 				</div>
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
-					<a href="링크넣기">이용가이드</a>
+					<a href="./Guide.ar">이용가이드</a>
 					<a href="./AboutReward.ar">리워드란?</a>
 					<a href="링크넣기">리듀 소개</a>					
 					<a href="./Notice.no">공지사항</a>	

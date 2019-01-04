@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import admin_db.BoardBean;
 import admin_db.MemberBean;
-import my_db.InvestBean;
+
 import my_db.MyDAO;
 
 public class myIndexAction implements myAction {

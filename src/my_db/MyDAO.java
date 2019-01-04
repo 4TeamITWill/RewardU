@@ -16,6 +16,7 @@ import admin_db.BoardBean;
 import admin_db.BoardDAO;
 import admin_db.MemberBean;
 import admin_db.SellerBean;
+import invest_db.InvestBean;
 
 public class MyDAO {
 
