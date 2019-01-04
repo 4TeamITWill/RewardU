@@ -62,7 +62,7 @@ public class RewardController extends HttpServlet{
 		
 			forward.setRedirect(false);			
 			
-			forward.setPath("./index.jsp?center=RewardingWrite.jsp");
+			forward.setPath("./index.jsp?center=RewardingWrite_index.jsp");
 			
 			
 			//RewardingWrite.jsp(양식작성페이지)와  RewardingUpdate.jsp(수정페이지)에서 '승인요청'이 들어왔을때
