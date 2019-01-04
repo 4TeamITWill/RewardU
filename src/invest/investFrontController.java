@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 public class investFrontController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -41,6 +42,10 @@ public class investFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+		}else if(command.equals("/ReturnMain.in")){
+			forward = new inActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./index.jsp?center=main.jsp");
 		}
 		
 		//이동
