@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 public class BoardDAO {
 		
 	private Connection  getConnection() throws Exception{
@@ -485,5 +486,146 @@ public class BoardDAO {
 				
 				return count;
 			}
-}
+	
+	
+		public void upGood(int pd_no){
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			
+			try {
+				con = getConnection();
+				sql = "update board set pd_good = pd_good+1 where pd_no=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, pd_no);
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (con != null) con.close();
+					if (pstmt != null) pstmt.close();
+					if (rs != null)rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}	
+		}//upGood()끝
+		
+		//전달받는 pd_no번호에 해당하는 board테이블의 pd_good값(좋아요 수)을 1 내려주는 메소드
+			public void downGood(int pd_no){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				
+				try {
+					con = getConnection();
+					sql = "update board set pd_good = pd_good-1 where pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, pd_no);
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (con != null) con.close();
+						if (pstmt != null) pstmt.close();
+						if (rs != null)rs.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}	
+			}//downGood()끝
+			
+			public int Good(String user_id, int pd_no){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				int result = -1; //좋아요x -> 좋아요o  는 result 1   // 좋아요o -> 좋아요x  는 result 0
+				try {
+					//커넥션 객체 얻어옴
+					con = getConnection();
+					//사용자 아이디와 해당 게시글 번호가 good테이블에 저장되어 있는가?
+					sql = "select * from good where user_id=? and pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user_id);
+					pstmt.setInt(2, pd_no);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()){//good테이블에 이미 저장되어 있다면?
+						//좋아요를 취소하는 상황이므로 good테이블에서 삭제한다.
+						sql = "delete from good where user_id=? and pd_no=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, user_id);
+						pstmt.setInt(2, pd_no);
+						pstmt.executeUpdate();
+						result = 0; //좋아요를 취소했으므로 result=0
+					} 
+					else{//good테이블에 없다면?
+						//좋아요가 안된상황에서 좋아요를 누른것이므로 good테이블에 추가해준다.
+						sql = "insert into good(user_id,pd_no) values(?,?)";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, user_id);
+						pstmt.setInt(2, pd_no);
+						pstmt.executeUpdate();
+						result = 1; //좋아요를 했으므로 result=1
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try { //자원해제
+						if(rs != null) rs.close();
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return result;
+			}//Good() 끝
+			
+			//사용자가 게시글 클릭해서 상세내용 들어왔을 때 좋아요를 한 상태인지 아닌 상태인지 구분하기 위한 메소드
+			public int GoodStatus(String user_id, int pd_no){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				int result = -1; //좋아요를 해놓은 상태라면 1을 리턴, 아니면 0을 리턴하기 위한 변수
+				
+				try {
+					con = getConnection();
+					//해당 사용자가 이 게시글을 좋아요 해놓은 상태인지 아닌지 알기 위해 검색
+					sql = "select * from good where user_id=? and pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user_id);
+					pstmt.setInt(2, pd_no);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()){ //좋아요를 해놓은 상황
+						result = 1;
+					} else{ //좋아요를 안해놓은 상황
+						result = 0;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try { //자원해제
+						if(rs != null) rs.close();
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return result;
+			}
+		
+	
+}//BoardDAO 끝
 
