@@ -58,7 +58,7 @@ public class inChoosingOptionAction implements inAction {
 		
 		inActionForward forward = new inActionForward();
 		
-		forward.setPath("./invest/checkingOut.jsp");
+		forward.setPath("./index.jsp?center=invest/checkingOut.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

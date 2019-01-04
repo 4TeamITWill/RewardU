@@ -47,7 +47,7 @@ public class inInsertingAction implements inAction{
 		
 		inActionForward forward = new inActionForward();
 		
-		forward.setPath("./invest/investResult.jsp");
+		forward.setPath("./index.jsp?center=invest/investResult.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
