@@ -108,6 +108,13 @@ public class adFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else if(command.equals("/getFunding.ad")){
+			action = new adBoardFundingAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 		//�씠�룞

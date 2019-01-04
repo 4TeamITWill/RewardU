@@ -74,6 +74,14 @@
   		<url-pattern>*.news</url-pattern>
   	</servlet-mapping>
 
+  <servlet>
+  	<servlet-name>investFrontController</servlet-name>
+  	<servlet-class>invest.investFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>investFrontController</servlet-name>
+  	<url-pattern>*.in</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

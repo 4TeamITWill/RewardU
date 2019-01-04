@@ -8,13 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%String id = (String)session.getAttribute("id"); %>
 			<table id="table"  width="1000" border="0" align="center">
 				<c:forEach var="list" items="${requestScope.list}" varStatus="status">				
 				<c:if test="${status.index mod 3 eq 0 }">
 				<tr id="tr">
 				</c:if>
 					<td align="center" width="333">
-						<a href="#">
+						<a href="./getFunding.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 							<img src="./img/1.jpg" width="280" border="0">
 						</a>
 						<a href="#">

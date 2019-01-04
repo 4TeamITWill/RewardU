@@ -323,19 +323,24 @@ public class MyDAO {
 			while(rs.next()){
 				ibean = new InvestBean();
 				
-				ibean.setInv_account(rs.getString("inv_account"));
-				ibean.setInv_addr(rs.getString("inv_addr"));
-				ibean.setInv_confirm(rs.getInt("inv_confirm"));
-				ibean.setInv_datef(dformat.format(rs.getTimestamp("inv_date")));
-				ibean.setInv_name(rs.getString("inv_name"));
-				ibean.setInv_orderno(rs.getInt("inv_orderno"));
-				ibean.setInv_phone(rs.getString("inv_phone"));
-				ibean.setInv_price(rs.getInt("inv_price"));
-				ibean.setInv_qty(rs.getInt("inv_qty"));
-				ibean.setInv_username(rs.getString("inv_username"));
-				ibean.setPd_no(rs.getInt("pd_no"));
 				ibean.setUser_id(rs.getString("user_id"));
-				
+				ibean.setPd_no(rs.getInt("pd_no"));
+				ibean.setInv_orderno(rs.getInt("inv_orderno"));
+				ibean.setInv_name(rs.getString("inv_name"));
+				ibean.setInv_investor(rs.getString("inv_investor"));
+				ibean.setInv_addr(rs.getString("inv_addr"));
+				ibean.setInv_phone(rs.getString("inv_phone"));
+				ibean.setInv_price(rs.getString("inv_price"));
+				ibean.setInv_datef(dformat.format(rs.getTimestamp("inv_date")));
+				ibean.setInv_confirm(rs.getInt("inv_confirm"));
+				ibean.setInv_account(rs.getString("inv_account"));
+				ibean.setOp1_price(rs.getString("op1_price"));
+				ibean.setOp1_qty(rs.getInt("op1_qty"));
+				ibean.setOp2_price(rs.getString("op2_price"));
+				ibean.setOp2_qty(rs.getInt("op2_qty"));
+				ibean.setOp3_price(rs.getString("op3_price"));
+				ibean.setOp3_qty(rs.getInt("op3_qty"));
+		
 				BoardDAO bdao = new BoardDAO();
 				BoardBean bbean = bdao.getBoard(ibean.getPd_no());
 				//ibean의 pd_no값으로 BoardBean의 result값도 같이뽑음				

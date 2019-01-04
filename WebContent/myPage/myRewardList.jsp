@@ -51,10 +51,16 @@
 							<div>리워드 옵션</div><div>선택한 옵션 들어가야되는데 컬럼이 없네?</div>
 						</div>
 						<div class="reward_desc">
-							<div>구매 가격 / 수량</div><div>${invest.inv_price}원 / ${invest.inv_qty }개</div>
+							<div>옵션 1 구매 가격 / 수량</div><div>${invest.op1_price}원 / ${invest.op1_qty }개</div>
 						</div>
 						<div class="reward_desc">
-							<div>받는분 / 연락처</div><div>${invest.inv_username } / ${invest.inv_phone }</div>
+							<div>옵션 2 구매 가격 / 수량</div><div>${invest.op2_price}원 / ${invest.op2_qty }개</div>
+						</div>
+						<div class="reward_desc">
+							<div>옵션 3 구매 가격 / 수량</div><div>${invest.op3_price}원 / ${invest.op3_qty }개</div>
+						</div>
+						<div class="reward_desc">
+							<div>받는분 / 연락처</div><div>${invest.inv_investor } / ${invest.inv_phone }</div>
 						</div>
 						<div class="reward_desc">
 							<div>배송지</div><div>${invest.inv_addr}</div>
@@ -63,7 +69,7 @@
 							<div>결제수단</div><div>응 없어~</div>
 						</div>
 						<div class="reward_desc">
-							<div>총 결제 금액</div><div>총결제금액? 배송비????</div>
+							<div>총 결제 금액</div><div>${invest.inv_price}원</div>
 						</div>						
 					</div>				
 				</div>	
