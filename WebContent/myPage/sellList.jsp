@@ -34,18 +34,18 @@
 			<!-- 페이징 부분 -->
 				<div class="my_board_page">
 					<c:if test="${startPage > pageBlock }">
-						<a href="mySellList.my?currentPage1=${startPage-pageBlock }">이전</a>
+						<a onclick="pageajax(${startPage-pageBlock });">이전</a>
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a href="mySellList.my?currentPage1=${i}" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
+						<a onclick = "pageajax(${i});" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a href="mySellList.my?currentPage1=${i}">${i }</a>
+						<a onclick = "pageajax(${i});" style="display:block; width:30px; height : 30px; line-height : 30px;">${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">
-						<a href="mySellList.my?currentPage1=${startPage+5 }">다음</a>
+						<a onclick ="pageajax(${startPage+5 });">다음</a>
 					</c:if>
 				</div>		
 		</div>	

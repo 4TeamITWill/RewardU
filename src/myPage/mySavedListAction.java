@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import admin_db.BoardBean;
-import admin_db.BoardDAO;
-import my_db.SaveBoard;
 import my_db.MyDAO;
+import my_db.SaveBoard;
 
-public class mySellListAction implements myAction {
+public class mySavedListAction implements myAction {
 
 	@Override
 	public myActionForward execute(HttpServletRequest request, HttpServletResponse response) {
@@ -37,31 +35,26 @@ public class mySellListAction implements myAction {
 		int endPage = startPage + pageBlock - 1;
 		
 		if(endPage > pageCount) endPage = pageCount;
-				
-		//판매중인 글 가져오기
-		ArrayList<BoardBean> board1list = mydao.get1BoardList(user_id, startRow, pageSize);		
-		//판매완료 글 가져오기
-		ArrayList<BoardBean> board0list = mydao.get0BoardList(user_id, startRow, pageSize);
-		//임시저장글 가져오기
 		
+		ArrayList<SaveBoard> savelist = mydao.getSaveList(user_id);
 		
-		request.setAttribute("board1list", board1list);
-		request.setAttribute("board0list", board0list);
+		request.setAttribute("savelist", savelist);
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("pageBlock", pageBlock);		
+		request.setAttribute("pageBlock", pageBlock);
 		
 		myActionForward forward = new myActionForward();
 		
-		forward.setPath("./myPage/sellList.jsp");
+		forward.setPath("./myPage/savedList.jsp");
 
 		forward.setRedirect(false);
 		
 		return forward;
+		
 	}
 
 }

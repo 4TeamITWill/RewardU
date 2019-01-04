@@ -38,6 +38,12 @@ public class myFrontController extends HttpServlet{
 			
 			forward=action.execute(request, response);
 			
+		}else if(command.equals("/mySavedList.my")){
+		
+			action = new mySavedListAction();
+			
+			forward = action.execute(request, response);
+			
 		}else if(command.equals("/myPageGood.my")){
 			
 			action = new myGoodListAction();
