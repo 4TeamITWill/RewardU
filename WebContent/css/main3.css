@@ -1015,3 +1015,28 @@ body{
 	padding-left : 3rem;
 	padding-top : 2rem;
 }
+
+/* 관리자 페이지 부분!!!!!!!!!!!!!!!!! */
+
+#admin_index {
+	padding : 4rem 0 ;
+}
+
+#ad_tab {
+	width : 1000px;
+	margin : 0 auto;
+}
+
+#ad_tab a {
+	display : inline-block;
+	width : 100px;
+	height : 30px;
+	text-align : center;
+	line-height : 30px;
+}
+
+#ad_main {
+	width : 1000px;
+	margin : 2rem auto;
+}
+

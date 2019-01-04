@@ -26,7 +26,7 @@ public class adGetBoardAction implements adAction {
 		
 		adActionForward forward = new adActionForward();
 		
-		forward.setPath("./admin/admin_board_look.jsp");
+		forward.setPath("./index.jsp?center=./admin/admin_board_look.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
