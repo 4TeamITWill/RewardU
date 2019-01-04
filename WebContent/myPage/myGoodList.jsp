@@ -9,11 +9,11 @@
 </head>
 <body>
 	<div id="myGoodList_main">	
-		<div class="myGoodList_content">
-			<div class="good_subject">좋아요</div>			
+		<div class="myGoodList_content">		
 			
-			<div style="display : flex; justify-content : flex-end; margin-bottom : 1rem;">
-				<input style="width : 80px; height : 30px;"type="button" value="삭제" onclick="delGood();"/>
+			<div style="display : flex; justify-content : space-between; align-items : center; margin-bottom : 0.5rem;">
+				<div class="good_subject">좋아요</div>	
+				<input style="width : 80px; height : 30px;"type="button" value="삭제하기" onclick="delGood();"/>
 			</div>
 				
 				<c:if test="${count > 0 }">

@@ -30,7 +30,7 @@ public class RewardingSaveListAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("index.jsp?center=SaveList.jsp"); 
+		forward.setPath("./SaveList.jsp"); 
 		
 		return forward;
 	

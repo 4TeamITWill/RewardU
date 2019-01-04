@@ -12,9 +12,11 @@
 <title>Save List</title>
 </head>
 <body>
-<h2>저장리스트</h2>
 
-	<table border="1">
+<div class="saveList_content" style="width : 800px; margin : 0 auto;">
+<h3>&nbsp;&nbsp;임시저장된 글 목록입니다. 수정을 클릭하여 이어서 작성할 수 있습니다.</h3>
+
+	<table border="1" width="100%">
 		<tr>
 			<td>아이디</td>
 			<td>번호</td>
@@ -60,5 +62,6 @@
 			
 
 	</table>
+</div>	
 </body>
 </html>

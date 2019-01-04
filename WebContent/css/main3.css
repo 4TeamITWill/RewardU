@@ -756,15 +756,19 @@ body{
 
 .bt {
 	display : block;
-	width : 160px;
+	width : 120px;
 	text-align : center;
 	cursor : pointer;
-	background-color : #ccc;
+	
 }
 
 .bt-on {	
-	background-color : #b44af7;
-	border : #b749f8;
+	border : 1px solid #646464;
+	display : block;
+	width : 120px;
+	text-align : center;
+	cursor : pointer;
+	width : 120px;
 }
 
 #savedList_main {
