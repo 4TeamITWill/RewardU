@@ -90,9 +90,9 @@
 				document.getElementById("ad_content").innerHTML = data;
 				
 			}
-		});
-	
+		});	
 	}
+	
 </script>	
 </body>
 </html>

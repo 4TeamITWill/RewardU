@@ -28,9 +28,10 @@
 	</div>
 </div>	
 
+
 <script>
 
-	seller_tab();
+seller_tab();
 	
 	//판매자정보 탭 눌렀을때 페이지 받아오기
 	function seller_tab(){

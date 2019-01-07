@@ -32,7 +32,7 @@
 <jsp:include page="${center }"/>
 
 		<!-- Modal 부분 -->
-		<div class="modal_back" id="modal_back">
+		
 			<div class="modal_back_1200" style="width : 1200px; display : flex; margin : 0 auto;">
 			<div style="flex : 1; height : 0;" ></div>
 			<div style="flex : 1; height : 0;"></div>
@@ -54,7 +54,7 @@
 				</div>	
 			</div>
 			</div>	
-		</div>	
+		
 
 <jsp:include page="footer.jsp"/>
 
@@ -62,22 +62,19 @@
 
 <script>
 	//모달 창 부분 자바스크립트 제이쿼리
-	$("#goMypage").click(function(){	
-		$(".modal_back").css("display","block");
+	$("#goMypage").click(function(){			
+		$(".modal_my").css("display", "block");
 		$(".modal_my").animate({"top" : "80px"},150);	
 	});
 	
-	var modal_back = document.getElementById("modal_back");
 	var modal = document.getElementById("modal_my");
-	
 	//모달 창 닫기 배경부분 클릭시 닫기
-	window.onclick = function(e){
-		if(e.target == modal_back){
-			modal_back.style.display = "";
-			modal.style.top ="";
+	$("body").click(function(e){		
+		if(e.target.id != "goMypage" && e.target != modal){
+			modal.style.display = "none";
 		}
-	}
-	
+	});
+			
 </script>	
 </body>
 </html>

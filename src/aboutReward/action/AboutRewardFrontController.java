@@ -46,11 +46,7 @@ public class AboutRewardFrontController extends HttpServlet{
 			forward.setRedirect(false);
 			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
 			forward.setPath("./index.jsp?center=aboutReward/aboutReward.jsp");
-		}
-		
-		
-		
-		
+		}		
 		
 		//------------------------------------------------------------------------------------------------------
 		//주소 이동

@@ -85,10 +85,10 @@
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a href="myPageReward.my?currentPage1=${i}" style="display:block; width:30px; background-color : #ccc; color : #000;">${i }</a>
+						<a href="myPageReward.my?currentPage1=${i}" style="display:block; width:15px; height : 15px; line-height : 15px; border-bottom : 1px solid  #2f68ff;">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a href="myPageReward.my?currentPage1=${i}">${i }</a>
+						<a href="myPageReward.my?currentPage1=${i}" style="display : block; width:15px; height : 15px; line-height : 15px;">${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">

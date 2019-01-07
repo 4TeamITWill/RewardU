@@ -60,6 +60,11 @@ public class myFrontController extends HttpServlet{
 			action = new myGoodDelAction();
 			
 			forward = action.execute(request, response);
+		}else if(command.equals("/RewardUIntro.my")){
+			
+			forward = new myActionForward();
+			forward.setPath("./index.jsp?center=./RewardU_intro.jsp");
+			forward.setRedirect(false);
 		}
 		
 		if(forward != null){

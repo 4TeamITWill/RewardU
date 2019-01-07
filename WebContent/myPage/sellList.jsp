@@ -34,40 +34,40 @@
 			<!-- 페이징 부분 -->
 				<div class="my_board_page">
 					<c:if test="${startPage > pageBlock }">
-						<a onclick="pageajax(${startPage-pageBlock });">이전</a>
+						<a onclick="pageajax(${startPage-pageBlock });" style="cursor : pointer;">이전</a>
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a onclick = "pageajax(${i});" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
+						<a onclick = "pageajax(${i});" style="display:block; width:15px; height : 15px; line-height : 15px; border-bottom : 1px solid  #2f68ff; cursor : pointer;">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a onclick = "pageajax(${i});" style="display:block; width:30px; height : 30px; line-height : 30px;">${i }</a>
+						<a onclick = "pageajax(${i});" style="display:block; width:15px; height : 15px; line-height : 15px; cursor : pointer;" >${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">
-						<a onclick ="pageajax(${startPage+5 });">다음</a>
+						<a onclick ="pageajax(${startPage+5 });" style="cursor : pointer;">다음</a>
 					</c:if>
 				</div>		
 		</div>	
 		
 		
-		<div class="savedList_bottom">
-			<c:forEach var="board" items="${board0list }">
-				<div class="savedList_bottom_content" >		
-					<div style="display : flex; align-items : center;">
-						<div style="width : 150px; height :150px; background-color : #000;"><img/></div>
-						<div style="padding : 10px 10px;">
-							<font style="font-size : 18px;">${board.pd_subject }</font><br/>
-							분류 : ${board.pd_category }<br/>
-							${board.pd_curmoney }원 / ${board.pd_goalmoney }원<br/>							
-						</div>
-					</div>
-					<div>~${board.pd_endf }</div>
-					<div>${board.pd_participant }명 참여</div>
-					<div>${board.pd_rate }</div>
-				</div>
-			</c:forEach>
-		</div>
+<!-- 		<div class="savedList_bottom"> -->
+<%-- 			<c:forEach var="board" items="${board0list }"> --%>
+<!-- 				<div class="savedList_bottom_content" >		 -->
+<!-- 					<div style="display : flex; align-items : center;"> -->
+<!-- 						<div style="width : 150px; height :150px; background-color : #000;"><img/></div> -->
+<!-- 						<div style="padding : 10px 10px;"> -->
+<%-- 							<font style="font-size : 18px;">${board.pd_subject }</font><br/> --%>
+<%-- 							분류 : ${board.pd_category }<br/> --%>
+<%-- 							${board.pd_curmoney }원 / ${board.pd_goalmoney }원<br/>							 --%>
+<!-- 						</div> -->
+<!-- 					</div> -->
+<%-- 					<div>~${board.pd_endf }</div> --%>
+<%-- 					<div>${board.pd_participant }명 참여</div> --%>
+<%-- 					<div>${board.pd_rate }</div> --%>
+<!-- 				</div> -->
+<%-- 			</c:forEach> --%>
+<!-- 		</div> -->
 		
 		
 		
