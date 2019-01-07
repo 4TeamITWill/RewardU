@@ -63,24 +63,8 @@ public class adPermitAction implements adAction {
 				request.setAttribute("list", list);
 				
 				
+				request.setAttribute("Reward_center", "RewardAll.jsp");
 				
-				if(category.equals("N")){
-					request.setAttribute("Reward_center", "RewardAll.jsp");
-				}else if(category.equals("전자")){
-					request.setAttribute("Reward_center", "RewardTech.jsp");
-				}else if(category.equals("패션")){
-					request.setAttribute("Reward_center", "RewardFashion.jsp");
-				}else if(category.equals("뷰티")){
-					request.setAttribute("Reward_center", "RewardBeauty.jsp");
-				}else if(category.equals("공연")){
-					request.setAttribute("Reward_center", "RewardConcert.jsp");
-				}else if(category.equals("스포츠")){
-					request.setAttribute("Reward_center", "RewardSport.jsp");
-				}else if(category.equals("책")){
-					request.setAttribute("Reward_center", "RewardBook.jsp");
-				}else if(category.equals("취미")){
-					request.setAttribute("Reward_center", "RewardGame.jsp");
-				}
 				System.out.println("============================");
 				adActionForward forward = new adActionForward();
 				forward.setRedirect(false);

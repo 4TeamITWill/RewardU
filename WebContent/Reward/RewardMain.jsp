@@ -80,18 +80,55 @@
 </head>
 <body>
 	<input type="hidden" id="category" value="${category }">
-	${category }
+<%-- 	<c:choose>
+		<c:when test="${category }">
+			<h2>전체보기</h2>
+		</c:when>
+		<c:when test="${category eq 패션뷰티 }">
+			<h2>패션·뷰티</h2>
+		</c:when>
+		<c:when test="${category eq 테크가전 }">
+			<h2>테크·가전</h2>
+		</c:when>
+		<c:when test="${category eq 반려동물 }">
+			<h2>반려동물</h2>
+		</c:when>
+		<c:when test="${category eq 푸드 }">
+			<h2>푸드</h2>
+		</c:when>
+		<c:when test="${category eq 홈리빙디자인소품 }">
+			<h2>홈리빙·디자인소품</h2>
+		</c:when>
+		<c:when test="${category eq 게임스포츠 }">
+			<h2>게임·스포츠</h2>
+		</c:when>
+		<c:when test="${category eq 여행레저 }">
+			<h2>여행·레저</h2>
+		</c:when>
+		<c:when test="${category eq 문화교양 }">
+			<h2>문화·교양</h2>
+		</c:when>
+		<c:when test="${category eq 소셜캠페인 }">
+			<h2>소셜캠페인</h2>
+		</c:when>
+		<c:when test="${category eq 교육키즈 }">
+			<h2>교육·키즈</h2>
+		</c:when>
+	</c:choose> --%>
 	<div align="center">
 		<form>
 			<ul class="category">
 				<li><a href="./PermitList.ad?category=N"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=전자"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=패션"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=뷰티"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=스포츠"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=공연"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=책"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=취미"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
 			</ul>
 		</form>
 	</div>

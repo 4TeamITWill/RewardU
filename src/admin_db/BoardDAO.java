@@ -576,6 +576,30 @@ public class BoardDAO {
 				}
 				return result;
 			}
+
+			public void upCount(int pd_no) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = "";
+				
+				try {
+					con = getConnection();
+					sql = "update board set pd_count=pd_count+1 where pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, pd_no);
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try { //자원해제
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}//upCount 끝
 		
 	
 }//BoardDAO 끝
