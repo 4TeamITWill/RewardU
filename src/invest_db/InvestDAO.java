@@ -64,7 +64,7 @@ private Connection  getConnection() throws Exception{
 		}
 	}//insertInvest end
 
-	public void incParticipant(int pd_no) {
+	public void incParticipant(int pd_no, String inv_price) {
 			
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -72,9 +72,10 @@ private Connection  getConnection() throws Exception{
 			ResultSet rs=null;
 			try {
 				con = getConnection();
-				sql = "update board set pd_participant = pd_participant+1 where pd_no=?";
+				sql = "update board set pd_participant = pd_participant+1, pd_curmoney = pd_curmoney+? where pd_no=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, pd_no);
+				pstmt.setString(1, inv_price);
+				pstmt.setInt(2, pd_no);
 				
 				pstmt.executeUpdate();
 			} catch (Exception e) {

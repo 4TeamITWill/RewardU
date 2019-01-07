@@ -17,6 +17,8 @@ public class inInsertingAction implements inAction{
 		
 		int pd_no = Integer.parseInt(request.getParameter("pd_no"));
 		
+		String inv_price = request.getParameter("inv_price");
+		
 		InvestBean ibean = new InvestBean();
 		
 		ibean.setUser_id(request.getParameter("user_id"));
@@ -49,7 +51,7 @@ public class inInsertingAction implements inAction{
 		
 		//참여자 관련 board db객체 생성
 		
-		idao.incParticipant(pd_no);
+		idao.incParticipant(pd_no, inv_price);
 		
 		
 		inActionForward forward = new inActionForward();
