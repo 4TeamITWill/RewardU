@@ -149,7 +149,6 @@
 			<select id="order" onchange="change()">
 				<option value="7"<c:if test="${order eq '7'}">selected</c:if>>추천수</option>
 				<option value="8"<c:if test="${order eq '8'}">selected</c:if>>조회수</option>
-				<option value="11"<c:if test="${order eq '11'}">selected</c:if>>펀딩액순</option>
 				<option value="5"<c:if test="${order eq '5'}">selected</c:if>>최신순</option>
 				<option value="12"<c:if test="${order eq '12'}">selected</c:if>>참여자순</option>
 			</select>

@@ -50,4 +50,21 @@ $(document).ready(function(){
 	
 });//$(document).ready 끝
 
+window.onload = function (){
+			$.ajax({
+			url : "./PermitList.ad",
+			type: "POST",
+			
+			success:function(data){
+				 console.log(data);
+				 	$('#start').append(data);
+			},	
+			error:function(request,status,error){
+	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	           }
+		});
+	} 
+
+
+
 
