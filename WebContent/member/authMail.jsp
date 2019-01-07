@@ -18,7 +18,7 @@
 		margin-top: 20px; 
 	}
 
-body{ background-color:#ff6554;
+body{ background: linear-gradient(90deg, #b44af7, #82caff);
  	
  }
  
@@ -90,9 +90,10 @@ body{ background-color:#ff6554;
 		
 		if(authNum == code) {
 			alert("인증이 확인되었습니다.");
-			opener.emailCheck.value = " 인증완료 ";
+			opener.emailCheck.value = "인증완료";
+			opener.idCheck.value = "1";
 			opener.email_Check = true;
-			opener.emailSuccess.value = authNum; 
+			opener.emailSuccess.value = authNum;			
 			window.close();
 		} else {
 			alert("인증번호가 틀립니다. 다시 입력해 주세요.");
@@ -106,7 +107,7 @@ body{ background-color:#ff6554;
 <body>
 	<form id="reg_form" onsubmit="return check();">
 	      <div class="form-group">
-              <label for="code"><h3>이메일 인증번호</h3></label>
+              <label for="code"><h3  align="center" style="color:white">이메일 인증번호</h3></label>
                 <div class="input-group">
                 	<input type="text" class="inp-field" id="code" name="code" placeholder="인증번호 6자리 입력">
                 	<span >

@@ -9,16 +9,7 @@
 
 <style type="text/css">
 
-::-webkit-input-placeholder { font-size : 16px; color: #CCC; }
-
-/* Firefox 4-18 */
-:-moz-placeholder { font-size : 16px; color: #CCC; }
-
-/* Firefox 19+ */
-::-moz-placeholder { font-size : 16px; color: #CCC; }
-
-/* IE10+ */
-:-ms-input-placeholder { font-size : 16px; color: #CCC; }
+#searchBar input-placeholder { font-size : 16px; color: #CCC; }
 
 li {list-style: none;}
 

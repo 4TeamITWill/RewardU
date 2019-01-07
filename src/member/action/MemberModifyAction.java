@@ -36,10 +36,11 @@ public class MemberModifyAction implements Action {
 		mdao.updateUser(mbean);
 		
 		request.setAttribute("mbean", mbean);
+		request.setAttribute("myPage_center", "../member/mypage.jsp");
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./index.jsp?center=./member/mypage.jsp");
+		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
 		
 		
 		return forward;

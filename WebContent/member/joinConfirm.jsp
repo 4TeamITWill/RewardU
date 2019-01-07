@@ -8,18 +8,42 @@
 <title>Join us / 리듀</title>
 <link href="css/main3.css" rel="stylesheet">
 <link href="css/etc.css" rel="stylesheet">
+<style type="text/css">
 
+.wrap{background-color: #ddd; 
+	padding: 100px 200px;
+	background-image: url("img/leaves.jpg"); 
+	background-size: 100% 1000px;
+	background-attachment: scroll;
+	background-repeat: no-repeat;}
+
+
+#join_content {
+	border: 1px solid #aaa;
+	background-color: #fff;
+	width: 400px;
+	font-size: 14px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#join_content #form_font_left {
+ text-align: left;
+ padding-left: 11px;
+}
+
+</style>
 
 </head>
 <body>
 <jsp:include page="../top.jsp"/>
 <div class="wrap">
-<div id="header" align="center">
 
-	<h2>${requestScope.mbean.user_name }님 가입을 축하합니다.</h2>
-</div>
-<div class="container">
-	<div id="join_content" align="center" >
+<div class="container" align="center">
+	<div id="join_content" >
+		<div id="header" align="center">
+	
+		<h2>${requestScope.mbean.user_name }님 가입을 축하합니다.</h2>
+	</div>
 		<form action="./Main.me" id="join" method="post">
 		
 		<fieldset >
@@ -38,6 +62,9 @@
 			<input type="text" name="user_phone" value="${mbean.user_phone }" class="inp-field">
 			
 		</fieldset>
+		
+			<h3>마이페이지에서 자기소개 및 하고싶은 말을 설정해 보세요!</h3>
+		
 		<fieldset>
 			<input type="submit" value="메인으로" class="btn1 w354">
 			

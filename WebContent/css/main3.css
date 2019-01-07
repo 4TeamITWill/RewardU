@@ -954,9 +954,32 @@ body{
 }
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+	text-align: center;
+  padding: 5px 16px;
+  background-color: #fff;
+
+}
+
+.modal-footer #modal-btn{
+	background-color: #82caff;
+	border-radius: 0.2em;
+	width: 15%;
+	height: 30px;
+	color: #434d5b;
+	border: none;
+	margin-bottom: 5px;
+	line-height: 100%;
+}
+
+.modal-footer #modal-btn2{
+	background-color: #aaa;
+	border-radius: 0.2em;
+	width: 15%;
+	height: 30px;
+	color: #fff;
+	border: none;
+	margin-bottom: 5px;
+	line-height: 100%;
 }
 
 /*-------------------------------------------*/

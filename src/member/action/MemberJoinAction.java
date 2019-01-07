@@ -47,10 +47,11 @@ public class MemberJoinAction implements Action{
 		}
 		
 		String user_id = request.getParameter("user_id");
-		String rewardu_policy = request.getParameter("rewardu_policy");
+		String welcomeMSG = request.getParameter("welcomeMSG");
+		String user_name = request.getParameter("user_name");
 		
 		SMTPAuthenticatior smtp = new SMTPAuthenticatior();
-		smtp.testsending(user_id, rewardu_policy);
+		smtp.testsending(user_id, user_name, welcomeMSG);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

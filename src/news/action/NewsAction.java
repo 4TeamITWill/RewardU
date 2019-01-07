@@ -16,9 +16,41 @@ public class NewsAction implements Action{
 		
 		NewsDAO ndao = new NewsDAO();
 		
-		Vector<Newsbean> v = ndao.getNewsList();
+		String sortNews = request.getParameter("sortNews");
+		
+		int count = ndao.getNewsCount();
+		
+		int pageSize = 8;
+		int pageCount = count/pageSize + (count%pageSize==0?0:1);
+		String newsCurrentP = request.getParameter("newsCurrentP");
+		
+		if(newsCurrentP == null){
+			newsCurrentP = "1";
+		} 
+		
+		int currentPage = Integer.parseInt(newsCurrentP);
+		int startRow = (currentPage-1) * pageSize +1;
+		int pageBlock = 5;
+		int firstPage = ((currentPage-1)/pageBlock)*pageBlock + 1;
+		int lastPage = firstPage + pageSize -1;
+		
+		if(lastPage > pageCount){
+			lastPage = pageCount;
+		}
+		
+	//get News lists
+		Vector<Newsbean> v = ndao.getNewsList(sortNews);
 		
 		request.setAttribute("v", v);
+		
+		request.setAttribute("count", count);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("firstPage", firstPage);
+		request.setAttribute("lastPage", lastPage);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startRow", startRow);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
