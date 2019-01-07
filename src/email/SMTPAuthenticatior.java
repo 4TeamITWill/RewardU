@@ -38,7 +38,16 @@ public class SMTPAuthenticatior extends Authenticator {
 		
 		String from = "rewardu4@gmail.com";
 		String subject = "리듀  RewardU 회원가입 이메일 인증번호 입니다.";
-		String content = "회원님의 인증번호는 "+authNum+ " 입니다.";
+		String content = "<div width='200' height='300px' align='center' style='background-color: #aaa;'>";
+		   content += "<h2>&nbsp;&nbsp;</h2>";
+		   content += "<span style='background-color:white; color:#b44af7; font-size: 30px; font-weight: bold;'>"; 
+		   content += "&nbsp; 리듀 <i>RewardU</i> &nbsp; </span>"; 
+		   content += "<br><br>";
+		   content += "<font size='3' color='white'>회원님의 인증번호는";
+		   content += "<font size='4' color='white'> <b>"+ authNum +" </b></font>";
+		   content += " 입니다.<br></font>";
+		   content += "<h2>&nbsp;&nbsp;</h2>";
+		   content += " </div>";
 		
 		Properties p = new Properties(); // 정보를 담을 객체
 		 
@@ -83,11 +92,11 @@ public class SMTPAuthenticatior extends Authenticator {
 		
 	}//sendEmail
 	
-	public int testsending(String user_id, String rewardu_policy) {
+	public int testsending(String user_id, String user_name, String welcomeMSG) {
 		
 		String from = "rewardu4@gmail.com";
 		String subject = "리듀  RewardU 회원가입 테스트중입니다 ㅅㅂ";
-		String content = "회원님의 인증번호는 "+rewardu_policy;
+		String content = welcomeMSG;
 		
 		Properties p = new Properties(); // 정보를 담을 객체
 		 

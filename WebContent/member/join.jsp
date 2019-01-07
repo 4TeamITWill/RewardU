@@ -139,11 +139,13 @@
 			return false;
 		}
 		
-		/* if(idCheck != "1"){ //중복 체크 하지 않았을 경우  0
-			$('#checkMessage').html('아이디 중복확인을 해주세요');
+		 if(idCheck != "1"){ //중복 체크 하지 않았을 경우  0
+			$('#checkMessage').html('아이디 중복확인을 완료해주세요');
 			$('#myModal').show();
+			$('#emailCheck').focus();
 			return false;
-		} */
+		} 
+		
 		
 		 if(policy_chk==true){
 			num = 1; }
@@ -211,18 +213,72 @@
 	
 	function sendEmail() {
 		
-		
+		var emailCheck = $('#emailCheck').val();
 		var width = 480;
 		var height = 160;
 		var winL = (screen.width - width) / 2;
 		var winT = (screen.height - height) / 2;
 		var property = "width=" + width + "," + "height=" + height + "," 
 						+ "left=" + winL + "," + "top=" + winT + " menubar=no";
+		var idCheck = $("#idCheck").val();
 		
 		email_Check = false;
 		
 		window.open("member/authMail.jsp?to=" + $('#user_id').val(), "인증 페이지", property);
+		
+// 		if(email_Check){
+// 			document.getElementById("idCheck").value="1";
+// 		}
+		   
 	}
+	
+	function idDupCheck(){
+		
+		var user_id = $('#user_id').val();
+		var blank_pattern = /[\s]/g;
+		
+		//패턴만 바꾸면 된다.
+		var email_pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		
+		if(blank_pattern.test(user_id)){
+			$('#idCheckMessage').html('&nbsp; 이메일을 입력해 주세요.');
+			document.getElementById("idCheck").value="0";
+			return;
+		}
+		
+		if(!email_pattern.test(user_id)){
+			$('#idCheckMessage').html('&nbsp; 형식을 바르게 입력해주세요.');
+			document.getElementById("idCheck").value="0";
+			return;
+		}
+		      
+		
+		$.ajax(
+				{
+					type: 'POST',
+					url:'./UserRegisterCheck',
+					data : {user_id: user_id },
+					success:function(result){
+						if($.trim(result) == 1){//결과가 1이면 사용할수 있는 아이디 
+							$('#idCheckMessage').html('&nbsp;사용하실 수 있는 아이디 입니다.');
+							//중복확인을 했다~~판별값을 <input>태그에 설정 
+							document.getElementById("idCheck").value="0";
+							
+						}else if($.trim(result) == 0){
+							$('#idCheckMessage').html('&nbsp;중복되는 아이디 입니다.');
+							document.getElementById("idCheck").value="0";
+							//중복확인을 하지 않았다는 판변값을 <input>태그에 설정
+							
+						}
+						
+						/* $('#checkModal').modal('show');		 */					
+					}						
+				}					
+		      );	//ajax	
+		      
+		   		
+		}//idDupCheck
+
 	
 	function init_idCheck() {
 		//중복확인 버튼을 누르면 'idCheck'의 value값이 1로 바뀌도록 구성
@@ -256,12 +312,12 @@
 			<!-- id -->
 				<input type="hidden" name="emailSuccess" id="emailSuccess">
                 <span id="emailCheck1" class="check_status"></span>
-                <div id="form_font_left" align="left">아이디 </div>
-				<input type="email" name="user_id" id="user_id" placeholder="이메일 주소 입력" onkeyup="init_idCheck();" class="inp-field_nomargin w235"><input type="button" value="이메일 본인인증" id="emailCheck" class="btn_nomargin w118" onclick="sendEmail();"><br>
+                <div id="form_font_left" align="left">아이디 <span style="color:red; font-size: 8px !important; " id="idCheckMessage"></span></div>
+				<input type="email" name="user_id" id="user_id" placeholder="이메일 주소 입력" onkeyup="idDupCheck();" class="inp-field_nomargin w235"><input type="button" value="이메일 본인인증" id="emailCheck" class="btn_nomargin w118" onclick="sendEmail();"><br>
 				<div id="form_font_left_s" align="left">위 이메일로 인증번호가 발송됩니다. </div>
 				<input type="hidden" name="idCheck" id="idCheck" value="0">
 			<!-- name -->
-				<div id="form_font_left" align="left">사용자 이름 </div>
+				<div id="form_font_left" align="left">사용자 이름  </div>
 				<input type="text" name="user_name" id="user_name" placeholder="사용자 이름을 입력해 주세요" class="inp-field"><br>
 			<!-- password -->
 				<div id="form_font_left" align="left">비밀번호 <span style="color:red; font-size: 8px !important;" id="pwCheckMessage"></span> </div>
@@ -287,10 +343,16 @@
 			<jsp:include page="./policyForm.jsp"/>
 		
 		</textarea><br>
-		<input type="checkbox" name="policy_chk" id="policy_chk"> 개인정보 수집 및 이용에 동의합니다.
+		<div class="policy_check">
+		<input type="checkbox" name="policy_chk" id="policy_chk">
+		<label for="policy_chk">&nbsp;개인정보 수집 및 이용에 동의합니다.</label>
+		</div>
 		
 		</fieldset>
-
+<!-- hidden Welcoming Message -->
+<textarea style="display: none;" name="welcomeMSG">
+<jsp:include page="./testsending.jsp"/>
+</textarea>
 		<div class="margin3"></div>
 		<fieldset>
 			<input type="submit" value="약관동의 및 회원가입" class="btn1 w354"><br>

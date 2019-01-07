@@ -119,7 +119,7 @@ public class NewsDAO {
 	}
 	
 	
-	public Vector<Newsbean> getNewsList(){
+	public Vector<Newsbean> getNewsList(String sortNews){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -132,7 +132,15 @@ public class NewsDAO {
 		try {
 			con = getConnection();
 			
-			sql = "select * from reNews";
+			if(sortNews == null || sortNews.isEmpty()){
+				sql = "select * from reNews order by reNews_no desc";
+			}else if(sortNews.equals("1")){
+				sql = "select * from reNews order by reNews_date desc";
+			}else if(sortNews.equals("2")){
+				sql = "select * from reNews order by reNews_views desc";
+			}
+			
+			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -167,6 +175,7 @@ public class NewsDAO {
 		
 		return v;
 	}//getNewsList
+	
 	
 	
 	public Newsbean readContent(int no){
@@ -250,6 +259,44 @@ public class NewsDAO {
 		}
 			
 	}//deleteNews
+	
+	
+	public int getNewsCount(){
+		int count = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select count(*) from reNews";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count;
+	}
 	
 	
 }

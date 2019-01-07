@@ -78,6 +78,44 @@ public class MemberDAO {
 		return false;
 	}//insertMember
 	
+	//id duplication check
+	public int userCheck(String user_id){
+		
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		ResultSet rs = null;
+		
+		try {
+			
+			con = getConnection();
+			sql = "select * from user where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, user_id);
+			
+			rs=pstmt.executeQuery();
+			
+			if (rs.next() || user_id.equals("")) {
+				result=0;	//duplicate id
+			}else {
+				result=1;	
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		
+		return result;
+	}//userCheck
+	
 	/*Login 회원체크*/
 	public int userCheck(String user_id, String user_pw){
 		
