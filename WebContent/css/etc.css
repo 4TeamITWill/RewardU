@@ -1,6 +1,46 @@
 @CHARSET "UTF-8";
 
 
+input[id="policy_chk"] {
+	display: none;
+}
+
+input[id="policy_chk"]+label {
+	display: inline-block;
+	cursor: pointer;
+/* 	position: static; */
+	vertical-align: middle;
+	
+	
+}
+
+input[id="policy_chk"]+label:before {
+	content: "";
+	display: inline-block;
+	margin-top: 5px;
+	width: 17px;
+	height: 17px;
+	border-radius: 50%;
+	border: 2.2px solid #bcbcbc;
+	cursor: pointer;
+ 	position: relative; 
+ 	top: 1.5px;
+	vertical-align : bottom; 
+	 
+}
+
+input[id="policy_chk"]:checked + label:before {
+	background-color: #82caff;
+	content: "\2713";
+	font-weight: 800;
+	color: 2.2px solid #bcbcbc; 
+}
+
+.policy_check {
+	line-height: 16px;
+}
+
+
 .inp-field {
         width: 350px;
         height: 38px;

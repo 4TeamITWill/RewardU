@@ -71,7 +71,18 @@
 	GoodStatus = bdao.GoodStatus(id, pd_no); //사용자 아이디와, 해당 게시글 번호를 넘겨주어 사용자가 이 게시글에 좋아요눌러놓은 상태인지 아닌지 구분함
 												//눌러놨으면 GoodStatus에는 1이 , 아니라면 0이 대입
 %>
+<%
+	id = (String)session.getAttribute("id");
+	if(id==null){//로그인한 상태가 아닐 때 리워드 신청을 하면 로그인페이지로 이동하게끔
+%>
+	<input type="button" value="지금펀딩하기" onclick="location.href='./MemberLogin.me'">
+<%
+	} else{
+%>
 	<input type="button" value="지금펀딩하기" onclick="location.href='./getFunding.ad?pd_no=<%=pd_no%>&user_id=<%=id%>'">
+<%
+	}
+%>
 	<button>공유</button>
 
 	<script type="text/javascript">

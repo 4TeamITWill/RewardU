@@ -3,33 +3,25 @@ package admin;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin_db.BoardBean;
 import admin_db.BoardDAO;
-import admin_db.SellerBean;
-import admin_db.SellerDAO;
 
-public class adGetBoardAction implements adAction {
+public class ContentInfoAction implements adAction{
 
 	@Override
 	public adActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int pd_no = Integer.parseInt(request.getParameter("pd_no"));
+		String id = request.getParameter("user_id");
 		
 		BoardDAO bdao = new BoardDAO();
-		SellerDAO sdao = new SellerDAO();
 		
-		BoardBean bbean = bdao.getBoard(pd_no);
-		SellerBean sbean = sdao.getSeller(pd_no);
-		
-		request.setAttribute("bbean", bbean);
-		request.setAttribute("sbean", sbean);
+		bdao.upCount(pd_no);//게시글 조회수 증가
 		
 		adActionForward forward = new adActionForward();
 		
-		forward.setPath("./index.jsp?center=./admin/admin_board_look.jsp");
 		forward.setRedirect(false);
-		
+		forward.setPath("./index.jsp?center=ContentInfo.jsp");
 		return forward;
 	}
-
+	
 }

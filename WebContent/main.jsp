@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="admin_db.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,7 +11,32 @@
 	.current_money {display: block; height: 10px; line-height: 40px; text-align: right; 
 	background: pink; border-radius: 40px; padding: 0 10px; box-sizing: border-box; color: #fff;}
 </style>
-
+<script type="text/javascript">
+	window.onload = function(){
+		$.ajax({
+			url : "./PermitStart.ad",
+			type: "POST",
+			success:function(data){
+				 console.log(data);
+				 	$('#start').append(data);
+			},	
+			error:function(request,status,error){
+	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	           }
+		});
+		$.ajax({
+			url : "./PermitGood.ad",
+			type: "POST",
+			success:function(data){
+				 console.log(data);
+				 	$('#good').append(data);
+			},	
+			error:function(request,status,error){
+	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	           }
+		});
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -30,136 +57,27 @@
 		
 			<div class="subject">인기 리워드 상품
 			</div>
+			
 			<!-- 인기 리워드 부분 -->
 			<div class="box">		
 				<!-- 1번 그림 -->		
-				<div class="contents">					
-					<div class="contents_sub contents_top">
-						<div class="top1">리워드</div>
-						<div class="top2">내 삶을 바꾸러 온 기업</div>
-					</div>
-					<div class="contents_sub contents_mid">
-						<div class="img_container">
-							<img src="img/2.jpg">
-						</div>
-						<div class="cont_container">
-							<h2>세계최초 5분만에 추출하는 콜드브루 커피머신</h2>
-							<h3>(주)회사명</h3>
-							<h4>카테고리</h4>
-						</div>			
-					</div>
-					<div class="contents_sub contents_bottom">	
-						
-					</div>	
+				<div id="good" class="contents">					
+			
 				</div>	
-				<!-- 2번 그림 -->		
-				<div class="contents">					
-					<div class="contents_sub contents_top">
-						<span class="top1">리워드</span>
-						<span class="top2">내 삶을 바꾸러 온 기업</span>
-					</div>
-					<div class="contents_sub contents_mid">
-						<div class="img_container">
-							<img src="img/1.jpg">
-						</div>
-						<div class="cont_container">
-							<h2>세계최초 5분만에 추출하는 콜드브루 커피머신</h2>
-							<h3>(주)회사명</h3>
-							<h4>카테고리</h4>
-						</div>			
-					</div>
-					<div class="contents_sub contents_bottom">	
 								
-					</div>	
-				</div>
-				<!-- 3번 그림 -->		
-				<div class="contents">					
-					<div class="contents_sub contents_top">
-						<span class="top1">리워드</span>
-						<span class="top2">내 삶을 바꾸러 온 기업</span>
-					</div>
-					<div class="contents_sub contents_mid">
-						<div class="img_container">
-							<img src="img/3.jpg">
-						</div>
-						<div class="cont_container">
-							<h2>세계최초 5분만에 추출하는 콜드브루 커피머신</h2>
-							<h3>(주)회사명</h3>
-							<h4>카테고리</h4>
-						</div>			
-					</div>
-					<div class="contents_sub contents_bottom">	
-							
-					</div>	
-				</div>				
 			</div>		
 			<!-- 인기 리워딩 끝 -->
 			
-			<!-- 최신 리워드 부분 -->			
+			<!-- 최신 리워드 부분 -->	
+					
 			<div class="subject">최신 리워드 상품
 			</div>
 			
 			<div class="box">
 				<!-- 1번 그림 -->		
-				<div class="contents">					
-					<div class="contents_sub contents_top">
-						<div class="top1">리워드</div>
-						<div class="top2">내 삶을 바꾸러 온 기업</div>
-					</div>
-					<div class="contents_sub contents_mid">
-						<div class="img_container">
-							<img src="img/2.jpg">
-						</div>
-						<div class="cont_container">
-							<h2>세계최초 5분만에 추출하는 콜드브루 커피머신</h2>
-							<h3>(주)회사명</h3>
-							<h4>카테고리</h4>
-						</div>			
-					</div>
-					<div class="contents_sub contents_bottom">	
-								
-					</div>	
-				</div>	
-				<!-- 2번 그림 -->		
-				<div class="contents">					
-					<div class="contents_sub contents_top">
-						<span class="top1">리워드</span>
-						<span class="top2">내 삶을 바꾸러 온 기업</span>
-					</div>
-					<div class="contents_sub contents_mid">
-						<div class="img_container">
-							<img src="img/1.jpg">
-						</div>
-						<div class="cont_container">
-							<h2>세계최초 5분만에 추출하는 콜드브루 커피머신</h2>
-							<h3>(주)회사명</h3>
-							<h4>카테고리</h4>
-						</div>			
-					</div>
-					<div class="contents_sub contents_bottom">	
-									
-					</div>	
-				</div>
-				<!-- 3번 그림 -->		
-				<div class="contents">					
-					<div class="contents_sub contents_top">
-						<span class="top1">리워드</span>
-						<span class="top2">내 삶을 바꾸러 온 기업</span>
-					</div>
-					<div class="contents_sub contents_mid">
-						<div class="img_container">
-							<img src="img/3.jpg">
-						</div>
-						<div class="cont_container">
-							<h2>세계최초 5분만에 추출하는 콜드브루 커피머신</h2>
-							<h3>(주)회사명</h3>
-							<h4>카테고리</h4>
-						</div>			
-					</div>
-					<div class="contents_sub contents_bottom">	
-										
-					</div>	
-				</div>				
+				<div id="start" class="contents">					
+					
+				</div>		
 			</div>
 			<!-- 최신 리워드 끝 -->
 			

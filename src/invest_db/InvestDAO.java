@@ -2,6 +2,7 @@ package invest_db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.Context;
@@ -62,6 +63,60 @@ private Connection  getConnection() throws Exception{
 			e.printStackTrace();
 		}
 	}//insertInvest end
-	
+
+	public void incParticipant(int pd_no, String inv_price) {
+			
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			String sql="";
+			ResultSet rs=null;
+			try {
+				con = getConnection();
+				sql = "update board set pd_participant = pd_participant+1, pd_curmoney = pd_curmoney+? where pd_no=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, inv_price);
+				pstmt.setInt(2, pd_no);
+				
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (con != null) con.close();
+					if (pstmt != null) pstmt.close();
+					if (rs != null)rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+	}//incParticipant() 끝
+		
+	//participate 테이블에 정보 저장하는 메소드
+	public void insertParticipate(String id, int pd_no, String par_money){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		
+		try {
+			con = getConnection();
+			sql = "insert into participate(user_id, pd_no, par_money) values(?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, pd_no);
+			pstmt.setString(3, par_money);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

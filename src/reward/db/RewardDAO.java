@@ -627,4 +627,5 @@ public class RewardDAO {
 
 			 return v; //DB로부터 검색하여 가져온 전체글 들(Board객체들)을 백터에 담아 백터 자체를 리턴
 		}//getSearchCount끝
+
 }

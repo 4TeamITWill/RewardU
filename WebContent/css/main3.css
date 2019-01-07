@@ -190,10 +190,11 @@ body{
 	justify-content : center;
 	align-items : center;
 	box-sizing : border-box;
-	cursor : pointer;
+	/* cursor : pointer; */
 }
 
-#main .contents:HOVER img {
+/* 원래 #main .contents:HOVER img였는데  -> .contents_select:HOVER로 이유는 실제 인기순,최신순 기능을 추가하는과정에서 필요에 의함 */
+.contents_select:HOVER{
 	transform : scale(1.1);
 	transition : all 0.6s ease;
 }
@@ -958,9 +959,108 @@ body{
 }
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+	text-align: center;
+  padding: 5px 16px;
+  background-color: #fff;
+
+}
+
+.modal-footer #modal-btn{
+	background-color: #82caff;
+	border-radius: 0.2em;
+	width: 15%;
+	height: 30px;
+	color: #434d5b;
+	border: none;
+	margin-bottom: 5px;
+	line-height: 100%;
+}
+
+.modal-footer #modal-btn2{
+	background-color: #aaa;
+	border-radius: 0.2em;
+	width: 15%;
+	height: 30px;
+	color: #fff;
+	border: none;
+	margin-bottom: 5px;
+	line-height: 100%;
 }
 
 /*-------------------------------------------*/
+
+/* write 페이지 부분 ~~~~~~~ */
+
+#write_top {
+	height : 150px;
+	background-color : rgba(230,230,230,0.6);
+}
+
+.write_top_cont {
+	width : 900px;
+	margin : 0 auto;
+	font-size : 23px;
+	line-height : 150px;
+	padding-left : 1rem;
+}
+
+#write_main {
+	width : 900px;
+	display : flex;
+	margin : 0 auto;
+}
+
+.write_tab {
+	flex : 2;
+	border-right : 1px solid rgba(200,200,200,0.5);
+	padding : 4rem 0;
+}
+
+.write_tab a {
+	display : inline-block;
+	margin-top : 15px;
+	font-size : 16px;
+	cursor : pointer;
+	margin-left : 30px;
+	color : rgba(150,150,150,1);
+	font-weight : 550;
+}
+
+.write_content {
+	flex : 8;
+}
+
+.write_content input {
+	height : 23px;
+	border : 0.5px solid rgba(200,200,200,0.8);
+}
+
+._container {
+	padding-left : 3rem;
+	padding-top : 2rem;
+}
+
+/* 관리자 페이지 부분!!!!!!!!!!!!!!!!! */
+
+#admin_index {
+	padding : 4rem 0 ;
+}
+
+#ad_tab {
+	width : 1000px;
+	margin : 0 auto;
+}
+
+#ad_tab a {
+	display : inline-block;
+	width : 100px;
+	height : 30px;
+	text-align : center;
+	line-height : 30px;
+}
+
+#ad_main {
+	width : 1000px;
+	margin : 2rem auto;
+}
+

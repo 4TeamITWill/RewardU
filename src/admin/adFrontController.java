@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//愿�由ъ옄 �럹�씠吏� frontController
+//�꽴占썹뵳�딆쁽 占쎈읂占쎌뵠筌욑옙 frontController
 public class adFrontController extends HttpServlet{
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		//媛��긽二쇱냼 �쟾泥�	
+		//揶쏉옙占쎄맒雅뚯눘�꺖 占쎌읈筌ｏ옙	
 		String URI = request.getRequestURI();
-		//�뙣�궎吏�紐�
+		//占쎈솭占쎄텕筌욑옙筌륅옙
 		String contextPath = request.getContextPath();
-		//�슂泥��럹�씠吏� 媛� 媛��졇�삤湲�
+		//占쎌뒄筌ｏ옙占쎈읂占쎌뵠筌욑옙 揶쏉옙 揶쏉옙占쎌죬占쎌궎疫뀐옙
 		String command = URI.substring(contextPath.length());
 		
 		adActionForward forward = null;
@@ -25,7 +25,7 @@ public class adFrontController extends HttpServlet{
 		if(command.equals("/adminPage.ad")){
 			
 			forward = new adActionForward();
-			forward.setPath("./admin/admin_index.jsp");
+			forward.setPath("./index.jsp?center=./admin/admin_index.jsp");
 			forward.setRedirect(false);		
 			
 		}else if(command.equals("/board.ad")){
@@ -94,15 +94,15 @@ public class adFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}else if(command.equals("/PermitListcategory.ad")){
-			action = new adPermitcategoryAction();
+		}else if(command.equals("/PermitStart.ad")){
+			action = new adPermitStartAction();
 			try{
 				forward = action.execute(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}else if(command.equals("/PermitMore.ad")){
-			action = new adPermitMoreAction();
+		}else if(command.equals("/PermitGood.ad")){
+			action = new adPermitGoodAction();
 			try{
 				forward = action.execute(request, response);
 			}catch(Exception e){
@@ -116,15 +116,16 @@ public class adFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Content.ad")){
-			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성 
-			forward = new adActionForward();
-			//페이지 이동 방식 여부 값 false로 저장-> RequestDispatcher  forward() 방식
-			forward.setRedirect(false);
-			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
-			forward.setPath("./index.jsp?center=ContentInfo.jsp");
+			action = new ContentInfoAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
-		//�씠�룞
+		
+		//占쎌뵠占쎈짗
 		if(forward != null){
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());

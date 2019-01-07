@@ -17,6 +17,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/carousel.js"></script>
+<script src="js/pay.js"></script>
 <title>리듀 RewardU | 메인화면</title>
 </head>
 <body>

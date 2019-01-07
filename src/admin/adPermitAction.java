@@ -14,110 +14,66 @@ public class adPermitAction implements adAction {
 	@Override
 	public adActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
-/*		String Context = request.getContextPath();
-		System.out.println(Context);
-		StringBuffer URL = request.getRequestURL();
-		System.out.println(URL);
-		String URI = request.getRequestURI();
-		System.out.println(URI);
-		String Path = request.getServletPath();
-		System.out.println(Path);*/
-		
-		BoardDAO bDAO = new BoardDAO();
-		//페이징 처리
-		//한 페이지 에 보여줄 글 목록 수
-		int pageSize = 9; 
-		//페이지 그룹 개당 페이지 수 (1,2,3,4,5) 
-		int pageGroupSize = 5;
-		//현재 페이지 번호
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null){
-			pageNum = "1";
-		}
-		
-		int currentPage = Integer.parseInt(pageNum);
-		if(currentPage < 1){
-			currentPage = 1;
-		}
-		//총 목록 개수
-		int listCount = bDAO.getPermitListCount();
-		
-		int number = listCount-(currentPage-1)*pageSize;
-		//페이지 그룹 개수(1그룹에 5개 페이지)
-		int pageGroupCount = listCount/(pageSize*pageGroupSize)+( listCount % (pageSize*pageGroupSize) == 0 ? 0 : 1);
-		//페이지 그룹의 번호(1그룹 의 번호는 1, 2그룹의 번호는 2 ...)
-		int numPageGroup = (int) Math.ceil((double)currentPage/pageGroupSize);
-		
-		int totalPage = listCount / pageSize + (listCount%pageSize==0? 0:1); 
-		int startPage = pageGroupSize * (numPageGroup -1) + 1;
-		int endPage = startPage  + pageGroupSize-1;
-		
-		if(totalPage < currentPage){
-			currentPage = totalPage;
-		}
-		if(endPage > totalPage){
-			endPage = totalPage;
-		}
-		//한 페이지 첫 번쨰 목록 번호 와 마지막 목록 번호
-		int startRow = (currentPage-1) * pageSize + 1;
-		int endRow = currentPage * pageSize;
-		//페이징 처리 끝
-		//리스트 조회 limit으로 startRow , pageSize
-		
-		
-		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
-		
-		String category = request.getParameter("category");
-		System.out.println(category);
-		
-		String select = request.getParameter("select");
-		String order = request.getParameter("order");
-		if(category == "all"){
-			category = "";
-		}
-		if(order == null){
-			order = "pd_start";
-		}
-		
-		if(listCount > 0){
-			list = bDAO.getPermitList(select,order,startRow,pageSize);
-		}else{
-			list = null;
-		}
-		
-		request.setAttribute("currentPage", currentPage);
-		System.out.println(currentPage);
-		request.setAttribute("startRow", startRow);
-		System.out.println(startRow);
-		request.setAttribute("endRow", endRow);
-		System.out.println(endRow);
-		request.setAttribute("listCount", listCount);
-		System.out.println(listCount);
-		request.setAttribute("pageSize", pageSize);
-		System.out.println(pageSize);
-		request.setAttribute("number", number);
-		System.out.println(number);
-		request.setAttribute("pageGroupSize", pageGroupSize);
-		System.out.println(pageGroupSize);
-		request.setAttribute("numPageGroup", numPageGroup);
-		System.out.println(numPageGroup);
-		request.setAttribute("pageGroupCount", pageGroupCount);
-		System.out.println(pageGroupCount);
-		request.setAttribute("totalPage", totalPage);
-		System.out.println(totalPage);
-		request.setAttribute("startPage", startPage);
-		System.out.println(startPage);
-		request.setAttribute("endPage", endPage);
-		System.out.println(endPage+"END");
-		request.setAttribute("list", list);
-		
-		
-		adActionForward forward = new adActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./index.jsp?center=Reward/RewardMain.jsp&opt="+order+"&select="+select+"&category="+category);
-		
-		return forward;
-	}
-
+				
+				BoardDAO bDao = new BoardDAO();
+				//Request
+				String result = request.getParameter("result");
+					if(result == null) result = "A";
+					System.out.println("result: "+ result);
+				String order1 = request.getParameter("order");
+					if(order1 == null) order1 = "7";
+				int order = Integer.parseInt(order1);
+					System.out.println("order: "+ order);
+				String category = request.getParameter("category");
+					if(category == null ) category = "N";
+					System.out.println("category: "+ category);
+				//Page
+				String currentPage = request.getParameter("currentPage");
+					if(currentPage == null) currentPage = "1";
+				int currentPage1 = Integer.parseInt(currentPage);
+					System.out.println("currentPage1: "+currentPage1);
+				int count = bDao.getPermitListCount(result,category);
+					System.out.println("count: "+count);
+				int pageSize = 9;
+				int startRow = (currentPage1-1)*pageSize + 1;
+				int pageCount = count/pageSize+(count%pageSize==0?0:1);
+					System.out.println("pageCount: "+pageCount);
+				int pageBlock = 5;
+				int startPage = ((currentPage1-1)/pageBlock)*pageBlock + 1;
+				int endPage = startPage + pageBlock - 1;
+				if(endPage > pageCount) endPage = pageCount;
+				//List
+				ArrayList<BoardBean> list = new ArrayList<BoardBean>();				
+					if(currentPage1 > 0){
+						list = bDao.getPermitList(category,result,order,startRow,pageSize);
+					}else{
+						list = null;
+					}
+				
+				request.setAttribute("result", result);
+				request.setAttribute("order", order);
+				request.setAttribute("category", category);
+				request.setAttribute("currentPage", currentPage1);
+				request.setAttribute("count", count);
+				request.setAttribute("pageSize", pageSize);
+				request.setAttribute("pageCount", pageCount);
+				request.setAttribute("pageBlock", pageBlock);
+				request.setAttribute("startPage", startPage);
+				request.setAttribute("endPage", endPage);
+				request.setAttribute("list", list);
+				
+				
+				request.setAttribute("Reward_center", "RewardAll.jsp");
+				
+				System.out.println("============================");
+				adActionForward forward = new adActionForward();
+				forward.setRedirect(false);
+				if(currentPage1 < 2){
+					forward.setPath("./index.jsp?center=Reward/RewardMain.jsp");
+				}else {
+					forward.setPath("./Reward/MorePage.jsp");
+				}
+					
+				return forward;
+			}
 }

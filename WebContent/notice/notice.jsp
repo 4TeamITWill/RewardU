@@ -27,7 +27,7 @@
 	/*현재 보여질(선택한) 페이지 번호 */
 	int currentPage = Integer.parseInt(pageNum);
 	//각페이지 마다 맨위에 첫번째로 보여질 시작 글번호 구하기
-	//			(현재 보여질 페이지번호 - 1) * 한페이지당 보여줄 글개수 15
+	//			(현재 보여질 페이지번호 - 1) * 한페이지당 보여줄 글개수 
 	int startRow = (currentPage - 1) * pageSize;
 %>
 <%

@@ -115,6 +115,54 @@ function finding_address() {
     }).open();
 }
 
+//페이지 유효성 체크
+function checks(){
+	var getName = RegExp(/^[가-힣]+$/);
+	var phNumber = /^(010[1-9][0-9]{7})$/;
+
+	
+	if($("#inv_investor").val() == ""){
+		alert("수령인을 입력해주세요");
+		$("#inv_investor").focus();
+		return false;
+	}
+	//이름 유효성 검사
+     if(!getName.test($("#inv_investor").val())){
+       alert("이름형식에 맞게 입력해주세요")
+       $("#inv_investor").val("");
+       $("#inv_investor").focus();
+       return false;
+     }
+	
+	//주소 공백 검사
+	if($("#searched_addr").val() == ""){
+		alert("주소를 입력해주세요");
+		$("#searched_addr").focus();
+		return false;
+	}
+	//주소2 공백 검사
+	if($("#inv_addr2").val() == ""){
+		alert("상세주소를 입력해주세요");
+		$("#inv_addr2").focus();
+		return false;
+	}
+	//연락처 공백 검사
+	if($("#inv_phone").val() == ""){
+		alert("연락처를 입력해주세요");
+		$("#inv_phone").focus();
+		return false;
+	}
+	//이름 유효성 검사
+    if(!phNumber.test($("#inv_phone").val())){
+      alert("전화번호 형식에 맞게 입력해주세요")
+      $("#inv_phone").val("");
+      $("#inv_phone").focus();
+      return false;
+    }
+}
+
+
+
 
 
  
@@ -133,7 +181,7 @@ function finding_address() {
 	<div class="wrap">
 		<div class="margin"></div>
 	
-	<form action="InvestingInsertController.in" method="post">
+	<form action="InvestingInsertController.in" method="post" onsubmit="return checks()">
 		
 	<div class="container" align="center">
 		
@@ -164,14 +212,14 @@ function finding_address() {
 		
 			<fieldset>
 				<!-- 이름 -->
-					<input type="text" name="inv_investor" placeholder="이름" ><br/>
+					<input type="text" name="inv_investor" id="inv_investor" placeholder="이름" ><br/>
 				<!-- 주소 -->
 					<input type="text" name="inv_addr1" id="searched_addr" placeholder="배송주소">
 					<input type="button" onclick="finding_address()" value="우편번호 찾기">
 					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" name="inv_addr2" placeholder="상세주소"><br/>
+					<input type="text" name="inv_addr2" id="inv_addr2" placeholder="상세주소"><br/>
 				<!-- 연락처 -->
-					<input type="text" name="inv_phone" placeholder="연락처를  '-'없이 입력해 주세요 ">
+					<input type="text" name="inv_phone" id="inv_phone" placeholder="연락처를  '-'없이 입력해 주세요 ">
 			</fieldset>
 		</div>
 		

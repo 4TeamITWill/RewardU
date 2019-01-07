@@ -9,16 +9,7 @@
 
 <style type="text/css">
 
-::-webkit-input-placeholder { font-size : 16px; color: #CCC; }
-
-/* Firefox 4-18 */
-:-moz-placeholder { font-size : 16px; color: #CCC; }
-
-/* Firefox 19+ */
-::-moz-placeholder { font-size : 16px; color: #CCC; }
-
-/* IE10+ */
-:-ms-input-placeholder { font-size : 16px; color: #CCC; }
+#searchBar input-placeholder { font-size : 16px; color: #CCC; }
 
 li {list-style: none;}
 
@@ -110,6 +101,7 @@ fieldset{border:0;}
 		 		if(id.equals("rewardu4@gmail.com")){ //접속한 id가 관리자 계정rewardu4@gmail.com 일 경우
 	%>				<!-- 마이페이지 대신 관리자페이지가 나타남 -->
 					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp; 
+					<a href="MemberLogout.me">로그아웃</a>
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
