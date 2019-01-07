@@ -10,7 +10,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-
 <div id="write_top">
 	<div class="write_top_cont"></div>
 </div>
@@ -18,9 +17,9 @@
 <div id="write_main">
 	<div class="write_tab">
 		<font style="font-size : 16px; font-weight : 550; color : rgba(20,20,20,0.8); display : block; margin : 15px 0; ">프로젝트 만들기</font>
-		<a onclick="seller_tab();">1. 제작자 정보</a><br/>
-		<a onclick="board_tab();">2. 프로젝트 소개</a><br/>
-		<a onclick="reward_tab();">3. 리워드 옵션</a>
+		<a id="a1"onclick="seller_tab();">1. 제작자 정보</a><br/>
+		<a id="a2"onclick="board_tab();">2. 프로젝트 소개</a><br/>
+		<a id="a3"onclick="reward_tab();">3. 리워드 옵션</a>
 	</div>
 		
 	<div class="write_content">
@@ -28,9 +27,12 @@
 	</div>
 </div>	
 
-<script>
 
-	seller_tab();
+
+<script>
+	
+seller_tab();
+	
 	
 	//판매자정보 탭 눌렀을때 페이지 받아오기
 	function seller_tab(){
@@ -47,15 +49,6 @@
 		$(".write_top_cont").html("리워드 옵션");
 		$(".write_content").load("./RewardingWrite_reward.jsp");
 	}
-
-    //저장하기를 눌렀다면
-    $("#save").click(function () {
-        $("#f").attr("action","./SaveAction.fu");
-    });
-    //승인요청하기를 눌렀다면
-    $("#reward").click(function () {
-        $("#f").attr("action","./RewardingWriteAction.fu");
-    });
 
 
 //업로드 하면 미리보기도 변경되도록..실패

@@ -19,6 +19,7 @@ import reward.action.RewardingWriteAction;
 import reward.db.RewardDAO;
 import reward.db.SaveBoard;
 import reward.db.SaveSeller;
+import reward.action.InsertSaveSellerAction;
 
 public class RewardController extends HttpServlet{
 
@@ -206,8 +207,136 @@ public class RewardController extends HttpServlet{
 				e.printStackTrace();
 	
 				}
+				
 			}
 		
+			//Seller정보 임시저장
+			else if(command.equals("/insertSaveSeller.fu")) {
+
+				action = new InsertSaveSellerAction();
+	
+				try {
+	
+				 forward = action.excute(req, resp);
+	
+				} catch (Exception e) {
+	
+				e.printStackTrace();
+	
+				}
+				
+			
+			//Board 정보 임시저장	
+			}else if(command.equals("/insertSaveBoard.fu")) {
+
+				action = new InsertSaveBoardAction();
+	
+				try {
+	
+				 forward = action.excute(req, resp);
+	
+				} catch (Exception e) {
+	
+				e.printStackTrace();
+	
+				}
+				
+			
+			}//Reward 정보 임시저장
+			else if(command.equals("/insertSaveReward.fu")) {
+
+				action = new InsertSaveRewardAction();
+	
+				try {
+	
+				 forward = action.excute(req, resp);
+	
+				} catch (Exception e) {
+	
+				e.printStackTrace();
+	
+				}
+				
+			
+			}
+			//
+			else if(command.equals("/updateSaveSeller.fu")) {
+
+				action = new updateSaveSellerAction();
+	
+				try {
+	
+				 forward = action.excute(req, resp);
+	
+				} catch (Exception e) {
+	
+				e.printStackTrace();
+	
+				}
+				
+			
+			}
+		
+		//
+		else if(command.equals("/updateSaveBoard.fu")) {
+
+		action = new updateSaveBoardAction();
+
+		try {
+
+		 forward = action.excute(req, resp);
+
+		} catch (Exception e) {
+
+		e.printStackTrace();
+
+		}
+		
+	
+	}
+		
+		else if(command.equals("/updateSaveReward.fu")) {
+
+			action = new updateSaveRewardAction();
+
+			try {
+
+			 forward = action.excute(req, resp);
+
+			} catch (Exception e) {
+
+			e.printStackTrace();
+
+			}
+			
+		
+		}
+		
+		//프로젝트정보 작성 페이지로 넘어감	
+			else if(command.equals("/board.fu")) {
+				
+				action = new RewardWriteAction();
+				
+				try {
+					forward = action.excute(req, resp);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		
+			//리워드정보 작성 페이지로
+				else if(command.equals("/reward.fu")) {
+				
+				forward = new ActionForward();
+				
+				forward.setRedirect(false); 
+				
+				forward.setPath("./index.jsp?center=RewardingWrite_reward.jsp"); 
+				
+			}
+			
+			
 		
 		//주소로 이동 하는 부분
 				if (forward != null) {

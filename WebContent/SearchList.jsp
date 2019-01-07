@@ -12,55 +12,56 @@
 </head>
 <body>
 <%
-String keyWord = request.getParameter("keyWord");
-	RewardDAO dao = new RewardDAO();
-	int count = dao.getSearchCount(keyWord);
-			
+String keyWord = request.getParameter("keyWord");	
 %>
 
 <h3 align="center"><%=keyWord%>로 검색한 결과 입니다.</h3>
 
-<%
-	 Vector<RewardBean> v = dao.getSearchList(keyWord);
-
-	//만약에 게시판의 글이 있다면 
-	if(count > 0){
+	<h4 align="center">${count}개의 결과를 찾았습니다.</h4>
 		
-%>
+			<div id="myGoodList_main">	
+			<div class="myGoodList_content">
+						<div class="myGoodList_content_">
+							<c:forEach var="Board" items="${requestScope.v}">
+								<div class="good_content">
+									<input type="hidden" name="pd_no" value="${Board.pd_no}">
+									<div class="content_0"><img src="./upload/sm_${Board.pd_realFile}"></div>
+									<div class="content content_1">${Board.pd_subject}</div><!-- 안나옴 -->			
+									<div class="content content_2">${Board.company}</div>
+									<div class="content content_3">${Board.pd_category}</div>
+									<div class="content content_4">${Board.pd_curMoney}</div>
+									<div class="content content_5">${Board.pd_start}</div>
+									
+									<!--css.에 content content_5.. 더 추가하기!  -->
+								</div>
+								
+							</c:forEach>
+						</div>
+						
+	
+				<!-- 페이징 부분 -->
+					<div class="my_board_page">
+						<c:if test="${startPage > pageBlock }">
+							<a href="getSearchListAction.fu?currentPage1=${startPage-pageBlock }">이전</a>
+						</c:if>				
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">					
+						<c:if test="${currentPage == i }">
+							<a href="getSearchListAction.fu?currentPage1=${i}" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
+						</c:if>
+						<c:if test="${currentPage != i }">
+							<a href="getSearchListAction.fu?currentPage1=${i}">${i }</a>
+						</c:if>
+						</c:forEach>
+						<c:if test="${endPage < pageCount}">
+							<a hef="myPageGood.my?currentPage1=${startPage+5 }">다음</a>
+						</c:if>
+					</div>		
+			</div>	
+		</div>
 
-<h4 align="center"><%=count%>개의 결과를 찾았습니다.</h4>
-	
-	<table border="1">
-	
+	<c:if test="${count==0}">
+			<h4>검색 결과 없음</h4>
+	</c:if>
 
-		<c:forEach var="Board" items="${requestScope.v}">
-			<tr>
-				<td>
-					${Board.user_id}<br/>
-					${Board.pd_no}<br/>
-					<a href="#.fu?pd_no=${Board.pd_no}">
-						<img src="./upload/sm_${Board.pd_realFile}">
-					</a><br/>
-					${Board.pd_subject}<br/>
-					${Board.company}<br/>
-					${Board.pd_category}<br/>
-					${Board.pd_curMoney}<br/>
-					${Board.pd_start}
-				</td>
-			</tr>
-			</a>
-		</c:forEach>
-<%
-	
-	}else{//게시판에 글이 없다면 
-%>
-			<tr>
-				<td align="center"><h4>검색 결과 없음</h4></td>
-			</tr>
-<%	
-	 }
-%>		
-		
-	</table>
 </body>
 </html>

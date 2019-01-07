@@ -5,12 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+
+//저장하기를 눌렀다면 - 처음저장
+$("#insert").click(function () {
+		$("#f").attr("action","./insertSaveBoard.fu");
+});
+//저장하기를 눌렀다면 - 저장한 적 있음
+$("#update").click(function () {
+    $("#f").attr("action","./updateSaveBoard.fu");
+});
+
+function seller() {
+	if (confirm(" 저장하기를 하지 않았다면 작성된 내용은 저장되지 않습니다. \t 이전단계로 가시겠습니까? ") == true){ //check
+		location.href='RewardingWrite.fu';
+	}else{
+	 return;
+	}
+}
+
+
+function next() {
+	if (confirm(" 저장하기를 하지 않았다면 작성된 내용은 저장되지 않습니다. \t 다음단계로 가시겠습니까? ") == true){ //check
+		location.href='reward.fu';
+	}else{
+	 return;
+	}
+}
+
+
+
+</script>
+
+
 </head>
 <body>
 
-	<!--
-		신청하기 버튼을 누르면 게시글 정보와 판매자 정보가 각각 테이블에 추가된다.
-	 -->
+	
 <div class="_container">		
 	<form action="" method="post" id="f" name="form" >
 	
@@ -65,7 +97,6 @@
 			<tr height="40">
 				<td style="font-weight : bold;"> 대표 이미지</td>
 				<td><input type="text" name="pd_file" readonly="readonly" style="width : 40%;">
-				<!-- <input type="button" onclick="winopen();" value="첨부하기"><br/> -->
 					<button>첨부하기</button><br/>
 				</td>		
 			</tr>
@@ -83,10 +114,14 @@
 		</table>
 		
 		<br/><br/>
-		
-				<input id="save" type="submit" value="저장하기"> &nbsp;&nbsp;
-				<input id="reward" type="submit" value="펀딩 신청하기">
+			
+				<input id="next" type="button" value="이전단계로" onclick="prev();">
+				<input id="insert" type="submit" value="저장하기">
+				<input id="next" type="button" value="다음단계로" onclick="next();">	
+				
+				
 	</form>	
+	
 </div>
 <script>
 //스마트 에디터 부분
