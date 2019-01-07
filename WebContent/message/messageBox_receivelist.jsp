@@ -133,8 +133,8 @@ if(count > 0){ //메시지가 존재 한다면
 <%
 } else {//if() 메시지가 없을 경우 count==0
 %>
-	<tr>
-		<td>메시지 없음</td>
+	<tr align="center">
+		<br/>메시지 없음
 	</tr>
 <%
 }//else
