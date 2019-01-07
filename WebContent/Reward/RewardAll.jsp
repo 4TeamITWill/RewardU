@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>전체보기</title>
 </head>
 <body>
+	<h2>${category }</h2>
 	<table id="table"  width="1000" border="0" align="center">
 		<c:forEach var="list" items="${requestScope.list}" varStatus="status">				
 		<c:if test="${status.index mod 3 eq 0 }">
