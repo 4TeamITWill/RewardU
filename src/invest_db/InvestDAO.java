@@ -90,8 +90,33 @@ private Connection  getConnection() throws Exception{
 				}
 			}
 			
-		}//incParticipant() 끝
+	}//incParticipant() 끝
 		
-	
+	//participate 테이블에 정보 저장하는 메소드
+	public void insertParticipate(String id, int pd_no, String par_money){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		
+		try {
+			con = getConnection();
+			sql = "insert into participate(user_id, pd_no, par_money) values(?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, pd_no);
+			pstmt.setString(3, par_money);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

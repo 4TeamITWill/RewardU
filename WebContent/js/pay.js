@@ -169,7 +169,6 @@ $(document).ready(function(){
 		$('#total_price').val(total_price);
 	});
 	
-	
 });//$(document).ready 끝
 
 

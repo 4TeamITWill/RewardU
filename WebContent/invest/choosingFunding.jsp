@@ -1,24 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%> 
         <%--jstl 라이브러리 사용을 위한 선언 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
- 
 <%
 //인코딩
 request.setCharacterEncoding("UTF-8");
 %> 
-  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link href="css/option.css" rel="stylesheet">
-
 <title>Insert title here</title>
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	function pd_Check() {
+		var total_price = $('#total_price').val();
+		
+		if(total_price == '0'){
+			alert("옵션을 선택해주세요.");
+			return false;
+		}
+	}
+</script>
 
 </head>
 <body>
@@ -26,7 +31,7 @@ request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
 %>
   <center>
-   <form action="InvestingOptionController.in" method="post">
+   <form action="InvestingOptionController.in" method="post" onSubmit="return pd_Check();">
   	<input type="hidden" name="pd_no" value="${bean.pd_no}">
   	<input type="hidden" name="pd_subject" value="${bean.pd_subject}">
   	<input type="hidden" name="user_id" value="<%=id%>">
@@ -77,7 +82,10 @@ request.setCharacterEncoding("UTF-8");
 	</div>
 	<br/><br/>
 	총 금액 : <input type="text" id="total_price" value="0" readonly> <br/>
+	
 	<input type="submit" value="다음 단계로  >">
+	
+	
 </div>
 		
 	</form>

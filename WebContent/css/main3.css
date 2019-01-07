@@ -190,7 +190,7 @@ body{
 	justify-content : center;
 	align-items : center;
 	box-sizing : border-box;
-	cursor : pointer;
+	/* cursor : pointer; */
 }
 
 /* 원래 #main .contents:HOVER img였는데  -> .contents_select:HOVER로 이유는 실제 인기순,최신순 기능을 추가하는과정에서 필요에 의함 */
