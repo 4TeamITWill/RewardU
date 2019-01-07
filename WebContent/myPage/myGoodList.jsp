@@ -21,8 +21,9 @@
 					<div class="myGoodList_content_">					
 						<c:forEach var="good" items="${goodlist }">
 																										
-							<div class="good_content">	
-								<input type="checkbox"  name ="delcheck" value="${good.pd_no }" style="width : 15px; height : 15px;"/>											
+						<div class="good_content">	
+							<input type="checkbox"  name ="delcheck" value="${good.pd_no }" style="width : 15px; height : 15px;"/>											
+							<div class="good_content_box">
 								<div class="content_0"><img src=""></div>
 								<div class="content content_1">${good.user_id }</div>					
 								<div class="content content_2">${good.pd_subject }</div>
@@ -32,8 +33,8 @@
 								</div>
 																							
 								<a class="mybtn" onclick="reward('${good.pd_no}');" style="cursor : pointer;">투자하기</a>	
-								
 							</div>	
+						</div>	
 												
 						</c:forEach>										
 					</div>	
@@ -52,10 +53,10 @@
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
+						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:15px; height : 15px; line-height : 15px; border-bottom : 1px solid #2f68ff">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a href="myPageGood.my?currentPage1=${i}">${i }</a>
+						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:15px; height : 15px; line-height : 15px;">${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">

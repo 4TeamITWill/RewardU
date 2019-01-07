@@ -8,15 +8,25 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+	
+#searchBar ::-webkit-input-placeholder { font-size : 16px; color: #CCC; }
 
-#searchBar input-placeholder { font-size : 16px; color: #CCC; }
+/* Firefox 4-18 */
+#searchBar :-moz-placeholder { font-size : 16px; color: #CCC; }
+
+/* Firefox 19+ */
+#searchBar ::-moz-placeholder { font-size : 16px; color: #CCC; }
+
+/* IE10+ */
+#searchBar :-ms-input-placeholder { font-size : 16px; color: #CCC; }
+
 
 li {list-style: none;}
 
 a {text-decoration: none;}
 .hr{align: center;
 	width: 100%; height: 5px;
-	background: linear-gradient(90deg, #b44af7, #82caff);  }
+	background: linear-gradient(90deg, #b44af7, #82caff); }
 fieldset{border:0;}
 
 
@@ -101,7 +111,9 @@ fieldset{border:0;}
 		 		if(id.equals("rewardu4@gmail.com")){ //접속한 id가 관리자 계정rewardu4@gmail.com 일 경우
 	%>				<!-- 마이페이지 대신 관리자페이지가 나타남 -->
 					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp; 
-					<a href="MemberLogout.me">로그아웃</a>
+					<a href="MemberLogout.me">로그아웃</a>											
+					<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span>						
+					<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span></a>	<!-- 클릭하면 메시지함으로 -->	
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
@@ -157,7 +169,7 @@ fieldset{border:0;}
 					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
 					<a href="./Guide.ar">이용가이드</a>
 					<a href="./AboutReward.ar">리워드란?</a>
-					<a href="링크넣기">리듀 소개</a>					
+					<a href="RewardUIntro.my">리듀 소개</a>					
 					<a href="./Notice.no">공지사항</a>	
 				</div>	
 				<div class="menuLine">
