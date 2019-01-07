@@ -2,6 +2,7 @@ package invest_db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.Context;
@@ -62,6 +63,34 @@ private Connection  getConnection() throws Exception{
 			e.printStackTrace();
 		}
 	}//insertInvest end
+
+	public void incParticipant(int pd_no) {
+			
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			String sql="";
+			ResultSet rs=null;
+			try {
+				con = getConnection();
+				sql = "update board set pd_participant = pd_participant+1 where pd_no=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, pd_no);
+				
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (con != null) con.close();
+					if (pstmt != null) pstmt.close();
+					if (rs != null)rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}//incParticipant() 끝
+		
 	
 
 }

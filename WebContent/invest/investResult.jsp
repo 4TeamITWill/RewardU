@@ -17,9 +17,9 @@
 		 var op3= $("#op3_price").attr('value');
 		  if(op1 == '0'){
 			 $(".first").hide();
-		 }else if(op2 == '0'){
+		 }if(op2 == '0'){
 			 $(".second").hide();
-		 }else if(op3 == '0'){
+		 }if(op3 == '0'){
 			 $(".third").hide();
 		 } 
 		 
