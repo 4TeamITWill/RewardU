@@ -102,7 +102,7 @@ public class adFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/PermitGood.ad")){
-			action = new adPermitStartAction();
+			action = new adPermitGoodAction();
 			try{
 				forward = action.execute(request, response);
 			}catch(Exception e){
