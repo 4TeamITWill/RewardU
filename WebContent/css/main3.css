@@ -964,3 +964,79 @@ body{
 }
 
 /*-------------------------------------------*/
+
+/* write 페이지 부분 ~~~~~~~ */
+
+#write_top {
+	height : 150px;
+	background-color : rgba(230,230,230,0.6);
+}
+
+.write_top_cont {
+	width : 900px;
+	margin : 0 auto;
+	font-size : 23px;
+	line-height : 150px;
+	padding-left : 1rem;
+}
+
+#write_main {
+	width : 900px;
+	display : flex;
+	margin : 0 auto;
+}
+
+.write_tab {
+	flex : 2;
+	border-right : 1px solid rgba(200,200,200,0.5);
+	padding : 4rem 0;
+}
+
+.write_tab a {
+	display : inline-block;
+	margin-top : 15px;
+	font-size : 16px;
+	cursor : pointer;
+	margin-left : 30px;
+	color : rgba(150,150,150,1);
+	font-weight : 550;
+}
+
+.write_content {
+	flex : 8;
+}
+
+.write_content input {
+	height : 23px;
+	border : 0.5px solid rgba(200,200,200,0.8);
+}
+
+._container {
+	padding-left : 3rem;
+	padding-top : 2rem;
+}
+
+/* 관리자 페이지 부분!!!!!!!!!!!!!!!!! */
+
+#admin_index {
+	padding : 4rem 0 ;
+}
+
+#ad_tab {
+	width : 1000px;
+	margin : 0 auto;
+}
+
+#ad_tab a {
+	display : inline-block;
+	width : 100px;
+	height : 30px;
+	text-align : center;
+	line-height : 30px;
+}
+
+#ad_main {
+	width : 1000px;
+	margin : 2rem auto;
+}
+

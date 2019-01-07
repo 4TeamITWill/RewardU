@@ -25,7 +25,7 @@ public class adFrontController extends HttpServlet{
 		if(command.equals("/adminPage.ad")){
 			
 			forward = new adActionForward();
-			forward.setPath("./admin/admin_index.jsp");
+			forward.setPath("./index.jsp?center=./admin/admin_index.jsp");
 			forward.setRedirect(false);		
 			
 		}else if(command.equals("/board.ad")){

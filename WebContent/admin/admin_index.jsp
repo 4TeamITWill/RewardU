@@ -15,20 +15,30 @@
 
 </head>
 <body>
+<div id="admin_index">
 	
-	<a onclick="selltable();">판매글보기</a>
-	<a onclick ="membertable();">회원 보기</a>
+	<div style="text-align : center;"><font style="font-size : 1.6rem;">관리자 페이지</font></div>
+
+	<div id="ad_tab">
+		<a onclick="selltable();" class="bt3">판매글보기</a>
+		<a onclick ="membertable();" class="bt4">회원 보기</a>
+	</div>	
 	
 	<div id="ad_main">
 		<div id="ad_content">				
 		</div>	
 	</div>
 	
+</div>	
 <script>
 
 	selltable();
 
 	function selltable(){
+		
+		$(".bt3").css("border","1px solid #aaa");
+		$(".bt4").css("border","0");
+		
 		$.ajax({
 			url : "board.ad",
 			success:function(data){
@@ -38,6 +48,10 @@
 	}
 	
 	function selltable(currentPage1){
+		
+		$(".bt3").css("border","1px solid #aaa");
+		$(".bt4").css("border","0");
+		
 		$.ajax({
 			url : "board.ad",
 			data : {"currentPage1" : currentPage1},
@@ -48,6 +62,10 @@
 	}
 	
 	function membertable(){
+		
+		$(".bt4").css("border","1px solid #aaa");
+		$(".bt3").css("border", "0");
+		
 		$.ajax({
 			url : "member.ad",
 			success : function(data){

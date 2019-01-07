@@ -17,7 +17,7 @@ public class adMemberBanAction implements adAction {
 		
 		adActionForward forward = new adActionForward();
 		
-		forward.setPath("./admin/admin_index.jsp");
+		forward.setPath("./index.jsp?center=./admin/admin_index.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
