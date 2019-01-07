@@ -27,7 +27,7 @@
 				       			<span>${list.pd_category }</span>
 				        	</a>
 				        	<a>
-				        		"oint"
+				        		<span>${list.pd_no }</span>
 				        	</a>
 			        	</div>
 					</td>
