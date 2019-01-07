@@ -193,7 +193,8 @@ body{
 	cursor : pointer;
 }
 
-#main .contents:HOVER img {
+/* 원래 #main .contents:HOVER img였는데  -> .contents_select:HOVER로 이유는 실제 인기순,최신순 기능을 추가하는과정에서 필요에 의함 */
+.contents_select:HOVER{
 	transform : scale(1.1);
 	transition : all 0.6s ease;
 }

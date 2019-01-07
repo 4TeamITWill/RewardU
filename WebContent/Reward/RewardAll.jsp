@@ -18,10 +18,10 @@
 		<tr id="tr">
 		</c:if>
 			<td align="center" width="333">
-				<a href="Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
+				<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 					<img src="./img/1.jpg" width="280" border="0">
 				</a>
-				<a href="#">
+				<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 					<p>
 		        		<strong>${list.pd_subject }</strong>
 		        	</p>
