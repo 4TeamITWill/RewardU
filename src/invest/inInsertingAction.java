@@ -15,6 +15,8 @@ public class inInsertingAction implements inAction{
 		// TODO Auto-generated method stub
 		response.setContentType("text/plain;charset=UTF-8");
 		
+		int pd_no = Integer.parseInt(request.getParameter("pd_no"));
+		
 		InvestBean ibean = new InvestBean();
 		
 		ibean.setUser_id(request.getParameter("user_id"));
@@ -44,6 +46,11 @@ public class inInsertingAction implements inAction{
 		idao.insertInvest(ibean);
 		
 		request.setAttribute("ibean", ibean);
+		
+		//참여자 관련 board db객체 생성
+		
+		idao.incParticipant(pd_no);
+		
 		
 		inActionForward forward = new inActionForward();
 		
