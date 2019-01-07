@@ -264,14 +264,14 @@ public class BoardDAO {
 			sql = "";
 			if(category.equals("N")){
 				if(result.equals("A")){
-					sql = "select * from board where pd_permit = 1 order by ? limit ?, ?";
+					sql = "select * from board where pd_permit = 1 order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, order);
 					pstmt.setInt(2, startRow-1);
 					pstmt.setInt(3, pageSize);
 					rs = pstmt.executeQuery();
 				}else if(!result.equals("A")){
-					sql = "select * from board where pd_permit = 1 AND pd_result = ? order by ? limit ?, ?";
+					sql = "select * from board where pd_permit = 1 AND pd_result = ? order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, result);
 					pstmt.setInt(2, order);
@@ -281,7 +281,7 @@ public class BoardDAO {
 				}
 			}else if(!category.equals("N")){
 				if(result.equals("A")){
-					sql = "select * from board where pd_permit = 1 AND pd_category=? order by ? limit ?, ?";
+					sql = "select * from board where pd_permit = 1 AND pd_category=? order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, category);
 					pstmt.setInt(2, order);
@@ -289,7 +289,7 @@ public class BoardDAO {
 					pstmt.setInt(4, pageSize);
 					rs = pstmt.executeQuery();
 				}else if(!result.equals("A")){
-					sql = "select * from board where pd_permit = 1 AND pd_result = ? AND pd_category=? order by ? limit ?, ?";
+					sql = "select * from board where pd_permit = 1 AND pd_result = ? AND pd_category=? order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, result);
 					pstmt.setString(2, category);
@@ -392,50 +392,6 @@ public class BoardDAO {
 			}
 		}
 		return count;
-	}
-	
-	public int getPermitMoreListCount(String category, String select) {
-		// TODO Auto-generated method stub
-				Connection con = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				
-				int count = 0;
-				String sql = "";
-				
-				try {
-					con = getConnection();			
-					if(select != "all"){
-						sql = "select count(*) from board where pd_category=? AND pd_result=? AND pd_permit=1";
-					
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, category);
-						pstmt.setString(2, select);
-						rs = pstmt.executeQuery();
-					}else if(select == "all"){
-						sql = "select count(*) from board where pd_category=? AND pd_permit=1";
-						
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, category);
-						pstmt.setString(2, select);
-						rs = pstmt.executeQuery();
-					}
-					if(rs.next()){
-						count = rs.getInt(1);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}finally{
-					try{
-						if(con != null)con.close();
-						if(pstmt != null) pstmt.close();
-						if(rs != null) rs.close();
-					}catch(Exception e2){
-						e2.printStackTrace();
-					}
-				}
-				
-				return count;
 	}
 	
 	
@@ -600,6 +556,117 @@ public class BoardDAO {
 					}
 				}
 			}//upCount 끝
+
+			public ArrayList<BoardBean> getPermitstartList() {
+				// TODO Auto-generated method stub
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = "";
+				ResultSet rs = null;
+				ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+				try{
+					con = getConnection();
+					sql = "select * from board where pd_permit = 1 order by pd_start DESC limit 0,3";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					while(rs.next()) {
+						BoardBean bBean = new BoardBean();
+						
+						bBean.setPd_no(rs.getInt("pd_no"));
+						bBean.setUser_id(rs.getString("user_id"));
+						bBean.setPd_category(rs.getString("pd_category"));
+						bBean.setPd_start(rs.getTimestamp("pd_start"));
+						bBean.setPd_end(rs.getTimestamp("pd_end"));
+						bBean.setPd_good(rs.getInt("pd_good"));
+						bBean.setPd_count(rs.getInt("pd_count"));
+						bBean.setPd_file(rs.getString("pd_file"));
+						bBean.setPd_realfile(rs.getString("pd_realFile"));
+						bBean.setPd_goalmoney(rs.getString("pd_goalMoney"));
+						bBean.setPd_curmoney(rs.getString("pd_curMoney"));
+						bBean.setPd_participant(rs.getInt("pd_participant"));
+						bBean.setPd_result(rs.getInt("pd_result"));
+						bBean.setPd_permit(rs.getInt("pd_permit"));
+						bBean.setPd_content(rs.getString("pd_content"));
+						bBean.setPd_subject(rs.getString("pd_subject"));
+						bBean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+						bBean.setPd_opprice1(rs.getInt("pd_opprice1"));
+						bBean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+						bBean.setPd_opprice2(rs.getInt("pd_opprice2"));
+						bBean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+						bBean.setPd_opprice3(rs.getInt("pd_opprice3"));
+						
+						list.add(bBean);
+					}
+					con.close();
+					
+				}catch(Exception e){
+					e.printStackTrace();
+				} finally {
+					try { //자원해제
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				return list;
+			}
+
+			public ArrayList<BoardBean> getPermitGoodList() {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = "";
+				ResultSet rs = null;
+				ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+				try{
+					con = getConnection();
+					sql = "select * from board where pd_permit = 1 order by pd_good DESC limit 0,3";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					while(rs.next()) {
+						BoardBean bBean = new BoardBean();
+						
+						bBean.setPd_no(rs.getInt("pd_no"));
+						bBean.setUser_id(rs.getString("user_id"));
+						bBean.setPd_category(rs.getString("pd_category"));
+						bBean.setPd_start(rs.getTimestamp("pd_start"));
+						bBean.setPd_end(rs.getTimestamp("pd_end"));
+						bBean.setPd_good(rs.getInt("pd_good"));
+						bBean.setPd_count(rs.getInt("pd_count"));
+						bBean.setPd_file(rs.getString("pd_file"));
+						bBean.setPd_realfile(rs.getString("pd_realFile"));
+						bBean.setPd_goalmoney(rs.getString("pd_goalMoney"));
+						bBean.setPd_curmoney(rs.getString("pd_curMoney"));
+						bBean.setPd_participant(rs.getInt("pd_participant"));
+						bBean.setPd_result(rs.getInt("pd_result"));
+						bBean.setPd_permit(rs.getInt("pd_permit"));
+						bBean.setPd_content(rs.getString("pd_content"));
+						bBean.setPd_subject(rs.getString("pd_subject"));
+						bBean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+						bBean.setPd_opprice1(rs.getInt("pd_opprice1"));
+						bBean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+						bBean.setPd_opprice2(rs.getInt("pd_opprice2"));
+						bBean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+						bBean.setPd_opprice3(rs.getInt("pd_opprice3"));
+						
+						list.add(bBean);
+					}
+					con.close();
+					
+				}catch(Exception e){
+					e.printStackTrace();
+				} finally {
+					try { //자원해제
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				return list;
+			}
 		
 	
 }//BoardDAO 끝
