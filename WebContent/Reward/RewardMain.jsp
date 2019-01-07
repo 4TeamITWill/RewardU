@@ -17,106 +17,113 @@
 		td{
 			border: solid;
 		}
+		.category{
+			list-style:none;
+		    margin:0;
+		    padding:0;
+		}
+		.category li{
+			margin: 0 0 0 0;
+		    padding: 0 0 0 0;
+		    border : 0;
+		    float: left;
+		}
 	</style>
 	<script type="text/javascript">
 		
+			var URL = location.pathname;
+			console.log(URL);
 		
-	
 			function change(){
-				var URL = location.pathname;
-				console.log(URL);
-				var select = document.getElementById("select").value;
+				var result = document.getElementById("result").value;
 				var order = document.getElementById("order").value;
-				if(select == "all"){
-					window.open("./PermitList.ad?&order="+order,'_self');
-				}else{
-					window.open("./PermitList.ad?&select="+select+"&order="+order,'_self');	
-				}
-				
+				var category = document.getElementById("category").value; 
+					if(result == "A"){
+						window.open(URL+"?category="+category+"&order="+order,'_self');
+					}else{
+						window.open(URL+"?category="+category+"&result="+result+"&order="+order,'_self');	
+					}
 			};
 			
-			function loadmore(){
-				var order = $('#opt').val();
-				var select = $('#select').val();
+		 	function loadmore(){
+				var order = $('#order').val();
+				var result = $('#result').val();
 				var category = $('#category').val();
-				var pageNum = $('#pageNum').val();
-				var totalPage = $('#totalPage').val();
-				pageNum++;
-				console.log(pageNum);
-				console.log(totalPage);
+				var currentPage = $('#currentPage').val();
+					currentPage++;
+				var pageCount = $('#pageCount').val();
+				console.log(order);
+				console.log(result);
+				console.log(currentPage);
+				console.log(pageCount);
 				$.ajax({
-					url : "./PermitMore.ad",
+					url : "./PermitList.ad",
 					type: "POST",
-					data:({pageNum:pageNum , order:order, select:select, category:category}),
+					data:({result:result, order:order, currentPage:currentPage, category:category}),
 					success:function(data){
-						//form 영역 내 맨뒤로 붙임
-						if(pageNum < totalPage){
-							$('#center').append(data);
-							//페이지 넘버 최신화
-							$('#pageNum').val(pageNum);
-						}else if(pageNum = totalPage){
-							$('#center').append(data);
-							$('#more').hide();
-						}
-						
+						 console.log(data);
+					 	 if(currentPage < pageCount){
+						 	$('#form').append(data);
+						 	$('#currentPage').val(currentPage);
+						 }else if(currentPage == pageCount){
+							 $('#form').append(data);
+							 $("#more").hide();
+						 } 
 					},	
-					error:function(xhr,status,error){
-						alert(error);
-					}
+					error:function(request,status,error){
+			            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			           }
 				});
-			}
+			} 
 			
 	</script>
 </head>
 <body>
+	<input type="hidden" id="category" value="${category }">
+	${category }
 	<div align="center">
-		<a href="./PermitList.ad?"><img src="./img/category/Tech.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=전자"><img src="./img/category/Tech.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=패션"><img src="./img/category/Fashion.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=뷰티"><img src="./img/category/Cosmetics.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=스포츠"><img src="./img/category/GYM.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=공연"><img src="./img/category/Concert.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=책"><img src="./img/category/Book.jpg" width="80" border="0"></a>
-		<a href="./PermitListcategory.ad?category=취미"><img src="./img/category/Game.jpg" width="80" border="0"></a>
+		<form>
+			<ul class="category">
+				<li><a href="./PermitList.ad?category=N"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=전자"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=패션"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=뷰티"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=스포츠"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=공연"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=책"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+				<li><a href="./PermitList.ad?category=취미"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+			</ul>
+		</form>
 	</div>
 	<hr>
-	<h2>전체보기</h2>
-	<div align="right">
+	<c:set var="center" value="${Reward_center }"/>
+	<div align="right">		
 		<span>
-			<form id="keword">
-				<label>
-					<input id="search_text" type="search" placeholder="검색" value><button id="search" type="button" onclick="change()">검색</button>
-				</label>
-			</form>
-		</span>
-		<span>
-			<c:set var="select"  value="${param.select }"/>
-			<select id="select" onchange="change()">
-					<option value="all" <c:if test="${select eq 'all'}">selected</c:if>>전체</option>
-				<option value="0" <c:if test="${select eq '0'}">selected</c:if>>펀딩중</option>
-				<option value="1" <c:if test="${select eq '1'}">selected</c:if>>성공된</option>
-				<option value="-1" <c:if test="${select eq '-1'}">selected</c:if>>실패된</option>
+			<c:set var="result"  value="${param.result }"/>
+			<select id="result" onchange="change()">
+				<option value="A" <c:if test="${result eq 'A'}">selected</c:if>>전체</option>
+				<option value="0" <c:if test="${result eq '0'}">selected</c:if>>펀딩중</option>
+				<option value="1" <c:if test="${result eq '1'}">selected</c:if>>성공된</option>
+				<option value="2" <c:if test="${result eq '2'}">selected</c:if>>실패된</option>
 			</select>
 		</span>
 		<span>
-			<c:set var="opt"  value="${param.opt }"/>
-			<select id="order" onchange="change()" >
-				<option value="pd_good"<c:if test="${opt eq 'pd_good'}">selected</c:if>>추천수</option>
-				<option value="pd_count"<c:if test="${opt eq 'pd_count'}">selected</c:if>>조회수</option>
-				<option value="pd_goalmoney"<c:if test="${opt eq 'pd_goalmoney'}">selected</c:if>>펀딩액순</option>
-				<option value="pd_start"<c:if test="${opt eq 'pd_start'}">selected</c:if>>최신순</option>
-				<option value="pd_participant"<c:if test="${opt eq 'pd_participant'}">selected</c:if>>참여자순</option>
+			<c:set var="order"  value="${param.order }"/>
+			<select id="order" onchange="change()">
+				<option value="7"<c:if test="${order eq '7'}">selected</c:if>>추천수</option>
+				<option value="8"<c:if test="${order eq '8'}">selected</c:if>>조회수</option>
+				<option value="11"<c:if test="${order eq '11'}">selected</c:if>>펀딩액순</option>
+				<option value="5"<c:if test="${order eq '5'}">selected</c:if>>최신순</option>
+				<option value="12"<c:if test="${order eq '12'}">selected</c:if>>참여자순</option>
 			</select>
 		</span>
 	</div>
 	<hr>
 	<div class="center">
-		<form id="center">	
-			<jsp:include page="RewardMore.jsp"/>
+		<form id="form">	
+			<jsp:include page="${center }"/>
 		</form>
 	</div>
-		
-			
 <%--		<c:if test="${numPageGroup > 1 }">
 				<a href="./PermitList.ad?pageNum=${(numPageGroup-2)*pageGroupSize+1}">[이전]</a>
 			</c:if>
@@ -134,20 +141,21 @@
 				<a href="./PermitList.ad?pageNum=${ numPageGroup*pageGroupSize+1}">[다음]</a>
 			</c:if>  
 --%>
-	
+	<div class="center">
 		<tr id="loadmore">
 			<td colspn="5">
+			<c:if test="${currentPage < pageCount }">
 				<div id="more" class="btns">
-					<input type="hidden" name="opt" id="opt" value="${param.opt }"/>
-					<input type="hidden" name="select" id="select" value="${param.select }"/>
-					<input type="hidden" name="category" id="category" value="${param.category }"/>
-					<input type="hidden" name="pageNum" id="pageNum" value="${currentPage }"/>
-					<input type="hidden" name="totalPage" id="totalPage" value="${totalPage }"/>
-					<input type="hidden" name="endPage" id="endPage" value="${endPage }"/>
-					<a href="javascript:loadmore();">더보기</a>
+					<input type="hidden" id="order" value="${order }">
+					<input type="hidden" id="result" value="${result }">
+					<input type="hidden" id="currentPage" value="${currentPage }">
+					<input type="hidden" id="pageCount" value="${pageCount }">
+					<input type="button" onclick="loadmore()" value="더보기">
 				</div>
+			</c:if>
 			</td>
 		</tr>
-	
+	</div>
+
 </body>
 </html>

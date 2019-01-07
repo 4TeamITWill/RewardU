@@ -94,20 +94,6 @@ public class adFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}else if(command.equals("/PermitListcategory.ad")){
-			action = new adPermitcategoryAction();
-			try{
-				forward = action.execute(request, response);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		}else if(command.equals("/PermitMore.ad")){
-			action = new adPermitMoreAction();
-			try{
-				forward = action.execute(request, response);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
 		}else if(command.equals("/getFunding.ad")){
 			action = new adBoardFundingAction();
 			try{
@@ -123,6 +109,7 @@ public class adFrontController extends HttpServlet{
 			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
 			forward.setPath("./index.jsp?center=ContentInfo.jsp");
 		}
+		
 		
 		//�씠�룞
 		if(forward != null){
