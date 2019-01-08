@@ -18,7 +18,7 @@
 				<div class="myRewardList_content_">
 				
 					<div style="width : 100%; display : grid; grid-template-columns : 140px 1fr; 
-									border : 1px solid rgba(150,150,150,0.5); height : 100px;align-items : center; padding-left : 0.7rem;">
+									border : 1px solid rgba(150,150,150,0.5); height : 100px;align-items : center; box-sizing : border-box; padding-left : 0.7rem;">
 						<div class="reward_img_container">
 							<img src="img/cat.jpg">
 						</div>

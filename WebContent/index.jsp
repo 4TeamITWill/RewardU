@@ -73,6 +73,7 @@
 	$("body").click(function(e){		
 		if(e.target.id != "goMypage" && e.target != modal){
 			modal.style.display = "none";
+			modal.style.top = "55px";
 		}
 	});
 			
