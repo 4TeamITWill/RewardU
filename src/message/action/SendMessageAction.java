@@ -44,12 +44,12 @@ public class SendMessageAction implements Action{
 		
 		if(result == 1){ //성공시
 			//sendRedirect() <-이방식은 이동할 페이지 주소 경로 노출 함.
-			forward.setRedirect(false);
+			forward.setRedirect(true);
 			//메시지함으로 이동할 페이지 주소 저장
 			forward.setPath("./MemberMessage_ReceiveList.message");
 			
 		} else {//실패시
-			forward.setRedirect(false);
+			forward.setRedirect(true);
 			//메시지 전송 실패를 알리는 sendMessageFail.jsp로 이동
 			forward.setPath("./SendMessageFail.message"); 
 		}//if ~ else끝
