@@ -159,6 +159,13 @@ function checks(){
       $("#inv_phone").focus();
       return false;
     }
+	//총금액 "0"일때 결제 불가
+    var total= $("#inv_price").attr('value');
+	  if(total == '0'){
+		 alert("결제할 상품이 없습니다. 다시 선택해주세요")
+		 return false;
+	 }
+	 
 }
 
 
@@ -196,7 +203,7 @@ function checks(){
 			<h2> 옵션2 ${ibean.op2_price} x ${ibean.op2_qty} : ${ibean.op2_price * ibean.op2_qty} </h2><br/>
 			<h2> 옵션3 ${ibean.op3_price} x ${ibean.op3_qty} : ${ibean.op3_price * ibean.op3_qty} </h2><br/>
 			
-			<h2> 총 금액 : ${ibean.inv_price}원</h2>
+			<h2 id="inv_price" value="${ibean.inv_price}"> 총 금액 : ${ibean.inv_price}원</h2>
 			
 			<input type="hidden" name="user_id" value="${ibean.user_id}">
 			<input type="hidden" name="pd_no" value="${ibean.pd_no}">
