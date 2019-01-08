@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,14 +8,16 @@
 <title>리듀 RewardU | News</title>
 <style type="text/css">
 
-#reNewsRead_content { width: 800px;
-	text-align: left;
-	border: 1px solid red;
+.news_header{
+	width: 100%;
+	height: 180px;
+	background-image: url("img/radioNews.jpg"); 
+	background-size: 100% 100%;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
 }
 
-.reNewsRead_container {
-	border: 1px solid blue;
-}
+
 
 </style>
 
@@ -22,21 +25,32 @@
 <body>
 <div class="wrap">
 	<div class="container" align="center">
-	
+		<div class="news_header">
+			<br>
+			<span class="news_header_font" style=" ">News</span>
+		</div>
+		
 	<div id="reNewsRead_content">
-		<div align="right"><input type="button" value="글삭제" onclick="location.href='./NewsDeleteAction.news?no=${nbean.reNews_no}'"></div>
+		<div class="margin3"></div>
+	<c:if test="${sessionScope.id eq 'rewardu4@gmail.com' }">
+		<div align="right">
+		착한 사람눈에만 보이는 버튼->	<input type="button" value="글삭제" onclick="location.href='./NewsDeleteAction.news?no=${nbean.reNews_no}'">
+		</div>
+	</c:if>
 		<div class="reNewsRead_container">
-			<h6>${nbean.reNews_category }</h6>
+			<h5>${nbean.reNews_category }</h5>
 			<h3>${nbean.reNews_title}</h3>
-			<span>${nbean.user_name }(${nbean.user_id })</span>&nbsp;&nbsp;<span>${nbean.reNews_date }</span>
-			<span>&nbsp;&nbsp;조회수 ${nbean.reNews_views }</span>
+			<span class="reNews_editor">${nbean.user_name }(${nbean.user_id })</span>&nbsp;&nbsp;<span class="reNews_date">${nbean.reNews_date }</span>
+			<span class="reNews_date">&nbsp;&nbsp;조회수 ${nbean.reNews_views }</span>
 			<hr>
-			<div>
-			${nbean.reNews_content }
+			<div class="reNewsRead_content">
+				${nbean.reNews_content }
 			</div>
+			<hr>
 		</div><!-- reNewsRead_contaioner -->
-	
-		<div align="center"><input type="button" value="목록으로" onclick="location.href='./NewsAction.news'"></div>
+	 		<div class="margin2"></div>
+		<div align="center"><input type="button" class="btn2" value="목록으로" onclick="location.href='./NewsAction.news'"></div>
+			<div class="margin2"></div>
 	</div><!-- reNewsRead_content -->
 	
 	

@@ -58,7 +58,7 @@
 	background-image: url("img/leaves.jpg"); 
 	background-size: 100% 100%;
 	background-attachment: scroll;
-	background-repeat: no-repeat;}
+	background-repeat: no-repeat; }
 
 </style>
 
