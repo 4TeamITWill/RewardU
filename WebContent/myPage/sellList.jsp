@@ -11,11 +11,17 @@
 	<div id="savedList_main">
 		<div class="savedList_top">
 			<div class="savedList_desc">
-				<h2 style="font-size : 1.3rem">&nbsp;&nbsp;회원님께서 개설 중인 프로젝트 목록입니다.</h2>	
+				<h2 style="font-size : 1.3rem">회원님께서 개설 중인 프로젝트 목록입니다.</h2>	
 			</div>			
-		</div>
-		
+		</div>		
 		<div class="savedList_bottom">
+			<div style="display : flex; width : 1000px; margin : 0 auto; font-weight : bold; padding-bottom : 1rem; border-bottom : 1px solid rgba(130,130,130,0.8);">
+				<div style="flex : 5;">프로젝트</div>
+				<div style="flex : 2; text-align : center;">마감날짜</div>
+				<div style="flex : 1; text-align : center;">참여자수</div>
+				<div style="flex : 1; text-align : center;">평점</div>
+			</div>
+		
 			<c:forEach var="board" items="${board1list }">
 				<div class="savedList_bottom_content" >		
 					<div style="display : flex; align-items : center;">

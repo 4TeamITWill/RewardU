@@ -24,7 +24,8 @@
 			</tr>
 			
 			<tr height="40">	
-				<td colspan="2" style="font-weight : bold;"> 프로젝트 제목(상품명)</td>				
+				<td colspan="2" style="font-weight : bold;"> 프로젝트 제목
+				<font style="font-size : 14px;"> (상품명)</font></td>				
 			</tr>
 			
 			<tr height="40">
@@ -32,7 +33,8 @@
 			</tr>
 				
 			<tr height="40">		
-				<td colspan ="2" style="font-weight : bold;"> 상품설명</td>				
+				<td colspan ="2" style="font-weight : bold;"> 상품설명
+				<font style="font-size : 13px"> (이미지 포함 상세하게 적어주세요)</font></td>				
 			</tr>
 			
 			<tr height="40">
@@ -59,12 +61,12 @@
 				
 			<tr height="40">		
 				<td style="font-weight : bold;">목표금액</td>
-				<td><input type="text" name="pd_goalMoney" style="width : 60%;">원</td>
+				<td><input type="text" name="pd_goalMoney" style="width : 50%;"> 원</td>
 			</tr>
 				
 			<tr height="40">
 				<td style="font-weight : bold;"> 대표 이미지</td>
-				<td><input type="text" name="pd_file" readonly="readonly" style="width : 40%;">
+				<td><input type="text" name="pd_file" readonly="readonly" style="width : 50%;">
 				<!-- <input type="button" onclick="winopen();" value="첨부하기"><br/> -->
 					<button>첨부하기</button><br/>
 				</td>		
@@ -72,13 +74,13 @@
 			<tr height="40">
 				<td style="font-weight : bold;">실제파일(히든예정)</td>
 				<td>
-					<input type="text" id="pd_realFile" name="pd_realFile" style="width : 40%;"><br/>
+					<input type="text" id="pd_realFile" name="pd_realFile" style="width : 50%;"><br/>
 				</td>
 			</tr>
 			
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 40%;"></td>			
+				<td><input type="date" name="pd_end" style="width : 50%;"></td>			
 			</tr>	
 		</table>
 		

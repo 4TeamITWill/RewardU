@@ -11,7 +11,7 @@
 	<div id="myGoodList_main">	
 		<div class="myGoodList_content">		
 			
-			<div style="display : flex; justify-content : space-between; align-items : center; margin-bottom : 0.5rem;">
+			<div style="display : flex; justify-content : space-between; align-items : center; margin-bottom : 0.5rem; padding : 0 2rem;">
 				<div class="good_subject">좋아요</div>	
 				<input style="width : 80px; height : 30px;"type="button" value="삭제하기" onclick="delGood();"/>
 			</div>

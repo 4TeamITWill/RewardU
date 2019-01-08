@@ -32,27 +32,23 @@
 				
 				<tr height="40">		
 					<td style="font-weight : bold;">사업자주소</td>
-					<td><input type="text" name="company_addr" style="width : 80%;"></td>
+					<td><input type="text" name="company_addr" style="width : 60%;"></td>
 				</tr>
 					
-				<tr height="40">	
+				<tr height="70">	
 					<td style="font-weight : bold;">계좌번호</td>
 					<td align="left">
-						은행<select name="sellerBank">
+						<select name="sellerBank" style="height : 30px;">
 							<option value="국민">국민</option>
 							<option value="농협">농협</option>
 							<option value="우리">우리</option>
 							<option value="신한">신한</option>
 						</select>
-					</td>
-				</tr>
-				<tr height="40">
-					<td>
-					</td>
-					<td>
+						<font style="font-size : 13px;">은행</font><br/>
 						<input type="text" name="sellerAccount" placeholder="계좌번호를 입력해주세요." style="width : 60%;">
 					</td>
-				</tr>		
+				</tr>
+						
 			</table><br/>	
 	</form>	
 </div>

@@ -18,9 +18,9 @@
 <div id="write_main">
 	<div class="write_tab">
 		<font style="font-size : 16px; font-weight : 550; color : rgba(20,20,20,0.8); display : block; margin : 15px 0; ">프로젝트 만들기</font>
-		<a onclick="seller_tab();">1. 제작자 정보</a><br/>
-		<a onclick="board_tab();">2. 프로젝트 소개</a><br/>
-		<a onclick="reward_tab();">3. 리워드 옵션</a>
+		<a class="a1" onclick="seller_tab();">1. 제작자 정보</a><br/>
+		<a class="a1" onclick="board_tab();">2. 프로젝트 소개</a><br/>
+		<a class="a1" onclick="reward_tab();">3. 리워드 옵션</a>
 	</div>
 		
 	<div class="write_content">
@@ -31,10 +31,17 @@
 
 <script>
 
-seller_tab();
+	seller_tab();
+	
+	$(".a1:eq(0)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
+	
+	$(".a1").click(function(){
+		$(this).css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
+		$(".a1").not($(this)).css({"color":"rgba(150,150,150,1)", "font-weight" : "550", "font-size" : "14px"});
+	});
 	
 	//판매자정보 탭 눌렀을때 페이지 받아오기
-	function seller_tab(){
+	function seller_tab(){				
 		$(".write_top_cont").html("제작자 정보");
 		$(".write_content").load("./RewardingWrite_seller.jsp");
 	}

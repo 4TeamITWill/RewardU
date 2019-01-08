@@ -243,7 +243,7 @@ body{
 
 #main .contents .contents_mid .cont_container {
 	padding : 15px;
-	height : 120px;
+	height : 90px;
 	font-weight : bold;	
 }
 
@@ -638,8 +638,8 @@ body{
 }
 
 .myRewardList_content_ {
-	margin-top : 2rem;
-	margin-bottom : 3rem;
+	margin-top : 2.5rem;
+	margin-bottom : 6rem;
 }
 
 .reward_img_container {
@@ -778,51 +778,49 @@ body{
 }	
 
 .savedList_top {
-	width : 800px;
+	width : 1000px;
 	margin : 0 auto;
 }
 
 .savedList_bottom {
-	background-color : #eee;
 	padding : 2rem 0;
 }
 
 .savedList_bottom_content {
-	width : 800px;
+	width : 1000px;
 	height : 150px;
 	margin : 0 auto;
 	display : flex;
 	justify-content : center;
 	align-items : center;
-	border : 0.5px solid rgba(170,170,170,0.6);
+	border-bottom : 0.7px solid rgba(170,170,170,0.8);
 
 }
 
 .savedList_bottom_content {
 	text-align : center;
+	padding : 5px 0;
 }
 
 .savedList_bottom_content>div:nth-of-type(1) {
 	flex : 5;
-	border-right : 0.5px solid rgba(170,170,170,0.6);
 	text-align : left;
 }
 
 .savedList_bottom_content>div:nth-of-type(2) {
-	flex : 2;
-	border-right : 0.5px solid rgba(170,170,170,0.6);
-	
+	flex : 2;	
 }
 
 .savedList_bottom_content>div:nth-of-type(3) {
 	flex : 1;
-	
-	border-right : 0.5px solid rgba(170,170,170,0.6);
 }
 
 .savedList_bottom_content>div:nth-of-type(4) {
-	flex : 1;
-	
+	flex : 1;	
+}
+
+.savedList_bottom_content:nth-of-type(even){
+	background-color : rgba(230,230,230,0.5);
 }
 
 #savedList_main .savedList_desc {
@@ -840,7 +838,7 @@ body{
 	width : 300px;
 	height : 350px;
 	position : absolute;
-	top : 75px;	
+	top : 55px;	
 	box-shadow : 1px 1px 5px 0 #000;
 	transform : translateX(45%);
 	z-index : 999;
@@ -990,7 +988,7 @@ body{
 .write_tab a {
 	display : inline-block;
 	margin-top : 15px;
-	font-size : 16px;
+	font-size : 14px;
 	cursor : pointer;
 	margin-left : 30px;
 	color : rgba(150,150,150,1);
@@ -1009,6 +1007,41 @@ body{
 ._container {
 	padding-left : 3rem;
 	padding-top : 2rem;
+}
+
+.op_teaser_container {
+	width : 100%;
+	display : grid;
+	grid-template-columns : 1fr 1fr 1fr;
+	grid-gap : 1rem;
+	margin-top : 2rem;
+}
+
+.op_teaser_container>div {
+	display : none;
+	box-sizing : border-box;
+	height : 250px;
+	border : 1px solid rgba(100,140,250,1);	
+	flex-direction : column;
+}
+
+#op1_name, #op2_name, #op3_name {
+	flex : 2;
+	padding : 0 3px;
+	padding-top:4px; 
+	font-size : 17px;
+	font-weight : 550;
+}
+
+#op1_desc, #op2_desc, #op3_desc {
+	flex : 6;
+	padding : 0 3px;
+}
+
+#op1_price, #op2_price, #op3_price {
+	flex : 1;
+	text-align : right;
+	padding : 0 3px;
 }
 
 /* 관리자 페이지 부분!!!!!!!!!!!!!!!!! */

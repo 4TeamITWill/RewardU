@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <style>
-	.box {
+	.int_box {
 		width : 100%; height : 100vh; position : relative;}
 	.but_box {
 		width : 25px; height : 150px; position : fixed; top : 50%; transform : translateY(-50%); left : 30px; background-color : #fff;
@@ -34,7 +34,7 @@ $(function(){
 	Move(0);
 	
 	//휠 이벤트 시 스크롤 이동하게
-	$(".box").each(function(){
+	$(".int_box").each(function(){
 		//개별적으로 Wheel 이벤트 적용
 		$(this).on("mousewheel DOMMouseScroll", function(e){			
 		
@@ -79,7 +79,7 @@ $(function(){
 			});
 						
 			//스크롤 이동시 탭에 점 크기 변동주기
-			var height = $(".box").height();
+			var height = $(".int_box").height();
 			var now = moveTop/height;
 			
 			$(".but").eq(now).css("transform","scale(1.2)");
@@ -91,7 +91,7 @@ $(function(){
 
 	//버튼 클릭시 스크롤 이동 후 버튼크기 변화
 	function Move(eq){
-		var boxtop = $(".box").eq(eq).offset().top;
+		var boxtop = $(".int_box").eq(eq).offset().top;
 		
 		$("html,body").animate({scrollTop : boxtop + "px"},800);
 		
@@ -109,12 +109,12 @@ $(function(){
 		<div class="box_box" style="height : 100%;">
 			<!-- div 한개당 페이지 한개 안에 내용 넣기 -->
 			<div style="height:0;"></div>
-			<div class="box" style="background-color : green;"></div>
-			<div class="box" style="background-color : blue;"></div>
-			<div class="box" style="background-color : yellow;"></div>
-			<div class="box" style="background-color : black;"></div>
-			<div class="box" style="background-color : gray;"></div>
-			<div class="box" style="background-color : skyblue;"></div>
+			<div class="int_box" style="background-color : green;"></div>
+			<div class="int_box" style="background-color : blue;"></div>
+			<div class="int_box" style="background-color : yellow;"></div>
+			<div class="int_box" style="background-color : black;"></div>
+			<div class="int_box" style="background-color : gray;"></div>
+			<div class="int_box" style="background-color : skyblue;"></div>
 			<div style="height:0;"></div>
 		</div>
 		<!-- 왼쪽 버튼 박스 -->

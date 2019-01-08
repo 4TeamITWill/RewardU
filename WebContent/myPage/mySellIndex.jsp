@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="display : flex; justify-content : flex-end; width : 800px; margin : 24px auto;">
+	<div style="display : flex; justify-content : flex-end; width : 1000px; margin : 24px auto;">
 		<div onclick="gesul();" class="bt bt1">개설 프로젝트</div>
 		<div onclick="imsi();" class="bt bt2">임시저장 글</div>
 	</div>
