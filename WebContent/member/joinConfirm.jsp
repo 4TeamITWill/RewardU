@@ -13,7 +13,7 @@
 .wrap{background-color: #ddd; 
 	padding: 100px 200px;
 	background-image: url("img/leaves.jpg"); 
-	background-size: 100% 1000px;
+	background-size: 100% 1200px;
 	background-attachment: scroll;
 	background-repeat: no-repeat;}
 
@@ -63,7 +63,7 @@
 			
 		</fieldset>
 		
-			<h3>마이페이지에서 자기소개 및 하고싶은 말을 설정해 보세요!</h3>
+			<h5>마이페이지에서 자기소개 및 하고싶은 말을 설정해 보세요!</h5>
 		
 		<fieldset>
 			<input type="submit" value="메인으로" class="btn1 w354">

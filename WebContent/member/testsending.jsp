@@ -5,8 +5,9 @@
 	&nbsp; 리듀 <i>RewardU</i> &nbsp; </span>
 	<br><br>
 	<font size='3' color='white'>
-	리듀 회원가입을 축하드립니다. ${user_name }님
-	<br>우리집에 방문 ㄱ ㄱ해보세요 <b> </b>입니다.<br>
+	리듀 회원가입을 축하드립니다. ${user_name }님<br>
+	우리집에 방문 ㄱ ㄱ해보세요<br>
+	<a href="http://localhost:8080/RewardU/index.jsp">리듀로 ㄱ ㄱ</a>
 	</font>
 	<h2>&nbsp;&nbsp;</h2>
 </div>
