@@ -416,7 +416,7 @@ public class MyDAO {
 	}
 	
 	//판매중인 프로젝트 user_id로 검색해서 글 count 가져오기
-	public int get1BoardCount(String user_id){
+	public int getBoardCount(String user_id){
 		
 		int count = 0;
 		String sql = "";
@@ -424,7 +424,7 @@ public class MyDAO {
 		try {
 			
 			con = getConnection();
-			sql = "select count(*) from board where user_id = ? and pd_result = 1";
+			sql = "select count(*) from board where user_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
@@ -442,7 +442,7 @@ public class MyDAO {
 		return count;
 	}//get1BoardCount() 메소드 끝
 	
-	//판매중인 프로젝트 user_id로 검색해서 글목록 가져오기
+	//성공한 프로젝트 user_id로 검색해서 글목록 가져오기
 	public ArrayList<BoardBean> get1BoardList(String user_id, int startRow, int pageSize){
 		
 		ArrayList<BoardBean> list = new ArrayList<>();		
@@ -514,7 +514,7 @@ public class MyDAO {
 		
 	}//get1BoardList() 메소드 끝
 
-	//판매완료 프로젝트 user_id로 검색해서 글목록 가져오기
+	//진행중인 프로젝트 user_id로 검색해서 글목록 가져오기
 	public ArrayList<BoardBean> get0BoardList(String user_id, int startRow, int pageSize){
 		
 		ArrayList<BoardBean> list = new ArrayList<>();		
@@ -608,6 +608,77 @@ public class MyDAO {
 		}
 		
 		return result;
-	}
+	}//delGood
+	
+	//사용자가 개설중인 프로젝트 전체 list
+	public ArrayList<BoardBean> getBoardList(String user_id, int startRow, int pageSize){
+		
+		ArrayList<BoardBean> list = new ArrayList<>();		
+		
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String sql = "";
+		SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try{
+			con = getConnection();			
+			
+				sql = "select * from board where user_id = ? order by pd_no desc limit ?,?";
+				
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				BoardBean bbean = new BoardBean();
+				
+				bbean.setPd_category(rs.getString("pd_category"));
+				bbean.setPd_content(rs.getString("pd_content"));
+				bbean.setPd_count(rs.getInt("pd_count"));
+				bbean.setPd_curmoney(rs.getString("pd_curmoney"));
+				bbean.setPd_endf(dformat.format(rs.getTimestamp("pd_end")));
+				bbean.setPd_file(rs.getString("pd_file"));
+				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
+				bbean.setPd_good(rs.getInt("pd_good"));
+				bbean.setPd_no(rs.getInt("pd_no"));
+				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bbean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bbean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bbean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bbean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				bbean.setPd_participant(rs.getInt("pd_participant"));
+				bbean.setPd_permit(rs.getInt("pd_permit"));
+				bbean.setPd_realfile(rs.getString("pd_realfile"));
+				bbean.setPd_result(rs.getInt("pd_result"));
+				bbean.setPd_start(rs.getTimestamp("pd_start"));
+				bbean.setPd_subject(rs.getString("pd_subject"));
+				bbean.setUser_id(rs.getString("user_id"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				
+				list.add(bbean);
+		
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return list;
+		
+	}//getBoardList
 
 }
