@@ -32,7 +32,8 @@
 									<div>${good.pd_rate } / 5 </div><div style="font-weight : bold; color : #f34;"> ~${good.pd_endf }</div>
 								</div>
 																							
-								<a class="mybtn" onclick="reward('${good.pd_no}');" style="cursor : pointer;">투자하기</a>	
+								<a class="mybtn" onclick="location.href='./Content.ad?pd_no=${good.pd_no}'" style="cursor : pointer;">투자하기</a>	
+								
 							</div>	
 						</div>	
 												
