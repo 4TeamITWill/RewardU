@@ -48,13 +48,14 @@
 			position: relative;
 			background-color: #e6eaed;
 			width:100%;
-			
+			overflow: hidden;
 		}
 		#bar1{
 			float:left;
 			height: 3px;
 			position: relative;
 			background-color: #9966FF;
+			overflow: hidden;
 		}
 		#money{
 			color: gray;
