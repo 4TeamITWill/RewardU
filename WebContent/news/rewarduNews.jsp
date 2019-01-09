@@ -29,17 +29,18 @@
 	float: right; 
 	
     width: 310px;
-    padding-right: 0;
-    padding-top: 38px;
+    padding : 38px 0; 
+
     margin: 0;
 }
 
 .boardSection_sub .section_container{
 	border-left: 1px solid #e4e4e4;
+	padding: 15px;
 }
 
 .boardSection_sub .section_container hr{
-	width: 80%;
+
 }
 
 </style>
@@ -99,8 +100,11 @@
 			<c:forEach var="v" items="${requestScope.v }" begin="${startRow-1 }" end="${startRow+pageSize-1 }">
 	
 					<div class="reNews_board_content">
-	
-					${v.reNews_no }<span class="reNews_category_board">${v.reNews_category }</span>
+			<!-- 착한 관리자 눈에만 글번호가 보임 -->		
+			<c:if test="${sessionScope.id eq 'rewardu4@gmail.com' }">
+					${v.reNews_no }
+			</c:if>
+					<span class="reNews_category_board">${v.reNews_category }</span>
 					<a href="./NewsReadContentAction.news?no=${v.reNews_no }"><p class="reNews_board_title">${v.reNews_title }</p>
 						<p class="reNews_board_summary">${v.reNews_summary }</p></a>
 					<p class="content_info">
@@ -148,7 +152,7 @@
 					 	<span>화목한 커뮤니티, 리듀의 소식을 소개합니다.</span>
 					 	<hr>
 					 	<h4>리듀 뉴스 Best 조회수</h4>
-					 	<span>어쩌라구여영ㅇㅇ</span>
+					 	<a href="./NewsReadContentAction.news?no=${bestNews.reNews_no }"><span>${bestNews.reNews_title }</span></a>
 				 	</div>
 				</div>
 			</div><!-- boardSection_sub -->

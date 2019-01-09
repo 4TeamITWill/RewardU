@@ -32,6 +32,7 @@
 		
 	<div id="reNewsRead_content">
 		<div class="margin3"></div>
+<!-- JSTL tag - button only shows up if admin's in session -->		
 	<c:if test="${sessionScope.id eq 'rewardu4@gmail.com' }">
 		<div align="right">
 		착한 사람눈에만 보이는 버튼->	<input type="button" value="글삭제" onclick="location.href='./NewsDeleteAction.news?no=${nbean.reNews_no}'">
@@ -47,6 +48,8 @@
 				${nbean.reNews_content }
 			</div>
 			<hr>
+			<div>첨부파일 &nbsp;&nbsp;
+				<a href="./AttachmentDownloadAction.news?path=upload&name=${nbean.reNews_file }">${nbean.reNews_file }</a></div>
 		</div><!-- reNewsRead_contaioner -->
 	 		<div class="margin2"></div>
 		<div align="center"><input type="button" class="btn2" value="목록으로" onclick="location.href='./NewsAction.news'"></div>

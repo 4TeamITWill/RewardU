@@ -95,7 +95,7 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int testsending(String user_id, String user_name, String welcomeMSG) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "리듀  RewardU 회원가입 테스트중입니다 ㅅㅂ";
+		String subject = "리듀  RewardU 회원님, 환영합니다!";
 		String content = welcomeMSG;
 		
 		Properties p = new Properties(); // 정보를 담을 객체

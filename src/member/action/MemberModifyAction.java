@@ -26,6 +26,7 @@ public class MemberModifyAction implements Action {
 		mbean.setUser_id(user_id);
 		mbean.setUser_name(request.getParameter("user_name"));
 		mbean.setUser_phone(request.getParameter("user_phone"));
+		mbean.setUser_photo(request.getParameter("user_photo"));
 		mbean.setUser_content(request.getParameter("user_content"));
 		mbean.setBirthyyyy(request.getParameter("birthyyyy"));
 		mbean.setBirthmm(request.getParameter("birthmm"));
