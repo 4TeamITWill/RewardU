@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -137,6 +138,7 @@ public class BoardDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		SimpleDateFormat df = new SimpleDateFormat("YYYY.MM.dd");
 		
 		try {
 			con = getConnection();
@@ -153,7 +155,8 @@ public class BoardDAO {
 				bbean.setPd_content(rs.getString("pd_content"));
 				bbean.setPd_count(rs.getInt("pd_count"));
 				bbean.setPd_curmoney(rs.getString("pd_curmoney"));
-				bbean.setPd_end(rs.getTimestamp("pd_end"));
+				bbean.setPd_endf(df.format(rs.getTimestamp("pd_end")));
+				bbean.setPd_startf(df.format(rs.getTimestamp("pd_start")));
 				bbean.setPd_file(rs.getString("pd_file"));
 				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
 				bbean.setPd_good(rs.getInt("pd_good"));
@@ -625,6 +628,114 @@ public class BoardDAO {
 				}
 				return result;
 			}
+			
+			
+			
+			
+			public void rate(double pd_rate,int pd_no){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				
+				try {
+					con = getConnection();
+					sql = "update board set pd_rate = pd_rate+? where pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setDouble(1, pd_rate);
+					pstmt.setInt(2, pd_no);
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (con != null) con.close();
+						if (pstmt != null) pstmt.close();
+						if (rs != null)rs.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}	
+			}//rate()끝
+			
+			
+			
+			public void ratecount(int pd_no){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				
+				try {
+					con = getConnection();
+					sql = "update board set pd_rateCount = pd_rateCount+1 where pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, pd_no);
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (con != null) con.close();
+						if (pstmt != null) pstmt.close();
+						if (rs != null)rs.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}	
+			}//ratecount()끝
+			
+			
+			public double avgReview(int pd_no) {
+
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				double avg = 0;
+				try {
+					// 1,2단계 디비연결하는 메서드 호출
+					con = getConnection();
+					// 3단계 sql 구문
+					sql = "select truncate(pd_rate/pd_rateCount,1) as avg from board where pd_no=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, pd_no);
+					
+				  	
+				  	rs= pstmt.executeQuery();
+				  	
+					if(rs.next()){
+				  		avg = rs.getDouble(1);
+				  	
+				 	}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					// try안에서 예외 발생여부 상관없이 마무리 작업함.
+					// 객체 생성해서 사용한 기억공간 없애줌 .close()
+					if (rs != null)
+						try {
+							rs.close();
+						} catch (SQLException ex) {
+						}
+					if (pstmt != null)
+						try {
+							pstmt.close();
+						} catch (SQLException ex) {
+						}
+					if (con != null)
+						try {
+							con.close();
+						} catch (SQLException ex) {
+						}
+
+				}
+				return  avg;
+			}
+			
 		
 	
 }//BoardDAO 끝

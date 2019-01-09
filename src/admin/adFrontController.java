@@ -122,8 +122,15 @@ public class adFrontController extends HttpServlet{
 			forward.setRedirect(false);
 			//이동할 페이지 경로(메시지함 페이지) 주소값 저장
 			forward.setPath("./index.jsp?center=ContentInfo.jsp");
+			
+		}else if(command.equals("/StarWriteActions.ad")){
+			action = new adStarWriteActions();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
-		
 		//�씠�룞
 		if(forward != null){
 			if(forward.isRedirect()){
