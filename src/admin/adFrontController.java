@@ -116,16 +116,27 @@ public class adFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Content.ad")){
+
 			action = new ContentInfoAction();
+
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/StarWriteActions.ad")){
+			action = new adStarWriteActions();
+
 			try{
 				forward = action.execute(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 		}
+
 		
 		
-		//占쎌뵠占쎈짗
 		if(forward != null){
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
