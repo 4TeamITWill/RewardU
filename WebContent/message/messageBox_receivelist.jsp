@@ -118,7 +118,7 @@ if(count > 0){ //메시지가 존재 한다면
 %>
 		<tr align="center">
 			<td class="readMessage" width="5%"><%=mdto.getNo()%></td>
-			<td class="readMessage" width="8%"><%=mdto.getToID()%></td>
+			<td class="readMessage" width="8%"><%=toID%></td>
 			<td class="readMessage" width="23%">
 			<a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive&id=<%=id%>"><%=mdto.getSubject()%></a>
 			</td>

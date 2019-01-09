@@ -47,7 +47,7 @@
 		</tr>
 		<tr>
 			<td class="content_func">내용</td>
-			<td class="content_result"><%=Content %></td>
+			<td class="content_result" style="text-align: left;"><%=Content %></td>
 		</tr>
 	</table>
 	

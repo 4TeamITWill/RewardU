@@ -66,7 +66,7 @@
 							<div>배송지</div><div>${invest.inv_addr}</div>
 						</div>
 						<div class="reward_desc">
-							<div>결제수단</div><div>응 없어~</div>
+							<div>주문번호</div><div>${invest.inv_orderno}</div>
 						</div>
 						<div class="reward_desc">
 							<div>총 결제 금액</div><div>${invest.inv_price}원</div>

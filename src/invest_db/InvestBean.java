@@ -9,6 +9,7 @@ public class InvestBean {
 	private int pd_no, inv_orderno, inv_confirm, pd_result, inv_percent;
 	private int op1_qty, op2_qty, op3_qty;
 	private Timestamp inv_date;
+	
 	public String getUser_id() {
 		return user_id;
 	}
