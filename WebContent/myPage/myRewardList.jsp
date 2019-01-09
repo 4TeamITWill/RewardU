@@ -71,7 +71,12 @@
 						<div class="reward_desc">
 							<div>총 결제 금액</div><div>${invest.inv_price}원</div>
 						</div>						
-					</div>				
+					</div>	
+					
+					<a class="justbtn" href="Content.ad?pd_no=${invest.pd_no}" >
+						프로젝트 보기
+					</a>		
+						
 				</div>	
 			</c:forEach>	
 				
