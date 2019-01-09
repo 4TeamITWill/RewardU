@@ -175,11 +175,6 @@ star-input>.input.focus {
 </head>
 <body>
 
-	
-	
-	
-
-	
 	<!-- 좋아요 기능, d-day, 금액   -->
 	<%
 	String id = (String)session.getAttribute("id"); //접속한 사용자 id받기 
@@ -225,9 +220,9 @@ star-input>.input.focus {
 	</table>
 	<table>
 		<tr>	
-				<td>
-						<input type="button" class="btn"	value="지금펀딩하기" onclick="location.href='./getFunding.ad?pd_no=<%=pd_no%>&user_id=<%=id%>'">
-				</td>
+			<td>
+				<input type="button" class="btn"	value="지금펀딩하기" onclick="location.href='./getFunding.ad?pd_no=<%=pd_no%>&user_id=<%=id%>'">
+			</td>
 		</tr>		
 		<tr>
 				<td></td>

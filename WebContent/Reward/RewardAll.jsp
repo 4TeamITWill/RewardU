@@ -17,7 +17,7 @@
 		<c:if test="${status.index mod 3 eq 0 }">
 		<tr id="tr">
 		</c:if>
-			<td align="center" width="333">
+			<td align="center" width="333"> 
 				<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 					<img src="./upload/${list.pd_realfile}" width="280" border="0" class="reward_img">
 				</a>

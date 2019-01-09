@@ -2,6 +2,7 @@ package admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import admin_db.BoardBean;
 import admin_db.BoardDAO;
