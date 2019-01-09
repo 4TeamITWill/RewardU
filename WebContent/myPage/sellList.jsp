@@ -27,7 +27,7 @@
 					<div style="display : flex; align-items : center;">
 						<div style="width : 130px; height :130px; overflow : hidden;"><img src="./upload/${board.pd_realfile }"/></div>
 						<div style="padding : 10px 10px;">
-							<a href="./Content.ad?pd_no=${board.pd_no}">
+							<a href="./Content.ad?pd_no=${board.pd_no}" style="color:#000;">
 							<font style="font-size : 18px;">${board.pd_subject }</font><br/>
 							분류 : ${board.pd_category }<br/>
 							${board.pd_curmoney }원 / ${board.pd_goalmoney }원<br/>

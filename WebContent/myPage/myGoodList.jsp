@@ -23,8 +23,9 @@
 																										
 						<div class="good_content">	
 							<input type="checkbox"  name ="delcheck" value="${good.pd_no }" style="width : 15px; height : 15px;"/>											
+							
+							<div class="content_0"><img src="이미지넣기"></div>
 							<div class="good_content_box">
-								<div class="content_0"><img src=""></div>
 								<div class="content content_1">${good.user_id }</div>					
 								<div class="content content_2">${good.pd_subject }</div>
 								<div class="content content_3">${good.pd_category }</div>

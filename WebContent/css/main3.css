@@ -690,7 +690,6 @@ body{
 
 .good_content_box {
 	border : 0.5px solid rgba(170,170,170,0.6);
-	height : 320px;
 }
 
 .good_content .content{
@@ -737,6 +736,20 @@ body{
 	line-height : 30px;
 	text-align:center;
 	margin : 0 auto;
+}
+
+.justbtn {
+	display : block;
+	width : 120px;
+	height : 40px;
+	line-height : 40px;
+	margin : 0 auto;
+	border-radius : 5px;
+	background-color : rgba(60,120,250,0.8);
+	font-weight : bold;
+	color : rgba(255,255,255,1);
+	text-align : center;	
+	cursor : pointer;
 }
 
 .my_board_page {
@@ -1074,6 +1087,10 @@ body{
 	padding : 4rem 0 ;
 }
 
+#admin_index a {
+	cursor : pointer;
+}
+
 #ad_tab {
 	width : 1000px;
 	margin : 0 auto;
@@ -1091,4 +1108,47 @@ body{
 	width : 1000px;
 	margin : 2rem auto;
 }
+
+
+.ad_board_top, .ad_board_list {
+	display : flex;
+	border-bottom : 1px solid #ccc;
+}
+
+.ad_board_top>div {
+	font-weight : bold;
+}
+
+.ad_board_list div {
+	padding : 0.5rem 0;
+}
+
+.ad_board_top > div:nth-of-type(1), .ad_board_list > div:nth-of-type(1) {
+	flex : 1.5;
+}
+.ad_board_top > div:nth-of-type(2), .ad_board_list > div:nth-of-type(2) {
+	flex : 1.5;
+}
+.ad_board_top > div:nth-of-type(3), .ad_board_list > div:nth-of-type(3) {
+	flex : 5;
+}
+.ad_board_top > div:nth-of-type(4), .ad_board_list > div:nth-of-type(4){
+	flex : 2;
+}
+
+#adBoardLook_main table td {
+	margin : 0;
+	padding : 0;
+}
+
+#adBoardLook_main a {
+	display : inline-block;
+	width : 100px;
+	height : 30px;
+	line-height : 30px;
+	color : #000;
+	text-align : center;
+	border : 1px solid #ccc;
+}
+
 

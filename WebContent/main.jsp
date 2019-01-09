@@ -55,8 +55,7 @@
 		<!-- 메인 아이템부분 -->
 		<div class="maincontainer">
 		
-			<div class="subject">인기 리워드 상품
-			</div>
+			<div class="subject">인기 리워드 상품</div>
 
 			<!-- 인기 리워드 부분 -->
 			<div class="box">		
@@ -70,8 +69,7 @@
 			
 			<!-- 최신 리워드 부분 -->	
 					
-			<div class="subject">최신 리워드 상품
-			</div>
+			<div class="subject">최신 리워드 상품</div>
 			
 			<div class="box">
 				<!-- 1번 그림 -->		
@@ -87,7 +85,7 @@
 			<div class="box1">	
 				<div class="box_grid box_grid1">추가 할거</div>
 				<div class="box_grid box_grid2">
-					<h2>펀딩소식</h2>
+					<h2>리워드 소식</h2>
 					<div class="news_contents"><b>[리워드]</b> 리워드 발송 시작합니다</div>
 					<div class="news_contents"><b>[리워드]</b> 저런 일이 있슴</div>
 					<div class="news_contents"><b>[리워드]</b> ㅇㅇㅇㅇㅇㅎㅎㅎㅎㅎㅎㅎㅎㅎ</div>
