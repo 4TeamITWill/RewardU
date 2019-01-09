@@ -22,7 +22,7 @@ public class adPermitGoodAction implements adAction {
 				request.setAttribute("list", list);
 				adActionForward forward = new adActionForward();
 				forward.setRedirect(false);
-				forward.setPath("./Reward/MorePage.jsp");
+				forward.setPath("./Reward/RewardAll.jsp");
 				return forward;
 			}
 }

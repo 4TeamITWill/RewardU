@@ -1,12 +1,12 @@
 package admin_db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -779,7 +779,6 @@ public void upGood(int pd_no){
 		return  avg;
 	}
 	
-
 
 }//BoardDAO 끝
 

@@ -48,8 +48,8 @@ public class adPermitAction implements adAction {
 						list = bDao.getPermitList(category,result,order,startRow,pageSize);
 					}else{
 						list = null;
-					}
-				
+					}	
+					
 				request.setAttribute("result", result);
 				request.setAttribute("order", order);
 				request.setAttribute("category", category);
@@ -71,7 +71,7 @@ public class adPermitAction implements adAction {
 				if(currentPage1 < 2){
 					forward.setPath("./index.jsp?center=Reward/RewardMain.jsp");
 				}else {
-					forward.setPath("./Reward/MorePage.jsp");
+					forward.setPath("./Reward/RewardAll.jsp");
 				}
 					
 				return forward;

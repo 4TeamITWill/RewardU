@@ -13,7 +13,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="js/main.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
@@ -323,7 +323,8 @@ star-input>.input.focus {
 		<button class="buttonstar"><img src="img/star.jpg" style="width: 20px; height: 20px;"><%=avg %></button>
 		<div class=buttonstarrate>
 		
-			<form action="./StarWriteActions.ad?pd_no=<%=pd_no%>" method="post">
+			<form action="./StarWriteActions.ad" method="post">
+			<input type="hidden" name="pd_no" value="<%=pd_no%>">
 			<span class="star-input"> 
 			<span class="input"> 
 			<input type="radio" name="pd_rate" value="1" id="p1"> 
