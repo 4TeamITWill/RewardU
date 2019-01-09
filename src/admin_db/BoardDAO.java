@@ -1,11 +1,11 @@
 package admin_db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -667,8 +667,7 @@ public class BoardDAO {
 				
 				return list;
 			}
-		
-	
+			
 }//BoardDAO 끝
 
 
