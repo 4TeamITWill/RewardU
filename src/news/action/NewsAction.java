@@ -43,6 +43,11 @@ public class NewsAction implements Action{
 		
 		request.setAttribute("v", v);
 		
+		Newsbean bestNews = new Newsbean();
+		
+	  	bestNews = ndao.bestNewsViews();
+	  	request.setAttribute("bestNews", bestNews);
+		
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);

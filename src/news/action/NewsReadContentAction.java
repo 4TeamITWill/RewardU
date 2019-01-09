@@ -12,6 +12,8 @@ public class NewsReadContentAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("NewsReadContentAction ()");
 		
+		request.setCharacterEncoding("utf-8");
+		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		NewsDAO ndao = new NewsDAO();

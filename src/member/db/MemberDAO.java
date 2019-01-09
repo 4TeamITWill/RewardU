@@ -61,7 +61,7 @@ public class MemberDAO {
 			pstmt.setString(5, mb.getUser_phone());
 			pstmt.setTimestamp(6, mb.getUser_regDate());
 			pstmt.setInt(7, 1);
-			pstmt.setString(8, mb.getUser_photo());
+			pstmt.setString(8, "img/usernull.png");
 			pstmt.setString(9, mb.getUser_content());
 			
 			result = pstmt.executeUpdate();

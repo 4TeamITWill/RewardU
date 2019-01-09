@@ -83,7 +83,15 @@ public class NewsFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+	//filedown		
+		}else if (command.equals("/AttachmentDownloadAction.news")) {
 			
+			action = new AttachmentDownloadAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

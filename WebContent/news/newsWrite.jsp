@@ -15,13 +15,20 @@ text-align: left;
 }
 
 </style>
+
+<script type="text/javascript">
+	
+
+
+</script>
+
 </head>
 <body>
 <div class="wrap">
 	<div class="container" align="center">
 	<h2>리듀 News Form</h2>
 		<div id="newsWrite_content">
-			<form action="./NewsWriteAction.news">
+			<form action="./NewsWriteAction.news" method="post" enctype="multipart/form-data" name="f">
 			<table width="800px">
 				<tr>
 					<td>작성자</td>
@@ -94,6 +101,10 @@ text-align: left;
 		var sHTML = "<img src='http://localhost:8080/RewardU/upload/"+fname+"'>";
 	    oEditors.getById["reNews_content_editor"].exec("PASTE_HTML", [sHTML]);
 	}
+	
+	
+	
+	
 </script>
 </body>
 </html>

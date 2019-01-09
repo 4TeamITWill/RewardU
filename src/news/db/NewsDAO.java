@@ -296,6 +296,50 @@ public class NewsDAO {
 		}
 		
 		return count;
+	}//getNewsCount
+	
+	
+	public Newsbean bestNewsViews (){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Newsbean bestNews = null;
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select reNews_no, reNews_title from reNews where reNews_views = (select Max(reNews_views) from reNews);";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				bestNews = new Newsbean();
+				
+				bestNews.setReNews_no(rs.getInt(1));
+				bestNews.setReNews_title(rs.getString(2));
+				
+				System.out.println(bestNews);
+				
+				return bestNews;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return bestNews;
 	}
 	
 	

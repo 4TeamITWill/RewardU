@@ -40,7 +40,18 @@
 			<div style="flex : 1; height : 0;">
 				<div class="modal_my" id="modal_my">
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
-						<div class="modal_img"></div>
+						<div class="modal_img">
+					<!-- 프로필 사진 설정이 안되어 있을 때(null)는 기본사진 출력 -->	
+						<c:set var="photo" value="${mbean.user_photo }"></c:set>	
+							<c:choose>
+								<c:when test="${empty photo }">
+									<img src="./img/usernull.png">
+								</c:when>
+								<c:when test="${photo ne null }">
+									<img src="./${mbean.user_photo }">
+								</c:when>
+							</c:choose>
+						</div>
 						<div style="color : #aaa; position : absolute; left : 42%; top : 50%; 
 										transform : translateY(-50%); font-size : 14px;">
 							${sessionScope.name }<br/>

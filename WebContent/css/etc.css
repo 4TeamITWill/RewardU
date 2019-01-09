@@ -52,6 +52,19 @@ input[id="policy_chk"]:checked + label:before {
         margin-bottom: 10px;
 }
 
+.inp-field:read-only {
+		background-color: #eee;
+        width: 350px;
+        height: 38px;
+        border: 1px solid #aaa;
+        color: #aaa;
+        font-size: 14px;
+        text-indent: 12px;
+        line-height: 38px;
+        margin-bottom: 10px;
+        font-style: italic;
+}
+
 .inp-field_nomargin {
         width: 350px;
         height: 38px;
@@ -63,7 +76,7 @@ input[id="policy_chk"]:checked + label:before {
 }
 
 .inp-field2 {
-        width: 290px;
+        width: 280px;
         height: 35px;
         border: 1px solid #aaa;
         color: #999;
@@ -114,7 +127,7 @@ input[id="policy_chk"]:checked + label:before {
 .btn2 {     
         height: 35px;
         border: 1px solid #b44af7;
-        border-radius: 3px;
+        border-radius: 0.2em;
         color: #b44af7;
         background-color: #fff;
         font-size: 14px;
@@ -148,7 +161,7 @@ input[id="policy_chk"]:checked + label:before {
 
 .reNews_section_container {
 	border: 1px solid blue;
-	width: 1100px;
+	width: 1150px;
 }
 
 .news_header_font {
@@ -179,7 +192,7 @@ input[id="policy_chk"]:checked + label:before {
 #reNews_board {
 	width: 760px;
 	text-align: left;
-	border: 1px solid red;
+	border: 1px solid #fff;
 	box-sizing: border-box;
 	display: inline-block;
 /* 	float: left; */
