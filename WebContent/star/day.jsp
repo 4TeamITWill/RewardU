@@ -174,13 +174,31 @@ star-input>.input.focus {
 
 </head>
 <body>
+<%
+	String result = request.getParameter("result");
+	System.out.println(result);
+	if(result == null){
+		
+	}else if(result.equals("1")){
+%>
+		<script type="text/javascript">
+			alert("점수가 등록되었습니다.")
+		</script>
+<%
+	} else{
+%>
+		<script type="text/javascript">
+			alert("이미 점수가 등록되어있습니다.")
+		</script>
+<%		
+	}
+%>
+
 
 	<!-- 좋아요 기능, d-day, 금액   -->
-	<%
+<%
 	String id = (String)session.getAttribute("id"); //접속한 사용자 id받기 
 	int pd_no = Integer.parseInt(request.getParameter("pd_no")); //해당 게시글 번호 받기
-	
-	
 	
 	BoardBean bdto = new BoardBean();
 	BoardDAO bdao = new BoardDAO();
@@ -233,6 +251,7 @@ star-input>.input.focus {
 
 	<script type="text/javascript">
 	$(document).ready(function() { 
+		
 		//좋아요 눌렀을 시
 		$(".good_img").on("click", function() {
 			
@@ -325,6 +344,7 @@ star-input>.input.focus {
 		
 			<form action="./StarWriteActions.ad" method="post">
 			<input type="hidden" name="pd_no" value="<%=pd_no%>">
+			<input type="hidden" name="user_id" value="<%=id%>">
 			<span class="star-input"> 
 			<span class="input"> 
 			<input type="radio" name="pd_rate" value="1" id="p1"> 
@@ -342,7 +362,7 @@ star-input>.input.focus {
 			<script src="js/jquery-1.11.3.min.js"></script>
 			<script src="js/star.js"></script>
 			<div>
-			<button type="submit" class="button4" onClick="alert('리뷰가 제출되었습니다')">별점평가</button>
+			<button type="submit" class="button4">별점평가</button>
 			</div> 
 			</form>
 					
