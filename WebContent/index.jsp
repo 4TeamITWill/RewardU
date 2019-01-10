@@ -42,13 +42,13 @@
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
 						<div class="modal_img">
 					<!-- 프로필 사진 설정이 안되어 있을 때(null)는 기본사진 출력 -->	
-						<c:set var="photo" value="${mbean.user_photo }"></c:set>	
+						<c:set var="photo" value="${sessionScope.user_photo }"></c:set>	
 							<c:choose>
 								<c:when test="${empty photo }">
 									<img src="./img/usernull.png">
 								</c:when>
 								<c:when test="${photo ne null }">
-									<img src="./${mbean.user_photo }">
+									<img src="./upload/${sessionScope.user_photo }">
 								</c:when>
 							</c:choose>
 						</div>

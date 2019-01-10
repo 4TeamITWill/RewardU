@@ -48,7 +48,7 @@ public class NewsDAO {
 				no =1;
 			}
 			
-			sql = "insert into reNews values(?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into reNews values(?,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
@@ -61,6 +61,7 @@ public class NewsDAO {
 			pstmt.setInt(8, 0); //views
 			pstmt.setTimestamp(9, nbean.getReNews_date());
 			pstmt.setString(10, nbean.getReNews_category());
+			pstmt.setString(11, nbean.getReNews_img());
 		
 			pstmt.executeUpdate();
 			
@@ -156,6 +157,7 @@ public class NewsDAO {
 				nbean.setReNews_views(rs.getString("reNews_views"));
 				nbean.setReNews_date(rs.getTimestamp("reNews_date"));
 				nbean.setReNews_category(rs.getString("reNews_category"));
+				nbean.setReNews_img(rs.getString("reNews_img"));
 				
 				v.add(nbean);
 			}
@@ -176,6 +178,59 @@ public class NewsDAO {
 		return v;
 	}//getNewsList
 	
+	
+	public Vector<Newsbean> totalNewsSearch (String newsKeyword){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Vector<Newsbean> v = new Vector<Newsbean>();
+		
+		Newsbean nbean = null;
+		String sql = null;
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select * from reNews where reNews_title like '%"+ newsKeyword + "%'";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				nbean = new Newsbean();
+				nbean.setReNews_no(rs.getInt("reNews_no"));
+				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setUser_name(rs.getString("user_name"));
+				nbean.setReNews_title(rs.getString("reNews_title"));
+				nbean.setReNews_summary(rs.getString("reNews_summary"));
+				nbean.setReNews_content(rs.getString("reNews_content"));
+				nbean.setReNews_file(rs.getString("reNews_file"));
+				nbean.setReNews_views(rs.getString("reNews_views"));
+				nbean.setReNews_date(rs.getTimestamp("reNews_date"));
+				nbean.setReNews_category(rs.getString("reNews_category"));
+				nbean.setReNews_img(rs.getString("reNews_img"));
+				
+				v.add(nbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//fianlly
+		
+		return v;
+		
+	}//totalNewsSearch
 	
 	
 	public Newsbean readContent(int no){
@@ -211,6 +266,7 @@ public class NewsDAO {
 				nbean.setReNews_views(rs.getString("reNews_views"));
 				nbean.setReNews_date(rs.getTimestamp("reNews_date"));
 				nbean.setReNews_category(rs.getString("reNews_category"));
+				nbean.setReNews_img(rs.getString("reNews_img"));
 			}
 			
 		} catch (Exception e) {

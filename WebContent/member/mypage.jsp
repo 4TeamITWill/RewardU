@@ -100,6 +100,28 @@ textarea::placeholder {
 	
 }
 
+.profile_photo_upload label {
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid teal;
+	padding: 6px 9px;
+	color: #fff;
+	font-size:13px;
+	line-height: 13px;
+	font-weight: none;
+	background-color: teal;
+
+}
+
+.profile_photo_upload input[type="file"]{
+	position: absolute;
+	width: 1px; height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	border: 0;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -155,19 +177,24 @@ jQuery(document).ready(function(){
 				<div class="margin3"></div>
 			<!-- profile photo setting-->
 					<div class="mypage_profile_photo">
-				<c:set var="photo" value="${mbean.user_photo }"></c:set>	
-					<c:choose>
-						<c:when test="${empty photo }">
-							<img src="./img/usernull.png">
-						</c:when>
-						<c:when test="${photo ne null }">
-							<img src="./${mbean.user_photo }">
-						</c:when>
-					</c:choose>
-					
-					</div>
-						<input type="file" value="프로필 사진 수정"><br>
+					<c:set var="photo" value="${mbean.user_photo }"></c:set>	
+						<c:choose>
+							<c:when test="${empty photo }">
+								<img src="./img/usernull.png">
+							</c:when>
+							<c:when test="${photo ne null }">
+								<img src="./upload/${mbean.user_photo }">
+							</c:when>
+							<c:when test="">
+								<img src="../upload/">
+							</c:when>
+						</c:choose>
+					</div><!-- mypage_profile_photo  -->
+					<div class="profile_photo_upload">
+						<label for="user_photo">프로필 사진 수정</label>
+						<input type="file" id="user_photo" name="user_photo"><br>
 						<div class="margin3"></div>
+					</div>
 				<fieldset>
 				<!-- id -->
 						<div id="form_font_left" align="left">내 아이디 </div>

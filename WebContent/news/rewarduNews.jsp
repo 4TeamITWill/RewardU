@@ -23,20 +23,30 @@
 	background-repeat: no-repeat;
 }
 
+#header #header_header{
+	font-size: 25px;
+	font-weight: 700;
+	margin: 10px 0;
+}
+
+#header #header_count {
+	font-size: 12px;
+	font-weight: none;
+}
+
 .boardSection_sub{
-    border: 1px solid teal;
+    border: 1px solid #fff;
  /*  clear: both;  */
 	float: right; 
-	
     width: 310px;
-    padding : 38px 0; 
+    padding : 50px 0; 
 
     margin: 0;
 }
 
 .boardSection_sub .section_container{
 	border-left: 1px solid #e4e4e4;
-	padding: 15px;
+	padding: 15px 25px;
 }
 
 .boardSection_sub .section_container hr{
@@ -44,6 +54,15 @@
 }
 
 </style>
+<script type="text/javascript">
+
+	function newsReload(){
+		
+		document.newsReload.action = "./NewsReadContentAction.news";
+		document.newsReload.submit();
+	}
+
+</script>
 </head>
 <body>
 
@@ -59,7 +78,7 @@
 				
 			<div id="reNews_content" >
 				<div id="header" >
-					<h2>리듀 뉴스 ${count } </h2>
+					<div id="header_header">리듀 뉴스<span id="header_count">&nbsp;&nbsp;&nbsp;총 게시글 ${count }</span> </div>
 					<h6>${currentPage }/${pageCount }</h6>
 				</div>
 				<div id="reNews_category">
@@ -97,7 +116,7 @@
 				<hr>
 	
 	
-			<c:forEach var="v" items="${requestScope.v }" begin="${startRow-1 }" end="${startRow+pageSize-1 }">
+			<c:forEach var="v" items="${requestScope.v }" begin="${startRow-1 }" end="${(startRow-1) + pageSize-1 }">
 	
 					<div class="reNews_board_content">
 			<!-- 착한 관리자 눈에만 글번호가 보임 -->		
@@ -114,7 +133,7 @@
 					</p>
 					
 					</div>
-					<div class="reNews_board_thumnail">난나라날난 사진 들어감니당 ㅎㅎㅎ 헤헷호호호호호</div>
+					<div class="reNews_board_thumnail"><img src="./upload/${v.reNews_img }"></div>
 					
 	
 					<hr>
@@ -124,16 +143,16 @@
 			
 			<!-- paging section -->
 				<div class="reNews_paging">
-					<c:if test="${startPage > pageBlock }">
+					<c:if test="${firstPage > pageBlock }">
 						<a href="./NewsAction.news?newsCurrentP=${firstPage-pageBlock }">이전</a>
 					</c:if>
 					<c:forEach var="i" begin="${firstPage }" end="${lastPage}">
-					<c:if test="${currentPage == i }">
-						<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
-					</c:if>
-					<c:if test="${currentPage != i }">
-						<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
-					</c:if>
+						<c:if test="${currentPage == i }">
+							<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
+						</c:if>
+						<c:if test="${currentPage != i }">
+							<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
+						</c:if>
 					</c:forEach>
 					<c:if test="${firstPage < pageCount }">
 						<a href="./NewsAction.news?newsCurrentP=${firstPage+5 }">다음</a>
@@ -145,7 +164,9 @@
 			
 			<div class="boardSection_sub">
 				<div class="section_container">
-				 	<input type="text" placeholder="검색ㄱㄱ" class="inp-field2"><br>
+					<form action="./NewsAction.news" method="post">
+				 		<input type="text" name="newsKeyword" placeholder="뉴스 키워드를  입력해주세요" class="inp-field2"><input type="button" class="btn_search" value="검색" onclick="this.form.submit();"><br>
+				 	</form>
 				 	<hr>
 				 	<div align="left">
 					 	<h4>리듀 뉴스 소개</h4>
@@ -154,6 +175,11 @@
 					 	<h4>리듀 뉴스 Best 조회수</h4>
 					 	<a href="./NewsReadContentAction.news?no=${bestNews.reNews_no }"><span>${bestNews.reNews_title }</span></a>
 				 	</div>
+				 	
+				 	<form name="newsReload" method="post">
+						<input type="hidden" name="reload" value="true">
+					</form>
+				 	
 				</div>
 			</div><!-- boardSection_sub -->
 		

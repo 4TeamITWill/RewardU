@@ -83,13 +83,14 @@ body{
 	justify-content:center;
 	align-items : center;
 	padding : 0.4rem 0;
+	background: linear-gradient(90deg, #b44af7, #82caff);
 }
 
 .search {
 	width : 0;
 	height : 40px;
 	border-radius : 30px;
-	border : 2px solid #aaa;
+	border : 3px solid #8a8a8e;
 	font-size : 19px;
 }
 
