@@ -38,7 +38,7 @@
 			<div style="flex : 1; height : 0;" ></div>
 			<div style="flex : 1; height : 0;"></div>
 			<div style="flex : 1; height : 0;">
-				<div class="modal_my" id="modal_my">
+				<div class="modal_my" id="	modal_my">
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
 						<div class="modal_img"></div>
 						<div style="color : #aaa; position : absolute; left : 42%; top : 50%; 
