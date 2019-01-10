@@ -376,7 +376,7 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from saveboard where user_id = ? order by pd_no desc";
+			sql = "select * from saveall where user_id = ? order by pd_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);

@@ -16,12 +16,12 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/resultCheck.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/pay.js"></script>
 <title>리듀 RewardU | 메인화면</title>
 </head>
 <body>
-
 <!-- 변수 center에 받아온 값이 있으면 변수에 저장하고 null이면 기본(main.js00p)값 넣어줌-->
 <c:set var="center" value="${param.center }"/>
 <c:if test="${center == null }">

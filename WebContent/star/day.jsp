@@ -371,7 +371,9 @@ star-input>.input.focus {
 			<script src="js/jquery-1.11.3.min.js"></script>
 			<script src="js/star.js"></script>
 			<div>
+
 			<button type="submit" class="button4">별점평가</button>
+
 			</div> 
 			</form>
 					

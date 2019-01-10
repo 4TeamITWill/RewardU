@@ -118,7 +118,7 @@ star-input>.input.focus {
 
 	<tr>
 	<td>
-	<form action="./StarWriteActions.bd?pd_no=<%=pd_no%>" method="post">
+	<form action="./StarWriteActions.bd" method="post">
 		<span class="star-input"> 
 		<span class="input"> 
 		<input type="radio" name="pd_rate" value="1" id="p1"> 
@@ -131,7 +131,7 @@ star-input>.input.focus {
 			<label for="p4">4</label> 
 		<input type="radio" name="pd_rate" value="5" id="p5"> 
 			<label for="p5">5</label>
-		
+		<input type="hidden" name="pd_no" value="<%=pd_no%>">
 		</span> 
 	
 		

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import admin_db.MemberBean;
 import fileUpAction.FileUpAction;
+import my_db.MyDAO;
 import reward.action.Action;
 import reward.action.ActionForward;
 import reward.action.RewardingWriteAction;
