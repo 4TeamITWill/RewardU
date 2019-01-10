@@ -779,6 +779,38 @@ public void upGood(int pd_no){
 		return  avg;
 	}
 	
+	//시간 체크 하고 result값 갱신 하기 메소드-----------------------------------------
+	public void checkResult() {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql="";
+		
+		try {
+			
+			con=getConnection();
+			sql = "update board set pd_result = 1 where now() >= pd_end and pd_curmoney >= pd_goalmoney";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+			sql = "update board set pd_result = 2 where now() >= pd_end and pd_curmoney < pd_goalmoney";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		
+	}//checkResult() 메소드 끝
+	
 
 }//BoardDAO 끝
 

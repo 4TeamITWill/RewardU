@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import admin_db.MemberBean;
 import fileUpAction.FileUpAction;
+import my_db.MyDAO;
 import reward.action.Action;
 import reward.action.ActionForward;
 import reward.action.RewardingWriteAction;

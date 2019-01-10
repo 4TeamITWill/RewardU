@@ -21,6 +21,7 @@
 	<div id="ad_tab">
 		<a onclick="selltable();" class="bt3">판매글보기</a>
 		<a onclick ="membertable();" class="bt4">회원 보기</a>
+		<button onclick="resultCheck()">result 갱신</button>
 	</div>	
 	
 	<div id="ad_main">

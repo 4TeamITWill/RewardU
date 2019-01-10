@@ -28,8 +28,8 @@ public class adStarWriteActions implements adAction {
 		
 		adActionForward forward = new adActionForward();
 		
-		forward.setRedirect(false);
-		forward.setPath("./Content.ad");
+		forward.setRedirect(true);
+		forward.setPath("./Content.ad?pd_no="+pd_no);
 		
 		return forward;
 	}

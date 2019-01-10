@@ -36,7 +36,7 @@ public class SaveGetAction implements Action{
 		forward.setRedirect(false);
 		
 		// 전송완료페이지로 이동!!!!할 실제 페이지 주소 저장
-		forward.setPath("index.jsp?center=RewardingUpdate.jsp"); //가상 요청 주소값 저장
+		forward.setPath("index.jsp?center=RewardingWrite_index.jsp"); //가상 요청 주소값 저장
 
 		return forward;
 		

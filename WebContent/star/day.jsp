@@ -342,7 +342,7 @@ star-input>.input.focus {
 			<script src="js/jquery-1.11.3.min.js"></script>
 			<script src="js/star.js"></script>
 			<div>
-			<button type="submit" class="button4" onClick="alert('리뷰가 제출되었습니다')">별점평가</button>
+			<button type="submit" class="button4" onclick="alert('제출되었습니다');">별점평가</button>
 			</div> 
 			</form>
 					

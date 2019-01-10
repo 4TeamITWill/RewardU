@@ -133,6 +133,16 @@ public class adFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else if(command.equals("/resultCheck.ad")){
+			
+			action = new resultCheck();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		
