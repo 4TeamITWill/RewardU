@@ -16,9 +16,9 @@
 	<style type="text/css">
 		
 		#content{
-			border:1px solid black;
-			max-width:auto;
 			
+			max-width:auto;
+			padding: 20px;
 		}
 		#img{
 			border: 1px solid gray;
@@ -34,7 +34,8 @@
 		}
 		#subject{
 			font-weight: bold;
-			margin-left: 1px; 
+			
+			
 		}
 		#subject strong{
 			color:black;
@@ -49,6 +50,7 @@
 			background-color: #e6eaed;
 			width:100%;
 			overflow: hidden;
+			
 		}
 		#bar1{
 			float:left;
@@ -59,6 +61,7 @@
 		}
 		#money{
 			color: gray;
+			
 		}
 		#pro{
 			float:left;	
@@ -71,6 +74,14 @@
 			font-weight: bold;
 			color: #9966FF;
 		}
+		#deadline{
+			float: left;
+			background-color: #9966FF;
+			font-weight: bold;
+			color: white;
+			font-size: small;
+			border: 1px solid #9966FF;
+		}
 	</style>
 </head>
 <body>
@@ -80,11 +91,22 @@
 		<c:if test="${status.index mod 3 eq 0 }">
 		<tr id="contents">
 		</c:if>
+		<jsp:useBean id="toDay" class="java.util.Date"/>
+		<fmt:formatDate value="${toDay }" var="startDay" pattern="yyy-MM-dd"/>
+		<fmt:parseDate value="${startDay }" var="strPlanDate" pattern="yyyy-MM-dd"/>
+		<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+		<fmt:parseDate value="${list.pd_end }" var="endPlanDate" pattern="yyyy-MM-dd"/>
+		<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
 			<td id="content" align="center">
 				<div id="img">
 					<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 						<img src="./upload/${list.pd_realfile}">
 					</a>
+					<c:if test="${endDate - strDate < 1}">
+						<div id="deadline">
+							마감 임박
+						</div>
+					</c:if>
 				</div>
 				<div id="subject" align="left">
 					<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">			        	
@@ -102,13 +124,7 @@
 					<div id="pro">
 						<strong><fmt:formatNumber value="${pro }" pattern="0"/>%</strong> · ${list.pd_curmoney }원
 					</div>
-					<div id="day" align="right"> 
-						<jsp:useBean id="toDay" class="java.util.Date"/>
-						<fmt:formatDate value="${toDay }" var="startDay" pattern="yyy-MM-dd"/>
-						<fmt:parseDate value="${startDay }" var="strPlanDate" pattern="yyyy-MM-dd"/>
-						<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
-						<fmt:parseDate value="${list.pd_end }" var="endPlanDate" pattern="yyyy-MM-dd"/>
-						<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+					<div id="day" align="right">
 						${endDate - strDate }일 &nbsp;남음
 					</div>
 				</div>
