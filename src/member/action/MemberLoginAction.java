@@ -24,7 +24,7 @@ public class MemberLoginAction implements Action{
 		MemberBean mbean = mdao.getMember(user_id);
 		
 		String user_name = mbean.getUser_name();
-		
+		String user_photo = mbean.getUser_photo();
 		
 		
 		int check = mdao.userCheck(user_id, user_pw);
@@ -66,6 +66,7 @@ public class MemberLoginAction implements Action{
 		
 		session.setAttribute("id", user_id);
 		session.setAttribute("name", user_name);
+		session.setAttribute("user_photo", user_photo);
 		
 		
 		ActionForward forward = new ActionForward();

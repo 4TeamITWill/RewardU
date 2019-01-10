@@ -61,7 +61,7 @@ public class MemberDAO {
 			pstmt.setString(5, mb.getUser_phone());
 			pstmt.setTimestamp(6, mb.getUser_regDate());
 			pstmt.setInt(7, 1);
-			pstmt.setString(8, "img/usernull.png");
+			pstmt.setString(8, mb.getUser_photo());
 			pstmt.setString(9, mb.getUser_content());
 			
 			result = pstmt.executeUpdate();
@@ -366,7 +366,7 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 			
-			sql = "update user set user_name=?, user_phone=?, user_content=? where user_id=?";
+			sql = "update user set user_name=?, user_phone=?, user_content=?, user_photo=? where user_id=?";
 			
 			
 			pstmt = con.prepareStatement(sql);
@@ -374,7 +374,9 @@ public class MemberDAO {
 			pstmt.setString(1, mbean.getUser_name());
 			pstmt.setString(2, mbean.getUser_phone());
 			pstmt.setString(3, mbean.getUser_content());
-			pstmt.setString(4, mbean.getUser_id());
+			pstmt.setString(4, mbean.getUser_photo());
+			pstmt.setString(5, mbean.getUser_id());
+				
 			
 			pstmt.executeUpdate();
 			

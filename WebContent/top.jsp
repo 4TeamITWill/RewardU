@@ -9,16 +9,16 @@
 
 <style type="text/css">
 	
-#searchBar ::-webkit-input-placeholder { font-size : 16px; color: #CCC; }
+#searchBar ::-webkit-input-placeholder { font-size : 16px; color: #8a8a8e; }
 
 /* Firefox 4-18 */
-#searchBar :-moz-placeholder { font-size : 16px; color: #CCC; }
+#searchBar :-moz-placeholder { font-size : 16px; color: #8a8a8e; }
 
 /* Firefox 19+ */
-#searchBar ::-moz-placeholder { font-size : 16px; color: #CCC; }
+#searchBar ::-moz-placeholder { font-size : 16px; color: #8a8a8e; }
 
 /* IE10+ */
-#searchBar :-ms-input-placeholder { font-size : 16px; color: #CCC; }
+#searchBar :-ms-input-placeholder { font-size : 16px; color: #8a8a8e; }
 
 
 li {list-style: none;}

@@ -9,9 +9,9 @@
 <style type="text/css">
 
 #newsWrite_content {
-width: 800px;
-border: 1px solid red;
-text-align: left;
+	width: 800px;
+	border: 1px solid red;
+	text-align: left;
 }
 
 </style>
@@ -53,6 +53,10 @@ text-align: left;
 				<tr>
 					<td>글 요약</td>
 					<td><input type="text" name="reNews_summary" placeholder="글 목록에서 보여짐"></td>
+				</tr>
+				<tr>
+					<td>대표 이미지</td>
+					<td><input type="file" name="reNews_img"></td>
 				</tr>
 				<tr>
 					<td>글 내용</td>

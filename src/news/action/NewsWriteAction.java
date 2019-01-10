@@ -36,6 +36,7 @@ public class NewsWriteAction implements Action{
 		Newsbean nbean =  new Newsbean();
 		
 		String reNews_file = multi.getFilesystemName("reNews_file");
+		String reNews_img = multi.getFilesystemName("reNews_img");
 		//System.out.println(reNews_file);
 		
 		nbean.setUser_id(multi.getParameter("user_id"));
@@ -46,6 +47,7 @@ public class NewsWriteAction implements Action{
 		nbean.setReNews_file(reNews_file);
 		nbean.setReNews_date(new Timestamp(System.currentTimeMillis()));
 		nbean.setReNews_category(multi.getParameter("reNews_category"));
+		nbean.setReNews_img(reNews_img);
 		
 		NewsDAO ndao = new NewsDAO();
 		
