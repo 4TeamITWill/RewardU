@@ -9,7 +9,10 @@
 <script type="text/javascript" src="./se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
+
 <body>
+
+
 <div id="write_top">
 	<div class="write_top_cont"></div>
 </div>
@@ -29,26 +32,89 @@
 
 
 
+
+
+
 <script>
+
+<%
+	String pagename = (String)request.getAttribute("page");
 	
-seller_tab();
+	if(pagename == null || pagename=="sSeller"){
+%>		
+		firstSeller_tab();
+<%
+	}else if(pagename == "seller"){ //탭
+%>		
+		seller_tab();
+<%		
+	}else if(pagename == "board"){	//탭
+%>
+		board_tab();
+<%
+	}else if(pagename == "reward"){	//탭
+%>
+		reward_tab();
+<%		
+	}else if(pagename == "bBoard"){ 
+%>
+		SaveBoard_tab();
+<%
+	}else if(pagename == "rReward"){
+%>
+		SaveReward_tab();
+<%
+	}
+%>
+	
+	//처음 신청하기 메뉴로 들어갔을때.또는 판매자 저장후 페이지이동
+	function firstSeller_tab(){
+			$(".write_top_cont").html("제작자 정보");
+			$(".write_content").load("./RewardingWrite_seller.jsp");
+	}
+
+	//상품소개 저장했을때 페이지 받아오기
+	function SaveBoard_tab(){
+		$(".write_top_cont").html("프로젝트 소개");
+		$(".write_content").load("./RewardingWrite_board.jsp");
+	}
+	//리워드저장했을때
+	function SaveReward_tab(){
+		$(".write_top_cont").html("리워드 옵션");
+		$(".write_content").load("./RewardingWrite_reward.jsp");
+	}
+
 	
 	
 	//판매자정보 탭 눌렀을때 페이지 받아오기
 	function seller_tab(){
-		$(".write_top_cont").html("제작자 정보");
-		$(".write_content").load("./RewardingWrite_seller.jsp");
+		if (confirm(" 저장하기를 하지 않았다면 수정사항은 저장되지 않습니다. \n 이동하시겠습니까? ") == true){ //check
+			$(".write_top_cont").html("제작자 정보");
+			$(".write_content").load("./RewardingWrite_seller.jsp");
+		}else{
+		 return;
+		}
 	}
 	//상품소개 탭 눌렀을때 페이지 받아오기
 	function board_tab(){
+		if (confirm(" 저장하기를 하지 않았다면 수정사항은 저장되지 않습니다. \n 이동하시겠습니까? ") == true){ //check
 		$(".write_top_cont").html("프로젝트 소개");
 		$(".write_content").load("./RewardingWrite_board.jsp");
+		}else{
+			 return;
+			}
 	}
-	
+	//리워드 탭 눌렀을때
 	function reward_tab(){
+		if (confirm(" 저장하기를 하지 않았다면 수정사항은 저장되지 않습니다. \n 이동하시겠습니까? ") == true){ //check
 		$(".write_top_cont").html("리워드 옵션");
 		$(".write_content").load("./RewardingWrite_reward.jsp");
+	}else{
+		 return;
+		}
 	}
+
+	
 
 
 //업로드 하면 미리보기도 변경되도록..실패

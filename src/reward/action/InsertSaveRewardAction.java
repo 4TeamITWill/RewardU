@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveBoard;
 
 public class InsertSaveRewardAction implements Action {
 
@@ -17,29 +17,27 @@ public class InsertSaveRewardAction implements Action {
 		System.out.println(" InsertSaveRewardAction excute()메소드 호출 됨");
 		request.setCharacterEncoding("UTF-8");
 		
-		SaveBoard saveB = new SaveBoard();
+		RewardBean all = new RewardBean();
 		//리워드 옵션
-		saveB.setPd_opprice1(request.getParameter("pd_opprice1"));
-		saveB.setPd_opcontent1(request.getParameter("pd_opcontent1"));
-		saveB.setPd_opprice2(request.getParameter("pd_opprice2"));
-		saveB.setPd_opcontent2(request.getParameter("pd_opcontent2"));
-		saveB.setPd_opprice3(request.getParameter("pd_opprice3"));
-		saveB.setPd_opcontent3(request.getParameter("pd_opcontent3"));
+		all.setPd_opprice1(request.getParameter("pd_opprice1"));
+		all.setPd_opcontent1(request.getParameter("pd_opcontent1"));
+		all.setPd_opprice2(request.getParameter("pd_opprice2"));
+		all.setPd_opcontent2(request.getParameter("pd_opcontent2"));
+		all.setPd_opprice3(request.getParameter("pd_opprice3"));
+		all.setPd_opcontent3(request.getParameter("pd_opcontent3"));
 		
 		//저장 성공여부를 담을 변수 선언
 		boolean result = false;
 			
-		//DB작업
+			//DB작업
 			RewardDAO rdao = new RewardDAO();
 			HttpSession session = request.getSession();
 			String user_id = (String)session.getAttribute("id");
 			
-			//작성한 게시글내용을 담고있는 saveB, saveS객체를 전달하여 DB작업을 하는데
 			//성공하면 true리턴, 실패하면 false리턴 받음.
-			result = rdao.insertSaveReward(saveB, user_id);
+			result = rdao.insertSaveReward(all, user_id);
 
 			if (result==false) { //실패한 경우
-				//System.out.println("양식을 다시 작성해주세요.");
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter out = response.getWriter();
 				
@@ -51,13 +49,23 @@ public class InsertSaveRewardAction implements Action {
 				return null;
 			}
 	
+			//방금 저장한 pd_no값과 정보들 넘기기
+			int pd_no = rdao.getMax_no(user_id);
+			//RewardBean saveAll = rdao.getSaveAll(pd_no);
+			//String price = saveAll.getPd_opprice1();
+			//System.out.println("insertReward에서 "+price);
+			
+			
+			session.setAttribute("save", pd_no);
+			session.setAttribute("reward", all);
+			System.out.println("insertReward에서 "+all);
+			
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 		
 			out.println("<script>");
-			//out.println("location.href='./submit.fu';");
 			out.println("window.alert('저장되었습니다.');");
-			out.println("location.href='./RewardingSaveList.fu'");
+			out.println("location.href='./reward2.fu'");
 			out.println("</script>");
 			
 			//저장에 성공했을 경우
@@ -68,7 +76,7 @@ public class InsertSaveRewardAction implements Action {
 			forward.setRedirect(false);
 			
 			// 마이페이지로 이동 예정... 일단 인덱스로.실제 페이지 주소 저장
-			//forward.setPath("./submit.fu"); //가상 요청 주소값 저장		
+			//forward.setPath("./reward.fu"); //가상 요청 주소값 저장		
 	
 			return forward;
 	}

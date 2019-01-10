@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import reward.db.RewardBean;
 import reward.db.RewardDAO;
 import reward.db.SaveBoard;
 
@@ -23,14 +24,15 @@ public class RewardingSaveListAction implements Action {
 		
 		RewardDAO rdao = new RewardDAO();
 		
-		Vector<SaveBoard> vector = rdao.getSaveList(user_id);
+		Vector<RewardBean> vector = rdao.getSaveList(user_id);
 		request.setAttribute("v", vector);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("./SaveList.jsp"); 
+		//forward.setPath("./SaveList.jsp"); 
+		forward.setPath("./savedList.jsp"); 
 		
 		return forward;
 	
