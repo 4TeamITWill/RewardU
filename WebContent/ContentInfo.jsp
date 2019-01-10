@@ -15,7 +15,7 @@
 
 <title>펀딩정보</title>
 
-<style>
+<style type="text/css">
 div.logo {
 	height: 200px;
 	width: 100%;
@@ -79,17 +79,9 @@ div.ma4 {
 /* div 영역안을 가운데 정렬하기 위해 씀 . 조건 text-align : center; */
 div.in {
 	display: inline-block;
-	
-	
 }
-a:link { color: blue; text-decoration: none; }
-      a:visited { color: purple; text-decoration: none; }
-      a:hover { color: blue; text-decoration: underline; }
-      a:active { color: white; background-color: green; }
-
-
+  
 </style>
-
 
     
 </head>
@@ -129,13 +121,15 @@ a:link { color: blue; text-decoration: none; }
 			
 				<tr>
 					<td> 
-						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/Content1.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>">펀딩소개</a>
+						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/Content1.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="intro_a">펀딩소개</a>
 					 </td> 	
 					<td><a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="go_btn">댓글</a></td>
 					<td>
 						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp">dd</a>
 					</td>
-					<td>움직여라 좀 </td>
+					<td>
+						<a href="./supporters.ad?pd_no=<%=pd_no %>">참여하신분들</a>
+					</td>
 				</tr>
 	
 		</table>

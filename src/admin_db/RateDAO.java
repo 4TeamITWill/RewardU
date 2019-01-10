@@ -44,7 +44,8 @@ public class RateDAO {
 				pstmt.setString(1, rbean.getUser_id());
 				pstmt.setInt(2, rbean.getPd_no());
 				pstmt.setDouble(3, rbean.getMy_rate());
-				result = pstmt.executeUpdate();
+				pstmt.executeUpdate();
+				result = 1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

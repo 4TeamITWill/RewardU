@@ -143,6 +143,10 @@ public class adFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/supporters.ad")){
+			forward = new adActionForward();
+			forward.setPath("./index.jsp?center=star/supporters.jsp");
+			forward.setRedirect(false);
 		}
 
 		

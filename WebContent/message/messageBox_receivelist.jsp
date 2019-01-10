@@ -117,13 +117,13 @@ if(count > 0){ //메시지가 존재 한다면
 		} else {
 %>
 		<tr align="center">
-			<td class="readMessage" width="5%"><%=mdto.getNo()%></td>
-			<td class="readMessage" width="8%"><%=toID%></td>
-			<td class="readMessage" width="23%">
+			<td class="readMessage" width="80px"><%=mdto.getNo()%></td>
+			<td class="readMessage" width="230px"><%=toID%></td>
+			<td class="readMessage" width="500px">
 			<a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive&id=<%=id%>"><%=mdto.getSubject()%></a>
 			</td>
-			<td class="readMessage" width="15%"><%=sdf.format(mdto.getReg_date()) %></td>
-			<td width="5%"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
+			<td class="readMessage" width="170px"><%=sdf.format(mdto.getReg_date()) %></td>
+			<td width="100px"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>
 <%
 		}
