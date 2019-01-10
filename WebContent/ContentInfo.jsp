@@ -1,3 +1,4 @@
+<%@page import="javax.print.attribute.standard.PDLOverrideSupported"%>
 <%@page import="org.apache.taglibs.standard.lang.jstl.test.Bean1"%>
 <%@page import="admin_db.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,8 +13,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<title>펀딩정보</title>
 
-<title>ㅇㅇ</title>
 <style>
 div.logo {
 	height: 200px;
@@ -92,11 +93,19 @@ a:link { color: blue; text-decoration: none; }
 
     
 </head>
+		
 <body>
-
-
+	
+		
 	<div class="logo">
-		<img src="img/${bean.pd_file}" style="opacity: 0.2" height="100%"
+	<%
+	String id = (String)session.getAttribute("id"); 
+			int pd_no = Integer.parseInt(request.getParameter("pd_no"));
+			BoardDAO bdao = new BoardDAO();
+			BoardBean bdto = new BoardBean();
+			bdto = bdao.getBoard(pd_no);
+		%> 
+		<img src=" ./upload/<%=bdto.getPd_realfile() %> " style="opacity: 0.2" height="100%"
 			width="100%">
 		<h2 class="logotext">여기 텍스트는 pd_no 를 받아 따로 db에 저장해야겠군(설명)</h2>
 	</div>
@@ -114,33 +123,38 @@ a:link { color: blue; text-decoration: none; }
 		});
 	</script>
 
-
 	<div class = "ma0">
 		<div class="in">
 		<table border="1px" width="500px">
-			<tr>
-				<td> 펀딩소개 </td> 	
-				<td><a href="#ma4" class="go_btn">댓글</a></td>
-				<td>??</td>
-				<td>움직여라 좀 </td>
-			</tr>
-		
+			
+				<tr>
+					<td> 
+						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/Content1.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>">펀딩소개</a>
+					 </td> 	
+					<td><a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="go_btn">댓글</a></td>
+					<td>
+						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp">dd</a>
+					</td>
+					<td>움직여라 좀 </td>
+				</tr>
+	
 		</table>
 		</div>
 	</div>
 	
 	<hr>
 	
-
-	
-	
-	<%
-	BoardBean gao = new BoardBean();
-	%>
-	<div class="ma">
+		 <c:set var="gogo" value="${param.gogo}"/>
+			<c:if test="${gogo == null}"> 
+		 			<c:set var="gogo" value="star/Content1.jsp"/>
+			 </c:if>
+			 
+			 <jsp:include page="${gogo }"/>
+			
+	<%-- <div class="ma">
 		<table style="margin-left: auto; margin-right: auto;">
 			<tr>
-				<td><img alt="" src="img/<%=gao.getPd_file() %>" width="500"
+				<td><img alt="" src="" width="500"
 					height="500"></td>
 
 				<td><jsp:include page="star/day.jsp" /></td>
@@ -184,7 +198,7 @@ a:link { color: blue; text-decoration: none; }
 		<div class="in">
 			댓글 만들기 
 		</div>
-	</div>
+	</div --%>>
 <button type="button" class="back-to-top">
     <h3 align="right">Top</h3>
    	</button>

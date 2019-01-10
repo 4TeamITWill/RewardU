@@ -47,14 +47,6 @@ $(document).ready(function(){
 	});
 	/* -------------------------퀵 메뉴 끝------------------------- */
 	
-	//좋아요 클릭했을 시
-	$(".good_img").click(function() {
-		if($(".good_img").attr("src") == "img/love_off.png"){
-			$(".good_img").attr("src",$(".good_img").attr("src").replace("_off.png","_on.png"));
-		} else
-			$(".good_img").attr("src",$(".good_img").attr("src").replace("_on.png","_off.png"));
-	});
-	
 	
 });//$(document).ready 끝
 

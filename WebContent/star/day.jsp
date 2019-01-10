@@ -13,7 +13,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
@@ -250,6 +249,7 @@ star-input>.input.focus {
 	
 
 	<script type="text/javascript">
+	
 	$(document).ready(function() { 
 		
 		//좋아요 눌렀을 시
@@ -283,6 +283,15 @@ star-input>.input.focus {
 					} //중괄호의 닫는 부분 
 				); //ajax닫는부분
 		});// $.ajax메소드의 닫는 부분
+		
+		//좋아요 클릭했을 시
+		$(".good_img").click(function() {
+			if($(".good_img").attr("src") == "img/love_off.png"){
+				$(".good_img").attr("src",$(".good_img").attr("src").replace("_off.png","_on.png"));
+			} else
+				$(".good_img").attr("src",$(".good_img").attr("src").replace("_on.png","_off.png"));
+		});
+		
 	});//ready함수 닫는 부분 	
 </script>
 	<div class= "like" style="margin-left: 10px;">
