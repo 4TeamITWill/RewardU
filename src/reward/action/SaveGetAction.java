@@ -28,7 +28,7 @@ public class SaveGetAction implements Action{
 		//request영역에 저장
 		request.setAttribute("saveB", saveB);
 		request.setAttribute("saveS", saveS);
-		request.setAttribute("end", end);
+		request.setAttribute("end", end); 
 		
 		ActionForward forward = new ActionForward();
 		

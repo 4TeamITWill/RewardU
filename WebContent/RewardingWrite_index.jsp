@@ -9,7 +9,9 @@
 <script type="text/javascript" src="./se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
+
 <body>
+
 
 <div id="write_top">
 	<div class="write_top_cont"></div>
@@ -18,9 +20,9 @@
 <div id="write_main">
 	<div class="write_tab">
 		<font style="font-size : 16px; font-weight : 550; color : rgba(20,20,20,0.8); display : block; margin : 15px 0; ">프로젝트 만들기</font>
-		<a class="a1" onclick="seller_tab();">1. 제작자 정보</a><br/>
-		<a class="a1" onclick="board_tab();">2. 프로젝트 소개</a><br/>
-		<a class="a1" onclick="reward_tab();">3. 리워드 옵션</a>
+		<a id="a1"onclick="seller_tab();">1. 제작자 정보</a><br/>
+		<a id="a2"onclick="board_tab();">2. 프로젝트 소개</a><br/>
+		<a id="a3"onclick="reward_tab();">3. 리워드 옵션</a>
 	</div>
 		
 	<div class="write_content">
@@ -28,42 +30,85 @@
 	</div>
 </div>	
 
-
 <script>
 
-	seller_tab();
-	
-	$(".a1:eq(0)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
-	
-	$(".a1").click(function(){
-		$(this).css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
-		$(".a1").not($(this)).css({"color":"rgba(150,150,150,1)", "font-weight" : "550", "font-size" : "14px"});
-	});
-	
-	//판매자정보 탭 눌렀을때 페이지 받아오기
-	function seller_tab(){				
-		$(".write_top_cont").html("제작자 정보");
-		$(".write_content").load("./RewardingWrite_seller.jsp");
+<%
+	String pagename = (String)request.getAttribute("page");
+	if(pagename == null || pagename=="sSeller"){
+%>		
+		firstSeller_tab();
+<%
+	}else if(pagename == "seller"){ //탭
+%>		
+		seller_tab();
+<%		
+	}else if(pagename == "board"){	//탭
+%>
+		board_tab();
+<%
+	}else if(pagename == "reward"){	//탭
+%>
+		reward_tab();
+<%		
+	}else if(pagename == "bBoard"){ 
+%>
+		SaveBoard_tab();
+<%
+	}else if(pagename == "rReward"){
+%>
+		SaveReward_tab();
+<%
 	}
-	//상품소개 탭 눌렀을때 페이지 받아오기
-	function board_tab(){
+%>
+	
+	//처음 신청하기 메뉴로 들어갔을때.또는 판매자 저장후 페이지이동
+	function firstSeller_tab(){
+			$(".write_top_cont").html("제작자 정보");
+			$(".write_content").load("./RewardingWrite_seller.jsp");
+	}
+
+	//상품소개 저장했을때 페이지 받아오기
+	function SaveBoard_tab(){
 		$(".write_top_cont").html("프로젝트 소개");
 		$(".write_content").load("./RewardingWrite_board.jsp");
 	}
-	
-	function reward_tab(){
+	//리워드저장했을때
+	function SaveReward_tab(){
 		$(".write_top_cont").html("리워드 옵션");
 		$(".write_content").load("./RewardingWrite_reward.jsp");
 	}
 
-    //저장하기를 눌렀다면
-    $("#save").click(function () {
-        $("#f").attr("action","./SaveAction.fu");
-    });
-    //승인요청하기를 눌렀다면
-    $("#reward").click(function () {
-        $("#f").attr("action","./RewardingWriteAction.fu");
-    });
+	
+	
+	//판매자정보 탭 눌렀을때 페이지 받아오기
+	function seller_tab(){
+		if (confirm(" 저장하기를 하지 않았다면 수정사항은 저장되지 않습니다. \n 이동하시겠습니까? ") == true){ //check
+			$(".write_top_cont").html("제작자 정보");
+			$(".write_content").load("./RewardingWrite_seller.jsp");
+		}else{
+		 return;
+		}
+	}
+	//상품소개 탭 눌렀을때 페이지 받아오기
+	function board_tab(){
+		if (confirm(" 저장하기를 하지 않았다면 수정사항은 저장되지 않습니다. \n 이동하시겠습니까? ") == true){ //check
+		$(".write_top_cont").html("프로젝트 소개");
+		$(".write_content").load("./RewardingWrite_board.jsp");
+		}else{
+			 return;
+			}
+	}
+	//리워드 탭 눌렀을때
+	function reward_tab(){
+		if (confirm(" 저장하기를 하지 않았다면 수정사항은 저장되지 않습니다. \n 이동하시겠습니까? ") == true){ //check
+		$(".write_top_cont").html("리워드 옵션");
+		$(".write_content").load("./RewardingWrite_reward.jsp");
+	}else{
+		 return;
+		}
+	}
+
+	
 
 
 //업로드 하면 미리보기도 변경되도록..실패
