@@ -235,7 +235,7 @@ public class BoardDAO {
 		try{
 			
 			con = getConnection();
-			sql = "update board set pd_permit = -1 where pd_no = ?";
+			sql = "update board set pd_permit = 2 where pd_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pd_no);
 			pstmt.executeUpdate();

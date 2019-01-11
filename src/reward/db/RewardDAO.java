@@ -216,7 +216,7 @@ public class RewardDAO {
 		//db연결
 		con= getConnection();
 		
-		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveBoard where user_id=?";
+		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveall where user_id=?";
 				
 		pstmt = con.prepareStatement(sql);
 		
@@ -260,7 +260,7 @@ public class RewardDAO {
 			try {
 				 con = getConnection();//DB연결
 				 
-				 String sql = "select * from saveBoard where pd_no=?";
+				 String sql = "select * from saveall where pd_no=?";
 				 
 				
 				 pstmt = con.prepareStatement(sql);
@@ -320,7 +320,7 @@ public class RewardDAO {
 			try {
 				 con = getConnection();//DB연결
 				 
-				 String sql = "select * from saveSeller where pd_no=?";
+				 String sql = "select * from saveall where pd_no=?";
 				 
 				
 				 pstmt = con.prepareStatement(sql);
@@ -937,7 +937,7 @@ public class RewardDAO {
 		
 		
 		//임시저장했던 판매자정보 update
-		public boolean updateSaveSeller(SaveSeller saveS, int pd_no) {
+		public boolean updateSaveSeller(RewardBean all, int pd_no) {
 			
 			Connection con = null;
 			String sql = "";
@@ -950,16 +950,16 @@ public class RewardDAO {
 				
 				con = getConnection();
 				
-				sql = "update SaveSeller set company_no=?, company=?, company_addr=?, company_tell=?, company_fax=?, sellerAccount=? where pd_no=?";
+				sql = "update saveall set company_no=?, company=?, company_addr=?, company_tell=?, company_fax=?, sellerAccount=? where pd_no=?";
 				
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setString(1, saveS.getCompany_no());
-				pstmt.setString(2, saveS.getCompany());
-				pstmt.setString(3, saveS.getCompany_addr());
-				pstmt.setString(4, saveS.getCompany_tell());
-				pstmt.setString(5, saveS.getCompany_fax());
-				pstmt.setString(6, saveS.getSellerAccount());
+				pstmt.setString(1, all.getCompany_no());
+				pstmt.setString(2, all.getCompany());
+				pstmt.setString(3, all.getCompany_addr());
+				pstmt.setString(4, all.getCompany_tell());
+				pstmt.setString(5, all.getCompany_fax());
+				pstmt.setString(6, all.getSellerAccount());
 				pstmt.setInt(7, pd_no);
 				
 				result = pstmt.executeUpdate(); //DB작업 성공하면 1, 실패시 0리턴

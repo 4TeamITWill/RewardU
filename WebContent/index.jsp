@@ -20,6 +20,7 @@
 <script src="js/carousel.js"></script>
 <script src="js/pay.js"></script>
 <title>리듀 RewardU | 메인화면</title>
+
 </head>
 <body>
 <!-- 변수 center에 받아온 값이 있으면 변수에 저장하고 null이면 기본(main.js00p)값 넣어줌-->
@@ -38,7 +39,7 @@
 			<div style="flex : 1; height : 0;" ></div>
 			<div style="flex : 1; height : 0;"></div>
 			<div style="flex : 1; height : 0;">
-				<div class="modal_my" id="	modal_my">
+				<div class="modal_my" id="modal_my">
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
 						<div class="modal_img">
 					<!-- 프로필 사진 설정이 안되어 있을 때(null)는 기본사진 출력 -->	
@@ -73,6 +74,7 @@
 <jsp:include page="quick_menu.jsp"/>
 
 <script>
+
 	//모달 창 부분 자바스크립트 제이쿼리
 	$("#goMypage").click(function(){			
 		$(".modal_my").css("display", "block");

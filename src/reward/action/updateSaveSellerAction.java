@@ -37,7 +37,7 @@ public class updateSaveSellerAction implements Action {
 		HttpSession session = request.getSession();
 		int pd_no = (Integer)session.getAttribute("save");	
 		System.out.println("updateSeller에서 pd_no: " +pd_no);
-		result = rdao.updateSaveBoard(all, pd_no);
+		result = rdao.updateSaveSeller(all, pd_no);
 		
 		
 		if (result==false) { //실패한 경우

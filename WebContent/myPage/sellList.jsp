@@ -11,7 +11,7 @@
 	<div id="savedList_main">
 		<div class="savedList_top">
 			<div class="savedList_desc">
-				<h2 style="font-size : 1.3rem">회원님께서 개설 중인 프로젝트 목록입니다.</h2>	
+				<h2 style="font-size : 1.3rem">${name } 회원님께서 제작 하신 프로젝트 목록입니다.</h2>	
 			</div>			
 		</div>		
 		<div class="savedList_bottom">
@@ -20,6 +20,7 @@
 				<div style="flex : 2; text-align : center;">마감날짜</div>
 				<div style="flex : 1; text-align : center;">참여자수</div>
 				<div style="flex : 1; text-align : center;">평점</div>
+				<div style="flex : 1; text-align : center;">승인 여부</div>
 			</div>
 		
 			<c:forEach var="board" items="${board1list }">
@@ -37,6 +38,18 @@
 					<div>~${board.pd_endf }</div>
 					<div>${board.pd_participant }명 참여</div>
 					<div>${board.pd_rate }</div>
+					
+					<c:if test="${board.pd_permit == 1 }">
+						<div>게시 중</div>
+					</c:if>
+					<c:if test="${board.pd_permit == 0 }">
+						<div>승인대기</div>
+					</c:if>
+					<c:if test="${board.pd_permit == 2 }">
+						<div>승인거절</div>
+					</c:if>
+					
+					
 				</div>
 			</c:forEach>
 			<!-- 페이징 부분 -->

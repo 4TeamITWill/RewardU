@@ -82,11 +82,6 @@ div.in {
 	
 	
 }
-a:link { color: blue; text-decoration: none; }
-      a:visited { color: purple; text-decoration: none; }
-      a:hover { color: blue; text-decoration: underline; }
-      a:active { color: white; background-color: green; }
-
 
 </style>
 
