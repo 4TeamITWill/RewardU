@@ -175,6 +175,7 @@ $("#reward").click(function () {
 		
 %>		
 		<input type="submit" id="update" value="저장하기(update)"/><%=save %>
+		<input type="submit" id="reward" value="신청하기"/>
 <%		
  	}else{
 %>		
@@ -183,7 +184,7 @@ $("#reward").click(function () {
 	}
 %>	
 
-		<input type="submit" id="reward" value="신청하기"/>
+		
 	</form>
 		
 	<br/><br/>

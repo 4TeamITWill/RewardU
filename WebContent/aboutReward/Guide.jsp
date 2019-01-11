@@ -97,6 +97,7 @@ section {
 	width: 100%;
 	list-style-type: none;
 	font-size: 15px;
+	margin-left: 20px;
 }
 
 #nav ul.menu li a {
@@ -147,13 +148,13 @@ section {
 				<li><a href="#">운영정책</a></li>
 			</ul>
 			<ul class="menu">	
-				<li><a>자주묻는 질문 </a>
+				<li><a>자주묻는 질문 <img src="./img/drop.gif"></a>
 					<ul class="sub">
 						<li><a href="#howReward">> Q1. 리워드 펀딩 참여하기</a></li>
 		      			<li><a href="#howOpen">> Q2. 리워드 펀딩 오픈하기</a></li>
 		      			<li><a href="#fail">> Q3. 펀딩 실패시 어떻게 되나요?</a></li>
-		      			<li><a href="#find">> Q6. 비밀번호를 잃어버렸어요!</a></li>
-		      			<li><a href="#delete">> Q7. 회원 탈퇴하고 싶어요!</a></li>
+		      			<li><a href="#find">> Q4. 비밀번호를 잃어버렸어요!</a></li>
+		      			<li><a href="#delete">> Q5. 회원 탈퇴하고 싶어요!</a></li>
 					</ul>
 				</li>
 				<li><a href="#etc">기타</a></li>
@@ -185,7 +186,7 @@ section {
 				<p>RewardU라는 이름은 Reward with you를 줄여 만들었으며
 					RewardU는 리워드형 프로젝트만 오픈되고 참여할 수 있는 리워드 크라우드펀딩 플랫폼입니다.
 				</p>	
-				<p>	리듀에 대헤 더 자세히 알고싶다면? 리듀소개 바로가기  -> <a href="리뉴소개링크">클릭!</a></p>
+				<p>	리듀에 대헤 더 자세히 알고싶다면? 리듀소개 바로가기  -> <a href="RewardUIntro.my">클릭!</a></p>
 		</section>		
 	
 	      <section id="notShopping">

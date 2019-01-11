@@ -82,12 +82,18 @@
 }
 
 /* sendMessage.jsp + answerMessage.jsp */
-.send_div,.answer_div{ position: absolute;
+.send_div,.answer_div{ position: absolute; border: 1px solid red;
 	width: 530px; height: auto; text-align: center;
-	left: 37%; top: 15%;
+	left: 25%; top: 15%;
 } 
 .send_TA,.answer_TA{width: 500px; height: 250px;}
 .send_FS,.answer_FS{float: left;}
+
+.search_user{position: absolute; border: 1px solid blue;
+	width: 530px; height: auto; text-align: left;
+	right: 17%; top: 15%; 
+}
+
 
 /* 퀵메뉴 quick_menu.jsp */
 #quick_menu {

@@ -24,8 +24,10 @@
 			</div>
 		
 			<c:forEach var="board" items="${board1list }">
-				<div class="savedList_bottom_content" >		
+				<div class="savedList_bottom_content" >	
+					
 					<div style="display : flex; align-items : center;">
+					
 						<div style="width : 130px; height :130px; overflow : hidden;"><img src="./upload/${board.pd_realfile }"/></div>
 						<div style="padding : 10px 10px;">
 							<a href="./Content.ad?pd_no=${board.pd_no}" style="color:#000;">

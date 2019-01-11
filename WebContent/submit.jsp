@@ -18,11 +18,8 @@
 	/* margin-top: 100px; */
 }
 
-a{
- color: black;
- font-weight: bolder;
-
-}
+a:HOVER {
+ border-bottom: 1px solid;	
 }
 
 
@@ -36,7 +33,7 @@ a{
 			<div>
 				승인이 되면 https://reward-U.kr/web/detail/${domain}으로 오픈됩니다.<br/>
 				<br>
-				개설프로젝트는 <a href="./mySellList.my"><font>마이페이지</font></a>에서 보실 수 있습니다.<br>
+				개설프로젝트는 <a href="./mySellPro.my"><font style="font-weight: bold;" color="black">마이페이지-개설프로젝트</font></a>에서 보실 수 있습니다.<br>
 			</div>
 	 	</div>
  	</div>
