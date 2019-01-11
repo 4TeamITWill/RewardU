@@ -443,7 +443,7 @@ public class RewardDAO {
 				return false;
 			}
 
-			//글쓰기 저장만 리스트 삭제하기.. 
+			/*//글쓰기 저장만 리스트 삭제하기.. 
 			public int RewardingSaveDel(int pd_no) {
 				
 				int result = 0;
@@ -495,7 +495,7 @@ public class RewardDAO {
 				
 				return result;
 			}
-			
+			*/
 		//검색어를 전달받아 검색어에 해당하는 글개수를 DB로부터 가져와서 글개수 리턴 하는 메소드
 		public int getSearchCount(String keyWord) {
 
@@ -786,8 +786,8 @@ public class RewardDAO {
 		//마이페이지에->임시저장 프로젝트-> 수정하기를 눌렀을때는 seller정보가 첫 페이지이므로 seller정보를 불러온다.
 		//신청양식작성 페이지에서 '이전으로' 또는 '다음으로'를 눌렀을때 세션의 pd_no와 DB의 pd_no가 일치하는것이 있으면 불러온다.
 		
-		//수정할 판매자정보를 DB로 부터 select..
-		/*	public RewardBean getSaveSellerTab(int pd_no) {
+		//수정할 정보를 DB로 부터 select.. 3개메소드 하나로 합침
+		public RewardBean getSaveSellerTab(int pd_no) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -815,6 +815,20 @@ public class RewardDAO {
 					 all.setCompany_addr(rs.getString("company_addr"));
 					 all.setSellerAccount(rs.getString("sellerAccount"));
 					
+					 all.setPd_subject(rs.getString("pd_subject"));
+					 all.setPd_content(rs.getString("pd_content"));
+					 all.setPd_goalMoney(rs.getString("pd_goalMoney"));
+					 all.setPd_category(rs.getString("pd_category"));
+					 all.setPd_file(rs.getString("pd_file"));
+					 all.setPd_realFile(rs.getString("pd_realFile"));
+					 all.setPd_end(rs.getString("pd_end"));
+					 
+					 all.setPd_opprice1(rs.getString("pd_opprice1"));
+					 all.setPd_opcontent1(rs.getString("pd_opcontent1"));
+					 all.setPd_opprice2(rs.getString("pd_opprice2"));
+					 all.setPd_opcontent2(rs.getString("pd_opcontent2"));
+					 all.setPd_opprice3(rs.getString("pd_opprice3"));
+					 all.setPd_opcontent3(rs.getString("pd_opcontent3"));
 				}
 				
 			} catch (Exception e) {
@@ -830,7 +844,7 @@ public class RewardDAO {
 			}
 				return all;
 			}
-		*/
+		
 		//임시저장했던 프로젝트정보 불러오기
 		/*public RewardBean getSaveBoardTab(int pd_no) {
 			
@@ -884,7 +898,8 @@ public class RewardDAO {
 		}
 		*/
 		//수정할 reward정보 가져오기
-			public SaveBoard getSaveRewardTab(int pd_no) {
+			
+		/*public SaveBoard getSaveRewardTab(int pd_no) {
 			
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -932,7 +947,7 @@ public class RewardDAO {
 		return saveB;
 		
 		}
-
+*/
 		
 		
 		
@@ -1308,7 +1323,7 @@ public class RewardDAO {
 			}
 			
 			//saveAll에서 저장한 번호 삭제하기.. 
-			public void allDel(int pd_no) {
+			public int allDel(int pd_no) {
 				
 				int result = 0;
 				Connection con = null;
@@ -1338,7 +1353,8 @@ public class RewardDAO {
 						e.printStackTrace();
 					}
 				}//finally
-
+				
+				return result;
 			}
 }
 

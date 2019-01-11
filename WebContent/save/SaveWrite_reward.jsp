@@ -9,18 +9,14 @@
 
 <script type="text/javascript">
 
-//저장하기를 눌렀다면 - 처음저장
-$("#insert").click(function () {
-    $("#f").attr("action","./insertSaveReward.fu");
-});
 //저장하기를 눌렀다면 - 저장한 적 있음
 $("#update").click(function () {
-    $("#f").attr("action","./updateSaveReward.fu");
+    $("#f").attr("action","./updateSaveReward2.sa");
 });
 
 //신청하기를 눌렀다면
 $("#reward").click(function () {
-    $("#f").attr("action","./RewardingWrite2.fu");
+    $("#f").attr("action","./saveWrite.sa");
 });
 
 
@@ -35,14 +31,9 @@ $("#reward").click(function () {
 	<%
 	RewardBean all = null;  //RewardBean all = new RewardBean();처럼 객체생성을 하면 null이 아니게된다 ㅜㅜ 
 							//null로 초기화시켜주어야 아래 if else문을 탈수 있다.
-	
-	if(session.getAttribute("reward") != null){
-		
-		all = (RewardBean)session.getAttribute("reward");
+	all = (RewardBean)session.getAttribute("saveSeller");
 		System.out.println("reward뷰페이지에서 "+all.getPd_opprice1());
-	}
 	
-	if(all != null){
 	%>
 		<tr height="70">
 			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드1</font></td>
@@ -87,56 +78,7 @@ $("#reward").click(function () {
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>
 		</tr>	
-	<%
-	}else{	
-	 %>
-		<tr height="70">
-			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드1</font></td>
-		</tr>
-		
-		<tr height="20">	
-			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();"> 원<br/></td>
-		</tr>
-		<tr height="20">
-			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 명</td>	
-			<td><input type="text" id="pd_opcontent1" name="pd_opcontent1" onblur="addOp1();" style="width : 100%;" ><br/></td>
-		</tr>
-		<tr height="20">	
-			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>
-		</tr>
-		<tr height="70">	
-			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드2</font></td>
-		</tr>	
-		<tr height="20">
-			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()"> 원<br/></td>
-		</tr>
-		<tr height="20">	
-			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 명</td>
-			<td><input type="text" id="pd_opcontent2" name="pd_opcontent2" style="width:100%;" onblur="addOp2()" ><br/></td>
-		</tr>
-		<tr height="20">	
-			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>
-		</tr>	
-		<tr height="70">
-			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드3</font></td>
-		</tr>
-		<tr height="20">	
-			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()"> 원<br/></td>
-		</tr>	
-		<tr height="20">
-			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 명</td>
-			<td><input type="text" id="pd_opcontent3" name="pd_opcontent3" style="width:100%;" onblur="addOp3()"><br/></td>
-		</tr>	
-		<tr height="20">
-			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>
-		</tr>	
-	<%
-	}
-	%>		
-		
+			
 	</table>
 	
 	<div class="op_teaser_container">
@@ -160,29 +102,9 @@ $("#reward").click(function () {
 			<div id="op3_price"></div>
 		</div>
 	</div>
-	
-	<%
-	
-	int save = 0;
-	
-	if(session.getAttribute("save") != null){
 		
-		save = (Integer)session.getAttribute("save");
-	}
-	
-	if(save != 0){
-
-		
-%>		
-		<input type="submit" id="update" value="저장하기(update)"/><%=save %>
-		<input type="submit" id="reward" value="신청하기"/>
-<%		
- 	}else{
-%>		
-		<input type="submit" id="insert" value="저장하기(insert)"/>
-<%	 
-	}
-%>	
+		<input type="submit" id="update" value="저장하기(update)"/>
+		<input type="submit" id="reward" value="신청하기"/>	
 
 		
 	</form>

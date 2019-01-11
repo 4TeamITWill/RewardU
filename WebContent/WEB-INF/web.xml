@@ -55,6 +55,16 @@
   	<servlet-name>RewardController</servlet-name>
   	<url-pattern>*.fu</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SaveController</servlet-name>
+  	<servlet-class>save.action.SaveController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SaveController</servlet-name>
+  	<url-pattern>*.sa</url-pattern>
+  </servlet-mapping>
+	
 
   <servlet>
   	<servlet-name>AboutRewardFrontController</servlet-name>

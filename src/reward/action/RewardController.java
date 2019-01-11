@@ -14,7 +14,6 @@ import fileUpAction.FileUpAction;
 import my_db.MyDAO;
 import reward.action.Action;
 import reward.action.ActionForward;
-import reward.action.RewardingWriteAction;
 
 import reward.action.InsertSaveSellerAction;
 
@@ -38,7 +37,7 @@ public class RewardController extends HttpServlet{
 		String RequestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
-		System.out.println(command);
+		
 		
 		ActionForward forward = null;
 		
@@ -56,20 +55,10 @@ public class RewardController extends HttpServlet{
 			
 			//RewardingWrite.jsp(양식작성페이지)와  RewardingUpdate.jsp(수정페이지)에서 '승인요청'이 들어왔을때
 			//수정글은 insert 성공하면 저장리스트에서 삭제 
-			}else if (command.equals("/RewardingWriteAction.fu")) {
-				
-				action = new RewardingWriteAction();
-				
-				try {
-					forward = action.excute(req, resp);
-					
-				} catch (Exception e) {
-					
-					e.printStackTrace();
-				}
+			}
 				
 			//승인요청완료 페이지로..
-			}else if (command.equals("/submit.fu")) {
+			else if (command.equals("/submit.fu")) {
 				
 				action = new RewardingSubmitAction(); 
 				
