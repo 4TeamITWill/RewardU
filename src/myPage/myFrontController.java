@@ -65,6 +65,16 @@ public class myFrontController extends HttpServlet{
 			forward = new myActionForward();
 			forward.setPath("./index.jsp?center=./RewardU_intro.jsp");
 			forward.setRedirect(false);
+		}else if(command.equals("/sellernews.my")){
+			
+			action = new sellerNews();
+			forward = action.execute(request, response);
+					
+		}else if(command.equals("/sellernewsAction.my")){
+
+			action = new sellerNewsWrite();
+			
+			forward = action.execute(request, response);
 		}
 		
 		if(forward != null){

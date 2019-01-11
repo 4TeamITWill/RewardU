@@ -14,16 +14,16 @@
 <body>
 
 <div class="saveList_content" style="width : 800px; margin : 0 auto;">
-<h3>&nbsp;&nbsp;임시저장된 글 목록입니다. 수정을 클릭하여 이어서 작성할 수 있습니다.</h3>
+<h3>임시저장된 글 목록입니다. <br/><font style="font-size : 15px;">수정을 클릭하여 이어서 작성할 수 있습니다.</font></h3>
 
-	<table width="100%">
+	<table width="100%" style="margin-top :4rem;">
 		<tr>
-			<td>아이디</td>
-			<td>번호</td>
-			<td>대표이미지</td>
-			<td>프로젝트제목</td>
-			<td>수정</td>
-			<td>삭제</td>
+			<td><font style="font-weight : bold;">아이디</font></td>
+			<td><font style="font-weight : bold;">번호</font></td>
+			<td><font style="font-weight : bold;">대표이미지</font></td>
+			<td><font style="font-weight : bold;">프로젝트제목</font></td>
+			<td><font style="font-weight : bold;">수정</font></td>
+			<td><font style="font-weight : bold;">삭제</font></td>
 		</tr>
 		
 	

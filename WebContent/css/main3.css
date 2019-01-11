@@ -421,15 +421,16 @@ body{
 
 #myindex_main {
 	width : 100%;
-}
-
-#myIndex_bottom {
-	
+	min-height : 100%;
 }
 
 #myindex_top {
 	border-bottom : 0.5px solid rgba(50,50,50,0.6);
 	box-sizing : border-box;
+}
+
+#myIndex_bottom {
+	height : 100%;
 }
 
 .myindex_subject {
@@ -774,26 +775,23 @@ body{
 .bt {
 	display : block;
 	width : 120px;
-	text-align : center;
+	height : 30px;
+	line-height : 30px;
 	cursor : pointer;
-	
+	color : rgba(160,160,160,0.8);
+		
 }
 
 .bt-on {	
-	border : 1px solid #646464;
 	display : block;
 	width : 120px;
-	text-align : center;
 	cursor : pointer;
 	width : 120px;
+	font-weight : bold;
+	color : rgba(150,150,150,1);
 }
 
-#savedList_main {
-	width : 100%; 
-}	
-
 .savedList_top {
-	width : 1000px;
 	margin : 0 auto;
 }
 
@@ -802,7 +800,6 @@ body{
 }
 
 .savedList_bottom_content {
-	width : 1000px;
 	height : 150px;
 	margin : 0 auto;
 	display : flex;
@@ -1033,6 +1030,7 @@ body{
 
 #write_main {
 	width : 900px;
+	min-height : 100%;
 	display : flex;
 	margin : 0 auto;
 }
@@ -1172,4 +1170,31 @@ body{
 	border : 1px solid #ccc;
 }
 
+/* 판매자 소식 */
 
+#sellerNewsList div {
+	width : 100%;
+}
+
+#sellerNewsList {
+	border-top : 0.5px solid rgba(20,60,240,0.6);
+}
+
+.sNewsWrite_div {
+	padding : 2rem 0;		
+	background-color : white;
+}
+
+.sNewsWrite_div input{
+	box-sizing : border-box;
+	width : 100%;
+	height : 30px;
+	margin-bottom : 1rem;
+	opacity : 0.5;
+	border : 1px solid rgba(160,160,160,1);
+	border-radius : 5px;
+}
+
+.list_content img {
+	width : 100%;	
+}
