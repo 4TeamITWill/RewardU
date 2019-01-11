@@ -189,7 +189,14 @@ public class MessageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-
+		else if(command.equals("/SelectID.message")){
+			action=new SelectID();
+			try {
+				forward=action.execute(request, response);			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//------------------------------------------------------------------------------------------------------
 		//주소 이동
 		if(forward!=null){ //new ActionForward()객체가 존재 하고..

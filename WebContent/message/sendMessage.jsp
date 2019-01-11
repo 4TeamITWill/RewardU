@@ -18,8 +18,14 @@ $('.search_member').on("keyup keypress",function(){
 		}
 	});	
 });	
-
 });
+
+//userList.jsp에서 검색된 아이디 선택버튼 클릭 시 이곳에서의 selectID()가 실행
+//userList.jsp에서의 각각 id값을 구분하여 value값을 가져온다.  (이 페이지에서 userList.jsp를  innerHTML로 넣어주기 때문에)
+function selectID(i) { //onclick="selectID(번호); 는 userList.jsp에 있다."
+	var user_id = document.getElementById("select_id"+i).value; //각각의 검색된 아이디는 id값으로 끝에 고유 번호 i를 가진다.(userList.jsp에서)
+	document.getElementById("fromID").value = user_id;
+} 
 
 </script>
 
@@ -36,9 +42,9 @@ $('.search_member').on("keyup keypress",function(){
 <!-- 보내는 사람은 사용자 본인 고정 -->
 <input type="hidden" name="toID" value="<%=id%>"> 
 
-<fieldset class="send_FS"> 
+<fieldset class="send_FS" name="send_FS"> 
 	<label>받는사람 ID : </label>
-	<input type="text" name="fromID" id="fromID" value="${requestScope.user_id}">
+	<input type="text" name="fromID" id="fromID">
 	<label>제목 : </label>
 	<input type="text" name="subject">
 	<br/>

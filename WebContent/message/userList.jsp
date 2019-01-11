@@ -11,12 +11,22 @@
 
 </head>
 <body>
+<%
+	ArrayList<MemberBean> list = (ArrayList<MemberBean>)request.getAttribute("user_list");
 
+%>
 	<div id="members_div">
-		<c:forEach var="list" items="${user_list}">
-			${list.user_id}
-			<br/>
-		</c:forEach>
+<%
+	for(int i=0; i<list.size(); i++){
+%>
+		<%=list.get(i).getUser_id()%> 
+		<button id="select_id<%=i%>" value="<%=list.get(i).getUser_id()%>" onclick="selectID(<%=i%>);">
+		선택
+		</button>
+		<br/>
+<%
+	}
+%>
 	</div>
 </body>
 </html>
