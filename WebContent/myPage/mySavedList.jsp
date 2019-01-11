@@ -12,7 +12,7 @@
 <title>Save List</title>
 </head>
 <body>
-${saveBoard.pd_no}${saveBoard.user_id}
+
 <div id="savedList_main">
 		<div class="savedList_top">
 			<div class="savedList_desc">
@@ -44,55 +44,16 @@ ${saveBoard.pd_no}${saveBoard.user_id}
 								</c:choose> 
 							</div>
 							<div style="padding : 10px 10px;">
-								<font style="font-size : 18px;">${saveBoard.pd_subject }</font><br/>							
+								<font style="font-size : 18px;">${saveBoard.pd_subject}${saveBoard.pd_no}${saveBoard.user_id}</font><br/>							
 							</div>
 						</div>
 						<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveGet.fu?pd_no=${saveBoard.pd_no}'">수정 </button></div><br/>
-						<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveDelete.fu?user_id=${saveBoard.user_id}&pd_no=${saveBoard.pd_no}'">삭제 </button></div>
+						<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveDelete.fu?pd_no=${saveBoard.pd_no}'">삭제 </button></div>
 					</div>
 				</div>
 			</c:forEach>
 			
-			
-			
 		</div>	
-			
-			
-			
-		
-	
-			<%-- <c:forEach var="saveBoard" items="${requestScope.v}" varStatus="a">	
-			<tr>
-				<td>${saveBoard.user_id}</td>
-				<td>${saveBoard.pd_no}</td>
-				<td>
-				
-		          <!--이미지 null이면 기본이미지뜨게 추가!!!-->
-					<c:choose>
-						<c:when test="${saveBoard.pd_realFile eq ''}">
-							<img src="./upload/sm_no_img.jpg">
-						</c:when>
-						<c:otherwise>
-							 <img src="./upload/sm_${saveBoard.pd_realFile}">
-						</c:otherwise>
-					</c:choose> 
-			
-				
-				</td>
-				<td>${saveBoard.pd_subject}</td>
-				<td>
-					<button onclick="location.href='RewardingSaveGet.fu?user_id=${saveBoard.user_id}&pd_no=${saveBoard.pd_no}'">
-					수정 
-					</button>	
-				</td>
-				<td>
-					<button onclick="location.href='RewardingSaveDelete.fu?user_id=${saveBoard.user_id}&pd_no=${saveBoard.pd_no}'">
-					삭제
-					</button>
-				</td>
-			</tr>
-			</c:forEach> --%>
-		
 			
 
 	</table>
