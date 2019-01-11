@@ -16,17 +16,22 @@
 
 %>
 	<div id="members_div">
+	<table>
 <%
 	for(int i=0; i<list.size(); i++){
 %>
-		<%=list.get(i).getUser_id()%> 
+	<tr>
+		<td width="220px;"><%=list.get(i).getUser_id()%></td>
+		<td>
 		<button id="select_id<%=i%>" value="<%=list.get(i).getUser_id()%>" onclick="selectID(<%=i%>);">
 		선택
 		</button>
-		<br/>
+		</td>
+	</tr>
 <%
 	}
 %>
+	</table>
 	</div>
 </body>
 </html>
