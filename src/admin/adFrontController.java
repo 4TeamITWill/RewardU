@@ -145,7 +145,7 @@ public class adFrontController extends HttpServlet{
 			
 		}else if(command.equals("/supporters.ad")){
 			forward = new adActionForward();
-			forward.setPath("./index.jsp?center=star/supporters.jsp");
+			forward.setPath("./index.jsp?center=ContentInfo.jsp&gogo=star/supporters.jsp");
 			forward.setRedirect(false);
 		}
 

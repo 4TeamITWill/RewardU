@@ -51,13 +51,14 @@ $("#update").click(function () {
 <!-- all.getPd_select값 가져와서 옵션 value index 돌려서 같으면 selected 추가해주기 -->
 
 		<%-- document.form.pd_category.selectedIndex=i"<%=all.getPd_category()%>" --%>
-				<tr height="40">	
+			<tr height="40">	
 				<td width="15%" style="font-weight : bold;"> 판매자ID</td>
 				<td width="85%"><input type="text" name="user_id" value="${id}" readonly="readonly"  style="width : 50%;"></td>
 			</tr>
 			
 			<tr height="40">	
-				<td colspan="2" style="font-weight : bold;"> 프로젝트 제목(상품명)</td>				
+				<td colspan="2" style="font-weight : bold;"> 프로젝트 제목
+				<font style="font-size : 14px">(상품명)</font></td>				
 			</tr>
 			
 			<tr height="40">
@@ -65,7 +66,8 @@ $("#update").click(function () {
 			</tr>
 				
 			<tr height="40">		
-				<td colspan ="2" style="font-weight : bold;"> 상품설명</td>				
+				<td colspan ="2" style="font-weight : bold;"> 프로젝트 설명
+				<font style="font-size : 13px"> (이미지 포함 상세하게 적어주세요)</font></td>				
 			</tr>
 			
 			<tr height="40">
@@ -75,7 +77,7 @@ $("#update").click(function () {
 			<tr height="40">	
 				<td style="font-weight : bold;"> 카테고리</td>
 				<td>
-					<select name="pd_category" style="height : 30px;" value="<%=all.getPd_category()%>">
+					<select name="pd_category" style="height : 30px;">
 						<option value="패션뷰티">패션·뷰티</option>
 						<option value="테크가젼">테크·가전</option>
 						<option value="반려동물" >반려동물</option>
@@ -97,20 +99,20 @@ $("#update").click(function () {
 				
 			<tr height="40">
 				<td style="font-weight : bold;"> 대표 이미지</td>
-				<td><input type="text" name="pd_file" readonly="readonly" style="width : 40%;" value="<%=all.getPd_file()%>">
+				<td><input type="text" name="pd_file" readonly="readonly" style="width : 50%;" value="<%=all.getPd_file()%>">
 					<button id="fileBtn">첨부하기</button><br/>
 				</td>		
 			</tr>
 			<tr height="40">
 				<td style="font-weight : bold;">실제파일(히든예정)</td>
 				<td>
-					<input type="text" id="pd_realFile" name="pd_realFile" style="width : 40%;" value="<%=all.getPd_realFile()%>"><br/>
+					<input type="text" id="pd_realFile" name="pd_realFile" style="width : 50%;" value="<%=all.getPd_realFile()%>"><br/>
 				</td>
 			</tr>
 			
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 40%;" value="<%=all.getPd_end()%>"></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" value="<%=all.getPd_end()%>"></td>
 																<!-- 마감일의 value값을 지정해 주지 않으면
 														사용자가 마감일을 선택하지 않고 저장하기를 할때 sql에러가 난다....
 														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->			
@@ -133,7 +135,7 @@ $("#update").click(function () {
 			</tr>
 				
 			<tr height="40">		
-				<td colspan ="2" style="font-weight : bold;"> 상품설명
+				<td colspan ="2" style="font-weight : bold;"> 프로젝트 설명
 				<font style="font-size : 13px"> (이미지 포함 상세하게 적어주세요)</font></td>				
 			</tr>
 			
@@ -166,7 +168,7 @@ $("#update").click(function () {
 				
 			<tr height="40">
 				<td style="font-weight : bold;"> 대표 이미지</td>
-				<td><input type="text" name="pd_file" readonly="readonly" style="width : 40%;">
+				<td><input type="text" name="pd_file" readonly="readonly" style="width : 50%;">
 					<button id="fileBtn">첨부하기</button><br/>
 				</td>		
 			</tr>
@@ -179,7 +181,7 @@ $("#update").click(function () {
 			
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 40%;" value="2020-01-01"></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" value="2020-01-01"></td>
 																<!-- 마감일의 value값을 지정해 주지 않으면
 														사용자가 마감일을 선택하지 않고 저장하기를 할때 sql에러가 난다....
 														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->			
@@ -214,14 +216,14 @@ $("#update").click(function () {
 	}
 %>	
 				
-		</div>
+	
 
 				
 				
 				
-		</form>	
-
+	</form>	
 </div>
+
 <script>
 //스마트 에디터 부분
 var oEditors = [];

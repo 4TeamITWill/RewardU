@@ -20,9 +20,9 @@
 <div id="write_main">
 	<div class="write_tab">
 		<font style="font-size : 16px; font-weight : 550; color : rgba(20,20,20,0.8); display : block; margin : 15px 0; ">프로젝트 만들기</font>
-		<a id="a1"onclick="seller_tab();">1. 제작자 정보</a><br/>
-		<a id="a2"onclick="board_tab();">2. 프로젝트 소개</a><br/>
-		<a id="a3"onclick="reward_tab();">3. 리워드 옵션</a>
+		<a id="a1" class="a1" onclick="seller_tab();">1. 제작자 정보</a><br/>
+		<a id="a2" class="a1" onclick="board_tab();">2. 프로젝트 소개</a><br/>
+		<a id="a3" class="a1" onclick="reward_tab();">3. 리워드 옵션</a>
 	</div>
 		
 	<div class="write_content">
@@ -61,6 +61,12 @@
 	}
 %>
 	
+	$(".a1:eq(0)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
+	
+	$(".a1").click(function(){
+		$(this).css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
+		$(".a1").not($(this)).css({"color":"rgba(150,150,150,1)", "font-weight" : "550", "font-size" : "14px"});
+	});
 	//처음 신청하기 메뉴로 들어갔을때.또는 판매자 저장후 페이지이동
 	function firstSeller_tab(){
 			$(".write_top_cont").html("제작자 정보");

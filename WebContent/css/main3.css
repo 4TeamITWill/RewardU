@@ -834,6 +834,10 @@ body{
 	flex : 1;	
 }
 
+.savedList_bottom_content>div:nth-of-type(5) {
+	flex : 1;
+}
+
 .savedList_bottom_content:nth-of-type(even){
 	background-color : rgba(230,230,230,0.5);
 }

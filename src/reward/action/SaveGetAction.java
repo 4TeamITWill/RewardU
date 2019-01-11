@@ -2,6 +2,7 @@ package reward.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import reward.db.RewardDAO;
 import reward.db.SaveBoard;
@@ -25,10 +26,13 @@ public class SaveGetAction implements Action{
 		String end = saveB.getPd_end().substring(0,10);
 		
 		
+		HttpSession session =  request.getSession();
 		//request영역에 저장
-		request.setAttribute("saveB", saveB);
-		request.setAttribute("saveS", saveS);
+		session.setAttribute("board", saveB);
+		session.setAttribute("seller", saveS);
+		session.setAttribute("save", pd_no);
 		request.setAttribute("end", end); 
+		request.setAttribute("page", "seller");
 		
 		ActionForward forward = new ActionForward();
 		
@@ -36,7 +40,7 @@ public class SaveGetAction implements Action{
 		forward.setRedirect(false);
 		
 		// 전송완료페이지로 이동!!!!할 실제 페이지 주소 저장
-		forward.setPath("index.jsp?center=RewardingWrite_index.jsp"); //가상 요청 주소값 저장
+		forward.setPath("./index.jsp?center=RewardingWrite_index.jsp"); //가상 요청 주소값 저장
 
 		return forward;
 		

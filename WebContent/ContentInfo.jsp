@@ -80,7 +80,6 @@ div.ma4 {
 div.in {
 	display: inline-block;
 }
-  
 </style>
 
     
@@ -145,54 +144,7 @@ div.in {
 			 
 			 <jsp:include page="${gogo }"/>
 			
-	<%-- <div class="ma">
-		<table style="margin-left: auto; margin-right: auto;">
-			<tr>
-				<td><img alt="" src="" width="500"
-					height="500"></td>
-
-				<td><jsp:include page="star/day.jsp" /></td>
-			</tr>
 	
-		</table>
-		<hr>
-		
-	</div>
-	<div class="ma2" >
-		<%
-			int pd_no = Integer.parseInt(request.getParameter("pd_no"));
-			BoardDAO bdao = new BoardDAO();
-			BoardBean bdto = new BoardBean();
-			bdto = bdao.getBoard(pd_no);
-		%>
-			<div style="padding:20px;  background:#CEECF5; border-radius: 20px;	">
-		          <p style="color:#8a80a0;font-size:13px;line-height:20px;margin-bottom:10px; ">
-		        	  <strong>목표 금액</strong> <%=bdto.getPd_goalmoney()%> 원 &nbsp; &nbsp; <strong>펀딩기간</strong> <%=bdto.getPd_startf()%> - <%=bdto.getPd_endf()%>
-		          </p>
-		          
-		          
-		          <p style="color:#4a4a4a;font-size:12px;line-height:19px;"><strong>100% 이상 모이면 펀딩이 성공되는 프로젝트</strong><br>
-         			 이 프로젝트는 펀딩 마감일까지 목표 금액이 100% 모이지 않으면 결제가 진행되지 않습니다.</p>
-          
-   
-          
-       		 </div>
-				
-	</div>
-	<hr>
-	<div class="ma3">
-		<div class="in">
-			상품 내용설명 및  하단 부분 
-		</div>
-	
-	</div>
-	
-	<hr>
-	<div class="ma4" id="ma4">
-		<div class="in">
-			댓글 만들기 
-		</div>
-	</div --%>>
 <button type="button" class="back-to-top">
     <h3 align="right">Top</h3>
    	</button>

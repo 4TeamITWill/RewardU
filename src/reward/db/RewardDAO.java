@@ -216,7 +216,7 @@ public class RewardDAO {
 		//db연결
 		con= getConnection();
 		
-		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveBoard where user_id=?";
+		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveall where user_id=?";
 				
 		pstmt = con.prepareStatement(sql);
 		
@@ -260,7 +260,7 @@ public class RewardDAO {
 			try {
 				 con = getConnection();//DB연결
 				 
-				 String sql = "select * from saveBoard where pd_no=?";
+				 String sql = "select * from saveall where pd_no=?";
 				 
 				
 				 pstmt = con.prepareStatement(sql);
@@ -320,7 +320,7 @@ public class RewardDAO {
 			try {
 				 con = getConnection();//DB연결
 				 
-				 String sql = "select * from saveSeller where pd_no=?";
+				 String sql = "select * from saveall where pd_no=?";
 				 
 				
 				 pstmt = con.prepareStatement(sql);
@@ -787,7 +787,7 @@ public class RewardDAO {
 		//신청양식작성 페이지에서 '이전으로' 또는 '다음으로'를 눌렀을때 세션의 pd_no와 DB의 pd_no가 일치하는것이 있으면 불러온다.
 		
 		//수정할 판매자정보를 DB로 부터 select..
-			public RewardBean getSaveSellerTab(int pd_no) {
+		/*	public RewardBean getSaveSellerTab(int pd_no) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -830,9 +830,9 @@ public class RewardDAO {
 			}
 				return all;
 			}
-		
+		*/
 		//임시저장했던 프로젝트정보 불러오기
-		public RewardBean getSaveBoardTab(int pd_no) {
+		/*public RewardBean getSaveBoardTab(int pd_no) {
 			
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -882,7 +882,7 @@ public class RewardDAO {
 		return all;
 		
 		}
-		
+		*/
 		//수정할 reward정보 가져오기
 			public SaveBoard getSaveRewardTab(int pd_no) {
 			
@@ -937,7 +937,7 @@ public class RewardDAO {
 		
 		
 		//임시저장했던 판매자정보 update
-		public boolean updateSaveSeller(SaveSeller saveS, int pd_no) {
+		public boolean updateSaveSeller(RewardBean all, int pd_no) {
 			
 			Connection con = null;
 			String sql = "";
@@ -950,16 +950,16 @@ public class RewardDAO {
 				
 				con = getConnection();
 				
-				sql = "update SaveSeller set company_no=?, company=?, company_addr=?, company_tell=?, company_fax=?, sellerAccount=? where pd_no=?";
+				sql = "update saveall set company_no=?, company=?, company_addr=?, company_tell=?, company_fax=?, sellerAccount=? where pd_no=?";
 				
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setString(1, saveS.getCompany_no());
-				pstmt.setString(2, saveS.getCompany());
-				pstmt.setString(3, saveS.getCompany_addr());
-				pstmt.setString(4, saveS.getCompany_tell());
-				pstmt.setString(5, saveS.getCompany_fax());
-				pstmt.setString(6, saveS.getSellerAccount());
+				pstmt.setString(1, all.getCompany_no());
+				pstmt.setString(2, all.getCompany());
+				pstmt.setString(3, all.getCompany_addr());
+				pstmt.setString(4, all.getCompany_tell());
+				pstmt.setString(5, all.getCompany_fax());
+				pstmt.setString(6, all.getSellerAccount());
 				pstmt.setInt(7, pd_no);
 				
 				result = pstmt.executeUpdate(); //DB작업 성공하면 1, 실패시 0리턴

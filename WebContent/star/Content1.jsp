@@ -14,7 +14,7 @@
 			BoardDAO bdao = new BoardDAO();
 			BoardBean bdto = new BoardBean();
 			bdto = bdao.getBoard(pd_no);
-		%>
+%>
 <div class="ma">
 		<table style="margin-left: auto; margin-right: auto;">
 			<tr>

@@ -14,9 +14,14 @@
 	position: relative;
 	height: 600px; text-align: center;
 }
-.supporters_div{position: absolute; border:1px solid red;
-	width: 1100px; height: auto; text-align: center;
+.supporters_div{
+	width: 630px; height: auto; text-align: center;
 	left: 20%; top: 15%;
+}
+.support{border-bottom: 1px groove #acacac; 
+	padding-bottom: 3%; margin-bottom: 5%;
+	width: 620px; text-align: left;
+	font-size: 18px; color: gray;
 }
 </style>
 </head>
@@ -27,16 +32,30 @@
 	int pd_no = Integer.parseInt(request.getParameter("pd_no"));
 	ArrayList<ParticipateBean> list = new ArrayList<ParticipateBean>();
 	list = pdao.getParticipateList(pd_no);
+	
 %>
 <section class="supporters_sec">
-<div class="supporters_div">
-	<c:forEach var="list" items="<%=list%>">
-		<div>
-			${list.user_id}님이 ${list.par_money}원으로 참여하셨습니다.
-		</div>
-	</c:forEach>
 
-</div>
+
+<table style="margin-left: auto; margin-right: auto;">
+	<tr>
+		<td>
+			<div class="supporters_div">
+				<c:forEach var="list" items="<%=list%>">
+					<div class="support">
+						<font color="black"><b>${list.user_id}</b></font>님이<font color="black">
+						<b>${list.par_money}원</b></font>으로 참여 하셨습니다.
+					</div>
+				</c:forEach>
+			</div>
+		</td>
+
+		<td><jsp:include page="day.jsp" /> </td>
+	</tr>
+
+</table>
+
+
 </section>
 </body>
 </html>
