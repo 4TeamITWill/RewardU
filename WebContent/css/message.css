@@ -82,16 +82,16 @@
 }
 
 /* sendMessage.jsp + answerMessage.jsp */
-.send_div,.answer_div{ position: absolute; border: 1px solid red;
+.send_div,.answer_div{ position: absolute; 
 	width: 530px; height: auto; text-align: center;
 	left: 25%; top: 15%;
 } 
 .send_TA,.answer_TA{width: 500px; height: 250px;}
 .send_FS,.answer_FS{float: left;}
 
-.search_user{position: absolute; border: 1px solid blue;
+.search_memberDiv{position: absolute; 
 	width: 530px; height: auto; text-align: left;
-	right: 17%; top: 15%; 
+	left: 60%; top: 15%; 
 }
 
 

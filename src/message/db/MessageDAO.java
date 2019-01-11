@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import member.db.MemberBean;
+
 public class MessageDAO {
 	
 	private Connection getConnection() throws Exception{
@@ -640,6 +642,41 @@ public class MessageDAO {
 		
 	}//sendPayMessage 끝
 	
-	
+	public ArrayList<MemberBean> searchMember(String search){
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<MemberBean> list = new ArrayList<MemberBean>();
+		MemberBean mbean = null;
+		try {
+			con = getConnection();
+			sql = "select * from user where user_id like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + search + "%");
+			rs = pstmt.executeQuery();
+			
+			if(!search.equals("")){
+				while(rs.next()){
+					mbean = new MemberBean();
+					mbean.setUser_id(rs.getString("user_id"));
+					mbean.setUser_name(rs.getString("user_name"));
+					list.add(mbean);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+				if (rs != null)rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//searchMember 끝
 	
 }//MessageDAO()끝
