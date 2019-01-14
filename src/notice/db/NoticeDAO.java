@@ -78,7 +78,7 @@ public class NoticeDAO {
 		try {
 			con = getConnection();
 			
-			sql = "select * from notice order by no limit ?,?";
+			sql = "select * from notice order by no desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, pageSize);

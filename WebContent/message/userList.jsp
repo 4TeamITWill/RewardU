@@ -9,6 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+<style type="text/css">
+.searched_userID{font-weight: bold;}
+</style>
+
 </head>
 <body>
 <%
@@ -21,7 +25,7 @@
 	for(int i=0; i<list.size(); i++){
 %>
 	<tr>
-		<td width="220px;"><%=list.get(i).getUser_id()%></td>
+		<td width="220px;" class="searched_userID"><%=list.get(i).getUser_id()%></td>
 		<td>
 		<button id="select_id<%=i%>" value="<%=list.get(i).getUser_id()%>" onclick="selectID(<%=i%>);">
 		선택
