@@ -248,14 +248,14 @@ public class RewardDAO {
 
 	
 	//수정할 보드정보를 DB로 부터 select.....
-		public SaveBoard getSaveBoard(int pd_no) {
+		public RewardBean getSaveBoard(int pd_no) {
 				
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				
 				
-				SaveBoard saveB = new SaveBoard();
+				RewardBean saveB = new RewardBean();
 				
 			try {
 				 con = getConnection();//DB연결
@@ -309,13 +309,13 @@ public class RewardDAO {
 			}
 			
 			//수정할 판매자정보를 DB로 부터 select..
-			public SaveSeller getSaveSeller(int pd_no) {
+			public RewardBean getSaveSeller(int pd_no) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				
 				
-				SaveSeller saveS = new SaveSeller();
+				RewardBean saveS = new RewardBean();
 				
 			try {
 				 con = getConnection();//DB연결
@@ -455,22 +455,16 @@ public class RewardDAO {
 					
 					con = getConnection();
 					
-					sql = "delete from saveBoard where pd_no=?";
+					sql = "delete from saveall where pd_no=?";
 					
 					pstmt = con.prepareStatement(sql);
 					
 					pstmt.setInt(1, pd_no);
 					
-					pstmt.executeUpdate(); //delete
+					result = pstmt.executeUpdate(); //delete
 
 					
-					sql = "delete from saveSeller where pd_no=?";
 					
-					pstmt = con.prepareStatement(sql);
-					
-					pstmt.setInt(1, pd_no);
-					
-					result = pstmt.executeUpdate();
 					
 				} catch (Exception e) {
 					e.printStackTrace();

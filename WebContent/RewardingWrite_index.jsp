@@ -37,14 +37,18 @@
 	if(pagename == null || pagename=="sSeller"){
 %>		
 		firstSeller_tab();
+		$(".a1:eq(0)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
 <%
 	}else if(pagename == "seller"){ //탭
 %>		
 		seller_tab();
+		$(".a1:eq(0)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
+		
 <%		
 	}else if(pagename == "board"){	//탭
 %>
 		board_tab();
+		
 <%
 	}else if(pagename == "reward"){	//탭
 %>
@@ -53,16 +57,16 @@
 	}else if(pagename == "bBoard"){ 
 %>
 		SaveBoard_tab();
+		$(".a1:eq(1)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
 <%
 	}else if(pagename == "rReward"){
 %>
 		SaveReward_tab();
+		$(".a1:eq(2)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
 <%
 	}
 %>
-	
-	$(".a1:eq(0)").css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
-	
+		
 	$(".a1").click(function(){
 		$(this).css({"color":"rgba(80,80,80,1)", "font-weight" : "bold", "font-size":"15px"});
 		$(".a1").not($(this)).css({"color":"rgba(150,150,150,1)", "font-weight" : "550", "font-size" : "14px"});

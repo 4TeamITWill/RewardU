@@ -270,11 +270,13 @@ $("#reward").click(function () {
 	}
 	
 	//세션에서 받아오는 값 넣어주기
-	<%if(all != null){%>
-		<%if(all.getPd_opcontent1() != null || all.getPd_opprice1() != null){%> addOp1();<%}%>
-		<%if(all.getPd_opcontent2() != null || all.getPd_opprice2() != null){%> addOp2();<%}%>
-		<%if(all.getPd_opcontent3() != null || all.getPd_opprice3() != null){%> addOp3();<%}%>
-	<%}%>
+
+	<%if(all != null){
+		if(all.getPd_opcontent1() != null || all.getPd_opprice1() != null){%> addOp1();	<%}
+		if(all.getPd_opcontent2() != null || all.getPd_opprice2() != null){%> addOp2();	<%}
+		if(all.getPd_opcontent3() != null || all.getPd_opprice3() != null){%> addOp3();	<%}	
+	}%>
+
 
 </script>
 </body>

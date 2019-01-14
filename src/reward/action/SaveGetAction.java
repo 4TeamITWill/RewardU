@@ -21,17 +21,17 @@ public class SaveGetAction implements Action{
 		
 		RewardDAO rdao = new RewardDAO();
 		
+
 		//하나의 저장게시물 정보를 전부~~ 검색해오는 메소드를 호출
 		RewardBean all = rdao.getSaveSellerTab(pd_no);
-		//System.out.println(pd_no);
-		
-		
+			
 		HttpSession session =  request.getSession();
-		//request영역에 저장
-		session.setAttribute("saveSeller", all);
 		
-		session.setAttribute("saveNum", pd_no);
-		request.setAttribute("page", "sSeller");
+		session.setAttribute("board", all);
+		session.setAttribute("seller", all);
+		session.setAttribute("reward", all);
+		session.setAttribute("save", pd_no);
+		
 		
 		ActionForward forward = new ActionForward();
 		
@@ -39,7 +39,10 @@ public class SaveGetAction implements Action{
 		forward.setRedirect(false);
 		
 		// 전송완료페이지로 이동!!!!할 실제 페이지 주소 저장
-		forward.setPath("./index.jsp?center=save/SaveWrite_index.jsp"); //가상 요청 주소값 저장
+
+
+		forward.setPath("./index.jsp?center=./RewardingWrite_index.jsp"); //가상 요청 주소값 저장
+
 
 		return forward;
 		

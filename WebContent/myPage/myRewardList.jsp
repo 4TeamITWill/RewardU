@@ -81,7 +81,7 @@
 			</c:forEach>	
 				
 			<c:if test="${count <= 0 }">
-				<div>리워드한 게시글이 없습니다.</div>
+				<div style="width : 100%; text-align :center; height : 100%;">리워드한 프로젝트가 없습니다.</div>
 			</c:if>
 			<!-- 페이징 부분 -->
 				<div class="my_board_page">

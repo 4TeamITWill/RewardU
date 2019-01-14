@@ -21,11 +21,21 @@ public class RewardingWriteAcrion2 implements Action{
 		
 		HttpSession session = request.getSession();
 		int pd_no = (Integer)session.getAttribute("save");
-
+		
 		RewardDAO rdao = new RewardDAO();
+		RewardBean all = new RewardBean();
+		
+		all.setPd_opprice1(request.getParameter("pd_opprice1"));
+		all.setPd_opcontent1(request.getParameter("pd_opcontent1"));
+		all.setPd_opprice2(request.getParameter("pd_opprice2"));
+		all.setPd_opcontent2(request.getParameter("pd_opcontent2"));
+		all.setPd_opprice3(request.getParameter("pd_opprice3"));
+		all.setPd_opcontent3(request.getParameter("pd_opcontent3"));
+		//저장하기를 누르지 않고 바로 신정하기를 눌러도 작성된 리워드가 저장될수 있도록 작업.
+		rdao.updateSaveReward(all, pd_no);
 		
 		//하나의 저장게시물 정보를 검색해오는 메소드를 호출
-		RewardBean all = rdao.getSaveAll(pd_no);
+		all = rdao.getSaveAll(pd_no);
 
 		//두개의 테이블에 저장
 		boolean result = false;

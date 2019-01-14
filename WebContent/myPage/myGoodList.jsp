@@ -45,7 +45,7 @@
 			
 			
 			<c:if test="${count <= 0 }">
-				<div>좋아요한 게시글이 없습니다.</div>
+				<div style="width : 100%; text-align :center; height : 100%;">좋아요한 게시글이 없습니다.</div>
 			</c:if>					
 			
 			<!-- 페이징 부분 -->

@@ -18,7 +18,7 @@ public class TabBoardAction2 implements Action {
 		request.setCharacterEncoding("UTF-8");
 
 		//탭이름 전달
-		request.setAttribute("page", "bBoard");	
+		request.setAttribute("page", "rReward");	
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); 		

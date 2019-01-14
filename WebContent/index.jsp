@@ -61,7 +61,7 @@
 							${sessionScope.id }
 						</div>										
 					</div>
-					<div class="modal_content_my"><a href="myPageReward.my">투자 현황</a></div>
+					<div class="modal_content_my" style="padding-top :5px;"><a href="myPageReward.my">투자 현황</a></div>
 					<div class="modal_content_my"><a href="myPageGood.my">나의 관심사</a></div>
 					<div class="modal_content_my"><a href="mySellPro.my">개설 프로젝트</a></div>
 					<div class="modal_content_my"><a href="MemberMypageAction.me">개인정보 설정</a></div>

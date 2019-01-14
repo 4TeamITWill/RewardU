@@ -15,7 +15,7 @@
 			</div>			
 		</div>		
 		<div class="savedList_bottom">
-			<div style="display : flex; width : 1000px; margin : 0 auto; font-weight : bold; padding-bottom : 1rem; border-bottom : 1px solid rgba(130,130,130,0.8);">
+			<div style="display : flex; margin : 0 auto; font-weight : bold; padding-bottom : 1rem; border-bottom : 1px solid rgba(130,130,130,0.8);">
 				<div style="flex : 5;">프로젝트</div>
 				<div style="flex : 2; text-align : center;">마감날짜</div>
 				<div style="flex : 1; text-align : center;">참여자수</div>
@@ -23,6 +23,7 @@
 				<div style="flex : 1; text-align : center;">승인 여부</div>
 			</div>
 		
+		<c:if test="${count > 0 }">
 			<c:forEach var="board" items="${board1list }">
 				<div class="savedList_bottom_content" >	
 					
@@ -49,11 +50,13 @@
 					</c:if>
 					<c:if test="${board.pd_permit == 2 }">
 						<div>승인거절</div>
-					</c:if>
-					
-					
+					</c:if>					
 				</div>
 			</c:forEach>
+		</c:if>
+		<c:if test="${count <= 0  }"	>
+			<div style="width : 100%; text-align :center; height : 100%;">개설한 프로젝트가 없습니다.</div>
+		</c:if>
 			<!-- 페이징 부분 -->
 				<div class="my_board_page">
 					<c:if test="${startPage > pageBlock }">
