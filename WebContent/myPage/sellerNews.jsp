@@ -16,41 +16,59 @@
 </head>
 <body>
 	
-<div style="width : 800px; margin : 0 auto; background-color : rgba(240,240,240,0.6);">	
+<div style="width : 800px; margin : 0 auto;">	
 	
 	
-	<!-- 세션 아이디와 글쓴 아이디가 같을때 버튼 보이게 -->
-	<div>		
-		<div class="sNewsWrite_div" >
-		<div style="border-bottom : 0.5px solid rgba(20,60,240,0.6); padding : 8px;">
-			<font style="font-weight : 550; ">소식 쓰기</font>
-		</div>
-		<br/>
-		
-			<input type="hidden" name="parent_no" id="parent_no" value="${pd_no }">
-			<input type="hidden" name="user_id" id="user_id" value="${id }">
-			<div><input type="text" name="sell_subject" id="sell_subject" placeholder="제목을 입력하세요"></div>
+	<!-- 글쓴 아이디(seller_id)가 세션 아이디(id)와 같을때 버튼 보이게 -->
+	<c:if test="${seller_id == id }">
+		<div>		
+			<div class="sNewsWrite_div" >
 			<div>
-			<textarea name="sell_content" id="textAreaContent" rows="20"  style="width : 100%"></textarea>
+				<font style="font-weight : 550; ">소식 쓰기</font>
 			</div>
-			<a id="insert" style="display : block; width : 80px; height : 30px; line-height : 30px; margin-top : 5px;
-					cursor : pointer; background-color : rgba(10,50,200,1); color : white; text-align:center; border-radius : 2px;">작성</a>			
+			<br/>			
+				<!-- 부모글번호와 판매글 id 히든값으로 -->
+				<input type="hidden" name="pd_no" id="pd_no" value="${pd_no }"/>
+				<input type="hidden" name="seller_id" id="seller_id" value="${seller_id }"/>
+				<div><input type="text" name="sell_subject" id="sell_subject" placeholder="제목을 입력하세요"></div>
+				<div>
+				<textarea name="sell_content" id="textAreaContent" rows="20"  style="width : 100%"></textarea>
+				</div>
+				
+				<div style="display : flex; justify-content : flex-end;">
+					<a id="insert" style="display : block; width : 80px; height : 30px; line-height : 30px; margin-top : 5px;
+						cursor : pointer; background-color : rgba(10,50,200,1); color : white; text-align:center; border-radius : 2px;">작 성</a>			
+				</div>	
+			</div>
 		</div>
-	</div>
+	</c:if>
 	
 	
 	<div>
-		<c:if test="${count == false }">
-			<div>등록된 소식이 없습니다</div>
+		<c:if test="${count <= 0 }">
+			<div style="text-align : center; font-weight : 550;">등록된 소식이 없습니다</div>
 		</c:if>
-		<c:if test="${count == true }">
+		
+		<c:if test="${count > 0 }">	
+			<c:set var="i" value="${count }"/>				
 			<c:forEach var="sellerNews" items="${sNewsList }">
+			<input type="hidden" name="no" value="${sellerNews.no }"/>
 				<div id="sellerNewsList">
-					<div class="list_no"><font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 17px;"># ${sellerNews.pd_no }</font></div>
-					<div class="list_subject" >&nbsp;&nbsp;<font style="font-size : 19px; font-weight : 550;">${sellerNews.sell_subject }</font></div>
+					<div class="list_no"><font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 17px;"># ${i }</font></div>
+					<div class="list_subject" ><font style="font-size : 18px; font-weight : 550;"> ${sellerNews.sell_subject }</font></div>
+					<div class="list_date" style="margin-bottom : 1rem;"><font style="font-size : 13px; color : #888;">&nbsp;|&nbsp;${sellerNews.date }</font></div>
 					<div class="list_content">${sellerNews.sell_content }</div>
+					<c:if test="${seller_id == id }">
+					
+						<div style="display : flex; justify-content : flex-end;">
+							<a onclick="delajax(${sellerNews.no})" style="display : block; width : 80px; height : 30px; line-height : 30px; margin-top : 5px;
+								cursor : pointer; background-color : rgba(10,50,200,1); color : white; text-align:center; border-radius : 2px;">삭 제</a>
+						</div>
+					</c:if>
 				</div>
+			<c:set var="i" value="${i - 1 }"/>	
 			</c:forEach>
+
 		</c:if>
 	</div>
 
@@ -74,14 +92,14 @@ $("#insert").click(function(){
 
   // 에디터의 내용에 대한 값 검증은 이곳에서
   // document.getElementById("textAreaContent").value를 이용해서 처리한다.
- 	var user_id = $("#user_id").val();
+ 	var seller_id = $("#seller_id").val();
 	var sell_content = $("#textAreaContent").val();
 	var sell_subject = $("#sell_subject").val();
-	var parent_no = $("#parent_no").val();
+	var pd_no = $("#pd_no").val();
 		
 	$.ajax({
-		url:"sellernewsAction.my",		
-		data : {user_id : user_id, sell_content : sell_content, sell_subject : sell_subject},
+		url:"sellerNewsWrite.my",		
+		data : {seller_id : seller_id, sell_content : sell_content, sell_subject : sell_subject, pd_no : pd_no},
 		success : function(data){
 			alert("작성하였습니다.");
 			$("body").html(data);
@@ -98,13 +116,23 @@ function pasteHTML(fname){
 
 }
 
-
-$("#fileBtn").click(function(event){
-  window.open("fileUp.jsp","파일첨부","width=500,height=500,scrollbars=yes,top=100,left=40,resizable=yes");
-  event.preventDefault();
-});
-
-
+function delajax(no){
+	
+	if(confirm('삭제하시겠습니까?')){
+		var no = no;
+		var pd_no = $("#pd_no").val();
+		var seller_id = $("#seller_id").val();
+		
+		$.ajax({
+			url : "sellerNewsDel.my",
+			data : {no : no, pd_no : pd_no, seller_id : seller_id},
+			type : "post",
+			success : function(data){
+				$("body").html(data);
+			}
+		});
+	}
+}
 
 </script>	
 	

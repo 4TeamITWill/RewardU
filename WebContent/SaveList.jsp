@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="saveList_content" style="width : 800px; margin : 0 auto;">
+<div class="saveList_content" >
 <h3>임시저장된 글 목록입니다. <br/><font style="font-size : 15px;">수정을 클릭하여 이어서 작성할 수 있습니다.</font></h3>
 
 	<table width="100%" style="margin-top :4rem;">

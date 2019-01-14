@@ -124,7 +124,7 @@ div.in {
 					 </td> 	
 					<td><a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="go_btn">댓글</a></td>
 					<td>
-						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp">dd</a>
+						<a href="sellernews.my?pd_no=<%=pd_no%>&seller_id=<%=bdto.getUser_id()%>">새소식</a>
 					</td>
 					<td>
 						<a href="./supporters.ad?pd_no=<%=pd_no %>">참여하신분들</a>

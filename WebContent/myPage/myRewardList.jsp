@@ -48,9 +48,6 @@
 							<div>선택한 리워드</div><div>${invest.inv_name }</div>
 						</div>
 						<div class="reward_desc">
-							<div>리워드 옵션</div><div>선택한 옵션 들어가야되는데 컬럼이 없네?</div>
-						</div>
-						<div class="reward_desc">
 							<div>옵션 1 구매 가격 / 수량</div><div>${invest.op1_price}원 / ${invest.op1_qty }개</div>
 						</div>
 						<div class="reward_desc">
@@ -73,9 +70,12 @@
 						</div>						
 					</div>	
 					
-					<a class="justbtn" href="Content.ad?pd_no=${invest.pd_no}" >
-						프로젝트 보기
-					</a>		
+					<div style="display : flex; justify-content : flex-end;">
+						<a class="justbtn" href="Content.ad?pd_no=${invest.pd_no}" >
+							프로젝트 보기
+						</a>		
+						<a class="justbtn1" href="myRewardDel.my?pd_no=${invest.pd_no }&inv_price=${invest.inv_price}">환불하기</a>
+					</div>
 						
 				</div>	
 			</c:forEach>	

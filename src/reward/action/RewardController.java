@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import admin_db.MemberBean;
 import fileUpAction.FileUpAction;
@@ -46,6 +46,13 @@ public class RewardController extends HttpServlet{
 		//index.jsp 에서 신청하기 링크를 누르면 양식 작성 페이지로 이동하는 요청이 들어왔을때
 		if (command.equals("/RewardingWrite.fu")) {
 
+			//신청하기 눌렀을때 이전에 쓰던 session이 있으면 지워준다.
+			HttpSession session = req.getSession();
+			if(session.getAttribute("board") != null) session.removeAttribute("board");
+			if(session.getAttribute("seller") != null) session.removeAttribute("seller");
+			if(session.getAttribute("reward") != null) session.removeAttribute("reward");
+			if(session.getAttribute("save") != null) session.removeAttribute("save");
+			
 			forward = new ActionForward();
 		
 			forward.setRedirect(false);			
