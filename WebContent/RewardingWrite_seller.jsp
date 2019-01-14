@@ -33,7 +33,6 @@
 			
 			if(session.getAttribute("seller") != null){
 				all =(RewardBean)session.getAttribute("seller");
-				System.out.println("seller뷰페이지에서 "+all.getCompany());
 			}
 			
 			if(all != null){
@@ -76,8 +75,6 @@
 						<input type="text" name="sellerAccount" placeholder="계좌번호를 입력해주세요." style="width : 60%;" value="<%=all.getSellerAccount()%>">
 					</td>
 				</tr>
-				</table><br/><br/>	
-				<center><input type="submit" id="update" value="저장하기(update)" /></center>
 
 <%
 			}else{
@@ -121,11 +118,32 @@
 					</td>
 				</tr>
 				
-				</table><br/><br/>	
-				<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
+				
 <%
 		}
-%>					
+			
+%>		
+			</table><br/><br/>				
+<%
+		
+
+		int save = 0;
+		
+		if(session.getAttribute("save") != null){
+			
+			save = (Integer)session.getAttribute("save");
+		}
+		
+		if(save != 0){
+		%>			 
+				<center><input type="submit" id="update" value="저장하기(update)"/></center>
+		<%		
+			}else{
+		%>		
+				<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
+		<%	 
+		}
+		%>	
 
 	</form>	
 
