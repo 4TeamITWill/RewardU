@@ -61,13 +61,16 @@
      
   </script>
 <style type="text/css">
-.file { border: 1px solid;
-		border-color: #C4C4C4;
-		padding: 5px;
-		width: 15em;
-		}
 
-
+.box{
+	background-color: #E0ADD9;
+	width: auto;
+	height: 25px;
+	padding: 5px 10px;
+	}
+.text{
+	font-weight: bold;
+	}
 </style>				  
 	
 </head>
@@ -85,13 +88,16 @@
 		request.setAttribute("img", sysFile);
 		
 		
-		/* if(sysFile == null) sysFile="";
-		if(oriFile == null) oriFile=""; */
+		
+		if(oriFile == null) oriFile="";
 		%>
-
-					<input type="hidden" name="oriFile" value="<%=oriFile%>">	
+					
+					<div class="box">
+						<div class="text">사진첨부</div>
+					</div>
+					<input type="text" name="oriFile" value="<%=oriFile%>" readonly="readonly">	
 					<input type="hidden" name="sysFile" id="sysFile" value="<%=sysFile%>">
-					<div class="file"><input type="file" name="upFile" id="file" style="color: #C4C4C4"></div>
+					<input type="file" name="upFile" id="file" style="color: #FFFFFF; border: 0;" >
 					<div><font size="1">이미지 파일만 등록할 수 있습니다. (JPG, GIF, PNG)</font></div>
 					<br/><br/>			
 					<!-- 미리보기2 -->
