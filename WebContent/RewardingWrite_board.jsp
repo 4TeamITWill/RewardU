@@ -114,8 +114,8 @@ $("#update").click(function () {
 				<td><input type="date" name="pd_end" style="width : 50%;" value="<%=all.getPd_end()%>"></td>
 																		
 			</tr>
-			</table><br/><br/>
-			<center><input type="submit" id="update" value="저장하기(update)"/></center>
+			
+			
 <%
 		}else{
 %>
@@ -182,16 +182,11 @@ $("#update").click(function () {
 														사용자가 마감일을 선택하지 않고 저장하기를 할때 sql에러가 난다....
 														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->			
 			</tr>
-			</table><br/><br/>
-			<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
-
 
 <%			
 		}
 %>			
-		</table>
-		
-		<br/><br/>
+		</table><br/><br/>
 		
 <%
 	
@@ -204,12 +199,12 @@ $("#update").click(function () {
 	
 	if(save != 0){
 %>			
- 
+ 	<center><input type="submit" id="update" value="저장하기(update)"/></center>
  
 <%		
  	}else{
 %>
-		
+	<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
 <%	 
 	}
 %>	

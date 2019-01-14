@@ -90,9 +90,6 @@ $("#reward").click(function () {
 			<td><textarea id="pd_opcontent3" name="pd_opcontent3" onblur="addOp3();" style="width : 99%;" rows="5"><%=all.getPd_opcontent3()%></textarea><br/></td>
 		</tr>	
 		
-		</table><br/><br/>
-		<input type="submit" id="update" value="저장하기(update)"/>
-		<input type="submit" id="reward" value="신청하기"/>
 	<%
 	}else{	
 	 %>
@@ -143,12 +140,30 @@ $("#reward").click(function () {
 			<td><textarea id="pd_opcontent3" name="pd_opcontent3" onblur="addOp3();" style="width : 99%;" rows="5"></textarea><br/></td>
 		</tr>	
 		
-		</table><br/><br/>
-		<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
 	<%
 	}
 	%>		
+		</table><br/><br/>
+	<%
 		
+
+		int save = 0;
+		
+		if(session.getAttribute("save") != null){
+			
+			save = (Integer)session.getAttribute("save");
+		}
+		
+		if(save != 0){
+	%>			 
+			<center><input type="submit" id="update" value="저장하기(update)"/></center>
+	<%		
+		}else{
+	%>		
+			<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
+	<%	 
+	}
+	%>	
 
 	
 	<div class="op_teaser_container">
