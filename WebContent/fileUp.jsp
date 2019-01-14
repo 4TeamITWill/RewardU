@@ -20,21 +20,7 @@
 		window.close();
 	}
 	
-	
-		// 미리보기 1
-      /* $(function() {
-          $('#file').change(function(e) {
-              if (window.File) {
-                  var input = $('#file').get(0).files[0];
-                  var reader = new FileReader();
-                  $(reader).on('load', function(e) {
-                      $('#result').attr('src', this.result);
-                  });
-                  reader.readAsDataURL(input);
-              }
-          });
-      }); */
-      
+
       
       //미리보기2
       $(document).ready(function() {
@@ -67,13 +53,22 @@
     	   reader.readAsDataURL(input.files[0]);
     	   //이미지 파일의 내용을 전부 읽으면 img 태그에 출력
     	   reader.onload = function(e) {
+    		$(".thum").html("이미지 미리보기");
     	    $('#img').attr('src', e.target.result);
     	   }
     	  }
     	 }
      
   </script>
-				  
+<style type="text/css">
+.file { border: 1px solid;
+		border-color: #C4C4C4;
+		padding: 5px;
+		width: 15em;
+		}
+
+
+</style>				  
 	
 </head>
 
@@ -93,50 +88,36 @@
 		/* if(sysFile == null) sysFile="";
 		if(oriFile == null) oriFile=""; */
 		%>
-		<table>
-			<tr>
-				<td>
-					올린파일
-					<input type="text" name="oriFile" value="<%=oriFile%>">	
-					<input type="file" name="upFile" id="file"><br/>
-					실제파일
-					<input type="text" name="sysFile" id="sysFile" value="<%=sysFile%>"><br/>			
-					<!--미리보기 1 <img id="result" /> -->
-					<!-- 미리보기2 -->
-					<img id="img">
-				</td>
-			</tr>	
-			
-			<tr>
-				<td>	
-					<!-- 사실은 파일첨부 -->
-					<input type="submit" value="썸네일로 변환히기"><br/><br/>
-					<hr/>
-				</td>
-			</tr>
-			
-			
 
-			<tr>
-				<td>		
-					<%
+					<input type="hidden" name="oriFile" value="<%=oriFile%>">	
+					<input type="hidden" name="sysFile" id="sysFile" value="<%=sysFile%>">
+					<div class="file"><input type="file" name="upFile" id="file" style="color: #C4C4C4"></div>
+					<div><font size="1">이미지 파일만 등록할 수 있습니다. (JPG, GIF, PNG)</font></div>
+					<br/><br/>			
+					<!-- 미리보기2 -->
+					<div class="thum"></div>
+					<img id="img"><br><br>
+					<hr>
+					<!-- 사실은 파일첨부 -->
+					<input type="submit" value="등록하기"><br/>
+	
+<%-- 					<%
 					if(sysFile!=null){
 					
 					%>	
-						썸네일<img src="./upload/sm_<%=sysFile%>">
+						썸네일 미리보기<br/><img src="./upload/sm_<%=sysFile%>">
 					<%
 					
 					}
 					
-					%>
-				</td>
-			</tr>	
+					%> --%>
+			
 				<!-- 첨부하면 썸네일이미지 뿌려주기... -->
-		</table>
 	</form>
 			
 			<!-- 사실은 창닫기 -->
-			<input type="button" value="첨부하기" onclick="result();">
+			<input type="button" value="   닫 기   " onclick="result();">
+			<small>등록하기 버튼을 누른 후 닫기 버튼을 꼭 눌러주세요.</small>
 
 </body>
 </html>

@@ -27,7 +27,7 @@ public class RewardDAO {
 	
 	
 	
-	public boolean insert(BoardBean bb, SellerBean sb){
+/*	public boolean insert(BoardBean bb, SellerBean sb){
 		
 		Connection con = null;
 		String sql = "";
@@ -41,8 +41,9 @@ public class RewardDAO {
 			con = getConnection();
 			
 			sql = "insert into Board(user_id, pd_subject, pd_content, pd_goalMoney, pd_category, pd_start,"
-					+ "pd_end, pd_file, pd_realfile, pd_opprice1, pd_opcontent1, pd_opprice2, pd_opcontent2, pd_opprice3, pd_opcontent3)"
-					+ " values(?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
+					+ "pd_end, pd_file, pd_realfile, pd_opprice1, pd_opcontent1, pd_opprice2, pd_opcontent2, pd_opprice3, pd_opcontent3, "
+					+ "pd_opsubject1, pd_opsubject2, pd_opsubject3)"
+					+ " values(?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -56,12 +57,15 @@ public class RewardDAO {
 			pstmt.setString(7, bb.getPd_end());
 			pstmt.setString(8, bb.getPd_file());
 			pstmt.setString(9, bb.getPd_realFile());
-			pstmt.setString(10, bb.getPd_opprice1());
-			pstmt.setString(11, bb.getPd_opcontent1());
+			pstmt.setString(10, bb.getPd_opprice1());//옵션가격
+			pstmt.setString(11, bb.getPd_opcontent1());//옵션내용
 			pstmt.setString(12, bb.getPd_opprice2());
 			pstmt.setString(13, bb.getPd_opcontent2());
 			pstmt.setString(14, bb.getPd_opprice3());
 			pstmt.setString(15, bb.getPd_opcontent3());
+			pstmt.setString(16, bb.getPd_opsubject1());//옵션제목추가
+			pstmt.setString(17, bb.getPd_opsubject2());
+			pstmt.setString(18, bb.getPd_opsubject3());
 			
 			pstmt.executeUpdate();
 			
@@ -110,9 +114,10 @@ public class RewardDAO {
 		} //finally 끝
 		
 		return false;
-	}
+	}*/
 
-	public boolean SaveInsert(SaveBoard saveB, SaveSeller saveS) {
+	//필요없음
+	/*public boolean SaveInsert(SaveBoard saveB, SaveSeller saveS) {
 		
 
 		Connection con = null;
@@ -195,7 +200,7 @@ public class RewardDAO {
 		} //finally 끝
 		
 		return false;
-	}
+	}*/
 	
 	//저장한 리워드 리스트 select
 	public Vector<RewardBean> getSaveList(String user_id){
@@ -247,7 +252,7 @@ public class RewardDAO {
 }
 
 	
-	//수정할 보드정보를 DB로 부터 select.....
+	/*//수정할 보드정보를 DB로 부터 select.....
 		public RewardBean getSaveBoard(int pd_no) {
 				
 				Connection con = null;
@@ -289,6 +294,9 @@ public class RewardDAO {
 					 saveB.setPd_opcontent2(rs.getString("pd_opcontent2"));
 					 saveB.setPd_opprice3(rs.getString("pd_opprice3"));
 					 saveB.setPd_opcontent3(rs.getString("pd_opcontent3"));
+					 saveB.setPd_opsubject1(rs.getString("pd_opsubject1"));
+					 saveB.setPd_opsubject2(rs.getString("pd_opsubject2"));
+					 saveB.setPd_opsubject3(rs.getString("pd_opsubject3"));
 					
 				}
 				
@@ -357,8 +365,8 @@ public class RewardDAO {
 			}
 
 			
-
-			//글 수정하는 메소드 -> 관리자에게 가는게 아니라 save테이블의 글update
+*/
+			/*//글 수정하는 메소드 -> 관리자에게 가는게 아니라 save테이블의 글update
 			public boolean RewardingSaveUpdate(SaveBoard saveB, SaveSeller saveS) {
 				
 				Connection con = null;
@@ -442,7 +450,7 @@ public class RewardDAO {
 				
 				return false;
 			}
-
+*/
 			/*//글쓰기 저장만 리스트 삭제하기.. 
 			public int RewardingSaveDel(int pd_no) {
 				
@@ -536,7 +544,11 @@ public class RewardDAO {
 				if(pstmt != null) pstmt.close();
 	
 				if(con != null) con.close();
-			} catch (SQLException e) {e.printStackTrace();}}return count;}
+				} catch (SQLException e) 
+					{e.printStackTrace();}
+				}return count;
+			
+		}//getSearchCount끝	
 			
 			
 			//관리자가 승인한(permit--> 1)인 게시물중 검색
@@ -590,10 +602,12 @@ public class RewardDAO {
 				dto.setPd_opprice1(rs.getString("pd_opprice1")); 
 				dto.setPd_opprice2(rs.getString("pd_opprice2"));
 				dto.setPd_opprice3(rs.getString("pd_opprice3"));
+				dto.setPd_opsubject1(rs.getString("pd_opsubject1"));
+				dto.setPd_opsubject2(rs.getString("pd_opsubject2"));
+				dto.setPd_opsubject3(rs.getString("pd_opsubject3"));
 				dto.setPd_rate(rs.getDouble("pd_rate"));
 				dto.setPd_rateCount(rs.getInt("pd_rateCount"));
 				dto.setCompany(rs.getString("company"));
-				 //필요하면 seller정보 더 넣기
 				 //백터에 BoardDto객체 추가 
 				 v.add(dto);
 			 }//while반복문 끝
@@ -610,22 +624,28 @@ public class RewardDAO {
 			 }//finally 끝
 
 			 return v; //DB로부터 검색하여 가져온 전체글 들(Board객체들)을 백터에 담아 백터 자체를 리턴
-		}//getSearchCount끝		
+	
+			}//getSearchList끝	
+			
+			
+			
+			
 			
 	//----------------------------------양식 3파트로 쪼갠거 메소드!!		
 			
 			
 	//신청 양식의 세 파트 중..어느 파트에서든지 처음 '저장하기' 버튼을 눌렀을 때(session에 pd_no값이 없을때) -----> insert
 			
-	//이후 작성한 파트를 수정하여 '저장하기'버튼을 누르거나, 
-	//'다음으로' 또는 '이전으로'를 눌러 다른 파트를 작성하여 '저장하기'를 눌렀을때(session에 pd_no값이 있을때) ------>update											   			
+	//이후 작성한 파트를 수정하여 '저장하기'버튼을 눌렀을때(session에 pd_no값이 있을때) ------>update											   			
 	
+			
 	//리워드정보 작성하는 페이지에서
-	//'저장하기'를 누르면 pd_no값을 찾아 정보가 update되고		
-	//'신청하기'를 누르면 
-	//		1. session에 pd_no값이 있다면  
-	//		2. 이전의 '다음단계로'를 눌러 계속 저장되었던 DB에 리워드정보가 update되고 
-	//		2. 그 pd_no의 모든 Save정보를 다 가져와서(saveBoard, saveSeller, saveReward 세 테이블 조인///아니면 한번에 다든 테이블 만들기;;) 
+			
+	//'저장하기'를 누를 경우 ---> pd_no값을 찾아 정보가 update되고		
+			
+	//'신청하기'를 누를 경우 (session에 pd_no값이 없으면  신청하기 버튼은 보이지 않음)
+	//		1. 저장하기 버튼을 누르지 않고 바로 신청하기를 해도 pd_no의 리워드정보가 update
+	//		2. 그 pd_no의 모든 Save정보를 다 가져와서
 	//		3. 진짜 seller, board 테이블에 저장되고
 	//		4. 저장되었던 정보들은 삭제된다.		
 			
@@ -742,8 +762,9 @@ public class RewardDAO {
 			try {
 				con = getConnection();
 				//
-				sql = "insert into SaveAll(user_id, pd_opprice1, pd_opcontent1, pd_opprice2, pd_opcontent2, pd_opprice3, pd_opcontent3)"
-						+ " values(?,?,?,?,?,?,?)";
+				sql = "insert into SaveAll(user_id, pd_opprice1, pd_opcontent1, pd_opprice2, pd_opcontent2, pd_opprice3, pd_opcontent3, "
+						+ "pd_opsubject1, pd_opsubject2, pd_opsubject3)"
+						+ " values(?,?,?,?,?,?,?,?,?,?)";
 				
 				pstmt = con.prepareStatement(sql);
 				
@@ -755,6 +776,9 @@ public class RewardDAO {
 				pstmt.setString(5, all.getPd_opcontent2());
 				pstmt.setString(6, all.getPd_opprice3());
 				pstmt.setString(7, all.getPd_opcontent3());
+				pstmt.setString(8, all.getPd_opsubject1());
+				pstmt.setString(9, all.getPd_opsubject2());
+				pstmt.setString(10, all.getPd_opsubject3());
 				
 				result = pstmt.executeUpdate();
 				
@@ -777,10 +801,8 @@ public class RewardDAO {
 			return false;
 		}
 		
-		//마이페이지에->임시저장 프로젝트-> 수정하기를 눌렀을때는 seller정보가 첫 페이지이므로 seller정보를 불러온다.
-		//신청양식작성 페이지에서 '이전으로' 또는 '다음으로'를 눌렀을때 세션의 pd_no와 DB의 pd_no가 일치하는것이 있으면 불러온다.
-		
-		//수정할 정보를 DB로 부터 select.. 3개메소드 하나로 합침
+		/*
+		//수정할 정보를 DB로 부터 select..
 		public RewardBean getSaveSellerTab(int pd_no) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -819,10 +841,13 @@ public class RewardDAO {
 					 
 					 all.setPd_opprice1(rs.getString("pd_opprice1"));
 					 all.setPd_opcontent1(rs.getString("pd_opcontent1"));
+					 all.setPd_opcontent1(rs.getString("pd_opsubject1"));
 					 all.setPd_opprice2(rs.getString("pd_opprice2"));
 					 all.setPd_opcontent2(rs.getString("pd_opcontent2"));
+					 all.setPd_opcontent1(rs.getString("pd_opsubject2"));
 					 all.setPd_opprice3(rs.getString("pd_opprice3"));
 					 all.setPd_opcontent3(rs.getString("pd_opcontent3"));
+					 all.setPd_opcontent1(rs.getString("pd_opsubject3"));
 				}
 				
 			} catch (Exception e) {
@@ -838,7 +863,7 @@ public class RewardDAO {
 			}
 				return all;
 			}
-		
+		*/
 		//임시저장했던 프로젝트정보 불러오기
 		/*public RewardBean getSaveBoardTab(int pd_no) {
 			
@@ -1058,7 +1083,8 @@ public class RewardDAO {
 				
 				con = getConnection();
 				
-				sql = "update SaveAll set pd_opprice1=?, pd_opcontent1=?, pd_opprice2=?, pd_opcontent2=?, pd_opprice3=?, pd_opcontent3=?"
+				sql = "update SaveAll set pd_opprice1=?, pd_opcontent1=?, pd_opprice2=?, pd_opcontent2=?, pd_opprice3=?, pd_opcontent3=?,"
+						+ "pd_opsubject1=?, pd_opsubject2=?, pd_opsubject3=? "
 						+ "where pd_no=?";
 				
 				pstmt = con.prepareStatement(sql);
@@ -1069,7 +1095,10 @@ public class RewardDAO {
 				pstmt.setString(4, all.getPd_opcontent2());
 				pstmt.setString(5, all.getPd_opprice3());
 				pstmt.setString(6, all.getPd_opcontent3());
-				pstmt.setInt(7, pd_no);
+				pstmt.setString(7, all.getPd_opsubject1());
+				pstmt.setString(8, all.getPd_opsubject2());
+				pstmt.setString(9, all.getPd_opsubject3());
+				pstmt.setInt(10, pd_no);
 				
 				result = pstmt.executeUpdate(); //DB작업 성공하면 1, 실패시 0리턴
 				
@@ -1136,7 +1165,7 @@ public class RewardDAO {
 		}
 		
 		
-			public int getPd_no(String user_id) {
+			/*public int getPd_no(String user_id) {
 			
 			int no = 0;
 
@@ -1173,9 +1202,9 @@ public class RewardDAO {
 					}
 			
 			return no;
-		}
+		}*/
 
-			//모든정보 가져오기
+			//해당 아이디의 모든정보 가져오기
 			public RewardBean getSaveAll(int pd_no) {
 				
 				Connection con = null;
@@ -1223,6 +1252,10 @@ public class RewardDAO {
 					 all.setPd_opcontent2(rs.getString("pd_opcontent2"));
 					 all.setPd_opprice3(rs.getString("pd_opprice3"));
 					 all.setPd_opcontent3(rs.getString("pd_opcontent3"));
+					 
+					 all.setPd_opsubject1(rs.getString("pd_opsubject1"));
+					 all.setPd_opsubject2(rs.getString("pd_opsubject2"));
+					 all.setPd_opsubject3(rs.getString("pd_opsubject3"));
 					
 				}
 				
@@ -1241,6 +1274,8 @@ public class RewardDAO {
 			return all;
 		
 			}
+			
+			
 			public boolean insert2(RewardBean all){
 				
 				Connection con = null;
@@ -1255,8 +1290,9 @@ public class RewardDAO {
 					con = getConnection();
 					
 					sql = "insert into Board(user_id, pd_subject, pd_content, pd_goalMoney, pd_category, pd_start,"
-							+ "pd_end, pd_file, pd_realfile, pd_opprice1, pd_opcontent1, pd_opprice2, pd_opcontent2, pd_opprice3, pd_opcontent3)"
-							+ " values(?, ?, ?, ?, ?, now(), ?, ?,?,?,?,?,?,?,?)";
+							+ "pd_end, pd_file, pd_realfile, pd_opprice1, pd_opcontent1, pd_opprice2, pd_opcontent2, pd_opprice3, pd_opcontent3,"
+							+ "pd_opsubject1, pd_opsubject2, pd_opsubject3)"
+							+ " values(?, ?, ?, ?, ?, now(), ?, ?,?,?,?,?,?,?,?,?,?,?)";
 					
 					pstmt = con.prepareStatement(sql);
 					
@@ -1276,6 +1312,10 @@ public class RewardDAO {
 					pstmt.setString(12, all.getPd_opcontent2());
 					pstmt.setString(13, all.getPd_opprice3());
 					pstmt.setString(14, all.getPd_opcontent3());
+					
+					pstmt.setString(15, all.getPd_opsubject1());
+					pstmt.setString(16, all.getPd_opsubject2());
+					pstmt.setString(17, all.getPd_opsubject3());
 					
 					pstmt.executeUpdate();
 					
@@ -1350,5 +1390,44 @@ public class RewardDAO {
 				
 				return result;
 			}
+
+			//판매중인 프로젝트 user_id로 검색해서 글 count 가져오기
+			public int getBoardCount(String user_id){
+				
+				int count = 0;
+				String sql = "";
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				
+				try {
+					
+					con = getConnection();
+					sql = "select count(*) from saveAll where user_id = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user_id);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()){
+						count = rs.getInt(1);
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally{
+					try {
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+						if(rs != null) rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				return count;
+			}//get1BoardCount() 메소드 끝
+			
+
+			
 }
 

@@ -38,7 +38,6 @@ public class updateSaveBoardAction implements Action {
 		
 		HttpSession session = request.getSession();
 		int pd_no = (Integer)session.getAttribute("save");	
-		System.out.println("updateBoard에서 pd_no: " +pd_no);
 		result = rdao.updateSaveBoard(all, pd_no);
 		
 		if (result==false) { //실패한 경우
@@ -54,14 +53,14 @@ public class updateSaveBoardAction implements Action {
 		}
 		//update한 정보 넘겨서 뿌려주기
 		session.setAttribute("board", all);
-		System.out.println("updateBoardAction에서"+all);
+		session.setAttribute("c", all.getPd_category());
 
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 	
 		out.println("<script>");
-		out.println("alert('저장되었습니다.');");
-		out.println("location.href='./board2.fu'");
+		out.println("alert('저장되었습니다. 다음페이지로 이동합니다.');");
+		out.println("location.href='./reward2.fu'");
 		out.println("</script>");
 		
 

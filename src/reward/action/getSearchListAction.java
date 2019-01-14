@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import reward.db.BoardBean;
 import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveBoard;
 
 public class getSearchListAction implements Action {
 

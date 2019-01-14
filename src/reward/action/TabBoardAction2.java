@@ -6,8 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveBoard;
-import reward.db.SaveSeller;
+
 
 public class TabBoardAction2 implements Action {
 
@@ -18,7 +17,7 @@ public class TabBoardAction2 implements Action {
 		request.setCharacterEncoding("UTF-8");
 
 		//탭이름 전달
-		request.setAttribute("page", "rReward");	
+		request.setAttribute("page", "bBoard");	
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); 		

@@ -22,10 +22,13 @@ public class RewardBean {	//Board와 Seller의 컬럼을 전부 담고있는 DTO
 	private String pd_content;
 	private String pd_opprice1;
 	private String pd_opcontent1;
+	private String pd_opsubject1;
 	private String pd_opprice2;
 	private String pd_opcontent2;
+	private String pd_opsubject2;
 	private String pd_opprice3;
 	private String pd_opcontent3;
+	private String pd_opsubject3;
 	private double pd_rate; 
 	private int pd_rateCount;
 	private String company_no;
@@ -35,6 +38,7 @@ public class RewardBean {	//Board와 Seller의 컬럼을 전부 담고있는 DTO
 	private String company_fax;
 	private Timestamp seller_date; /*판매자가 처음 등록된 날짜*/
 	private String sellerAccount;
+	
 	public int getPd_no() {
 		return pd_no;
 	}
@@ -220,6 +224,24 @@ public class RewardBean {	//Board와 Seller의 컬럼을 전부 담고있는 DTO
 	}
 	public void setSellerAccount(String sellerAccount) {
 		this.sellerAccount = sellerAccount;
+	}
+	public String getPd_opsubject1() {
+		return pd_opsubject1;
+	}
+	public void setPd_opsubject1(String pd_opsubject1) {
+		this.pd_opsubject1 = pd_opsubject1;
+	}
+	public String getPd_opsubject2() {
+		return pd_opsubject2;
+	}
+	public void setPd_opsubject2(String pd_opsubject2) {
+		this.pd_opsubject2 = pd_opsubject2;
+	}
+	public String getPd_opsubject3() {
+		return pd_opsubject3;
+	}
+	public void setPd_opsubject3(String pd_opsubject3) {
+		this.pd_opsubject3 = pd_opsubject3;
 	}
 	
 	
