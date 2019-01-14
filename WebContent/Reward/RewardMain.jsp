@@ -9,7 +9,7 @@
 	
 	<style type="text/css">
 		.container{
-			width: 650px;
+			width: 590px;
 			margin: 0 auto 0 auto;
 		}
 		.category {
@@ -17,38 +17,35 @@
 			height: 115px;
 			overflow: hidden;
 			position: inherit;
-			
 		}
 		
 		.left #left_btn {
-			height: 50px;
-			width: 50px;
+			height: 30px;
+			width: 30px;
 			float:left;
-			margin: 35px auto;
-			display: none;
+			margin: 40px auto;
+			visibility: hidden;
 		}
 		.right #right_btn {
-			height: 50px;
-			width: 50px;
+			height: 30px;
+			width: 30px;
 			float:right;
-			margin: 35px ;
-			display: block;
+			margin: 40px auto;
+			visibility: visible;
 		}
 		.category ul img{
 			height: 70px;
 			width: 70px;
 		}
 		#categoryslide{
-			width: max-content;
-			padding-left: 0px;
-			display: block;
+			width: inherit;
+			padding-left: inherit;
+			margin: 0px; /* -100px 두번쨰 라인 이미지  */
 		}
-		#categoryslide1{
-			padding-right: 0px;
-			width: max-content;
-		}
+		
 		.category ul li{
 			display: inline-block;
+			padding: 10px 0px 5px 1px;
 		}
 		.category ul li b{
 			display: block;
@@ -101,15 +98,51 @@
 		var URL = location.pathname;
 		console.log(URL);
 		
+		$(document).ready(function(){
+			var category= $('#category').val();
+			if(category == '게임스포츠' ||
+				category == '여행레저' ||
+				category == '문화교양' ||
+				category == '소셜캠페인' ||
+				category == '교육키즈' ){
+				$("#right_btn").css("visibility","hidden");
+				$("#left_btn").css("visibility","visible");
+				$("#categoryslide").css("margin","-102px");
+			}
+			if(category == 'N'){
+				$('#1').css("color","#9966FF");
+			}else if(category == '패션뷰티'){
+				$('#2').css("color","#9966FF");
+			}else if(category == '테크가전'){
+				$('#3').css("color","#9966FF");
+			}else if(category == '반려동물'){
+				$('#4').css("color","#9966FF");
+			}else if(category == '푸드'){
+				$('#5').css("color","#9966FF");
+			}else if(category == '홈리빙디자인소품'){
+				$('#6').css("color","#9966FF");
+			}else if(category == '게임스포츠'){
+				$('#7').css("color","#9966FF");
+			}else if(category == '여행레저'){
+				$('#8').css("color","#9966FF");
+			}else if(category == '문화교양'){
+				$('#9').css("color","#9966FF");
+			}else if(category == '소셜캠페인'){
+				$('#10').css("color","#9966FF");
+			}else if(category == '교육키즈'){
+				$('#11').css("color","#9966FF");
+			}
+			
+		});
 		function right(){
-			$("#right_btn").css("display","none");
-			$("#left_btn").css("display","block");
-			$("#categoryslide").css("display","none");
+			$("#right_btn").css("visibility","hidden");
+			$("#left_btn").css("visibility","visible");
+			$("#categoryslide").css("margin","-102px");
 		};
 		function left(){
-			$("#right_btn").css("display","block");
-			$("#left_btn").css("display","none");
-			$("#categoryslide").css("display","block");
+			$("#right_btn").css("visibility","visible");
+			$("#left_btn").css("visibility","hidden");
+			$("#categoryslide").css("margin","0px");
 		};
 		function change(){
 			var result = document.getElementById("result").value;
@@ -163,19 +196,17 @@
 		</span>
 		<div class="category" align="center">	
 			<ul id="categoryslide">
-				<li><a href="./PermitList.ad?category=N"><img src="./img/category/select-all.png" width="80" border="0"><b>전체 보기</b></a></li>
-				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/product.png" width="80" border="0"><b>패션·뷰티</b></a></li>
-				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/devices.png" width="80" border="0"><b>테크·가전</b></a></li>
-				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/pawprints.png" width="80" border="0"><b>반려동물</b></a></li>
-				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/diet.png" width="80" border="0"><b>푸드</b></a></li>
-				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/living-room.png" width="80" border="0"><b>홈리빙·디자인</b></a></li>
-			</ul>	
-			<ul id="categoryslide1">
-				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/jogo-das-argolas.png" width="80" border="0"><b>게임·스포츠</b></a></li>
-				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/travel.png" width="80" border="0"><b>여행·레저</b></a></li>
-				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/concert.png" width="80" border="0"><b>문화·교양</b></a></li>
-				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/social-media-campaign.png" width="80" border="0"><b>소셜·캠페인</b></a></li>
-				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/social-media-campaign.png" width="80" border="0"></a><b>교육·키즈</b></li>
+				<li><a href="./PermitList.ad?category=N"><img src="./img/category/select-all.png" width="80" border="0"><b id="1">전체 보기</b></a></li>
+				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/product.png" width="80" border="0"><b id="2">패션·뷰티</b></a></li>
+				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/devices.png" width="80" border="0"><b id="3">테크·가전</b></a></li>
+				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/pawprints.png" width="80" border="0"><b id="4">반려동물</b></a></li>
+				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/diet.png" width="80" border="0"><b id="5">푸드</b></a></li>
+				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/living-room.png" width="80" border="0"><b id="6">홈리빙·디자인</b></a></li>
+				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/jogo-das-argolas.png" width="80" border="0"><b id="7">게임·스포츠</b></a></li>
+				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/travel.png" width="80" border="0"><b id="8">여행·레저</b></a></li>
+				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/concert.png" width="80" border="0"><b id="9">문화·교양</b></a></li>
+				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/social-media-campaign.png" width="80" border="0"><b id="10">소셜·캠페인</b></a></li>
+				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/social-media-campaign.png" width="80" border="0"></a><b id="11">교육·키즈</b></li>
 			</ul>
 		</div>
 	</div>
