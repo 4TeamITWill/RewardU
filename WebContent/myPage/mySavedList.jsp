@@ -35,7 +35,7 @@
 							<div style="width : 130px; height :130px; overflow : hidden;">
 							<!--이미지 null이면 기본이미지뜨게 추가!!!-->
 								<c:choose>
-									<c:when test="${saveBoard.pd_realFile eq ''}">
+									<c:when test="${saveBoard.pd_realFile eq '' or saveBoard.pd_realFile==null}">
 										<img src="./upload/sm_no_img.jpg">
 									</c:when>
 									<c:otherwise>

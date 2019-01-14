@@ -642,7 +642,7 @@ public class MessageDAO {
 		
 	}//sendPayMessage 끝
 	
-	public ArrayList<MemberBean> searchMember(String search){
+	public ArrayList<MemberBean> getSearchMemberList(String search){
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;
@@ -651,7 +651,7 @@ public class MessageDAO {
 		MemberBean mbean = null;
 		try {
 			con = getConnection();
-			sql = "select * from user where user_id like ?";
+			sql = "select * from user where user_id like ? order by user_id desc limit 0,7";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + search + "%");
 			rs = pstmt.executeQuery();

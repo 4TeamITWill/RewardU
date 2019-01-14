@@ -17,7 +17,7 @@ public class SearchMemberAction implements Action {
 		String search = request.getParameter("search");
 		ArrayList<MemberBean> list = new ArrayList<MemberBean>();
 		MessageDAO mdao = new MessageDAO();
-		list = mdao.searchMember(search);
+		list = mdao.getSearchMemberList(search);
 		
 		request.setAttribute("user_list", list);
 		
