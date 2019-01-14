@@ -76,8 +76,8 @@ if(id != null){//사용자가 로그인한 상태일 때만 문의하기 메시�
 				<!-- 보내는 사람 : 사용자, 받는 사람 : 관리자(rewardu4@gmail.com 로 고정 -->
 				<input type="hidden" name="toID" id="toID" value="<%=id%>">
 				<input type="hidden" name="fromID" id="fromID" value="rewardu4@gmail.com">
-				<input type="text" name="subject" id="subject" placeholder="제목">
-				<textarea name="content" id="content" placeholder="문의사항"></textarea><br/>
+				<input type="text" name="subject" id="subject" placeholder="제목을 입력하세요.">
+				<textarea name="content" id="content" placeholder="문의사항을 입력하세요."></textarea><br/>
 				<input type="button" value="전송" id="send">
 				<input type="button" value="다시쓰기" id="rewrite">
 			</div>

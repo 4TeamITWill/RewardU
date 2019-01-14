@@ -44,22 +44,21 @@ function selectID(i) { //onclick="selectID(번호); 는 userList.jsp에 있다."
 <input type="hidden" name="toID" value="<%=id%>"> 
 
 <fieldset class="send_FS" name="send_FS"> 
-	<label>받는사람 ID : </label>
-	<input type="text" name="fromID" id="fromID">
-	<label>제목 : </label>
-	<input type="text" name="subject">
+	<label><b>받는사람</b> </label>
+	<input type="text" name="fromID" id="fromID" placeholder="받는사람의 ID를 입력하세요."> <br/><br/>
+	<input type="text" name="subject" class="msg_subject" placeholder="제목을 입력하세요.">
 	<br/>
 	<!-- 내용 -->
-	<textarea name="content" class="send_TA"></textarea>
+	<textarea name="content" class="send_TA" placeholder="내용을 입력하세요."></textarea>
 	<br/>
-	<input type="submit" value="Send" class="submit">
-	<input type="reset" value="Cancel" class="cancel">
+	<input type="submit" value="보내기" class="msg_btn">
+	<input type="reset" value="취소" class="msg_btn">
 </fieldset>
 </form>
 </div><!-- class="send_div" -->
 
 <div class="search_memberDiv">
-	아이디 검색 : <input type="text" name="search_member" class="search_member">
+	<b>아이디 검색</b> <input type="text" name="search_member" class="search_member" placeholder="찾으시는 ID를 입력하세요.">
 	<div id="members_div"></div>
 </div>
 </section>

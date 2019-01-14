@@ -24,7 +24,7 @@
 <%
 	if(list.size() == 0){
 %>
-	<b>아이디가 존재하지 않습니다.</b>
+	<br/><b>아이디가 존재하지 않습니다.</b>
 <%
 	}else{
 	for(int i=0; i<list.size(); i++){

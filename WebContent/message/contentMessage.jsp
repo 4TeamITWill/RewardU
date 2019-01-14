@@ -53,12 +53,14 @@
 	
 	<div class="content_btn">
 		<!-- 번호와 아이디를 넘겨주어 해당 메시지를 삭제 할 수 있도록함 -->
-		<input type="button" value="삭제" onclick="location.href='./DeleteMessageButton.message?id=<%=id%>&no=<%=mdto.getNo()%>&divide=<%=divide%>'">
+		<input type="button" value="삭제" class="msg_btn"
+		onclick="location.href='./DeleteMessageButton.message?id=<%=id%>&no=<%=mdto.getNo()%>&divide=<%=divide%>'">
 <%
 		//보관함 -> 메시지내용  이 아닌 경우에만 보관버튼을 활성화
 		if(!divide.equals("store")){
 %>
-		<input type="button" value="보관" onclick="location.href='./StoreMessageButton.message?id=<%=id%>&no=<%=mdto.getNo()%>&divide=<%=divide%>'">
+		<input type="button" value="보관" class="msg_btn"
+		onclick="location.href='./StoreMessageButton.message?id=<%=id%>&no=<%=mdto.getNo()%>&divide=<%=divide%>'">
 <%
 		}
 %>
@@ -66,22 +68,26 @@
 <%		//그리고 받은 메시지에서 눌렀을 시에만 답변하기가 보이도록 한다. 보낸메시지와 보관메시지를 눌러서 내용으로 들어온 경우 답변 불가
 		if(divide.equals("receive")){
 %>
-		<input type="button" value="답변하기" onclick="location.href='./AnswerMessage.message?fromID=<%=mdto.getToID()%>'">	
+		<input type="button" value="답변하기" class="msg_btn"
+		onclick="location.href='./AnswerMessage.message?fromID=<%=mdto.getToID()%>'">	
 <%
 		}
 
 		//어느 페이지(보낸, 받은 ,보관)에서 왔는지에 따라 돌아갈 때도 원래 있던곳으로
 		if(divide.equals("receive")){
 %>
-		<input type="button" value="돌아가기" onclick="location.href='./MemberMessage_ReceiveList.message'">
+		<input type="button" value="돌아가기" class="msg_btn"
+		onclick="location.href='./MemberMessage_ReceiveList.message'">
 <%
 		} else if(divide.equals("send")){
 %>
-		<input type="button" value="돌아가기" onclick="location.href='./MemberMessage_SendList.message'">
+		<input type="button" value="돌아가기" class="msg_btn"
+		onclick="location.href='./MemberMessage_SendList.message'">
 <%
 		} else if(divide.equals("store")){
 %>
-		<input type="button" value="돌아가기" onclick="location.href='./MemberMessage_StoreList.message'">
+		<input type="button" value="돌아가기" class="msg_btn"
+		onclick="location.href='./MemberMessage_StoreList.message'">
 <%
 		}
 %>

@@ -125,11 +125,11 @@ if(count > 0){ //메시지가 존재 한다면
 <br/>
 <div class="messageBtn_div">
 <!-- 클릭하면 sendMessage.jsp로 이동한다. -->
-<input type="button" value="메시지 보내기" class="sendMessage_btn" onclick="location.href='./SendMessage.message'">
+<input type="button" value="메시지 보내기" class="msg_btn" onclick="location.href='./SendMessage.message'">
 <!-- <a href="./SendMessage.message" ><img alt="메시지보내기" src="img/message_img/send_msg.PNG" class="sendMessage_img"> </a> -->
 
 <!-- 클릭하면 체크된 메시지들이 삭제된다.-->
-<input type="button" value="삭제하기" onclick="deleteMsg();">
+<input type="button" value="삭제하기" class="msg_btn" onclick="deleteMsg();">
 </div>
 
 </form>

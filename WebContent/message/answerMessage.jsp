@@ -25,16 +25,15 @@
 
 <fieldset class="answer_FS">
 	<!-- 사용자가 답변을 보내는 것이기에 받는사람의 ID는 readonly -->
-	<label>받는사람 ID : </label>
-	<input type="text" name="fromID" value="<%=fromID%>" readonly>
-	<label>제목 : </label>
-	<input type="text" name="subject">
+	<label><b>받는사람</b> </label>
+	<input type="text" name="fromID" id="fromID" value="<%=fromID%>" readonly>
+	<input type="text" name="subject" class="msg_subject" placeholder="제목을 입력하세요.">
 	<br/>
 	<!-- 내용 -->
-	<textarea rows="10" cols="40" name="content" class="answer_TA"></textarea>
+	<textarea name="content" class="answer_TA" placeholder="내용을 입력하세요."></textarea>
 	<br/>
-	<input type="submit" value="Send" class="submit">
-	<input type="reset" value="Cancel" class="cancel">
+	<input type="submit" value="보내기" class="msg_btn">
+	<input type="reset" value="취소" class="msg_btn">
 </fieldset>
 
 </form>
