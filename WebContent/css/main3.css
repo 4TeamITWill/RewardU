@@ -1177,7 +1177,7 @@ body{
 }
 
 #sellerNewsList {
-	border-top : 0.5px solid rgba(20,60,240,0.6);
+	border-bottom : 0.5px solid rgba(20,60,240,0.6);
 }
 
 .sNewsWrite_div {

@@ -32,7 +32,7 @@
 </c:if>
  
 <jsp:include page="top.jsp"/>
-<a href="sellernews.my">sdfsdf</a>
+
 <jsp:include page="${center }"/>
 
 		<!-- Modal 부분 -->

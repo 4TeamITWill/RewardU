@@ -33,7 +33,8 @@
 			<div>
 			<textarea name="sell_content" id="textAreaContent" rows="20"  style="width : 100%"></textarea>
 			</div>
-			<button id="insert" type="button">작성</button>			
+			<a id="insert" style="display : block; width : 80px; height : 30px; line-height : 30px; margin-top : 5px;
+					cursor : pointer; background-color : rgba(10,50,200,1); color : white; text-align:center; border-radius : 2px;">작성</a>			
 		</div>
 	</div>
 	
