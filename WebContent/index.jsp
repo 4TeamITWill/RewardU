@@ -38,7 +38,7 @@
 			<div style="flex : 1; height : 0;" ></div>
 			<div style="flex : 1; height : 0;"></div>
 			<div style="flex : 1; height : 0;">
-				<div class="modal_my" id="	modal_my">
+				<div class="modal_my" id="modal_my">
 					<div class="modal_img_container"  onclick="location.href='myIndex.my'">
 						<div class="modal_img">
 					<!-- 프로필 사진 설정이 안되어 있을 때(null)는 기본사진 출력 -->	
