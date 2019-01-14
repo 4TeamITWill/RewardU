@@ -3,16 +3,16 @@ package my_db;
 import java.sql.Timestamp;
 
 public class SellerNewsBean {
-	int pd_no, parent_no;
+	int pd_no, no;
 	String user_id, sell_subject, sell_content;
 	Timestamp date;
 	
 	
-	public int getParent_no() {
-		return parent_no;
+	public int getNo() {
+		return no;
 	}
-	public void setParent_no(int parent_no) {
-		this.parent_no = parent_no;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public int getPd_no() {
 		return pd_no;

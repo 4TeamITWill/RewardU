@@ -690,11 +690,12 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "insert into sellernews(user_id, sell_subject, sell_content) values(?,?,?)";
+			sql = "insert into sellernews(pd_no, user_id, sell_subject, sell_content) values(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, nbean.getUser_id());
-			pstmt.setString(2, nbean.getSell_subject());
-			pstmt.setString(3, nbean.getSell_content());
+			pstmt.setInt(1, nbean.getNo());
+			pstmt.setString(2, nbean.getUser_id());
+			pstmt.setString(3, nbean.getSell_subject());
+			pstmt.setString(4, nbean.getSell_content());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -706,7 +707,7 @@ public class MyDAO {
 	}//insertSellerNews() 메소드
 
 	//목록가져오기
-	public ArrayList<SellerNewsBean> getSellerNewsList() {
+	public ArrayList<SellerNewsBean> getSellerNewsList(int pd_no) {
 		
 		ArrayList<SellerNewsBean> list = new ArrayList<>();
 		Connection con = null;
@@ -716,14 +717,15 @@ public class MyDAO {
 		
 		try {
 			con=getConnection();
-			sql = "select * from sellernews order by pd_no desc";
+			sql = "select * from sellernews where pd_no = ? order by no desc";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				SellerNewsBean nbean = new SellerNewsBean();
 				nbean.setDate(rs.getTimestamp("date"));
-				nbean.setParent_no(rs.getInt("parent_no"));
+				nbean.setNo(rs.getInt("no"));
 				nbean.setPd_no(rs.getInt("pd_no"));
 				nbean.setSell_content(rs.getString("sell_content"));
 				nbean.setSell_subject(rs.getString("sell_subject"));
@@ -743,9 +745,9 @@ public class MyDAO {
 	}//getSellerNewsList() 메소드 끝
 
 	//판매자 소식 count 값 구하기
-	public boolean getSellerNewsCount(){
+	public int getSellerNewsCount(int pd_no){
 		
-		boolean count = false;
+		int count = 0;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -753,12 +755,13 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select max(pd_no) from sellernews";
+			sql = "select count(no) from sellernews where pd_no = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				if(rs.getInt(1) > 0) count = true;
+				count = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -768,4 +771,59 @@ public class MyDAO {
 		
 		return count;
 	}//getSellerNewsCount() 메소드 끝
+
+	//delSellerNews() 메소드
+	public void delSellerNews(int no) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			
+			con=getConnection();
+			sql = "delete from sellernews where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+	}
+	//투자현황페이지 투자리스트 환불,취소 delReward() 메소드
+	public int delReward(int pd_no, String user_id, int inv_price) {
+		
+		int result = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "delete from investmentlist where pd_no = ? and user_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
+			pstmt.setString(2, user_id);
+			result = pstmt.executeUpdate();
+			
+			if(result > 0){
+				sql = "update board set pd_curmoney = pd_curmoney-? where pd_no = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, inv_price);
+				pstmt.setInt(2, pd_no);
+				pstmt.executeUpdate();
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return result;
+	}//delReward() 메소드 끝
 }

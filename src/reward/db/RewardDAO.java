@@ -221,7 +221,7 @@ public class RewardDAO {
 		//db연결
 		con= getConnection();
 		
-		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveall where user_id=?";
+		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveall where user_id=? order by pd_no desc";
 				
 		pstmt = con.prepareStatement(sql);
 		

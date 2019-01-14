@@ -20,7 +20,7 @@
 			</div>			
 		</div>		
 		<div class="savedList_bottom">
-			<div style="display : flex; width : 1000px; margin : 0 auto; font-weight : bold; padding-bottom : 1rem; border-bottom : 1px solid rgba(130,130,130,0.8);">
+			<div style="display : flex; font-weight : bold; padding-bottom : 1rem; border-bottom : 1px solid rgba(130,130,130,0.8);">
 				<div style="flex : 5;">프로젝트</div>
 				<div style="flex : 1; text-align : center;">수정</div>
 				<div style="flex : 1; text-align : center;">삭제</div>		

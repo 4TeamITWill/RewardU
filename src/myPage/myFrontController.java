@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class myFrontController extends HttpServlet{
 	
@@ -70,9 +71,20 @@ public class myFrontController extends HttpServlet{
 			action = new sellerNews();
 			forward = action.execute(request, response);
 					
-		}else if(command.equals("/sellernewsAction.my")){
+		}else if(command.equals("/sellerNewsWrite.my")){
 
 			action = new sellerNewsWrite();
+			
+			forward = action.execute(request, response);
+		}else if(command.equals("/sellerNewsDel.my")){
+			
+			action = new sellerNewsDel();
+			
+			forward = action.execute(request, response);
+			
+		}else if(command.equals("/myRewardDel.my")){
+			
+			action = new myRewardDelAction();
 			
 			forward = action.execute(request, response);
 		}
