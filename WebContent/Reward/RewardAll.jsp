@@ -16,13 +16,12 @@
 	<style type="text/css">
 		
 		#content{
-			
 			max-width:auto;
 			padding: 20px;
 		}
 		#img{
 			border: 1px solid gray;
-			border-radius: 1ex;
+			border-radius: 1px;
 			width: 280px; 
 			height: 180px; 
 			overflow: hidden;
@@ -102,9 +101,14 @@
 					<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 						<img src="./upload/${list.pd_realfile}">
 					</a>
-					<c:if test="${endDate - strDate < 1}">
+					<c:if test="${endDate - strDate < 7}">
 						<div id="deadline">
 							마감 임박
+						</div>
+					</c:if>
+					<c:if test="${endDate - strDate == 0}">
+						<div id="deadline">
+							마감
 						</div>
 					</c:if>
 				</div>
@@ -125,7 +129,14 @@
 						<strong><fmt:formatNumber value="${pro }" pattern="0"/>%</strong> · ${list.pd_curmoney }원
 					</div>
 					<div id="day" align="right">
-						${endDate - strDate }일 &nbsp;남음
+					<c:choose>
+						<c:when test="${endDate - strDate < 0}">
+							마감
+						</c:when>
+						<c:when test="${endDate - strDate >= 0}">
+							${endDate - strDate }일 &nbsp;남음
+						</c:when>
+					</c:choose>
 					</div>
 				</div>
 			</td>

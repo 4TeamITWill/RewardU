@@ -651,7 +651,7 @@ public class MessageDAO {
 		MemberBean mbean = null;
 		try {
 			con = getConnection();
-			sql = "select * from user where user_id like ? order by user_id desc limit 0,7";
+			sql = "select * from user where user_id like ? order by user_id desc limit 0,9";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + search + "%");
 			rs = pstmt.executeQuery();

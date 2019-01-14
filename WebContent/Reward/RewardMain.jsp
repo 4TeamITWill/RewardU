@@ -8,29 +8,54 @@
 <title>Insert title here</title>
 	
 	<style type="text/css">
-	body{
-			width: auto;
+		.container{
+			width: 650px;
+			margin: 0 auto 0 auto;
 		}
-		.category{
-			width: 0 auto;
-			width: 700px;
-			border:1px solid black;
+		.category {
+			width: 482px;
+			height: 115px;
 			overflow: hidden;
+			position: inherit;
+			
 		}
-		.category div{
-			border:1px solid black;
+		
+		.left #left_btn {
+			height: 50px;
+			width: 50px;
+			float:left;
+			margin: 35px auto;
+			display: none;
 		}
-		.category img{
-			border-radius: 50%;
-			height: 80px;
+		.right #right_btn {
+			height: 50px;
+			width: 50px;
+			float:right;
+			margin: 35px ;
+			display: block;
+		}
+		.category ul img{
+			height: 70px;
+			width: 70px;
+		}
+		#categoryslide{
+			width: max-content;
+			padding-left: 0px;
+			display: block;
+		}
+		#categoryslide1{
+			padding-right: 0px;
+			width: max-content;
 		}
 		.category ul li{
 			display: inline-block;
 		}
 		.category ul li b{
 			display: block;
+			color: black;
 		}
 		.select{
+			clear:both;
 			width: 950px;
 			margin : 0 auto;
 		}
@@ -55,6 +80,7 @@
 		.center{
 			clear:both;
 			width: auto;
+			
 		}
 		#more{
 			padding-bottom:20px;
@@ -75,24 +101,16 @@
 		var URL = location.pathname;
 		console.log(URL);
 		
-		
-		$(document).ready(function(){
-			var imgs;
-			var img_count;
-			var img_position = 1;
-			
-			imgs = $(".category ul");
-			img_count = imgs.childrean().length;
-			
-			$('#back').click(function(){
-				back();
-			});
-			$('#next').click(function(){
-				next();
-			});
-			
-		})
-		
+		function right(){
+			$("#right_btn").css("display","none");
+			$("#left_btn").css("display","block");
+			$("#categoryslide").css("display","none");
+		};
+		function left(){
+			$("#right_btn").css("display","block");
+			$("#left_btn").css("display","none");
+			$("#categoryslide").css("display","block");
+		};
 		function change(){
 			var result = document.getElementById("result").value;
 			var order = document.getElementById("order").value;
@@ -136,22 +154,30 @@
 </head>
 <body>
 	<input type="hidden" id="category" value="${category }">
-	<div class="category" align="center">
-			<img src="">
-			<ul>
-				<li><a href="./PermitList.ad?category=N"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>전체 보기</b></li>
-				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/Tech.jpg" width="80" border="0"></a><b>패션·뷰티</b></li>
-				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>테크·가전</b></li>
-				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/Tech.jpg" width="80" border="0"></a><b>반려동물</b></li>
-				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>푸드</b></li>
-				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>홈리빙·디자인</b></li>
-				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>게임·스포츠</b></li>
-				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>여행·레저</b></li>
-				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>문화·교양</b></li>
-				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>소셜·캠페인</b></li>
-				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/Tech.jpg" width="80" border="0"></a><b>교육·키즈</b></li>
+	<div class="container" align="center">
+		<span class="left">
+			<input type="image"  onclick="left()" id="left_btn" src="./img/category/left-arrow.png"/>
+		</span>
+		<span class="right">
+			<input type="image" onclick="right()" id="right_btn" src="./img/category/right-arrow.png"/>
+		</span>
+		<div class="category" align="center">	
+			<ul id="categoryslide">
+				<li><a href="./PermitList.ad?category=N"><img src="./img/category/select-all.png" width="80" border="0"><b>전체 보기</b></a></li>
+				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/product.png" width="80" border="0"><b>패션·뷰티</b></a></li>
+				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/devices.png" width="80" border="0"><b>테크·가전</b></a></li>
+				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/pawprints.png" width="80" border="0"><b>반려동물</b></a></li>
+				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/diet.png" width="80" border="0"><b>푸드</b></a></li>
+				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/living-room.png" width="80" border="0"><b>홈리빙·디자인</b></a></li>
+			</ul>	
+			<ul id="categoryslide1">
+				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/jogo-das-argolas.png" width="80" border="0"><b>게임·스포츠</b></a></li>
+				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/travel.png" width="80" border="0"><b>여행·레저</b></a></li>
+				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/concert.png" width="80" border="0"><b>문화·교양</b></a></li>
+				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/social-media-campaign.png" width="80" border="0"><b>소셜·캠페인</b></a></li>
+				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/social-media-campaign.png" width="80" border="0"></a><b>교육·키즈</b></li>
 			</ul>
-			<img src="">
+		</div>
 	</div>
 	<c:set var="center" value="${Reward_center }"/>
 	<div class="select">
