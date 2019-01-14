@@ -38,7 +38,7 @@ request.setCharacterEncoding("UTF-8");
   	<input type="hidden" name="op1_price" value="${bean.pd_opprice1}">
   	<input type="hidden" name="op2_price" value="${bean.pd_opprice2}">
   	<input type="hidden" name="op3_price" value="${bean.pd_opprice3}">
-  	
+  	<input type="hidden" name="pd_realfile" value="${bean.pd_realfile}">
   		
   
 <div class="option_list">

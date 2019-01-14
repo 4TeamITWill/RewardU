@@ -71,24 +71,10 @@ public class RewardController extends HttpServlet{
 					e.printStackTrace();
 				}
 				
-				
-			//글 양식을 처음 저장했을때.. save테이블에 따로 insert 해둔다.
-			}else if (command.equals("/SaveAction.fu")) {
-				
-				action = new SaveAction(); 
-				
-				try {
-					
-					forward = action.excute(req, resp);
-					
-				} catch (Exception e) {
-					
-					e.printStackTrace();
-				}
-				
-				
+			}
+	
 			//저장만 한 리스트 뿌려주기
-			}else if (command.equals("/RewardingSaveList.fu")) {
+			else if (command.equals("/RewardingSaveList.fu")) {
 				
 				action = new RewardingSaveListAction(); 
 				
@@ -116,36 +102,20 @@ public class RewardController extends HttpServlet{
 					e.printStackTrace();
 				}
 				
+			}	
+			//저장리스트 페이지에서  삭제버튼 눌렀을떄
+			else if(command.equals("/RewardingSaveDelete.fu")) {
 				
-				//RewardingUpdate.jsp(수정페이지)에서  
-				//저장하기와 승인요청하기 중에 !!! 또 저장하기를 눌렀을때...각각 save테이블 update
-				}else if (command.equals("/RewardingSaveUpdateAction.fu")) {
+				action = new SaveDeleteAction(); 
+				
+				try {
 					
-					action = new RewardingSaveUpdateAction(); 
+					forward = action.excute(req, resp);
 					
-					try {
-						
-						forward = action.excute(req, resp);
-						
-					} catch (Exception e) {
-						
-						e.printStackTrace();
-					}
+				} catch (Exception e) {
 					
-					
-				//저장리스트 페이지에서  삭제버튼 눌렀을떄
-				}else if(command.equals("/RewardingSaveDelete.fu")) {
-					
-					action = new SaveDeleteAction(); 
-					
-					try {
-						
-						forward = action.excute(req, resp);
-						
-					} catch (Exception e) {
-						
-						e.printStackTrace();
-					}
+					e.printStackTrace();
+				}
 					
 				}else if(command.equals("/index.fu")) {
 				

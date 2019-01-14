@@ -215,6 +215,7 @@ function checks(){
 			<input type="hidden" name="op2_qty" value="${ibean.op2_qty}">
 			<input type="hidden" name="op3_price" value="${ibean.op3_price}">
 			<input type="hidden" name="op3_qty" value="${ibean.op3_qty}">
+			<input type="hidden" name="pd_realfile" value="${ibean.pd_realfile}">
 		</div>
 		
 			<fieldset>

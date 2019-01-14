@@ -5,11 +5,17 @@ import java.sql.Timestamp;
 public class InvestBean {
 
 	private String user_id, inv_name, inv_investor, inv_addr, inv_phone, inv_account, pd_subject, pd_content, inv_datef;
-	private String inv_price, op1_price, op2_price, op3_price;
+	private String inv_price, op1_price, op2_price, op3_price, pd_realfile;
 	private int pd_no, inv_orderno, inv_confirm, pd_result, inv_percent;
 	private int op1_qty, op2_qty, op3_qty;
 	private Timestamp inv_date;
 	
+	public String getPd_realfile() {
+		return pd_realfile;
+	}
+	public void setPd_realfile(String pd_realfile) {
+		this.pd_realfile = pd_realfile;
+	}
 	public String getUser_id() {
 		return user_id;
 	}

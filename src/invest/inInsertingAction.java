@@ -27,6 +27,7 @@ public class inInsertingAction implements inAction{
 		String op2_qty = request.getParameter("op2_qty");
 		String op3_price = request.getParameter("op3_price");
 		String op3_qty = request.getParameter("op3_qty");
+		String pd_realfile = request.getParameter("pd_realfile");
 		
 		InvestBean ibean = new InvestBean();
 		
@@ -49,7 +50,7 @@ public class inInsertingAction implements inAction{
 		ibean.setOp3_price(op3_price);
 		ibean.setOp3_qty(Integer.parseInt(op3_qty));
 		ibean.setInv_date(new Timestamp(System.currentTimeMillis()));
-		
+		ibean.setPd_realfile(pd_realfile);
 		
 		//db객체생성
 		InvestDAO idao = new InvestDAO();

@@ -23,6 +23,7 @@ public class inChoosingOptionAction implements inAction {
 		
 		String inv_name = request.getParameter("pd_subject");
 		String user_id = request.getParameter("user_id");
+		String pd_realfile = request.getParameter("pd_realfile");
 		
 		//수량에 따른 각 옵션별 가격의 합을 받아옴. 이는 실제 DB와는 아무상관없으며 단순히 inv_price 값을 계산하기 위함
 		int op1_priceTotal = Integer.parseInt(request.getParameter("op1_priceTotal"));
@@ -52,6 +53,7 @@ public class inChoosingOptionAction implements inAction {
 		ibean.setOp2_qty(op2_qty);
 		ibean.setOp3_price(op3_price);
 		ibean.setOp3_qty(op3_qty);
+		ibean.setPd_realfile(pd_realfile);
 		
 		request.setAttribute("ibean", ibean);
 		

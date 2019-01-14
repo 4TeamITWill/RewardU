@@ -120,8 +120,8 @@
 
 .quit_btn{width: 30px; height: 15px; float: right;}
 
-.quick_msg #subject{width: 280px; height: 20px; border-radius:4%;}
-.quick_msg #content{width: 250px; height: 160px; border-radius:4%;}
+.quick_msg>#subject{width: 280px; height: 20px; border-radius:4%;}
+.quick_msg>#content{width: 250px; height: 160px; border-radius:4%;}
 .quick_msg #send, .quick_msg #rewrite{width: 100px; height: 25px; background-color: #fff; font-weight: 600;}
 .quick_msg #send:HOVER, .quick_msg #rewrite:HOVER{border: 2px groove #9599fc;}
 textarea {resize: none;}

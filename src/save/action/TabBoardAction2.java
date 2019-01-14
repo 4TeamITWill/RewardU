@@ -6,8 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveBoard;
-import reward.db.SaveSeller;
 
 public class TabBoardAction2 implements Action {
 

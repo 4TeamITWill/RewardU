@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveSeller;
 
 public class updateSaveSellerAction2 implements Action {
 

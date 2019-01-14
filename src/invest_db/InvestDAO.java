@@ -33,8 +33,8 @@ private Connection  getConnection() throws Exception{
 			con  = getConnection();
 			
 			sql = "insert into investmentList(user_id,pd_no,inv_orderno,inv_name,inv_investor,inv_addr,inv_phone,"
-					+ "inv_price,inv_date,inv_confirm,inv_account,op1_price,op1_qty,op2_price,op2_qty,op3_price,op3_qty) "
-					+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "inv_price,inv_date,inv_confirm,inv_account,op1_price,op1_qty,op2_price,op2_qty,op3_price,op3_qty,pd_realfile) "
+					+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -55,6 +55,7 @@ private Connection  getConnection() throws Exception{
 			pstmt.setInt(15, ibean.getOp2_qty());
 			pstmt.setString(16, ibean.getOp3_price());
 			pstmt.setInt(17, ibean.getOp3_qty());
+			pstmt.setString(18, ibean.getPd_realfile());
 			
 			result = pstmt.executeUpdate();
 			
