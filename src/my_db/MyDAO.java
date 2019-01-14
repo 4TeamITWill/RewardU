@@ -341,6 +341,7 @@ public class MyDAO {
 				ibean.setOp2_qty(rs.getInt("op2_qty"));
 				ibean.setOp3_price(rs.getString("op3_price"));
 				ibean.setOp3_qty(rs.getInt("op3_qty"));
+				ibean.setPd_realfile(rs.getString("pd_realfile"));
 		
 				BoardDAO bdao = new BoardDAO();
 				BoardBean bbean = bdao.getBoard(ibean.getPd_no());

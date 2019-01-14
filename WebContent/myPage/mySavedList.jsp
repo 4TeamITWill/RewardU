@@ -1,4 +1,3 @@
-<%@page import="reward.db.SaveBoard"%>
 <%@page import="java.util.Vector"%>
 <%@page import="reward.db.RewardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

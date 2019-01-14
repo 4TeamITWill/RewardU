@@ -1,11 +1,12 @@
 <%@page import="reward.db.RewardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/numberformatter.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 
@@ -18,6 +19,8 @@ $(document).ready(function() {
 	$("#pd_category_all").val('<%=c%>');
 });
 
+
+
 //저장하기를 눌렀다면 - 처음저장
 $("#insert").click(function () {
 		$("#f").attr("action","./insertSaveBoard.fu");
@@ -27,6 +30,18 @@ $("#update").click(function () {
     $("#f").attr("action","./updateSaveBoard.fu");
 });
 
+
+
+//세션 없을때 현재날짜 넣어주기
+document.getElementById('now_date').valueAsDate = new Date();
+
+
+//전단위 콤마
+ $(document).ready(function(){
+ 	$(".number").each(function(index){
+ 		$(this).text($(this).text().split(/(?=(?:\d{3})+(?:\.|$))/g).join(','));
+ 	});
+ });
 
 
 </script>
@@ -48,7 +63,7 @@ $("#update").click(function () {
 		if(session.getAttribute("board") != null){
 			
 			all = (RewardBean)session.getAttribute("board");
-			/* String all.getPd_end(); */
+			
 		}
 		
 		
@@ -99,7 +114,7 @@ $("#update").click(function () {
 				
 			<tr height="40">		
 				<td style="font-weight : bold;">목표금액</td>
-				<td><input type="text" name="pd_goalMoney" style="width : 60%;" value="<%=all.getPd_goalMoney()%>">원</td>
+				<td><input type="text" name="pd_goalMoney" style="width : 60%;" value="<%=all.getPd_goalMoney()%>" class="number">원</td>
 			</tr>
 				
 			<tr height="40">
@@ -111,7 +126,7 @@ $("#update").click(function () {
 			</tr>
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 50%;" value="<%=all.getPd_end()%>"></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" value="<%=all.getPd_end().substring(0,10)%>" ></td>
 																		
 			</tr>
 			
@@ -165,7 +180,7 @@ $("#update").click(function () {
 				
 			<tr height="40">		
 				<td style="font-weight : bold;">목표금액</td>
-				<td><input type="text" name="pd_goalMoney" style="width : 50%;"> 원</td>
+				<td><input type="text" name="pd_goalMoney" style="width : 50%;" class="number" numberonly="true"> 원</td>
 			</tr>
 				
 			<tr height="40">
@@ -177,10 +192,10 @@ $("#update").click(function () {
 			</tr>
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 50%;" value="2020-01-01"></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" id="now_date"></td>
 																<!-- 마감일의 value값을 지정해 주지 않으면
 														사용자가 마감일을 선택하지 않고 저장하기를 할때 sql에러가 난다....
-														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->			
+														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->	
 			</tr>
 
 <%			

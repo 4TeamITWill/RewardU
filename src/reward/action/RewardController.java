@@ -76,10 +76,9 @@ public class RewardController extends HttpServlet{
 				} catch (Exception e) {
 					
 					e.printStackTrace();
-				}
-				
+				}		
 			}
-	
+
 			//저장만 한 리스트 뿌려주기
 			else if (command.equals("/RewardingSaveList.fu")) {
 				
@@ -108,11 +107,11 @@ public class RewardController extends HttpServlet{
 					
 					e.printStackTrace();
 				}
-				
-			}	
-			//저장리스트 페이지에서  삭제버튼 눌렀을떄
-			else if(command.equals("/RewardingSaveDelete.fu")) {
-				
+
+								
+				//저장리스트 페이지에서  삭제버튼 눌렀을떄
+				}else if(command.equals("/RewardingSaveDelete.fu")) {
+					
 				action = new SaveDeleteAction(); 
 				
 				try {
@@ -123,6 +122,7 @@ public class RewardController extends HttpServlet{
 					
 					e.printStackTrace();
 				}
+
 					
 				}else if(command.equals("/index.fu")) {
 				
