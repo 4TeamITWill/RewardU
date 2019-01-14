@@ -58,8 +58,8 @@ public class InsertSaveSellerAction implements Action{
 			PrintWriter out = response.getWriter();
 		
 			out.println("<script>");
-			out.println("alert('저장되었습니다.');");
-			out.println("location.href='seller2.fu'");
+			out.println("alert('저장되었습니다. 다음페이지로 이동합니다.');");
+			out.println("location.href='board2.fu'");
 			out.println("</script>");
 			
 			//request.setAttribute("page", "board");

@@ -13,7 +13,7 @@ public class updateSaveRewardAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("RewardingSaveUpdateAction execute()메소드 호출 됨");
+		System.out.println("UpdateSaveRewardAction execute()메소드 호출 됨");
 		request.setCharacterEncoding("UTF-8");
 		
 		RewardBean all = new RewardBean();
@@ -25,6 +25,9 @@ public class updateSaveRewardAction implements Action {
 		all.setPd_opcontent2(request.getParameter("pd_opcontent2"));
 		all.setPd_opprice3(request.getParameter("pd_opprice3"));
 		all.setPd_opcontent3(request.getParameter("pd_opcontent3"));
+		all.setPd_opsubject1(request.getParameter("pd_opsubject1"));
+		all.setPd_opsubject2(request.getParameter("pd_opsubject2"));
+		all.setPd_opsubject3(request.getParameter("pd_opsubject3"));
 
 				//저장 성공여부를 담을 변수 선언
 				boolean result = false;

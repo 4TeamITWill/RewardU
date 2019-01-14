@@ -56,6 +56,7 @@ public class InsertSaveBoardAction implements Action {
 		
 		//방금 저장한 값 넘기기
 		int save = rdao.getMax_no(user_id);
+		session.setAttribute("c", all.getPd_category());
 		session.setAttribute("save", save);
 		session.setAttribute("board", all);
 
@@ -63,8 +64,8 @@ public class InsertSaveBoardAction implements Action {
 		PrintWriter out = response.getWriter();
 	
 		out.println("<script>");
-		out.println("alert('저장되었습니다.');");
-		out.println("location.href='board2.fu'");
+		out.println("alert('저장되었습니다. 다음페이지로 이동합니다.');");
+		out.println("location.href='reward2.fu'");
 		out.println("</script>");
 		
 		//저장에 성공했을 경우

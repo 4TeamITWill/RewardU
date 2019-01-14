@@ -8,8 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveBoard;
-import reward.db.SaveSeller;
+
 
 public class RewardingWriteAcrion2 implements Action{
 	
@@ -31,6 +30,10 @@ public class RewardingWriteAcrion2 implements Action{
 		all.setPd_opcontent2(request.getParameter("pd_opcontent2"));
 		all.setPd_opprice3(request.getParameter("pd_opprice3"));
 		all.setPd_opcontent3(request.getParameter("pd_opcontent3"));
+		
+		all.setPd_opsubject1(request.getParameter("pd_opsubject1"));
+		all.setPd_opsubject2(request.getParameter("pd_opsubject2"));
+		all.setPd_opsubject3(request.getParameter("pd_opsubject3"));
 		//저장하기를 누르지 않고 바로 신정하기를 눌러도 작성된 리워드가 저장될수 있도록 작업.
 		rdao.updateSaveReward(all, pd_no);
 		

@@ -326,7 +326,7 @@ public class RewardController extends HttpServlet{
 				}
 				
 			}
-		//다음으로 버튼 누르면 프로젝트정보 작성 페이지로 넘어감	
+		//저장버튼 누르면 프로젝트정보 작성 페이지로 넘어감	
 			else if(command.equals("/board2.fu")) {
 				
 				action = new TabBoardAction2();
