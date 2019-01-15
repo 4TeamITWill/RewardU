@@ -12,6 +12,7 @@
 <link href="css/etc.css" rel="stylesheet"/>
 <link href="css/aboutReward.css" rel="stylesheet"/>
 <link href="css/fontello-embedded.css" rel="stylesheet" />
+<link href="css/fontello-embedded1.css" rel="stylesheet"/>
 <link href="css/pay.css" rel="stylesheet" />
 <link href="css/content.css" rel="stylesheet" />
 
