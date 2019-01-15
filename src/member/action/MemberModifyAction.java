@@ -27,7 +27,7 @@ public class MemberModifyAction implements Action {
 		HttpSession session = request.getSession();
 		
 		String user_id = (String)session.getAttribute("id");
-		String user_name = (String)session.getAttribute("name");
+		String user_name = request.getParameter("user_name");
 		
 		MemberBean mbean = new MemberBean();
 
