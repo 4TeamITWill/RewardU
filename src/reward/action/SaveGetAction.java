@@ -22,7 +22,8 @@ public class SaveGetAction implements Action{
 
 		//하나의 저장게시물 정보를 전부~~ 검색해오는 메소드를 호출
 		RewardBean all = rdao.getSaveAll(pd_no);
-			
+		String end = all.getPd_end().substring(0, 10);
+		
 		HttpSession session =  request.getSession();
 		
 		session.setAttribute("c", all.getPd_category());
@@ -30,6 +31,7 @@ public class SaveGetAction implements Action{
 		session.setAttribute("seller", all);
 		session.setAttribute("reward", all);
 		session.setAttribute("save", pd_no);
+		session.setAttribute("end", end);
 		
 		
 		ActionForward forward = new ActionForward();
