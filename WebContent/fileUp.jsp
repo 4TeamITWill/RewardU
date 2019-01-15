@@ -12,7 +12,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript">
 	
-	//첨부하기 버튼 눌렀을때 파일이름들을 양식페이지로 가져간다..
+	//닫기 버튼 눌렀을때 파일이름들을 양식페이지로 가져간다..
 	function result(){
 		opener.document.form.pd_file.value = document.fileForm.oriFile.value;
 		opener.document.getElementById('pd_realFile').value = document.getElementById('sysFile').value;
@@ -55,6 +55,7 @@
     	   reader.onload = function(e) {
     		$(".thum").html("이미지 미리보기");
     	    $('#img').attr('src', e.target.result);
+    	    $(".miri").html(filename);
     	   }
     	  }
     	 }
@@ -62,15 +63,20 @@
   </script>
 <style type="text/css">
 
-.box{
+.filesub{
 	background-color: #E0ADD9;
 	width: auto;
 	height: 25px;
-	padding: 5px 10px;
-	}
-.text{
+	padding: 10px 15px;
 	font-weight: bold;
 	}
+.filebox{
+	padding: 5px 10px;}	
+
+.fileimg{
+	pading
+}	
+	
 </style>				  
 	
 </head>
@@ -86,26 +92,32 @@
 		String oriFile = (String)request.getAttribute("oriFile");
 		String sysFile = (String)request.getAttribute("sysFile");
 		request.setAttribute("img", sysFile);
-		
-		
+
 		
 		if(oriFile == null) oriFile="";
 		%>
 					
-					<div class="box">
-						<div class="text">사진첨부</div>
+					<div class="filesub">
+						<div>대표이미지 첨부하기</div>
 					</div>
-					<input type="text" name="oriFile" value="<%=oriFile%>" readonly="readonly">	
-					<input type="hidden" name="sysFile" id="sysFile" value="<%=sysFile%>">
-					<input type="file" name="upFile" id="file" style="color: #FFFFFF; border: 0;" >
-					<div><font size="1">이미지 파일만 등록할 수 있습니다. (JPG, GIF, PNG)</font></div>
-					<br/><br/>			
-					<!-- 미리보기2 -->
-					<div class="thum"></div>
-					<img id="img"><br><br>
+					<div class="filebox">
+						<input type="text" name="oriFile" value="<%=oriFile%>" readonly="readonly">	
+						<input type="hidden" name="sysFile" id="sysFile" value="<%=sysFile%>">
+						<input type="file" name="upFile" id="file" style="color: #FFFFFF; border: 0;"><br/>
+						<div style="margin-top: 5px;"><font size="1">이미지 파일만 등록할 수 있습니다. (JPG, GIF, PNG)</font></div>
+						<br/>		
+						<!-- 미리보기 -->
+						<span class="thum" style="font-size: medium;"></span>&nbsp;<span style="font-size: small; color: #999999" class="miri"></span>
+						<div style="width : 200px; height :130px; overflow : hidden; border: 0px;" >
+							<img id="img" width="200px" style="overflow: hidden;">
+						</div>
+					</div>
+					<br><br>
 					<hr>
 					<!-- 사실은 파일첨부 -->
-					<input type="submit" value="등록하기"><br/>
+					<center><input type="submit" value="등록하기"></center>
+					
+					
 	
 <%-- 					<%
 					if(sysFile!=null){
@@ -120,10 +132,13 @@
 			
 				<!-- 첨부하면 썸네일이미지 뿌려주기... -->
 	</form>
+	
+			
+			<center><input type="button" value="   닫 기   " onclick="result();"></center>
+			<center><small>*등록하기 버튼을 누른 후 닫기 버튼을 꼭 눌러주세요.</small></center>
 			
 			<!-- 사실은 창닫기 -->
-			<input type="button" value="   닫 기   " onclick="result();">
-			<small>등록하기 버튼을 누른 후 닫기 버튼을 꼭 눌러주세요.</small>
+			
 
 </body>
 </html>

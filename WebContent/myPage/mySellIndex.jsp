@@ -60,6 +60,16 @@
 			}
 		});			
 	}
+	
+	function pageImsi(currentPage) {
+		$.ajax({
+			url : "RewardingSaveList.fu",
+			data : {"currentPage1" : currentPage},
+			success : function(data){
+				document.getElementById("savedList_main").innerHTML = data;
+			}
+		});
+	}
 		
 
 </script>	

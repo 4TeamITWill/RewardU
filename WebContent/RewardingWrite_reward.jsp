@@ -156,12 +156,12 @@ $("#reward").click(function () {
 		
 		if(save != 0){
 	%>			 
-			<center><input type="submit" id="update" value="저장하기(update)"/></center>
-			<center><input type="submit" id="reward" value="신청하기(reward)"/></center>
+			<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)"/></center>
+			<center style="min-height : 20px;"><input type="submit" id="reward" value="신청하기(reward)"/></center>
 	<%		
 		}else{
 	%>		
-			<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
+			<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)"/></center>
 	<%	 
 	}
 	%>	
