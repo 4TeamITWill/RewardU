@@ -812,7 +812,7 @@ public class MyDAO {
 			result = pstmt.executeUpdate();
 			
 			if(result > 0){
-				sql = "update board set pd_curmoney = pd_curmoney-? where pd_no = ?";
+				sql = "update board set pd_curmoney = pd_curmoney-?, pd_participant = pd_participant-1 where pd_no = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, inv_price);
 				pstmt.setInt(2, pd_no);

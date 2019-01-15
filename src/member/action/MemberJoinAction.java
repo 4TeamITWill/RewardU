@@ -38,7 +38,7 @@ public class MemberJoinAction implements Action{
 		
 		result = mdao.insertMember(mbean);
 		
-		//request¿µ¿ª¿¡  mbean°´Ã¼¸¦ ´ã´Â´Ù
+		//requestï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  mbeanï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½Â´ï¿½
 		request.setAttribute("mbean", mbean);
 		
 		if(result == false){
