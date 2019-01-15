@@ -29,15 +29,16 @@ body{ background: linear-gradient(90deg, #b44af7, #82caff);
  .wrap{align: center;
  		text-align: center;
  }
- .inp-field, .id{
+ .auth-field, .id{
  
  	width: 350px;
-    height: 49px;
-    border: 0 none;
+    height: 40px;
+    border: 3px solid #aaa;
+    border-radius: 30px;
     color: #999;
     font-size: 14px;
     text-indent: 12px;
-    line-height: 49px;
+    line-height: 40px;
  }
  
  .button_type2{
@@ -48,11 +49,19 @@ body{ background: linear-gradient(90deg, #b44af7, #82caff);
 	padding:14px;
 }
  
-
+.auth_desc {
+	color: #aaa;
+	font-size: 11px;
+} 
 	
 </style>
+<%--  <% 
+MemberDAO mdao = new MemberDAO();
+String authNum = mdao.randomNum();
+%>
+ --%>
 
-<%
+ <%-- <%
 	request.setCharacterEncoding("utf-8");
 	String to = request.getParameter("to");
 	
@@ -63,25 +72,28 @@ body{ background: linear-gradient(90deg, #b44af7, #82caff);
 	int check = smtp.sendEmail(to, authNum);
 	
 	if(check == 1) {
-%>
+%> 
 <script>
 	alert("인증 메일이 발송되었습니다. 인증번호 6자리를 입력해주세요.");
+	return 3;
 </script>
 <%
 } else {
 %>
 <script>
 	alert("인증 메일 발송 실패! 메일 주소를 다시 확인해주세요.");
-	window.close();
+	
+	$('#myModal').hide();
+	
 </script>
 <%
 }
 %>
-
+ --%>
 <script type="text/javascript">
 	function check() {
 		var code = document.getElementById("code").value;
-		var authNum = <%=authNum %>;
+		var authNum = ${authNum};
 		
 		if(!code) {
 			alert("인증번호를 입력하세요.");
@@ -90,11 +102,22 @@ body{ background: linear-gradient(90deg, #b44af7, #82caff);
 		
 		if(authNum == code) {
 			alert("인증이 확인되었습니다.");
-			opener.emailCheck.value = "인증완료";
-			opener.idCheck.value = "1";
-			opener.email_Check = true;
-			opener.emailSuccess.value = authNum;			
-			window.close();
+			$('#myModal').hide();
+			emailCheck.value = "인증완료";
+			idCheck.value = "1";
+						
+			
+			
+			 if(idCheck.value == '1'){
+				 	user_id.readOnly = true;
+				 	//opener.user_id.style.color = "red";
+				 	user_id.style.fontStyle = "italic";
+				    //opener.user_id.style.display = "none";	
+				 }
+			
+			email_Check = true;
+			emailSuccess.value = authNum;			
+			//window.close();
 		} else {
 			alert("인증번호가 틀립니다. 다시 입력해 주세요.");
 			return false;
@@ -105,13 +128,14 @@ body{ background: linear-gradient(90deg, #b44af7, #82caff);
 
 </head>
 <body>
-	<form id="reg_form" onsubmit="return check();">
+	<form id="reg_form" method="post" onsubmit="return check();">
 	      <div class="form-group">
-              <label for="code"><h3  align="center" style="color:white">이메일 인증번호</h3></label>
+              <label for="code"><h3 align="center">이메일 인증번호</h3></label>
+              <div class="auth_desc">*입력하신 이메일으로 전송된 인증번호 6자리를 입력해주세요.</div>
                 <div class="input-group">
-                	<input type="text" class="inp-field" id="code" name="code" placeholder="인증번호 6자리 입력">
+                	<input type="text" class="auth-field" id="code" name="code"  placeholder="인증번호 6자리 입력">
                 	<span >
-                  		<button type="submit" class="button_type2">확인</button>
+                  		<button type="button" class="button_type2" onclick="check()">확인</button>
                 	</span>
               </div>
           </div>

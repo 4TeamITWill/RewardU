@@ -152,6 +152,8 @@ input[id="policy_chk"]:checked + label:before {
         margin-bottom: 10px;
 }
 
+/* for Join.jsp */
+
 #join_content fieldset .inp-field {
         width: 350px;
         height: 38px;
@@ -171,6 +173,226 @@ input[id="policy_chk"]:checked + label:before {
         text-indent: none;
         line-height: 38px;
 }
+
+#join_content {
+	border: 1px solid #aaa;
+	background-color: #fff;
+	width: 400px;
+	font-size: 14px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#join_content #form_font_left {
+ text-align: left;
+ padding-left: 11px;
+}
+
+
+#join_content #form_font_left h2{
+ text-align: left;
+ padding-left: 14px;
+}
+
+#join_content #form_font_left_s{
+ text-align: left;
+ padding-left: 14px;
+ font-size: 8px !important;
+ margin-bottom: 10px;
+ color: #b44af7;
+}
+
+#join_content #form_font_left_al{
+ text-align: left;
+ padding-left: 14px;
+ font-size: 8px !important;
+ margin-bottom: 10px;
+ color: red;
+}
+
+#idCheckMessage, #pwCheckMessage {
+ text-align: right !important;
+ display: inline-block;
+ position: relative;
+ background-color: #ffeeb7; /* #01894c; */
+ font-size: 8px !important;
+ visibility: hidden;
+ padding: 0 2px;
+ border: 1px solid #434d5b;
+}
+
+#idCheckMessage:after, #pwCheckMessage:after{
+ 	content: '';
+    position: absolute;
+    border-top: 10px solid #ffeeb7;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    bottom: -9px;
+    left: 5px;
+}
+
+#idCheckMessage:before, #pwCheckMessage:before {
+	content: '';
+    position: absolute;
+    border-top: 10px solid #434d5b;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    bottom: -11px;
+    left: 5px;
+}
+
+.wrap_loading {
+	height: 100%;
+	left: 0px;
+	position: fixed;
+	_postion: absolute;
+	top: 0px;
+	width: 100%;
+	width: 100%; /* Full width */
+ 	height: 100%; /* Full height */
+  	overflow: auto; /* Enable scroll if needed */
+  	background-color: rgb(0,0,0); /* Fallback color */
+  	background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+#loadingBar img{
+	postion:absolute;
+	top: 50%; left: 50%;
+	width: 210px;
+	margin-top: 350px;
+	margin-left: none;
+	z-index: 10;
+/*  background-color: white;
+	border-radius: 0.4em;
+	border: 2px dotted #aaa; */
+	
+}
+
+/* member-mypage.jsp */
+#mypage_content {
+	width: 80%;
+	min-width: 750px;
+	border: 1px solid #fff;
+	font-size: 14px;
+}
+
+.mypage_infoCard {
+	text-align: left;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	width: 178px;
+	float: left;
+	padding: 25px 15px 15px 15px;
+}
+.mypage_infoCard #infoCardName {
+	font-weight: 600;
+	font-size: 20px;
+	color: #434d5b;
+}
+.mypage_infoCard #infoCardId{
+	font-size: 13px;
+	color: #aaa;
+	margin-bottom: 15px;
+}
+
+.mypage_infoCard #infoCard_deleteAccount {
+	margin-top: 20px;
+	text-align: right;
+	font-size: 11px;
+}
+
+.mypage_modify_section{
+	margin-right: 15%;
+	border: 1px solid #ccc;
+	width: 400px;
+	display: inline-block;
+	box-sizing: border-box;
+
+	background-color: #fff;
+}
+
+#mypage_content #form_font_left {
+ text-align: left;
+ padding-left: 11px;
+}
+
+.mypage_modify_section textarea {
+	   text-align: left;
+	   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+       width: 350px;
+       height: 150px;
+       font-size: 14px;
+       line-height: 14px;
+       white-space: pre-line;
+       text-indent: none;
+       overflow: hidden;
+}
+.mypage_modify_section textarea::placeholder {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #aaa;
+  font-weight: bold;
+  text-align: left;
+}
+
+.mypage_profile_photo {
+	border: 1px solid teal;
+	border-radius: 50%;
+	width: 200px; height: 200px;
+	margin-bottom: 10px;
+}
+
+.mypage_profile_photo  img{
+	border-radius: 50%;
+	width: 100%; height: 100%;
+/* 	width: 200px; height: 200px; */
+	
+}
+
+.profile_photo_upload label {
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid teal;
+	padding: 6px 9px;
+	color: #fff;
+	font-size:13px;
+	line-height: 13px;
+	font-weight: none;
+	background-color: teal;
+
+}
+
+.profile_photo_upload input[type="file"]{
+	position: absolute;
+	width: 1px; height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	border: 0;
+}
+
+/* password Modifiy- modifypw.jsp*/
+
+#pwModify_form {
+	border: 1px solid #aaa; 
+	background-color: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	width: 430px;
+	}
+	
+#pwModify_form	#pwModify_header{
+	font-size: 25px;
+	font-weight: none;
+	text-indent: 10px;
+	margin: 27px 0 20px 30px;
+	text-align: left;
+}
+
+#pwModify_form #form_font_left {
+ text-align: left;
+ font-size: 10px;
+ padding-left: 30px;
+ text-indent: 10px;
+}
+
 
 /* News Area  -List*/
 

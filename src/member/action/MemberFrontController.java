@@ -174,6 +174,18 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+		}else if (command.equals("/MemberJoinEmailAction.me")) {
+			action = new MemberJoinEmailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if (command.equals("/MemberJoinEmail.me")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/authMail.jsp");
 		}
 		
 		

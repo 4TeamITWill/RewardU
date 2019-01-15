@@ -25,7 +25,7 @@ public class UserRegisterCheck extends HttpServlet {
 		String user_id = request.getParameter("user_id");
 
 		/*
-		 check = 0  -> duplicate id
+		 check = 0  -> duplicated id
 		 check = 1  -> join available 
 		  */
 		PrintWriter out = response.getWriter();
