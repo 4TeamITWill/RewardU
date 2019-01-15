@@ -10,27 +10,19 @@
 <link href="css/etc.css" rel="stylesheet">
 <style type="text/css">
 
-.wrap{background-color: #ddd; 
+.confirm_wrap {background-color: #ddd; 
 	padding: 100px 200px;
 	background-image: url("img/leaves.jpg"); 
-	background-size: 100% 1200px;
+	background-size: 100% 1500px;
 	background-attachment: scroll;
 	background-repeat: no-repeat;}
 
-
-
- 
-#join_content {
-	border: 1px solid #aaa;
-	background-color: #fff;
-	width: 400px;
-	font-size: 14px;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-#join_content #form_font_left {
- text-align: left;
- padding-left: 11px;
+#joinConfirm_header{
+	font-size: 25px;
+	font-weight: none;
+	text-indent: 10px;
+	margin: 27px 0 20px 30px;
+	text-align: left;
 }
 
 </style>
@@ -42,9 +34,8 @@
 
 <div class="container" align="center">
 	<div id="join_content" >
-		<div id="header" align="center">
-	
-		<h2>${requestScope.mbean.user_name }님 가입을 축하합니다.</h2>
+		<div id="joinConfirm_header" >
+		${requestScope.mbean.user_name }님 가입을 축하합니다.
 	</div>
 		<form action="./Main.me" id="join" method="post">
 		
@@ -79,6 +70,6 @@
 </div><!-- container -->
 
 </div><!-- wrap -->
-
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

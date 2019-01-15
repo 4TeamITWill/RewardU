@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>리듀 | Mypage</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="css/main3.css" rel="stylesheet">
 <link href="css/etc.css" rel="stylesheet">
 
@@ -35,7 +36,7 @@ jQuery(document).ready(function(){
 
 	function modify(){
 		//window.confirm("수정하시겠습니까?");
-		 $('#checkMessage').html('수정하시겠습니까?');
+		$('#checkMessage').html('수정하시겠습니까?');
 	 	$('#myModal').show();
 	 	
 	 	
@@ -47,6 +48,49 @@ jQuery(document).ready(function(){
 		document.getElementById("m_form").submit();
 	}
 
+	function photoSubmit(){
+		//var user_photo = $('#user_photo').val();
+		//var user_id = $("#user_id").val();
+		 var form = $('#photo_form')[0];
+		
+		var formData = new FormData(form);
+
+		formData.append("user_id", $("#user_id").val());
+		formData.append("user_photo", $("input[name=user_photo]")[0].files[0]);
+	
+	
+		/* $(document).ajaxStart(function(){
+				$('.wrap_loading').css("visibility", "visible");
+				$('.wrap_loading').show();
+			});
+		 */
+		 $.ajax({
+			url: './MemberAddPhotoAction.me',
+			enctype: 'multipart/form-data',
+			data: formData,
+			processData: false,
+			contentType: false, 
+			type: 'POST',
+			success: function(data){
+				alert("업로드 중 방가방가");
+				
+				
+			},beforeSend:function(){
+		        $('.wrap_loading').css("visibility", "visible");
+		    }
+		    ,complete:function(){
+		    	alert("ㅂㅂ");
+		       $('.wrap_loading').css("visibility", "hidden");
+
+		    },error:function(){
+		    	alert("넌 이것도 못하니?");
+		    } 
+		}); 
+	 	 
+		 /*  document.getElementsById("photo_form").action = "./MemberAddPhotoAction.me";
+		document.getElementById("photo_form").submit();  */  
+	}
+	
 	
 	function close_pop(flag) {
         $('#myModal').hide();
@@ -74,17 +118,18 @@ jQuery(document).ready(function(){
 		</div>
 		
 		<div class="mypage_modify_section">
-			<form id="m_form" method="post" enctype="multipart/form-data">
+		
+			<form id="photo_form" name="photo_form" method="post" enctype="multipart/form-data">
 				<div class="margin3"></div>
 			<!-- profile photo setting-->
 					<div class="mypage_profile_photo">
-					<c:set var="photo" value="${mbean.user_photo }"></c:set>	
+					<c:set var="photo" value="${sessionScope.user_photo }"></c:set>	
 						<c:choose>
 							<c:when test="${empty photo }">
 								<img src="./img/usernull.png">
 							</c:when>
 							<c:when test="${photo ne null }">
-								<img src="./upload/${mbean.user_photo }">
+								<img src="./upload/${sessionScope.user_photo }">
 							</c:when>
 						<%-- 	<c:when test="">
 								<img src="../upload/">
@@ -92,17 +137,19 @@ jQuery(document).ready(function(){
 						</c:choose>
 					</div><!-- mypage_profile_photo  -->
 					<div class="profile_photo_upload">
-						<label for="user_photo">프로필 사진 수정</label>
-						<input type="file" id="user_photo" name="user_photo" value="${mbean.user_photo }"><br>
+						<label for="user_photo" onclick="photoSubmit();">프로필 사진 수정</label>
+						<input type="file" id="user_photo" name="user_photo" value="${sessionScope.user_photo }" ><input type="button" value="삭제"><br>
 						<div class="margin3"></div>
 					</div>
-				<fieldset>
+			</form>		
+			<form id="m_form" method="post">
+				<fieldset> 
 				<!-- id -->
 						<div id="form_font_left" align="left">내 아이디 </div>
-						<input type="text" name="user_id" value="${sessionScope.id }" class="inp-field" readonly><br>
+						<input type="text" id="user_id" name="user_id" value="${sessionScope.id }" class="inp-field" readonly><br>
 				<!-- name -->
 						<div id="form_font_left" align="left">사용자 이름 </div>
-						<input type="text" name="user_name" value="${sessionScope.name } " class="inp-field"><br>
+						<input type="text" name="user_name" value="${mbean.user_name } " class="inp-field"><br>
 				<!-- date of Birth -->
 						<div id="form_font_left" align="left">생년월일 </div>
 						<input type="text" name="birthyyyy" value="${mbean.birthyyyy }" class="inp-field w120" readonly>
@@ -132,6 +179,13 @@ jQuery(document).ready(function(){
 
 </div><!-- container -->
 
+<!-- Loading Bar -->
+	<div class="wrap_loading" style="visibility:hidden;">
+		<div id="loadingBar" >
+			<img src="img/redu_loadingBar.gif" >
+		</div>
+	</div>
+	
 <!-- The Modal -->
     <div id="myModal" class="modal">
  

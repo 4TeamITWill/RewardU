@@ -139,7 +139,6 @@ public class MemberFrontController extends HttpServlet{
 			}
 			
 	//Member delete			
-
 		}else if (command.equals("/MemberDelete.me")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -174,6 +173,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+	//Async SMTP		
 		}else if (command.equals("/MemberJoinEmailAction.me")) {
 			action = new MemberJoinEmailAction();
 			try {
@@ -186,6 +186,23 @@ public class MemberFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./member/authMail.jsp");
+			
+	//Async Modifying userPhoto		
+		}else if (command.equals("/MemberAddPhotoAction.me")) {
+			action = new MemberAddPhotoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if (command.equals("/MemberPhotoDeleteAction.me")) {
+			action = new MemberPhotoDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
