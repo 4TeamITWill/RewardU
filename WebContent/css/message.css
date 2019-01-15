@@ -2,7 +2,7 @@
 
 .messageBox_sec,.messageContent_sec,.messageSend_sec,.messageAnswer_sec{ 
 	position: relative;
-	height: 600px; text-align: center;
+	min-height: 600px; text-align: center;
 }
 
 /* 메시지에서 버튼(보내기,삭제,보관 등)이 공유하는 CSS */
@@ -71,12 +71,14 @@
 	width: 500px; height: auto; text-align: center;
 	left: 37%; top: 15%;
 } 
-.content_func{width: 15%;}
-. class="content_result"{width: auto;}
-.content_table td{
-	border-bottom: 1px solid black;
-	text-align: center;
+
+.msg_top{border: 2px groove #d5d5d5;
+	text-align: left;
 }
+.msg_bottom{ border-bottom: 2px groove #d5d5d5;
+	text-align: left;
+}
+
 .content_btn{
 	float: right;
 	text-align: center;

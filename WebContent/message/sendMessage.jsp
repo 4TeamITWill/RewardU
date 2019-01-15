@@ -1,6 +1,7 @@
 <%@page import="message.db.MessageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +34,9 @@ function selectID(i) { //onclick="selectID(번호); 는 userList.jsp에 있다."
 </head>
 <body>
 <!-- 세션id값 전달받기  -->
-<% String id=(String)session.getAttribute("id"); %>
+<% String id=(String)session.getAttribute("id"); 
+	String divide = request.getParameter("divide");
+%>
 
 <section class="messageSend_sec"><!-- TOP과 FOOTER 사이를 차지하는 공간. -->
 
@@ -53,6 +56,22 @@ function selectID(i) { //onclick="selectID(번호); 는 userList.jsp에 있다."
 	<br/>
 	<input type="submit" value="보내기" class="msg_btn">
 	<input type="reset" value="취소" class="msg_btn">
+	
+<%
+	if(divide.equals("receive")){
+%>
+	<input type="button" value="돌아가기" class="msg_btn" onclick="location.href='./MemberMessage_ReceiveList.message'">
+<%
+	} else if(divide.equals("send")){
+%>
+	<input type="button" value="돌아가기" class="msg_btn" onclick="location.href='./MemberMessage_SendList.message'">
+<%
+	} else if(divide.equals("store")){
+%>
+	<input type="button" value="돌아가기" class="msg_btn" onclick="location.href='./MemberMessage_StoreList.message'">
+<%
+	}
+%>
 </fieldset>
 </form>
 </div><!-- class="send_div" -->

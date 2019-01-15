@@ -173,27 +173,6 @@ star-input>.input.focus {
 
 </head>
 <body>
-<%
-	String result = request.getParameter("result");
-	System.out.println(result);
-	if(result == null){
-		
-	}else if(result.equals("1")){
-%>
-		<script type="text/javascript">
-			alert("점수가 등록되었습니다.")
-		</script>
-<%
-	} else{
-%>
-		<script type="text/javascript">
-			alert("이미 점수가 등록되어있습니다.")
-		</script>
-<%		
-	}
-%>
-
-
 	<!-- 좋아요 기능, d-day, 금액   -->
 <%
 	String id = (String)session.getAttribute("id"); //접속한 사용자 id받기 

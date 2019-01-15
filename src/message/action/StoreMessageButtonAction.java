@@ -1,5 +1,7 @@
 package message.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,16 +24,17 @@ public class StoreMessageButtonAction implements Action{
 		//보관할 번호와 구분값을 넘겨 해당 메시지 보관함으로 이동
 		mdao.storeMessageButton(no, id, divide);
 		
-		//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
-		ActionForward forward=new ActionForward();
-		//sendRedirect() <-이방식은 이동할 페이지 주소 경로 노출 함.
-		forward.setRedirect(false);
-		//이동할 페이지 주소 저장, 구분값에 따라 이동하는 페이지 달리함
-		if(divide.equals("receive")){forward.setPath("./MemberMessage_ReceiveList.message");}
-		else if(divide.equals("send")){forward.setPath("./MemberMessage_SendList.message");}
-		else if(divide.equals("store")){forward.setPath("./MemberMessage_StoreList.message");}
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		
-		return forward;
+		out.println("<script>");
+		out.println("alert('메시지가 보관함으로 이동되었습니다.')");
+		if(divide.equals("receive")){out.println("location.href='./MemberMessage_ReceiveList.message'");}
+		else if(divide.equals("send")){out.println("location.href='./MemberMessage_SendList.message'");}
+		else if(divide.equals("store")){out.println("location.href='./MemberMessage_StoreList.message'");}
+		out.println("</script>");
+		
+		return null;
 	}
 
 }

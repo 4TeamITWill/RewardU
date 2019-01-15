@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="message.db.MessageDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -32,24 +33,21 @@
 	//글 내용이 존재 한다면 내용 엔터처리해서 얻기
 	if(mdto.getContent() != null){
 		Content = mdto.getContent().replace("\r\n", "<br/>");}
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd [HH:mm]");
 %>
 <section class="messageContent_sec"><!-- TOP과 FOOTER 사이를 차지하는 공간. -->
 <div class="content_div">
 <!-- 메시지 내용을 보여줄 테이블 -->
-	<table width="500" align="center" class="content_table">
-		<tr>
-			<td class="content_func">보낸사람</td>
-			<td class="content_result"><%=mdto.getToID() %></td>
-		</tr>
-		<tr>
-			<td class="content_func">제목</td>
-			<td class="content_result"><%=mdto.getSubject() %></td>
-		</tr>
-		<tr>
-			<td class="content_func">내용</td>
-			<td class="content_result" style="text-align: left;"><%=Content %></td>
-		</tr>
-	</table>
+<div class="msg_top">
+	보낸사람  <%=mdto.getToID() %> <br/>
+	받은시간  <%=sdf.format(mdto.getReg_date())%>
+</div>
+<br/>
+<div class="msg_bottom">
+	<%=Content%>
+</div>
+<br/>
 	
 	<div class="content_btn">
 		<!-- 번호와 아이디를 넘겨주어 해당 메시지를 삭제 할 수 있도록함 -->

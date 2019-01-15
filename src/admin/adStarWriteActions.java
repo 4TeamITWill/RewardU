@@ -23,8 +23,6 @@ public class adStarWriteActions implements adAction {
 		int pd_no = Integer.parseInt(request.getParameter("pd_no"));
 		double pd_rate = Double.parseDouble(request.getParameter("pd_rate"));
 	
-		
-		
 		//평점 정보 DB작업 rate테이블
 		RateBean rbean = new RateBean();
 		RateDAO rdao = new RateDAO();
@@ -34,19 +32,25 @@ public class adStarWriteActions implements adAction {
 		int result = 0;
 		result = rdao.insertRate(rbean);
 	
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		if(result==1){
 			BoardDAO bdao = new BoardDAO();
 			bdao.rate(pd_rate , pd_no);
 			bdao.ratecount(pd_no);
+			out.println("<script>");
+			out.println("alert('점수가 등록되었습니다.')");
+			out.println("location.href='./Content.ad?pd_no="+pd_no+"';");
+			out.println("</script>");
+		} else{
+			out.println("<script>");
+			out.println("alert('이미 점수가 등록되어있습니다.')");
+			out.println("history.back();");
+			out.println("</script>");
 		}
-		
-		adActionForward forward = new adActionForward();
-		
-		forward.setRedirect(true);
-		
-		forward.setPath("./Content.ad?pd_no="+pd_no+"&result="+result);
 
-		return forward;
+		return null;
 	}
 
 }

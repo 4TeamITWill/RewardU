@@ -20,7 +20,7 @@ public class ParticipateDAO {
 		return con;
 	}
 	
-	public ArrayList<ParticipateBean> getParticipateList(int pd_no){
+	public ArrayList<ParticipateBean> getParticipateList(int pd_no, int startRow, int pageSize){
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;
@@ -30,9 +30,11 @@ public class ParticipateDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from participate where pd_no=?";
+			sql = "select * from participate where pd_no=? order by no desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pd_no);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, pageSize);
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -59,6 +61,36 @@ public class ParticipateDAO {
 		
 	}//getParticipateList끝
 	
+	public int getCountSupporters(int pd_no){
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count = 0;
+		
+		try {
+			con = getConnection();
+			sql = "select count(*) from participate where pd_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}//getCountSupporters 끝
 	
 	
 }//ParticipateDAO 끝

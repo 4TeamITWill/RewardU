@@ -45,7 +45,7 @@ request.setCharacterEncoding("UTF-8");
 	<!-- 제목 -->
 	<h2>${bean.pd_subject}</h2>
     
-    <c:if test="${bean.pd_opcontent1 ne ''}">
+    <c:if test="${bean.pd_opcontent1 ne '' and bean.pd_opcontent1 ne null}">
     	<h3><input type="checkbox" name="option_check" class="reward-check"  id="pd_opcontent1">옵션1 : ${bean.pd_opcontent1}</h3>
     </c:if>
    	 <div class="option1_div">
@@ -58,7 +58,7 @@ request.setCharacterEncoding("UTF-8");
      <br/><br/>
      
      
-    <c:if test="${bean.pd_opcontent2 ne ''}">
+    <c:if test="${bean.pd_opcontent2 ne '' and bean.pd_opcontent2 ne null}">
 		<h3><input type="checkbox" name="option_check" class="reward-check"  id="pd_opcontent2">옵션2 : ${bean.pd_opcontent2}</h3>
 	</c:if>
 	<div class="option2_div">
@@ -70,7 +70,7 @@ request.setCharacterEncoding("UTF-8");
 	</div>
 	<br/><br/>
            
-    <c:if test="${bean.pd_opcontent3 ne ''}">         	
+    <c:if test="${bean.pd_opcontent3 ne '' and bean.pd_opcontent3 ne null}">         	
 		<h3><input type="checkbox" name="option_check" class="reward-check"  id="pd_opcontent3">옵션3 : ${bean.pd_opcontent3}</h3>
 	</c:if>
 	<div class="option3_div">
