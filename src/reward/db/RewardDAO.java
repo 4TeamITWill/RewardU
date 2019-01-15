@@ -203,13 +203,13 @@ public class RewardDAO {
 	}*/
 	
 	//저장한 리워드 리스트 select
-	public Vector<RewardBean> getSaveList(String user_id){
+	public Vector<RewardBean> getSaveList(String user_id, int startRow, int pageSize){
 	
 
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
-		ResultSet rs;
+		ResultSet rs = null;
 		
 		Vector<RewardBean> v = new Vector<RewardBean>();
 		
@@ -221,18 +221,20 @@ public class RewardDAO {
 		//db연결
 		con= getConnection();
 		
-		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveall where user_id=? order by pd_no desc";
+		sql = "select pd_no, user_id, pd_subject, pd_realFile from saveall where user_id=? order by pd_no desc limit ?,?";
 				
 		pstmt = con.prepareStatement(sql);
 		
 		pstmt.setString(1, user_id); //user_id 가져오기..
+		pstmt.setInt(2, startRow-1); //페이징
+		pstmt.setInt(3, pageSize);	//페이징
 	
 		rs = pstmt.executeQuery();
 		
 		//리스트는 전부 널 허용인 RewardBean에서  이미지, 제목, 상세설명만 꺼내오기때문에
 		while (rs.next()){ //
 			bean = new RewardBean();
-			bean.setPd_no(rs.getInt(1));
+			bean.setPd_no(rs.getInt("pd_no"));
 			bean.setUser_id(rs.getString("user_id"));
 			bean.setPd_subject(rs.getString("pd_subject"));
 			bean.setPd_realFile(rs.getString("pd_realFile"));
@@ -241,11 +243,17 @@ public class RewardDAO {
 			v.add(bean); //백터에 담기
 
 		} //while문 끝
-		//자원해제
-		con.close();
 		
 	} catch (Exception e) {
 		e.printStackTrace();
+	}finally {
+		try {
+			if(pstmt != null) pstmt.close();
+			if(con != null) con.close();
+			if(rs != null) rs.close();				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	return v; //saveBoard객체들을 저장하고 있는 백터 자체를 리턴

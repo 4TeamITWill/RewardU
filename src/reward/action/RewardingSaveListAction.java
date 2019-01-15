@@ -40,7 +40,7 @@ public class RewardingSaveListAction implements Action {
 			if(endPage > pageCount) endPage = pageCount;
 		
 		
-		Vector<RewardBean> vector = rdao.getSaveList(user_id);
+		Vector<RewardBean> vector = rdao.getSaveList(user_id, startRow, pageSize);
 		request.setAttribute("v", vector);
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);

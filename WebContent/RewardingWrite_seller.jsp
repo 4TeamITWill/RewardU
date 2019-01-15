@@ -82,26 +82,26 @@
 %>
 				<tr height="40">	
 					<td width="20%" style="font-weight : bold;">회사이름</td>
-					<td width="80%"><input type="text" name="company" style="width : 60%;" placeholder = "회사이름을 작성해주세요."></td>
+					<td width="80%"><input type="text" name="company" style="width : 60%;" ></td>
 				</tr>
 				<tr height="40">	
 					<td style="font-weight : bold;">사업자등록번호</td>
-					<td><input type="text" name="company_no" style="width : 60%;" placeholder="시업자 등록번호를 입력해주세요."></td>
+					<td><input type="text" name="company_no" style="width : 60%;" ></td>
 				</tr>
 					
 				<tr height="40">		
 					<td style="font-weight : bold;">회사전화번호</td>
-					<td><input type="text" name="company_tell" style="width : 40%;" placeholder="회사의 전화번호를 입력해주세요."></td>
+					<td><input type="text" name="company_tell" style="width : 40%;" ></td>
 				</tr>
 				
 				<tr height="40">		
 					<td style="font-weight : bold;">회사fax</td>
-					<td><input type="text" name="company_fax" style="width : 40%;" placeholder="fax번호를 입력해주세요."></td>
+					<td><input type="text" name="company_fax" style="width : 40%;" ></td>
 				</tr>
 				
 				<tr height="40">		
 					<td style="font-weight : bold;">사업자주소</td>
-					<td><input type="text" name="company_addr" style="width : 60%;" placeholder="사업자 주소를 입력해 주세요."></td>
+					<td><input type="text" name="company_addr" style="width : 60%;" ></td>
 				</tr>
 					
 				<tr height="40">	
@@ -136,11 +136,11 @@
 		
 		if(save != 0){
 		%>			 
-				<center><input type="submit" id="update" value="저장하기(update)"/></center>
+				<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)"/></center>
 		<%		
 			}else{
 		%>		
-				<center><input type="submit" id="insert" value="저장하기(insert)"/></center>
+				<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)"/></center>
 		<%	 
 		}
 		%>	

@@ -22,9 +22,7 @@ public class getSearchListAction implements Action {
 
 		/* 페이징 부분 작업 ...myGoodListAction 참고*/
 		int count = rdao.getSearchCount(keyWord);		
-		//myGoodList.jsp 페이지에서 페이지 번호 클릭시 받아오는 currentpage
 		String currentPage1 = request.getParameter("currentPage1");
-		
 		if(currentPage1 == null) currentPage1 = "1";
 		//한페이지당 뿌려질 글 개수, 현재 페이지, 페이지에서 시작하는 글 번호
 		int pageSize = 12;
