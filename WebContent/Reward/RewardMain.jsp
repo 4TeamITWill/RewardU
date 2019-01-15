@@ -100,6 +100,7 @@
 		
 		$(document).ready(function(){
 			var category= $('#category').val();
+			var li = $("#categoryslide li");
 			if(category == '게임스포츠' ||
 				category == '여행레저' ||
 				category == '문화교양' ||
@@ -110,7 +111,7 @@
 				$("#categoryslide").css("margin","-102px");
 			}
 			if(category == 'N'){
-				$('#1').css("color","#9966FF");
+				$("#1").css("color","#9966FF");
 			}else if(category == '패션뷰티'){
 				$('#2').css("color","#9966FF");
 			}else if(category == '테크가전'){

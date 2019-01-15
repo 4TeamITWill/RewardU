@@ -258,11 +258,7 @@ public class BoardDAO {
 		ResultSet rs = null;
 		String sql = "";
 		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
-		System.out.println("category: "+category);
-		System.out.println("result: "+result);
-		System.out.println("order: "+order);
-		System.out.println("startRow: "+startRow);
-		System.out.println("pageSize: "+pageSize);
+		
 		try{
 			con = getConnection();
 			sql = "";
