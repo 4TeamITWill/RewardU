@@ -17,6 +17,7 @@ public class inInsertingAction implements inAction{
 		response.setContentType("text/plain;charset=UTF-8");
 		
 		int pd_no = Integer.parseInt(request.getParameter("pd_no"));
+		int inv_orderno = 0;
 		
 		String inv_price = request.getParameter("inv_price");
 		String user_id = request.getParameter("user_id");
@@ -29,11 +30,22 @@ public class inInsertingAction implements inAction{
 		String op3_qty = request.getParameter("op3_qty");
 		String pd_realfile = request.getParameter("pd_realfile");
 		
+		//db객체생성
 		InvestBean ibean = new InvestBean();
+		InvestDAO idao = new InvestDAO();
 		
 		ibean.setUser_id(request.getParameter("user_id"));
 		ibean.setPd_no(Integer.parseInt(request.getParameter("pd_no")));
-		ibean.setInv_orderno((int)(Math.round(Math.random()*10000)));
+		
+		for(;;){ //주문번호 중복검사를 위한 반복문
+			inv_orderno = (int)(Math.round(Math.random()*10000));
+			//중복검사해서 사용 가능한 주문번호면 setting 후 무한반복문 탈출
+			if(idao.createOrderNo(inv_orderno)==1){
+				ibean.setInv_orderno(inv_orderno);
+				break;
+			}
+		}
+		
 		ibean.setInv_name(inv_name);
 		ibean.setInv_investor(request.getParameter("inv_investor"));
 		
@@ -52,8 +64,7 @@ public class inInsertingAction implements inAction{
 		ibean.setInv_date(new Timestamp(System.currentTimeMillis()));
 		ibean.setPd_realfile(pd_realfile);
 		
-		//db객체생성
-		InvestDAO idao = new InvestDAO();
+		
 		
 		idao.insertInvest(ibean);
 		
@@ -63,7 +74,7 @@ public class inInsertingAction implements inAction{
 		idao.incParticipant(pd_no, inv_price);
 		
 		//participate 테이블에 정보 삽입
-		idao.insertParticipate(user_id, pd_no, inv_price);
+		idao.insertParticipate(user_id, pd_no, inv_price, inv_orderno);
 		
 		MessageDAO mdao = new MessageDAO();
 		//메시지 내용 설정

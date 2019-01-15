@@ -94,18 +94,19 @@ private Connection  getConnection() throws Exception{
 	}//incParticipant() 끝
 		
 	//participate 테이블에 정보 저장하는 메소드
-	public void insertParticipate(String id, int pd_no, String par_money){
+	public void insertParticipate(String id, int pd_no, String par_money,int inv_orderno){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="";
 		
 		try {
 			con = getConnection();
-			sql = "insert into participate(user_id, pd_no, par_money) values(?,?,?)";
+			sql = "insert into participate(user_id, pd_no, par_money, inv_orderno) values(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setInt(2, pd_no);
 			pstmt.setString(3, par_money);
+			pstmt.setInt(4, inv_orderno);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -118,6 +119,42 @@ private Connection  getConnection() throws Exception{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	//렌덤으로 생성된 주문번호를 받아서 중복검사
+	public int createOrderNo(int inv_orderno){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		ResultSet rs=null;
+		int result = 0;
+		
+		try {
+			con = getConnection();
+			//렌덤으로 생성된 주문번호 orderNo가 이미 테이블에 있는가?
+			sql = "select * from investmentList where inv_orderno=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, inv_orderno);
+			rs = pstmt.executeQuery();
+			if(rs.next()){//있다면 사용할 수 없는 주문번호이므로 2리턴
+				result = 2;
+			}
+			else{ //없다면 사용할 수 있는 주문번호이므로 1리턴
+				result = 1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+				if (rs != null)rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 
 }

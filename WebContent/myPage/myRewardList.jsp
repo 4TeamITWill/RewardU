@@ -74,7 +74,10 @@
 						<a class="justbtn" href="Content.ad?pd_no=${invest.pd_no}" >
 							프로젝트 보기
 						</a>		
-						<a class="justbtn1" href="myRewardDel.my?pd_no=${invest.pd_no }&inv_price=${invest.inv_price}">환불하기</a>
+						<a class="justbtn1" 
+						href="myRewardDel.my?pd_no=${invest.pd_no }&inv_price=${invest.inv_price}&inv_orderno=${invest.inv_orderno}">
+						환불하기
+						</a>
 					</div>
 						
 				</div>	

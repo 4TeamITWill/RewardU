@@ -56,7 +56,7 @@
 		
 		<h2> 총 구매금액 : ${ibean.inv_price}원</h2>
 			
-	<input type="button" value="투자 현황 확인" onclick="location.href='./ReturnMain.in'">
+	<input type="button" value="투자 현황 확인" onclick="location.href='./myPageReward.my'">
 	<input type="button" value="메인으로 돌아가기" onclick="location.href='./ReturnMain.in'">
 			
 </body>

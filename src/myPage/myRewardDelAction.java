@@ -19,9 +19,10 @@ public class myRewardDelAction implements myAction {
 		int inv_price = Integer.parseInt(request.getParameter("inv_price"));
 		int pd_no = Integer.parseInt(request.getParameter("pd_no"));	
 		String user_id = (String)session.getAttribute("id");
+		int inv_orderno = Integer.parseInt(request.getParameter("inv_orderno"));
 				
 		MyDAO mdao = new MyDAO();
-		int result = mdao.delReward(pd_no, user_id, inv_price);
+		int result = mdao.delReward(pd_no, user_id, inv_price, inv_orderno);
 		
 		if(result > 0){
 			response.setContentType("text/html; charset=UTF-8");

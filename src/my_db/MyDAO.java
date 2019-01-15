@@ -796,7 +796,7 @@ public class MyDAO {
 		
 	}
 	//투자현황페이지 투자리스트 환불,취소 delReward() 메소드
-	public int delReward(int pd_no, String user_id, int inv_price) {
+	public int delReward(int pd_no, String user_id, int inv_price, int inv_orderno) {
 		
 		int result = 0;
 		Connection con = null;
@@ -805,10 +805,11 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "delete from investmentlist where pd_no = ? and user_id = ?";
+			sql = "delete from investmentlist where pd_no = ? and user_id = ? and inv_orderno = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pd_no);
 			pstmt.setString(2, user_id);
+			pstmt.setInt(3, inv_orderno);
 			result = pstmt.executeUpdate();
 			
 			if(result > 0){
@@ -816,6 +817,13 @@ public class MyDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, inv_price);
 				pstmt.setInt(2, pd_no);
+				pstmt.executeUpdate();
+				
+				sql = "delete from participate where pd_no = ? and user_id = ? and inv_orderno = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, pd_no);
+				pstmt.setString(2, user_id);
+				pstmt.setInt(3, inv_orderno);
 				pstmt.executeUpdate();
 			}
 			
