@@ -19,25 +19,25 @@ public class adPermitAction implements adAction {
 				//Request
 				String result = request.getParameter("result");
 					if(result == null) result = "A";
-					System.out.println("result: "+ result);
+					
 				String order1 = request.getParameter("order");
 					if(order1 == null) order1 = "7";
 				int order = Integer.parseInt(order1);
-					System.out.println("order: "+ order);
+					
 				String category = request.getParameter("category");
 					if(category == null ) category = "N";
-					System.out.println("category: "+ category);
+					
 				//Page
 				String currentPage = request.getParameter("currentPage");
 					if(currentPage == null) currentPage = "1";
 				int currentPage1 = Integer.parseInt(currentPage);
-					System.out.println("currentPage1: "+currentPage1);
+					
 				int count = bDao.getPermitListCount(result,category);
-					System.out.println("count: "+count);
+					
 				int pageSize = 9;
 				int startRow = (currentPage1-1)*pageSize + 1;
 				int pageCount = count/pageSize+(count%pageSize==0?0:1);
-					System.out.println("pageCount: "+pageCount);
+				
 				int pageBlock = 5;
 				int startPage = ((currentPage1-1)/pageBlock)*pageBlock + 1;
 				int endPage = startPage + pageBlock - 1;
