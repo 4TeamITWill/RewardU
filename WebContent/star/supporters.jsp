@@ -119,11 +119,13 @@
 			<a href="./supporters.ad?pd_no=<%=pd_no %>&pageNum=<%=startPage-pageBlock%>">이전</a>
 <%			
 		}
+		if(count > pageSize){
 		// [1][2][3]...[10]
 		for(int i=startPage; i<=endPage; i++){
 %>
 			<a href="./supporters.ad?pd_no=<%=pd_no %>&pageNum=<%=i%>"><%=i%></a> 
 <%
+		}
 		}
 		
 		//[다음] 끝페이지번호가 전체페이수보다 작을 때...

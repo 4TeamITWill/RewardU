@@ -33,15 +33,15 @@ $("#reward").click(function () {
 <form action="" method="post" id="f" name="form">
 	<table width="100%">
 	<%
-	RewardBean all = null;  //RewardBean all = new RewardBean();처럼 객체생성을 하면 null이 아니게된다 ㅜㅜ 
+	//RewardBean all = null;  //RewardBean all = new RewardBean();처럼 객체생성을 하면 null이 아니게된다 ㅜㅜ 
 							//null로 초기화시켜주어야 아래 if else문을 탈수 있다.
 	
 	if(session.getAttribute("reward") != null){
 		
-		all = (RewardBean)session.getAttribute("reward");
-	}
+		//all = (RewardBean)session.getAttribute("reward");
 	
-	if(all != null){
+	
+	//if(all != null){
 	%>
 		<tr height="70">
 			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드1</font></td>
@@ -49,45 +49,45 @@ $("#reward").click(function () {
 		
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();" value="<%=all.getPd_opprice1()%>"> 원<br/></td>
+			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();" value="${reward.pd_opprice1 }"> 원<br/></td>
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 제목</td>
-			<td><input type="text" id="pd_opsubject1" name="pd_opsubject1" onblur="addOp1();" style="width : 100%;" value="<%=all.getPd_opsubject1()%>"><br/>
+			<td><input type="text" id="pd_opsubject1" name="pd_opsubject1" onblur="addOp1();" style="width : 100%;" value="${reward.pd_opsubject1 }"><br/>
 		</tr>
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>	
-			<td><textarea id="pd_opcontent1" name="pd_opcontent1" onblur="addOp1();" style="width : 99%;" rows="5"><%=all.getPd_opcontent1()%></textarea><br/></td>
+			<td><textarea id="pd_opcontent1" name="pd_opcontent1" onblur="addOp1();" style="width : 99%;" rows="5">${reward.pd_opcontent1 }</textarea><br/></td>
 		</tr>
 		<tr height="70">	
 			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드2</font></td>
 		</tr>	
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()" value="<%=all.getPd_opprice2()%>"> 원<br/></td>
+			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()" value="${reward.pd_opprice2 }"> 원<br/></td>
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 제목</td>
-			<td><input type="text" id="pd_opsubject2" name="pd_opsubject2" style="width:100%;" onblur="addOp2()" value="<%=all.getPd_opsubject2()%>"><br/></td>
+			<td><input type="text" id="pd_opsubject2" name="pd_opsubject2" style="width:100%;" onblur="addOp2()" value="${reward.pd_opsubject2 }"><br/></td>
 		</tr>
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>	
-			<td><textarea id="pd_opcontent2" name="pd_opcontent2" onblur="addOp2();" style="width : 99%;" rows="5"><%=all.getPd_opcontent2()%></textarea><br/></td>
+			<td><textarea id="pd_opcontent2" name="pd_opcontent2" onblur="addOp2();" style="width : 99%;" rows="5">${reward.pd_opcontent2 }</textarea><br/></td>
 		</tr>
 		<tr height="70">
 			<td colspan="2"><font style="font-size : 22px; font-weight : bold;">리워드3</font></td>
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()" value="<%=all.getPd_opprice3()%>"> 원<br/></td>
+			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()" value="${reward.pd_opprice3 }"> 원<br/></td>
 		</tr>	
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 제목</td>
-			<td><input type="text" id="pd_opsubject3" name="pd_opsubject3" style="width:100%;" onblur="addOp3()" value="<%=all.getPd_opsubject3()%>"><br/></td>
+			<td><input type="text" id="pd_opsubject3" name="pd_opsubject3" style="width:100%;" onblur="addOp3()" value="${reward.pd_opsubject3 }"><br/></td>
 		</tr>
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 설명</td>	
-			<td><textarea id="pd_opcontent3" name="pd_opcontent3" onblur="addOp3();" style="width : 99%;" rows="5"><%=all.getPd_opcontent3()%></textarea><br/></td>
+			<td><textarea id="pd_opcontent3" name="pd_opcontent3" onblur="addOp3();" style="width : 99%;" rows="5">${reward.pd_opcontent3 }</textarea><br/></td>
 		</tr>	
 		
 	<%
@@ -287,10 +287,13 @@ $("#reward").click(function () {
 	
 	//세션에서 받아오는 값 넣어주기
 
-	<%if(all != null){
-		if(all.getPd_opcontent1() != null || all.getPd_opprice1() != null){%> addOp1();	<%}
-		if(all.getPd_opcontent2() != null || all.getPd_opprice2() != null){%> addOp2();	<%}
-		if(all.getPd_opcontent3() != null || all.getPd_opprice3() != null){%> addOp3();	<%}	
+	<%
+	
+	
+	if(session.getAttribute("reward")!= null){
+		%> addOp1();	<%
+		%> addOp2();	<%
+		%> addOp3();	<%
 	}%>
 
 

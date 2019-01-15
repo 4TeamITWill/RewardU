@@ -28,38 +28,35 @@
 			<table width="100%">
 			
 			<%
-			RewardBean all = null;
+			//RewardBean all = null;
 			
 			
 			if(session.getAttribute("seller") != null){
-				all =(RewardBean)session.getAttribute("seller");
-			}
-			
-			if(all != null){
+
 			%>
 				
 				<tr height="40">	
 					<td width="20%" style="font-weight : bold;">회사이름</td>
-					<td width="80%"><input type="text" name="company" style="width : 60%;" value="<%=all.getCompany()%>"></td>
+					<td width="80%"><input type="text" name="company" style="width : 60%;" value="${seller.company }"></td>
 				</tr>
 				<tr height="40">	
 					<td style="font-weight : bold;">사업자등록번호</td>
-					<td><input type="text" name="company_no" style="width : 60%;"  value="<%=all.getCompany_no()%>" ></td>
+					<td><input type="text" name="company_no" style="width : 60%;"  value="${seller.company_no }" ></td>
 				</tr>
 					
 				<tr height="40">		
 					<td style="font-weight : bold;">회사전화번호</td>
-					<td><input type="text" name="company_tell" style="width : 40%;"  value="<%=all.getCompany_tell()%>"></td>
+					<td><input type="text" name="company_tell" style="width : 40%;"  value="${seller.company_tell}"></td>
 				</tr>
 				
 				<tr height="40">		
 					<td style="font-weight : bold;">회사fax</td>
-					<td><input type="text" name="company_fax" style="width : 40%;"  value="<%=all.getCompany_fax()%>" ></td>
+					<td><input type="text" name="company_fax" style="width : 40%;"  value="${seller.company_fax}" ></td>
 				</tr>
 				
 				<tr height="40">		
 					<td style="font-weight : bold;">사업자주소</td>
-					<td><input type="text" name="company_addr" style="width : 60%;"  value="<%=all.getCompany_addr()%>"></td>
+					<td><input type="text" name="company_addr" style="width : 60%;"  value="${seller.company_addr}"></td>
 				</tr>
 					
 				<tr height="70">	
@@ -72,7 +69,7 @@
 							<option value="신한">신한</option>
 						</select>
 						<font style="font-size : 13px;">은행</font><br/>
-						<input type="text" name="sellerAccount" placeholder="계좌번호를 입력해주세요." style="width : 60%;" value="<%=all.getSellerAccount()%>">
+						<input type="text" name="sellerAccount" placeholder="계좌번호를 입력해주세요." style="width : 60%;" value="${seller.sellerAccount}">
 					</td>
 				</tr>
 

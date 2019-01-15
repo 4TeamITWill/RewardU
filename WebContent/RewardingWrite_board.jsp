@@ -58,17 +58,17 @@ document.getElementById('now_date').valueAsDate = new Date();
 			
 		<table width = "100%">
 <%
-		RewardBean all = null;
+		//RewardBean all = null;
 		
 		if(session.getAttribute("board") != null){
 			
-			all = (RewardBean)session.getAttribute("board");
+			//all = (RewardBean)session.getAttribute("board");
 			
-		}
+	
 		
 		
 		
-		if(all != null){
+		//if(all != null){
 %>
 
 			<tr height="40">	
@@ -82,7 +82,7 @@ document.getElementById('now_date').valueAsDate = new Date();
 			</tr>
 			
 			<tr height="40">
-				<td colspan="2"><input type="text" name="pd_subject" style="width : 100%;" value="${all.pd_subject}"></td>
+				<td colspan="2"><input type="text" name="pd_subject" style="width : 100%;" value="${board.pd_subject}"></td>
 			</tr>
 				
 			<tr height="40">		
@@ -91,7 +91,7 @@ document.getElementById('now_date').valueAsDate = new Date();
 			</tr>
 			
 			<tr height="40">
-				<td colspan="2"><textarea name="pd_content" id="textAreaContent" rows="30"  style="width : 100%">${all.pd_content}</textarea></td>
+				<td colspan="2"><textarea name="pd_content" id="textAreaContent" rows="30"  style="width : 100%">${board.pd_content}</textarea></td>
 			</tr>
 				
 			<tr height="40">	
@@ -114,23 +114,21 @@ document.getElementById('now_date').valueAsDate = new Date();
 				
 			<tr height="40">		
 				<td style="font-weight : bold;">목표금액</td>
-				<td><input type="text" name="pd_goalMoney" style="width : 60%;" value="${all.pd_goalMoney}" class="number">원</td>
+				<td><input type="text" name="pd_goalMoney" style="width : 60%;" value="${board.pd_goalMoney}" class="number">원</td>
 			</tr>
 				
 			<tr height="40">
 				<td style="font-weight : bold;"> 대표 이미지</td>
-				<td><input type="text" name="pd_file" readonly="readonly" style="width : 50%;" value="${all.pd_file}">
-					<input type="hidden" id="pd_realFile" name="pd_realFile" style="width : 50%;" value="${all.pd_realFile}">
-					<button id="fileBtn">첨부하기</button><br/>
-				</td>
+				<td><input type="text" name="pd_file" readonly="readonly" style="width : 50%;" value="${board.pd_file}">
+					<input type="hidden" id="pd_realFile" name="pd_realFile" style="width : 50%;" value="${board.pd_realFile}">
+					<button id="fileBtn">첨부하기</button><br/>	
+				</td>		
 			</tr>
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 50%;" value="<%=all.getPd_end().substring(0,10)%>" ></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" value="${end}" ></td>
 																		
-			</tr>
-			
-			
+			</tr>		
 <%
 		}else{
 %>
@@ -223,11 +221,7 @@ document.getElementById('now_date').valueAsDate = new Date();
 <%	 
 	}
 %>	
-				
-	
-
-				
-				
+			
 				
 	</form>	
 </div>
