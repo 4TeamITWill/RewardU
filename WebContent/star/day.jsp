@@ -197,10 +197,14 @@ star-input>.input.focus {
 				var then = new Date('<%=bdto.getPd_endf()%>'); <%-- 최종 목표 --%>
 				var gap = now.getTime() - then.getTime();
 			 	gap = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1; // d- day 계산 
-
-				 document.write('<div id="dday"><span style="font-size:33px;">'
-						+ gap + '일남음  </span><%=bdto.getPd_endf()%> 일마감</div>');  
-				
+			 	if(gap <= 0){
+			 	 document.write('<div id="dday"><span style="font-size:33px;">'
+			 	 			+ '종료  </span><%=bdto.getPd_endf()%> 일마감</div>'); 
+			 	}else{
+		 		 document.write('<div id="dday"><span style="font-size:33px;">'
+							+ gap + '일남음  </span><%=bdto.getPd_endf()%> 일마감</div>');  
+			 	}
+		
 				document.write('<div id="dday"><span style="font-size:33px;">'
 						+ '<%=bdto.getPd_curmoney()%>원 </span><%=bdto.getPd_goalmoney()%>원 목표금액</div>');
 				document.write('<div id="dday"><span style="font-size:33px;">'
@@ -217,7 +221,18 @@ star-input>.input.focus {
 	<table>
 		<tr>	
 			<td>
-				<input type="button" class="btn"	value="지금펀딩하기" onclick="location.href='./getFunding.ad?pd_no=<%=pd_no%>&user_id=<%=id%>'">
+<%
+				if(bdto.getPd_result()==0){ //아직 펀딩이 진행 중이면
+%>
+				<input type="button" class="btn" value="지금펀딩하기" onclick="location.href='./getFunding.ad?pd_no=<%=pd_no%>&user_id=<%=id%>'">
+<%
+				} else{ //펀딩이 종료됬다면
+%>
+				<input type="button" class="btn" value="지금펀딩하기" onclick="alert('기간이 종료되었습니다.');">
+<%
+				}
+%>
+				
 			</td>
 		</tr>		
 		<tr>
