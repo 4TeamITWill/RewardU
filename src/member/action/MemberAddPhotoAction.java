@@ -14,57 +14,67 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import member.db.MemberBean;
 import member.db.MemberDAO;
 
-public class MemberModifyAction implements Action {
+public class MemberAddPhotoAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("MemberModifyAction ()");
+		System.out.println("AddPhotoAction ()");
 		
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
+		ServletContext ctx = request.getSession().getServletContext();
+		
+		String realPath = ctx.getRealPath("upload");
+		
+		int max = 1024*1024*5;
+		String filename="";
+		
+	//upload photo
+		MultipartRequest multi = new MultipartRequest(request, realPath, max, "utf-8", new DefaultFileRenamePolicy());
+
 		
 		HttpSession session = request.getSession();
 		
 		String user_id = (String)session.getAttribute("id");
-		String user_name = (String)session.getAttribute("name");
+		String user_photo = multi.getFilesystemName("user_photo");
 		
 		MemberBean mbean = new MemberBean();
-
-		//System.out.println(request.getParameter("user_content"));
 		
-
 		mbean.setUser_id(user_id);
-		mbean.setUser_name(request.getParameter("user_name"));
-		mbean.setUser_phone(request.getParameter("user_phone"));
-		//mbean.setUser_photo(request.getParameter("user_photo"));
-		mbean.setUser_content(request.getParameter("user_content"));
-		mbean.setBirthyyyy(request.getParameter("birthyyyy"));
-		mbean.setBirthmm(request.getParameter("birthmm"));
-		mbean.setBirthdd(request.getParameter("birthdd"));
-		
-		System.out.println(request.getParameter("user_photo"));
+		mbean.setUser_photo(user_photo);
+		System.out.println(user_photo);
 		System.out.println(user_id);
-		
 		
 		MemberDAO mdao = new MemberDAO();
 		
-		mdao.updateUser(mbean);
+		mdao.updatePhoto(mbean);
 		
-		request.setAttribute("mbean", mbean);
+	//ArrayList for saving file names	
+		ArrayList<String> saveFiles = new ArrayList<String>();
+		
+	//for adding original-file names
+		ArrayList originFiles = new ArrayList();
+					
+		Enumeration e = multi.getFileNames();
+					
+		while (e.hasMoreElements()) {
+			filename = (String)e.nextElement();
+						
+			saveFiles.add(multi.getFilesystemName(filename));
+			originFiles.add(multi.getOriginalFileName(filename));
+		}	
+		
+		session.setAttribute("user_photo", user_photo);
 		request.setAttribute("myPage_center", "../member/mypage.jsp");
-		
-		System.out.println(user_name);
-		session.setAttribute("name", user_name);
-		//session.setAttribute("user_photo", user_photo);
-			
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
 		
-		
 		return forward;
+		
+		//return null;
 	}
 
 }

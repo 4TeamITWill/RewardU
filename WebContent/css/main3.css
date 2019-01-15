@@ -997,12 +997,12 @@ body{
 
 .modal-footer #modal-btn{
 	background-color: #82caff;
-	border-radius: 0.2em;
-	width: 15%;
+
+	width: 50%;
 	height: 30px;
 	color: #434d5b;
 	border: none;
-	margin-bottom: 5px;
+
 	line-height: 100%;
 }
 
@@ -1020,11 +1020,11 @@ body{
 .modal-footer #modal-btn3{
 	background-color: #fff;
 	border-radius: 0.2em;
-	width: 15%;
+	width: 50%;
 	height: 30px;
 	color: #b44af7;
 	border: 1px solid #b44af7;
-	margin-bottom: 5px;
+
 	line-height: 100%;
 }
 

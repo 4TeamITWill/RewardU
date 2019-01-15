@@ -260,6 +260,7 @@ public class MemberDAO {
 		
 	}//deleteMember
 	
+	
 	public String findId(MemberBean mbean){
 		
 		Connection con = null;
@@ -366,7 +367,7 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 			
-			sql = "update user set user_name=?, user_phone=?, user_content=?, user_photo=? where user_id=?";
+			sql = "update user set user_name=?, user_phone=?, user_content=? where user_id=?";
 			
 			
 			pstmt = con.prepareStatement(sql);
@@ -374,8 +375,8 @@ public class MemberDAO {
 			pstmt.setString(1, mbean.getUser_name());
 			pstmt.setString(2, mbean.getUser_phone());
 			pstmt.setString(3, mbean.getUser_content());
-			pstmt.setString(4, mbean.getUser_photo());
-			pstmt.setString(5, mbean.getUser_id());
+			
+			pstmt.setString(4, mbean.getUser_id());
 				
 			
 			pstmt.executeUpdate();
@@ -396,6 +397,73 @@ public class MemberDAO {
 		
 	}//updateUser
 	
+	
+	public void updatePhoto (MemberBean mbean){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "update user set user_photo=? where user_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mbean.getUser_photo());
+			pstmt.setString(2, mbean.getUser_id());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//finally
+		
+	}//updatePhoto
+	
+	
+	public void deletePhoto (MemberBean mbean){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "update user set user_photo=null where user_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mbean.getUser_id());
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//fianlly
+	}//deletePhoto
 	
 	
 	public int updatePw(String user_id, String user_pw, String user_pw3){
