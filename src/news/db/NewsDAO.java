@@ -397,6 +397,53 @@ public class NewsDAO {
 		
 		return bestNews;
 	}
-	
-	
+	//메인에 뿌려줄 뉴스리스트 받아오기 파라미터없이 오버로딩
+	public Vector<Newsbean> getNewsList(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Vector<Newsbean> v = new Vector<Newsbean>();
+		
+		Newsbean nbean = null;
+		String sql = null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "select * from reNews order by reNews_no desc limit 0,5";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				nbean = new Newsbean();
+				nbean.setReNews_no(rs.getInt("reNews_no"));
+				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setUser_name(rs.getString("user_name"));
+				nbean.setReNews_title(rs.getString("reNews_title"));
+				nbean.setReNews_summary(rs.getString("reNews_summary"));
+				nbean.setReNews_content(rs.getString("reNews_content"));
+				nbean.setReNews_file(rs.getString("reNews_file"));
+				nbean.setReNews_views(rs.getString("reNews_views"));
+				nbean.setReNews_date(rs.getTimestamp("reNews_date"));
+				nbean.setReNews_category(rs.getString("reNews_category"));
+				nbean.setReNews_img(rs.getString("reNews_img"));
+				
+				v.add(nbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//fianlly
+		return v;
+	}
 }

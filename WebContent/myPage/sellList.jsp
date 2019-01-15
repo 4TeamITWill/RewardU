@@ -31,11 +31,18 @@
 					
 						<div style="width : 130px; height :130px; overflow : hidden;"><img src="./upload/${board.pd_realfile }" width="130px" height="130px"/></div>
 						<div style="padding : 10px 10px;">
+						<c:if test="${board.pd_permit == 1 }">
 							<a href="./Content.ad?pd_no=${board.pd_no}" style="color:#000;">
 							<font style="font-size : 18px;">${board.pd_subject }</font><br/>
 							분류 : ${board.pd_category }<br/>
 							${board.pd_curmoney }원 / ${board.pd_goalmoney }원<br/>
-							</a>							
+							</a>	
+						</c:if>		
+						<c:if test="${board.pd_permit != 1 }">
+							<font style="font-size : 18px;">${board.pd_subject }</font><br/>
+							분류 : ${board.pd_category }<br/>
+							${board.pd_curmoney }원 / ${board.pd_goalmoney }원<br/>
+						</c:if>						
 						</div>
 					</div>
 					<div>~${board.pd_endf }</div>

@@ -57,7 +57,7 @@ jQuery(document).ready(function(){
 
 		formData.append("user_id", $("#user_id").val());
 		formData.append("user_photo", $("input[name=user_photo]")[0].files[0]);
-	
+		//formData.append("user_photo", $("#user_photo").val());
 	
 		/* $(document).ajaxStart(function(){
 				$('.wrap_loading').css("visibility", "visible");
@@ -73,7 +73,7 @@ jQuery(document).ready(function(){
 			type: 'POST',
 			success: function(data){
 				alert("업로드 중 방가방가");
-				
+				//$('#user_photo1').attr("src","./upload/apple.jpg");
 				
 			},beforeSend:function(){
 		        $('.wrap_loading').css("visibility", "visible");

@@ -170,7 +170,7 @@ body{
 }
 
 #main .maincontainer {
-	width : 55%;	
+	width : 50%;	
 	margin : 0 auto;
 	padding : 2rem 0;
 }
@@ -276,7 +276,7 @@ body{
 
 #main .box1 {
 	display : grid;
-	grid-template-columns : 1fr 1fr 0.8fr;
+	grid-template-columns : 300px 300px 1fr;
 	grid-template-rows : 400px 400px;
 	grid-gap: 30px;
 	padding : 2rem 0;
@@ -285,11 +285,29 @@ body{
 
 #main .box1 .box_grid {
 	background-color : rgba(0,0,0,0.5);
+	
 	color : white;
+	
 }
 
 #main .box1 .box_grid1 {
 	grid-column : 1/3;
+	position : relative;
+	display:inline-block;
+	overflow : hidden;
+}
+
+.box_grid1_ {
+	position : relative;
+	width : 3150px;
+	height : 100%;
+	display : flex;
+}
+
+#main .box1 .box_grid1_cont {
+	position : relative;	
+	width : 630px;
+	height : 100%;
 }
 
 #main .box1 .box_grid2 {
@@ -298,6 +316,7 @@ body{
 	grid-column : 3;
 	grid-row  : 1/3;
 	padding : 1rem 1rem;
+	color : #24eae0;
 }
 
 #main .box1 .box_grid2 h2 {
@@ -322,7 +341,30 @@ body{
 	font-weight : bold;
 }
 
+.btnCont {
+	position : absolute; 
+	right : 0; 
+	bottom : 0;	
+	display : flex;
+	justify-content : flex-end;
+}
 
+.btnCont a {
+	background-color : rgba(0,0,0,0.3);
+	color : rgba(255,255,255,0.9);
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	height : 60px;
+	width : 60px;
+	font-size : 30px;
+	z-index : 500;
+}
+
+.btnCont a:HOVER {
+	background-color : rgba(0,0,0,0.4);
+	font-size : 34px;
+}
 /* footer */
 
 #footer {
@@ -704,7 +746,6 @@ body{
 
 .good_content img {
 	display : block;
-	background-color : #48f;
 	width : 100%;
 	height : 100%;
 	border : 0;
