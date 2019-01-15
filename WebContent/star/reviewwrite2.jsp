@@ -31,7 +31,7 @@ bdto = bdao.getBoard(pd_no);
 
 	
 %>
-<%-- <script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function() { 
 					
 			$(".buttonstar").show(); 
@@ -58,7 +58,7 @@ bdto = bdao.getBoard(pd_no);
 		});	
 		
 </script>
- --%>
+
 
 
 	<div class="ma2">
@@ -77,7 +77,7 @@ bdto = bdao.getBoard(pd_no);
 		</div>
 		<br/>
 		<div style="padding: 20px; background: #F2F2F2; border-radius: 20px;">
-			<div>
+		<div>
 				<c:if test="${ id == null }">
 					<textarea rows="5" cols="50"  readonly>로그인 후 댓글 달기</textarea>
 				</c:if>
@@ -99,8 +99,8 @@ bdto = bdao.getBoard(pd_no);
 				
 				<%
 					ReplyDAO dao = new ReplyDAO();
-					
-				
+					ReplyBean bb = dao.getData(pd_no);
+					request.setAttribute("bb",bb);
 					
 					
 					ArrayList<ReplyBean> list = dao.getList(pd_no);
@@ -113,9 +113,9 @@ bdto = bdao.getBoard(pd_no);
 				%>
 				
 				
-				<c:if test="${reply == 1}">
+				<c:if test="${reply == 1 }">
 					
-					<c:forEach var="rlist" items="${replylist}">
+					<c:forEach var="rlist" items="${replylist }">
 						<tr>
 							<td >${rlist.user_id}</td>
 							<td > 작성 날자 : ${rlist.date}</td>
@@ -125,43 +125,32 @@ bdto = bdao.getBoard(pd_no);
 						</tr>
 						<tr>
 							<td><button class="buttonstar">답글</button></td>
-						</tr>		
-						<tr>
-							<td>		
-							<form action="./RerepWriteActions.ad?re_no=${rlist.re_no }&group_num=${rlist.group_num}&seq=${rlist.seq}&lev=${rlist.lev}" method="post">
-								<input type="hidden" name="pd_no"  value="<%=pd_no%>"> 
-								<input type="hidden" name="user_id"  value="<%=id%>">
-								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="./img/rewrite.jpg" width="30" height="30"><textarea rows="1" cols="50" placeholder="답글  작성" name="content"></textarea>
-								<button type="submit"> 댓글입력 </button>
-							</form>
-							
-							</td>						
 						</tr>
-						
-							 		<%
-										int group_num= Integer.parseInt(request.getParameter("group_num"));
-										ArrayList<ReplyBean> list2 = dao.getList2(pd_no, group_num);
-										if(list.size()>0){
-											request.setAttribute("reply2", 1);
-											request.setAttribute("replylis2", list2);
-										}else{
-											request.setAttribute("repl2", 0);
-										}
-									%>  
-						<tr>	
-						 	<c:if test="${reply2 == 1}">
-									<c:forEach var="rlist2" items="${replylist2}">
-										<td>${rlist2.content} </td>
-									</c:forEach>
+							<tr>
+										
+							 <td class="buttonstarrate">
+										<form action="./RerepWriteActions.ad" method="post">
+											<input type="hidden" name="pd_no"  value="<%=pd_no%>"> 
+											<input type="hidden" name="user_id"  value="<%=id%>">
+											<input type="hidden" name="group_name"  value="<%=bb.getGroup_num()%>">
+											<input type="hidden" name="seq"  value="<%=bb.getSeq()%>">
+											<input type="hidden" name="lev"  value="<%=bb.getLev()%>">
 								
-							</c:if>
-								 
-						</tr>
+											 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows="1" cols="50" placeholder="답글  작성" name="content"></textarea>
+											<button type="submit"> 댓글입력 </button>
+										</form>
+										<div>${rlist.user_id},작성 날자 : ${rlist.date},답글내용 ${rlist.content}</div>
+							</td>
+											
+							</tr>
 						<tr>
 							<td>-------------------------------------------------------------------------</td>
 						</tr>
-					</c:forEach>
-		
+						</c:forEach>
+					
+						
+					
+				
 				</c:if>
 				
 		
