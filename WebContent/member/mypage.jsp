@@ -22,105 +22,6 @@
 .margin3{margin-top: 20px;}
 .margin4{margin-bottom: 100px;}
 
-#mypage_content {
-	width: 80%;
-	border: 1px solid red;
-	font-size: 14px;
-}
-
-.mypage_infoCard {
-	text-align: left;
-	border: 1px solid #ccc;
-	width: 178px;
-	float: left;
-	padding: 25px 15px 15px 15px;
-}
-.mypage_infoCard #infoCardName {
-	font-weight: 600;
-	font-size: 20px;
-	color: #434d5b;
-}
-.mypage_infoCard #infoCardId{
-	font-size: 13px;
-	color: #aaa;
-	margin-bottom: 15px;
-}
-
-.mypage_infoCard #infoCard_deleteAccount {
-	margin-top: 20px;
-	text-align: right;
-	font-size: 11px;
-}
-
-.mypage_modify_section{
-	margin-right: 15%;
-	border: 1px solid #ccc;
-	width: 400px;
-	display: inline-block;
-	box-sizing: border-box;
-
-	background-color: #fff;
-}
-
-#mypage_content #form_font_left {
- text-align: left;
- padding-left: 11px;
-}
-
-textarea {
-	   text-align: left;
-	   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-       width: 350px;
-       height: 150px;
-       font-size: 14px;
-       line-height: 14px;
-       white-space: pre-line;
-       text-indent: none;
-       overflow: hidden;
-}
-
-textarea::placeholder {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #aaa;
-  font-weight: bold;
-  text-align: left;
-}
-
-.mypage_profile_photo {
-	border: 1px solid teal;
-	border-radius: 50%;
-	width: 200px; height: 200px;
-	margin-bottom: 10px;
-}
-
-.mypage_profile_photo  img{
-	border-radius: 50%;
-	width: 100%; height: 100%;
-/* 	width: 200px; height: 200px; */
-	
-}
-
-.profile_photo_upload label {
-	display: inline-block;
-	cursor: pointer;
-	border: 1px solid teal;
-	padding: 6px 9px;
-	color: #fff;
-	font-size:13px;
-	line-height: 13px;
-	font-weight: none;
-	background-color: teal;
-
-}
-
-.profile_photo_upload input[type="file"]{
-	position: absolute;
-	width: 1px; height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	border: 0;
-}
 
 </style>
 <script type="text/javascript">
@@ -185,14 +86,14 @@ jQuery(document).ready(function(){
 							<c:when test="${photo ne null }">
 								<img src="./upload/${mbean.user_photo }">
 							</c:when>
-							<c:when test="">
+						<%-- 	<c:when test="">
 								<img src="../upload/">
-							</c:when>
+							</c:when> --%>
 						</c:choose>
 					</div><!-- mypage_profile_photo  -->
 					<div class="profile_photo_upload">
 						<label for="user_photo">프로필 사진 수정</label>
-						<input type="file" id="user_photo" name="user_photo"><br>
+						<input type="file" id="user_photo" name="user_photo" value="${mbean.user_photo }"><br>
 						<div class="margin3"></div>
 					</div>
 				<fieldset>

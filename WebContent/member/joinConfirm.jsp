@@ -18,6 +18,8 @@
 	background-repeat: no-repeat;}
 
 
+
+ 
 #join_content {
 	border: 1px solid #aaa;
 	background-color: #fff;
@@ -36,7 +38,7 @@
 </head>
 <body>
 <jsp:include page="../top.jsp"/>
-<div class="wrap">
+<div class="confirm_wrap">
 
 <div class="container" align="center">
 	<div id="join_content" >
@@ -48,18 +50,18 @@
 		
 		<fieldset >
 		<!-- id -->
-			<input type="text" name="user_id" placeholder="이메일 주소 입력" value="${requestScope.mbean.user_id }" class="inp-field"><br>
+			<input type="text" name="user_id" placeholder="이메일 주소 입력" value="${requestScope.mbean.user_id }" class="inp-field" readonly><br>
 		<!-- name -->	
-			<input type="text" name="user_name" value="${mbean.user_name }" class="inp-field"><br>
+			<input type="text" name="user_name" value="${mbean.user_name }" class="inp-field" readonly><br>
 			<!-- <input type="password" name="user_pw" class="inp-field"><br>
 			<input type="password" name="user_pw2" class="inp-field"><br> -->
 		<!-- date of Birth -->	
-		  &nbsp;<input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" value="${mbean.birthyyyy }" class="inp-field w120">
-				<input type="text" name="birthmm" maxlength="2" placeholder="MM" value="${mbean.birthmm }" class="inp-field w108">
-				<input type="text" name="birthdd" maxlength="2" placeholder="DD" value="${mbean.birthdd }" class="inp-field w108">
+		  &nbsp;<input type="text" name="birthyyyy" maxlength="4" placeholder="YYYY" value="${mbean.birthyyyy }" class="inp-field w120" readonly>
+				<input type="text" name="birthmm" maxlength="2" placeholder="MM" value="${mbean.birthmm }" class="inp-field w108" readonly>
+				<input type="text" name="birthdd" maxlength="2" placeholder="DD" value="${mbean.birthdd }" class="inp-field w108" readonly>
 			<br>
 		<!-- phone -->
-			<input type="text" name="user_phone" value="${mbean.user_phone }" class="inp-field">
+			<input type="text" name="user_phone" value="${mbean.user_phone }" class="inp-field" readonly>
 			
 		</fieldset>
 		

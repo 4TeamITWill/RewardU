@@ -42,7 +42,7 @@ public class MemberJoinAction implements Action{
 		request.setAttribute("mbean", mbean);
 		
 		if(result == false){
-			System.out.println("---Join null---");
+			System.out.println("---Join fail---");
 			return null;
 		}
 		
@@ -55,7 +55,7 @@ public class MemberJoinAction implements Action{
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./MemberJoinConfirm.me");
+		forward.setPath("./member/joinConfirm.jsp");
 		
 		return forward;
 	}

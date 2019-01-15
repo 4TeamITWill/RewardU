@@ -33,7 +33,7 @@ public class MemberModifyAction implements Action {
 		MultipartRequest multi = new MultipartRequest(request, realPath, max, "utf-8", new DefaultFileRenamePolicy());
 		
 		String user_photo = multi.getFilesystemName("user_photo");
-		
+		String user_name = multi.getParameter("user_name");
 		
 		HttpSession session = request.getSession();
 		
@@ -45,7 +45,7 @@ public class MemberModifyAction implements Action {
 		
 
 		mbean.setUser_id(user_id);
-		mbean.setUser_name(multi.getParameter("user_name"));
+		mbean.setUser_name(user_name);
 		mbean.setUser_phone(multi.getParameter("user_phone"));
 		mbean.setUser_photo(user_photo);
 		mbean.setUser_content(multi.getParameter("user_content"));
@@ -56,12 +56,17 @@ public class MemberModifyAction implements Action {
 		System.out.println(user_photo);
 		System.out.println(user_id);
 		
+		
 		MemberDAO mdao = new MemberDAO();
 		
 		mdao.updateUser(mbean);
 		
 		request.setAttribute("mbean", mbean);
 		request.setAttribute("myPage_center", "../member/mypage.jsp");
+		
+		System.out.println(user_name);
+		session.setAttribute("name", user_name);
+		session.setAttribute("user_photo", user_photo);
 		
 	//ArrayList for saving file names	
 		ArrayList<String> saveFiles = new ArrayList<String>();

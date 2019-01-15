@@ -18,40 +18,6 @@
 .margin3{margin-top: 20px;}
 .margin4{margin-bottom: 100px;}
 
-#join_content {
-	border: 1px solid #aaa;
-	background-color: #fff;
-	width: 400px;
-	font-size: 14px;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-#join_content #form_font_left {
- text-align: left;
- padding-left: 11px;
-}
-
-
-#join_content #form_font_left h2{
- text-align: left;
- padding-left: 14px;
-}
-
-#join_content #form_font_left_s{
- text-align: left;
- padding-left: 14px;
- font-size: 8px !important;
- margin-bottom: 10px;
- color: #b44af7;
-}
-
-#join_content #form_font_left_al{
- text-align: left;
- padding-left: 14px;
- font-size: 8px !important;
- margin-bottom: 10px;
- color: red;
-}
 
 .wrap{background-color: #ddd; 
 	padding: 100px 200px;
@@ -86,6 +52,7 @@
 		var blank_pattern = /[\s]/g;
 		var password_pattern = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,20}$/;
 		
+		var user_id = $("#user_id").val();
 		var user_pw = $('#user_pw').val();
 		var user_pw2 = $('#user_pw2').val();
 		
@@ -151,56 +118,73 @@
 			num = 1; }
 		 
 		 if(num == 1){
-			 document.form.submit();
-			
+			 document.form.submit();			
 		}else{
-		 // alert("동의 체크 ㄱㄱ"); 
-		  $('#checkMessage').html('개인정보 약관 동의에 체크해 주십시오.');
-		  $('#myModal').show();
-		  
-		  $("#policy_chk").focus();
-		  return false;
-			
-		 }
-		 
+			 // alert("동의 체크 ㄱㄱ"); 
+			  $('#checkMessage').html('개인정보 약관 동의에 체크해 주십시오.');
+			  $('#myModal').show();
+			  
+			  $("#policy_chk").focus();
+			  return false;
+				
+		}	
 		
-			 
-		 return true; 
+	 	 $(document).ajaxStart(function(){
+				$('.wrap_loading').css("visibility", "visible");
+				$('.wrap_loading').show();
+			});
+		  
+		 $.ajax({
+				url: './MemberJoinAction.me',
+				data: {user_id: user_id, user_pw: user_pw, birthyyyy: birthyyyy, birthmm: birthmm, birthdd: birthdd, user_phone: user_phone},
+				success:function(data){
+					//$('.modal-header').html("이메일을 확인해주세요!");
+					//$('#checkMessage').load("./member/joinConfirm.jsp");
+					//$('#myModal').show();
+					
+				}/* ,beforeSend:function(){
+			        $('.wrap_loading').css("visibility", "visible");
+			    }
+			    ,complete:function(){
+			       $('.wrap_loading').css("visibility", "hidden");
+
+			    }  */
+			});
+		
+	 
+		 //return true; 
 	}//chk
 	
-	//password가 서로 같은지 , 조건에 맞는지 확인하여   passwordCheckMessage에 에러메시지 출력
+	
+	//password가 서로 같은지 , 조건에 맞는지 확인하여   pwCheckMessage에 에러메시지 출력
 	function pwCheckFunction() {
 		
-		//비밀번호 입력란에 입력한 값 얻기
 		var user_pw = $('#user_pw').val();
-		//비밀번호 확인 입력란에 입력한 값 얻기
+
 		var user_pw2 = $('#user_pw2').val();
 		
 		//정규표현식  : 비밀번호는 알파벳, 숫자, 특수문자 포함 8-20
 		var password_pattern = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,20}$/;
 		
-		//숫자와 문자 포함 형태의 8~15자리 이내의 암호 정규식
-		//var password_pattern = /^[A-Za-z0-9]{8,20}$/;
 		
 		//password 조건 확인
 		if(!password_pattern.test(user_pw)){
-			
-			$('#pwCheckMessage').html('&nbsp;비밀번호는 알파벳,숫자,특수문자 포함 8-20자 여야 합니다.');
+			$('#pwCheckMessage').css("visibility", "visible");
+			$('#pwCheckMessage').html('&nbsp;비밀번호는 알파벳,숫자,특수문자 포함 8-20자 여야 합니다.&nbsp;');
 			
 			return;
 			
 		}else{ //정규표현식에 만족할경우(제대로 password를 입력 했을 경우 )
-			
 			$('#pwCheckMessage').html('');
 		
 			//패스워드 입력란의 값과  패스워드 확인 입력란의 값이 같은지 판단
 			if(user_pw != user_pw2){
-				
-				$('#pwCheckMessage').html('비밀번호가 서로 일치하지 않습니다.');
+				$('#pwCheckMessage').css("visibility", "visible");
+				$('#pwCheckMessage').html('&nbsp;비밀번호가 서로 일치하지 않습니다.&nbsp;');
 				
 			}else{//같을떄...
-				
 				$('#pwCheckMessage').html('');
+				$('#pwCheckMessage').css("display", "none");
 			}								
 		}							
 	}//passwordCheck
@@ -210,6 +194,13 @@
 <script type="text/javascript">
 
 	var email_Check = false;
+	
+	$(document).ready(function(){
+		
+		
+        //$(document).ajaxStop(loading.hide);
+
+});
 	
 	function sendEmail() {
 		
@@ -221,32 +212,57 @@
 		var property = "width=" + width + "," + "height=" + height + "," 
 						+ "left=" + winL + "," + "top=" + winT + " menubar=no";
 		var idCheck = $("#idCheck").val();
+		var user_id = $("#user_id").val();
 		
 		email_Check = false;
 		
-		window.open("member/authMail.jsp?to=" + $('#user_id').val(), "인증 페이지", property);
 		
-// 		if(email_Check){
-// 			document.getElementById("idCheck").value="1";
-// 		}
+		var loading = document.all.loadingBar;
+		loading.style.visibilty = "visible";
+
+
+		 $.ajax({
+			
+			url: 'MemberJoinEmailAction.me?to='+ user_id, 
+			error: function(){
+				alert("인증메일 발송에 실패하였습니다. 메일 주소를 다시 확인해주세요.");
+			},
+			success:function(data){
+	
+					$('.modal-header').html("인증메일 발송 확인!");
+					$('#checkMessage').html(data);
+					$('#myModal').show();
+				
+			},beforeSend:function(){
+		        $('.wrap_loading').css("visibility", "visible");
+		    }
+		    ,complete:function(){
+		       $('.wrap_loading').css("visibility", "hidden");
+
+		    } 
+				
+		});
 		   
+												  
+		    
 	}
 	
 	function idDupCheck(){
 		
 		var user_id = $('#user_id').val();
 		var blank_pattern = /[\s]/g;
-		
-		//패턴만 바꾸면 된다.
+
 		var email_pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 		
 		if(blank_pattern.test(user_id)){
+			$('#idCheckMessage').css("visibility", "visible");
 			$('#idCheckMessage').html('&nbsp; 이메일을 입력해 주세요.');
 			document.getElementById("idCheck").value="0";
 			return;
 		}
 		
 		if(!email_pattern.test(user_id)){
+			$('#idCheckMessage').css("visibility", "visible");
 			$('#idCheckMessage').html('&nbsp; 형식을 바르게 입력해주세요.');
 			document.getElementById("idCheck").value="0";
 			return;
@@ -260,12 +276,14 @@
 					data : {user_id: user_id },
 					success:function(result){
 						if($.trim(result) == 1){//결과가 1이면 사용할수 있는 아이디 
-							$('#idCheckMessage').html('&nbsp;사용하실 수 있는 아이디 입니다.');
+							$('#idCheckMessage').css("visibility", "visible");
+							$('#idCheckMessage').html('&nbsp;사용하실 수 있는 아이디 입니다.&nbsp;');
 							//중복확인을 했다~~판별값을 <input>태그에 설정 
 							document.getElementById("idCheck").value="0";
 							
 						}else if($.trim(result) == 0){
-							$('#idCheckMessage').html('&nbsp;중복되는 아이디 입니다.');
+							$('#idCheckMessage').css("visibility", "visible");
+							$('#idCheckMessage').html('&nbsp;중복되는 아이디 입니다.&nbsp;');
 							document.getElementById("idCheck").value="0";
 							//중복확인을 하지 않았다는 판변값을 <input>태그에 설정
 							
@@ -274,7 +292,7 @@
 						/* $('#checkModal').modal('show');		 */					
 					}						
 				}					
-		      );	//ajax	
+		      );//ajax	
 		      
 		   		
 		}//idDupCheck
@@ -286,7 +304,39 @@
 		//사용자가 입력을 하는 순간 'idCheck'값을 초기화(0)하도록 함
 			document.getElementById("idCheck").value="0";
 	}			
-			
+	
+	var user_pw = $('#user_pw').val();	
+	var user_name = $('#user_name').val();
+	
+	var user_phone = $('#user_phone').val();
+	
+	var birthyyyy = $('#birthyyyy').val();
+	var birthmm = $('#birthmm').val();
+	var birthdd = $('#birthdd').val();	
+		
+	
+	/* $("#join").submit(function showInfo(event){
+		
+		event.preventDefault();
+		
+		$.ajax({
+			url: './MemberJoinAction.me',
+			data: {user_id: user_id, user_pw: user_pw, birthyyyy: birthyyyy, birthmm: birthmm, birthdd: birthdd, user_phone: user_phone},
+			success:function(data){
+				$('.modal-header').html("이메일을 확인해주세요!");
+				$('#checkMessage').html("d");
+				$('#myModal').show();
+				
+			},beforeSend:function(){
+		        $('.wrap_loading').css("visibility", "visible");
+		    }
+		    ,complete:function(){
+		       $('.wrap_loading').css("visibility", "hidden");
+
+		    } 
+		});
+	}); */
+		
 
 </script>
 
@@ -312,15 +362,16 @@
 			<!-- id -->
 				<input type="hidden" name="emailSuccess" id="emailSuccess">
                 <span id="emailCheck1" class="check_status"></span>
-                <div id="form_font_left" align="left">아이디 <span style="color:red; font-size: 8px !important; " id="idCheckMessage"></span></div>
-				<input type="email" name="user_id" id="user_id" placeholder="이메일 주소 입력" onkeyup="idDupCheck();" class="inp-field_nomargin w235"><input type="button" value="이메일 본인인증" id="emailCheck" class="btn_nomargin w118" onclick="sendEmail();"><br>
+                <div id="form_font_left" align="left">아이디 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434d5b;  " id="idCheckMessage"></span></div>
+				<input type="email" name="user_id" id="user_id" placeholder="이메일 주소 입력" onkeyup="idDupCheck();" class="inp-field_nomargin w235" ><input type="button" value="이메일 본인인증" id="emailCheck" class="btn_nomargin w118" onclick="sendEmail();"><br>
 				<div id="form_font_left_s" align="left">위 이메일로 인증번호가 발송됩니다. </div>
+				
 				<input type="hidden" name="idCheck" id="idCheck" value="0">
 			<!-- name -->
 				<div id="form_font_left" align="left">사용자 이름  </div>
 				<input type="text" name="user_name" id="user_name" placeholder="사용자 이름을 입력해 주세요" class="inp-field"><br>
 			<!-- password -->
-				<div id="form_font_left" align="left">비밀번호 <span style="color:red; font-size: 8px !important;" id="pwCheckMessage"></span> </div>
+				<div id="form_font_left" align="left">비밀번호 &nbsp;&nbsp;<span style="color: #434d5b; " id="pwCheckMessage"></span> </div>
 				<input type="password" name="user_pw" id="user_pw" placeholder="계정 비밀번호 입력" class="inp-field" onkeyup="pwCheckFunction();"><br>
 			<!-- password confirm -->
 				<input type="password" name="user_pw2" id="user_pw2" placeholder="비밀번호 재입력" class="inp-field" onkeyup="pwCheckFunction();"><br>
@@ -362,6 +413,13 @@
 		</form>
 		
 	</div><!-- join_content -->
+	
+<!-- Loading Bar -->
+	<div class="wrap_loading" style="visibility:hidden;">
+		<div id="loadingBar" >
+			<img src="img/redu_loadingBar.gif" >
+		</div>
+	</div>
 
 <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -376,7 +434,7 @@
       </div>
  
     </div><!--End Modal-->
-
+	
 
 	<div class="margin4"></div>
 	
