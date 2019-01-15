@@ -147,6 +147,26 @@ public class adFrontController extends HttpServlet{
 			forward = new adActionForward();
 			forward.setPath("./index.jsp?center=ContentInfo.jsp&gogo=star/supporters.jsp");
 			forward.setRedirect(false);
+
+		}else if(command.equals("/ReplyWriteActions.ad")){
+			
+			action =  new adReplyWriteActions();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/RerepWriteActions.ad")){
+			
+			action =  new adRerepWriteActions();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		

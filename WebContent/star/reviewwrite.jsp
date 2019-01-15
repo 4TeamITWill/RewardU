@@ -1,8 +1,14 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="admin_db.ReplyBean"%>
+<%@page import="admin_db.ReplyDAO"%>
 <%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+<%@page import="admin_db.BoardDAO"%>
+<%@page import="admin_db.BoardBean"%>
+<%@page import="java.util.List"%> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,65 +16,50 @@
 <title>Insert title here</title>
 </head>
 
-<script type="text/javascript">
-$(function(){
-	 $("#reply_btn").click(function(){
-	    	if($("#reply_content").val().trim() === ""){
-	    		alert("댓글을 입력하세요.");
-	    		$("#reply_content").val("").focus();
-	    	}else{
-	    		$.ajax({
-	    			url: "/expro/ReplyWriteAction.do",
-	                type: "POST",
-	                data: {
-	                    no : $("#no").val(),
-	                    id : $("#id").val(),
-	                    reply_content : $("#reply_content").val()
-	                },
-	                success: function () {
-	                	alert("댓글 등록 완료");
-	                	$("#reply_content").val("");
-	                	getReply();
-	                }
-	    		})
-	    	}
-	    })
-	    function getReply(){
-	    	$.ajax({
- 			url: "/expro/GetReply.do", // 요청 url
-             type: "POST", // post 방식
-             data: {
-             	board_no : ${ content.board_no } // board_no의 값을 넘겨줌
-             },
-             success: function (json) { // 성공하였을 경우
-             	json = json.replace(/\n/gi,"\\r\\n"); // 개행문자 대체
-             	$("#replyList").text(""); // 댓글리스트 영역 초기화
-             	var obj = JSON.parse(json); // service 클래스로 부터 전달된 문자열 파싱
-             	var replyList = obj.replyList; // replyList는 전달된 json의 키값을 의미
-             	var output = ""; // 댓글 목록을 누적하여 보여주기 위한 변수
-             	for (var i = 0; i < replyList.length; i++) { // 반복문을 통해 output에 누적
-	                    output += "<div class='w3-border w3-padding'>";
- 	                for (var j = 0; j < replyList[i].length; j++) {
- 	                    var reply = replyList[i][j];
- 	                    if(j === 0){
- 	     					output += "<i class='fa fa-user'></i>&nbsp;&nbsp;" + reply.id + "&nbsp;&nbsp;";
- 	                    }else if(j === 1){
- 	     					output += "&nbsp;&nbsp;<i class='fa fa-calendar'></i>&nbsp;&nbsp;" + reply.reply_date;
- 	                    }else if(j === 2){
- 	     					output += "<pre>" + reply.reply_content + "</pre></div>";
- 	                    }
- 	                };
- 	        	};
-	              	$("#replyList").html(output); // replyList 영역에 output 출력
-	              	$(".reply_count").html(i);
-             }
-	    	})
-	    }
-	    getReply(); // 해당 페이지 실행 시 해당 함수 호출
-})
 
-</script>
+
+
+
 <body>
+<%
+String id = (String)session.getAttribute("id");
+int pd_no = Integer.parseInt(request.getParameter("pd_no"));
+BoardDAO bdao = new BoardDAO();
+BoardBean bdto = new BoardBean();
+bdto = bdao.getBoard(pd_no);
+
+
+	
+%>
+<%-- <script type="text/javascript">
+		$(document).ready(function() { 
+					
+			$(".buttonstar").show(); 
+
+            $(".buttonstarrate").hide(); 
+
+
+			
+			$(".buttonstar").on("click", function() {
+				<%
+					if(id==null){
+					%>
+						alert("로그인해주세요");	
+					<%
+					}else{
+					%>
+						$(".buttonstarrate").slideToggle('3000');
+						
+					<%
+					}
+				%>
+				
+			});
+		});	
+		
+</script>
+ --%>
+
 
 	<div class="ma2">
 
@@ -86,24 +77,97 @@ $(function(){
 		</div>
 		<br/>
 		<div style="padding: 20px; background: #F2F2F2; border-radius: 20px;">
-		<div>
+			<div>
 				<c:if test="${ id == null }">
 					<textarea rows="5" cols="50"  readonly>로그인 후 댓글 달기</textarea>
 				</c:if>
 				<c:if test="${ id != null }">
-				 ${ content.id }
-					<form>
-						<input type="hidden" name="no" id="no" value="${ content.pd_no }"> 
-						<input type="hidden" name="id" id="id" value="${ id }">
-						<textarea rows="5" cols="50" placeholder="댓글 작성" name="reply_content" id="reply_content"></textarea>
-						<input type="button"  id="reply_btn" value="댓글 등록">
+				 
+					<form action="./ReplyWriteActions.ad" method="post">
+					<input type="hidden" name="pd_no"  value="<%=pd_no%>"> 
+					<input type="hidden" name="user_id"  value="<%=id%>">
+												
+						<textarea rows="5" cols="50" placeholder="댓글 작성" name="content"></textarea>
+						<button type="submit">댓글입력</button>
 					</form>
 				</c:if>
 			</div>
 		</div>
-		<div id="replyList"></div>
-
-	</div>
+		<br/>
+		
+			<table>
+				
+				<%
+					ReplyDAO dao = new ReplyDAO();
+					
+				
+					
+					
+					ArrayList<ReplyBean> list = dao.getList(pd_no);
+					if(list.size()>0){
+						request.setAttribute("reply", 1);
+						request.setAttribute("replylist", list);
+					}else{
+						request.setAttribute("reply", 0);
+					}
+				%>
+				
+				
+				<c:if test="${reply == 1}">
+					
+					<c:forEach var="rlist" items="${replylist}">
+						<tr>
+							<td >${rlist.user_id}</td>
+							<td > 작성 날자 : ${rlist.date}</td>
+						</tr>	
+						<tr>
+							<td>${rlist.content}</td>
+						</tr>
+						<tr>
+							<td><button class="buttonstar">답글</button></td>
+						</tr>		
+						<tr>
+							<td>		
+							<form action="./RerepWriteActions.ad?re_no=${rlist.re_no }&group_num=${rlist.group_num}&seq=${rlist.seq}&lev=${rlist.lev}" method="post">
+								<input type="hidden" name="pd_no"  value="<%=pd_no%>"> 
+								<input type="hidden" name="user_id"  value="<%=id%>">
+								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="./img/rewrite.jpg" width="30" height="30"><textarea rows="1" cols="50" placeholder="답글  작성" name="content"></textarea>
+								<button type="submit"> 댓글입력 </button>
+							</form>
+							
+							</td>						
+						</tr>
+						
+							 		<%
+										int group_num= Integer.parseInt(request.getParameter("group_num"));
+										ArrayList<ReplyBean> list2 = dao.getList2(pd_no, group_num);
+										if(list.size()>0){
+											request.setAttribute("reply2", 1);
+											request.setAttribute("replylis2", list2);
+										}else{
+											request.setAttribute("repl2", 0);
+										}
+									%>  
+						<tr>	
+						 	<c:if test="${reply2 == 1}">
+									<c:forEach var="rlist2" items="${replylist2}">
+										<td>${rlist2.content} </td>
+									</c:forEach>
+								
+							</c:if>
+								 
+						</tr>
+						<tr>
+							<td>-------------------------------------------------------------------------</td>
+						</tr>
+					</c:forEach>
+		
+				</c:if>
+				
+		
+			</table>
+		</div>
+	
 	
 	<hr>
 
