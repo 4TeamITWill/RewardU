@@ -40,7 +40,7 @@ public class MemberModifyPwAction implements Action{
 			//request.setAttribute("mpw", 1);
 			
 			out.println("<script>");
-			out.println("alert('ºñ¹Ğ¹øÈ£ º¯°æÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.')");
+			out.println("alert('ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.')");
 			out.println("location.href='./Main.me'");
 			out.println("</script>");
 			
@@ -50,7 +50,7 @@ public class MemberModifyPwAction implements Action{
 			request.setAttribute("mpw", 2);
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			//out.println("alert('±âÁ¸ ºñ¹Ğ¹øÈ£¿Í ÀÔ·Â°ªÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.')");
+
 			out.println("location.href='./MemberModifyPw.me?mpw=2;'");
 			out.println("</script>");
 			

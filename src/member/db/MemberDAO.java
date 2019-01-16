@@ -116,7 +116,7 @@ public class MemberDAO {
 		return result;
 	}//userCheck
 	
-	/*Login ȸ��üũ*/
+	/*Login ȸ��üũ*/
 	public int userCheck(String user_id, String user_pw){
 		
 		Connection con = null;
@@ -449,7 +449,10 @@ public class MemberDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
+			//pstmt.setString(1, mbean.getUser_photo());
 			pstmt.setString(1, mbean.getUser_id());
+			
+			pstmt.executeUpdate();
 				
 		} catch (Exception e) {
 			e.printStackTrace();

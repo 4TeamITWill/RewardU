@@ -81,9 +81,9 @@ request.setCharacterEncoding("UTF-8");
 		합계 : <input type="text" name="op3_priceTotal" id="expense_total3" size="10" value="0" readonly >	 
 	</div>
 	<br/><br/>
-	총 금액 : <input type="text" id="total_price" value="0" readonly> <br/>
+	총 금액 : <input type="text" id="total_price" value="0" readonly> <br/><br/>
 	
-	<input type="submit" value="다음 단계로  >">
+	<input type="submit" value="다음 단계로  >" class="msg_btn" style="float: right;">
 	
 	
 </div>

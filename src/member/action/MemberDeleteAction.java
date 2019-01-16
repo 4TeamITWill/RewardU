@@ -41,7 +41,7 @@ public class MemberDeleteAction implements Action{
 			forward.setPath("./Main.me");
 			return forward;*/
 			out.println("<script>");
-			out.println("alert('Å»Åğ°¡ ¿Ï·á µÇ¾ú½À´Ï´Ù.')");
+			out.println("alert('íšŒì›íƒˆí‡´í•˜ì…¨ìŠµë‹ˆë‹¤.')");
 			out.println("location.href='./Main.me';");
 			out.println("</script>");
 
@@ -54,7 +54,7 @@ public class MemberDeleteAction implements Action{
 			PrintWriter out = response.getWriter();
 		
 			out.println("<script>");
-			out.println("alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.')");
+			out.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.')");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();

@@ -18,7 +18,7 @@ public class MemberLogoutAction implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('·Î±×¾Æ¿ôÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.')");
+		out.println("alert('ë¡œê·¸ì•„ì›ƒì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.')");
 		out.println("location.href='./Main.me';");
 		out.println("</script>");
 		

@@ -979,7 +979,7 @@ body{
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  border-radius : 0.2em;
+  border-radius : 2px;
   width: 500px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
@@ -1031,7 +1031,7 @@ body{
 
 .modal-footer {
 	text-align: center;
-  padding: 5px 16px;
+  padding: 0;
   background-color: #fff;
 
 }
@@ -1060,14 +1060,22 @@ body{
 
 .modal-footer #modal-btn3{
 	background-color: #fff;
-	border-radius: 0.2em;
+	/* border-radius: 0.2em; */
 	width: 50%;
-	height: 30px;
+	height: 40px;
 	color: #b44af7;
-	border: 1px solid #b44af7;
-
+	border: none;
+	cursor: pointer;
 	line-height: 100%;
+
 }
+
+.modal-footer #modal-btn3:hover{
+	background-color: #ccc;
+	font-weight: bold;
+
+}
+
 
 /*-------------------------------------------*/
 

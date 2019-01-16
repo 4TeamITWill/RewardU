@@ -68,10 +68,8 @@
 		
 			
 		
-		if(!user_name || blank_pattern.test(user_name)){
-			//alert("입력 안됨ㅁ"); 
+		if(!user_name || blank_pattern.test(user_name)){ 
 			$('#checkMessage').html('이름에 공백이 포함되어 있거나 입력되지 않았습니다.');
-			//$('#checkType').attr('class','modal-content panel-warning');
 			$('#myModal').show();
 			return false;
 		}
@@ -142,13 +140,7 @@
 					//$('#checkMessage').load("./member/joinConfirm.jsp");
 					//$('#myModal').show();
 					
-				}/* ,beforeSend:function(){
-			        $('.wrap_loading').css("visibility", "visible");
-			    }
-			    ,complete:function(){
-			       $('.wrap_loading').css("visibility", "hidden");
-
-			    }  */
+				}
 			});
 		
 	 
@@ -314,29 +306,7 @@
 	var birthmm = $('#birthmm').val();
 	var birthdd = $('#birthdd').val();	
 		
-	
-	/* $("#join").submit(function showInfo(event){
-		
-		event.preventDefault();
-		
-		$.ajax({
-			url: './MemberJoinAction.me',
-			data: {user_id: user_id, user_pw: user_pw, birthyyyy: birthyyyy, birthmm: birthmm, birthdd: birthdd, user_phone: user_phone},
-			success:function(data){
-				$('.modal-header').html("이메일을 확인해주세요!");
-				$('#checkMessage').html("d");
-				$('#myModal').show();
-				
-			},beforeSend:function(){
-		        $('.wrap_loading').css("visibility", "visible");
-		    }
-		    ,complete:function(){
-		       $('.wrap_loading').css("visibility", "hidden");
 
-		    } 
-		});
-	}); */
-		
 
 </script>
 
