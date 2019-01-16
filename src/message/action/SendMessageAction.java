@@ -25,6 +25,10 @@ public class SendMessageAction implements Action{
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		
+		if(subject.equals("") || subject==null){
+			subject = "제목없음";
+		}
+		
 		//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
 		ActionForward forward=new ActionForward();
 		
