@@ -159,7 +159,10 @@
 						</div>
 						<div style="margin : 26px 0;">
 							<div style="width:80%; margin : 0 auto; text-align: center; font-size:18px; font-weight : bold;">
-								<%=bbean.getPd_subject() %>
+								<a href="./Content.ad?pd_no=<%=bbean.getPd_no()%>&user_id=<%=session.getAttribute("id")%>"
+								style="text-decoration: none; color: #fff;">
+								<%=bbean.getPd_subject()%>
+								</a>
 							</div>
 							<div style="width : 50%; margin : 0 auto; margin-top : 2rem;text-align: center; font-size : 13px;">
 								<%=bbean.getPd_category() %>
