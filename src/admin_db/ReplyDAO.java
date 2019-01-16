@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.media.jai.operator.BandCombineDescriptor;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.print.attribute.standard.PDLOverrideSupported;
@@ -141,7 +142,7 @@ public class ReplyDAO {
 					
 					con=getConnection();
 					
-					sql="select * from reply where pd_no like '%"+pd_no+"%' order by group_num desc, seq asc";
+					sql="select * from reply where pd_no like '%"+pd_no+"%' order by group_num asc";
 					pstmt=con.prepareStatement(sql);
 					
 					rs=pstmt.executeQuery();
@@ -177,53 +178,46 @@ public class ReplyDAO {
 	
 	
 	
-	public ArrayList<ReplyBean> getList2(int pd_no ,int group_num){
-		ArrayList<ReplyBean> list2 = new ArrayList<>();
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		String sql="";
-		
-		ResultSet rs=null;
-					
+	
+	
+	
+		public int reply(int pd_no){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			String sql="";
+			ResultSet rs=null;
+			ReplyBean dd = new ReplyBean();
+			int result =0;
 			
-		
-				try {
-					
-					con=getConnection();
-					
-					sql="select * from reply where pd_no like '%"+pd_no+"%' and group_num=?";
-					pstmt=con.prepareStatement(sql);
-					pstmt.setInt(1, group_num);
-					rs=pstmt.executeQuery();
+			try {
 				
-					while(rs.next()){
-						ReplyBean bdto = new ReplyBean();
-						
-						bdto.setPd_no(rs.getInt("pd_no"));
-						bdto.setUser_id(rs.getString("user_id"));
-						bdto.setContent(rs.getString("content"));
-						bdto.setDate(rs.getTimestamp("date"));
-						bdto.setRe_no(rs.getInt("re_no"));
-						bdto.setGroup_num(rs.getInt("group_num"));
-						bdto.setSeq(rs.getInt("seq"));
-						bdto.setLev(rs.getInt("lev"));
-						
-						
-						list2.add(bdto);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}finally{
-					try {
-						if(con != null) con.close();
-						if(pstmt != null) pstmt.close();
-						if(rs != null) rs.close();
-					} catch (Exception e2) {
-						e2.printStackTrace();
-					}
+				con=getConnection();
+				
+				sql="select * from reply where pd_no like '%"+pd_no+"%'";
+				pstmt=con.prepareStatement(sql);
+				
+				rs=pstmt.executeQuery();
+			
+				if(rs.next()){
+					
+					result = rs.getInt("group_num");
+					
+					
+					
 				}
-				return list2;
-			}//listreply
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					if(con != null) con.close();
+					if(pstmt != null) pstmt.close();
+					if(rs != null) rs.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return result;
+	}//get group_num
 
 	
 	

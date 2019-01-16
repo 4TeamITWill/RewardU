@@ -43,10 +43,7 @@ public class adRerepWriteActions implements adAction {
 		ReplyDAO bdao= new ReplyDAO();
 		bdao.insertreReply(bb);
 		
-		List<ReplyBean> reply2 = null;
-		
-		reply2=bdao.getList2(pd_no, group_num);
-		
+
 		
 		
 		

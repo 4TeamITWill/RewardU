@@ -25,7 +25,7 @@
 			</tr>
 	
 		</table>
-		<hr>
+		<hr class="body">
 		
 	</div>
 	<div class="ma2" >
@@ -44,19 +44,16 @@
        		 </div>
 				
 	</div> 
-	<hr>
+	<hr class="body">
 	<div class="ma3">
 		<div class="in">
 			상품 내용설명 및  하단 부분 
+			<%=bdto.getPd_content()%>
 		</div>
 	
 	</div>
 	
-	<hr>
-	<div class="ma4" id="ma4">
-		<div class="in">
-			댓글 만들기 
-		</div>
-	</div>
+	<hr class="body">
+	
 </body>
 </html>
