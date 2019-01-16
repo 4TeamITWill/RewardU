@@ -24,11 +24,11 @@ public class RewardingWriteAcrion2 implements Action{
 		RewardDAO rdao = new RewardDAO();
 		RewardBean all = new RewardBean();
 		
-		all.setPd_opprice1(request.getParameter("pd_opprice1"));
+		all.setPd_opprice1(request.getParameter("pd_opprice1").replace(",", ""));
 		all.setPd_opcontent1(request.getParameter("pd_opcontent1"));
-		all.setPd_opprice2(request.getParameter("pd_opprice2"));
+		all.setPd_opprice2(request.getParameter("pd_opprice2").replace(",", ""));
 		all.setPd_opcontent2(request.getParameter("pd_opcontent2"));
-		all.setPd_opprice3(request.getParameter("pd_opprice3"));
+		all.setPd_opprice3(request.getParameter("pd_opprice3").replace(",", ""));
 		all.setPd_opcontent3(request.getParameter("pd_opcontent3"));
 		
 		all.setPd_opsubject1(request.getParameter("pd_opsubject1"));
