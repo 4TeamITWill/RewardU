@@ -1,3 +1,4 @@
+<%@page import="admin_db.ReplyDAO"%>
 <%@page import="javax.print.attribute.standard.PDLOverrideSupported"%>
 <%@page import="org.apache.taglibs.standard.lang.jstl.test.Bean1"%>
 <%@page import="admin_db.BoardBean"%>
@@ -34,28 +35,26 @@ h2.logotext {
 }
 
 div.ma0{
-	margin-top : 50px;
-	height: 60px;
+	margin-top : 30px;
+	margin-bottom:30px;
+	height: 10px;
 	width: 100%;
 	text-align: center;
 }
 
-
-
-
-div.ma {
+/* div.ma {
 	
 	margin-top: 30px;
 	
-}
-hr {
-  border: 0;
-  border-top: 1px solid #8c8c8c;
-  border-bottom: 1px solid #fff;
+} */
 
-	margin-left: 470px;
-	margin-right: 470px;
+/* body hr 속성 주기  */
+hr.body{
+ border-top : 2px double #bbb; text-align: center; 
+ margin-left: 470px;
+ margin-right: 470px;
 }
+
 div.ma2 {
 	margin-left:470px;
 	margin-right:470px;
@@ -80,6 +79,18 @@ div.ma4 {
 div.in {
 	display: inline-block;
 }
+
+
+/* 메뉴바 css */
+  #menubar {
+   position: relative;
+ 	 font-size: 20px;	
+ 	 font-family: arial;
+ 	 font-weight: bold;
+}
+
+
+
 </style>
 
 </head>
@@ -94,6 +105,9 @@ div.in {
 			BoardDAO bdao = new BoardDAO();
 			BoardBean bdto = new BoardBean();
 			bdto = bdao.getBoard(pd_no);
+			ReplyDAO bdo = new ReplyDAO();
+			bdo.reply(pd_no);
+			
 		%> 
 		<img src=" ./upload/<%=bdto.getPd_realfile() %> " style="opacity: 0.2" height="100%"
 			width="100%">
@@ -115,27 +129,28 @@ div.in {
 
 	<div class = "ma0">
 		<div class="in">
-		<table border="1px" width="500px">
-			
+		<table width="800px" style="table-layout: fixed;" >
 				<tr>
 					<td> 
-						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/Content1.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="intro_a">펀딩소개</a>
+						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/Content1.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="intro_a" id="menubar">펀딩소개</a>
 					 </td> 	
-					<td><a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="go_btn">댓글</a></td>
+					<td><a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>&group_num=<%=bdo.reply(pd_no) %>" class="go_btn" id="menubar">댓글</a></td>
 					<td>
-						<a href="sellernews.my?pd_no=<%=pd_no%>&seller_id=<%=bdto.getUser_id()%>">새소식</a>
+						<a href="sellernews.my?pd_no=<%=pd_no%>&seller_id=<%=bdto.getUser_id()%>" id="menubar">새소식</a>
 					</td>
 					<td>
-						<a href="./supporters.ad?pd_no=<%=pd_no %>">참여하신분들</a>
+						<a href="./supporters.ad?pd_no=<%=pd_no %>" id="menubar">참여하신분들</a>
 					</td>
 				</tr>
 	
 		</table>
 		</div>
+		
 	</div>
 	
-	<hr>
 	
+	<hr style="border-top: 1px solid #CEECF5;">
+	<div>
 		 <c:set var="gogo" value="${param.gogo}"/>
 			<c:if test="${gogo == null}"> 
 		 			<c:set var="gogo" value="star/Content1.jsp"/>
@@ -143,7 +158,7 @@ div.in {
 			 
 			 <jsp:include page="${gogo }"/>
 			
-	
+	</div>
 <button type="button" class="back-to-top">
     <h3 align="right">Top</h3>
    	</button>
