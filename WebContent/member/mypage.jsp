@@ -47,11 +47,35 @@ jQuery(document).ready(function(){
 		document.getElementById("m_form").action = "./MemberModifyAction.me";
 		document.getElementById("m_form").submit();
 	}
+	
+	
+	$(document).ready(function(){ 
+		
+		var fileTarget = $('#user_photo');
+		var fakeField = $('.fakeField').val();
+		
+		fileTarget.on('change', function(){ // 값이 변경되면 
+			
+			if(window.FileReader){ // modern browser 
+				var filename = $(this)[0].files[0].name; 
+			} else { // old IE 
+				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+				} // 추출한 파일명 삽입 
+				/* $('.mypage_profile_photo').mouseover(function(){
+					
+				}); */
+				$('.mypage_profile_photo img').css("filter", "grayscale(100%)");
+				//$('.mypage_profile_photo:hover::after').css("display","none");
+				$('head').append("<style>.mypage_profile_photo:hover:after {content: none }</style>"); 
+				$('.fakeField').html(filename); 
+				$('.fakeField').css("display", "inline");
+			}); 
+		}); 
+
 
 	function photoSubmit(){
-		//var user_photo = $('#user_photo').val();
-		//var user_id = $("#user_id").val();
-		 var form = $('#photo_form')[0];
+		
+		var form = $('#photo_form')[0];
 		
 		var formData = new FormData(form);
 
@@ -59,11 +83,7 @@ jQuery(document).ready(function(){
 		formData.append("user_photo", $("input[name=user_photo]")[0].files[0]);
 	
 	
-		/* $(document).ajaxStart(function(){
-				$('.wrap_loading').css("visibility", "visible");
-				$('.wrap_loading').show();
-			});
-		 */
+		
 		 $.ajax({
 			url: './MemberAddPhotoAction.me',
 			enctype: 'multipart/form-data',
@@ -72,14 +92,15 @@ jQuery(document).ready(function(){
 			contentType: false, 
 			type: 'POST',
 			success: function(data){
-				alert("업로드 중 방가방가");
+
+				$('#user_photo').attr("value","user_photo");
 				
-				
+				location.reload();
 			},beforeSend:function(){
 		        $('.wrap_loading').css("visibility", "visible");
 		    }
 		    ,complete:function(){
-		    	alert("ㅂㅂ");
+
 		       $('.wrap_loading').css("visibility", "hidden");
 
 		    },error:function(){
@@ -87,8 +108,31 @@ jQuery(document).ready(function(){
 		    } 
 		}); 
 	 	 
-		 /*  document.getElementsById("photo_form").action = "./MemberAddPhotoAction.me";
-		document.getElementById("photo_form").submit();  */  
+	 
+	}
+ 	
+	function deleteSubmit(){
+		var user_id = $("#user_id").val();
+		var user_photo = $("#user_photo").val();
+		
+		$.ajax({
+			url: './MemberPhotoDeleteAction.me',
+			data :  {user_id: user_id, user_photo: user_photo},
+			success: function(data){
+				location.reload();
+				
+			},beforeSend:function(){
+		        $('.wrap_loading').css("visibility", "visible");
+		    }
+		    ,complete:function(){
+
+		       $('.wrap_loading').css("visibility", "hidden");
+
+		    },error:function(){
+		    	alert("프로필 사진 삭제에 실패했습니다.");
+		    }
+		});
+		
 	}
 	
 	
@@ -122,23 +166,28 @@ jQuery(document).ready(function(){
 			<form id="photo_form" name="photo_form" method="post" enctype="multipart/form-data">
 				<div class="margin3"></div>
 			<!-- profile photo setting-->
+				<div class="profile_photo_upload">
 					<div class="mypage_profile_photo">
-					<c:set var="photo" value="${sessionScope.user_photo }"></c:set>	
-						<c:choose>
-							<c:when test="${empty photo }">
-								<img src="./img/usernull.png">
-							</c:when>
-							<c:when test="${photo ne null }">
-								<img src="./upload/${sessionScope.user_photo }">
-							</c:when>
-						<%-- 	<c:when test="">
-								<img src="../upload/">
-							</c:when> --%>
-						</c:choose>
+						
+						<label for="user_photo" >
+						<c:set var="photo" value="${sessionScope.user_photo }"></c:set>	
+							<c:choose>
+								<c:when test="${empty photo }">
+									<img src="./img/usernull.png">
+								</c:when>
+								<c:when test="${photo ne null }">
+									<img src="./upload/${sessionScope.user_photo }">
+								</c:when>
+							<%-- 	<c:when test="">
+									<img src="../upload/">
+								</c:when> --%>
+							</c:choose>
+							<div class="fakeField" style="display: none; color:#f7005e;">업로드된 파일명이 나타납니다.</div>	
 					</div><!-- mypage_profile_photo  -->
-					<div class="profile_photo_upload">
-						<label for="user_photo" onclick="photoSubmit();">프로필 사진 수정</label>
-						<input type="file" id="user_photo" name="user_photo" value="${sessionScope.user_photo }" ><input type="button" value="삭제"><br>
+					
+						</label>
+						<input type="file" id="user_photo" name="user_photo" value="${sessionScope.user_photo }" >
+						<input type="button" id="photoSave" class="photo_btn" value="저장" onclick="photoSubmit();">&nbsp;<input type="button" class="photo_btn" value="삭제" onclick="deleteSubmit();"><br>
 						<div class="margin3"></div>
 					</div>
 			</form>		
@@ -193,11 +242,11 @@ jQuery(document).ready(function(){
       <div class="modal-content">
       	<span class="close" onClick="close_pop();">&times;</span> 
             <div class="modal-header">다시 확인해주세요!</div>
-            <div id="checkMessage" class="modal-body">
+            <div id="checkMessage" class="modal-body" style="border-bottom: 1px solid #aaa; ">
                 <p style="text-align: center; line-height: 1.5;">왜??</p>
             </div>
             <div class="modal-footer">
-            <input type="button" id="modal-btn3" value="전송" onclick="modifySubmit();">&nbsp;<input type="button" id="modal-btn2" value="취소" onclick="location.reload();">
+            <input type="button" id="modal-btn3" value="전송" onclick="modifySubmit();"><input type="button" id="modal-btn3" style="border-left: 1px solid #aaa;" value="취소" onclick="location.reload();">
             </div>
       </div>
  

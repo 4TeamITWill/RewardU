@@ -36,7 +36,7 @@
 		var password_pattern = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,20}$/;
 		
 		if(mpw == "2"){
-			  $('#checkMessage').html('기존 비밀번호와 입력값이 일치하지 않습니다.');
+			  $('#checkMessage').html('입력하신 기존 비밀번호가 틀립니다.');
 			  $('#myModal').show();
 			}/* else {
 				$('#checkMessage').html('방가방가');
@@ -81,6 +81,7 @@
 			}else{//같을떄...
 				
 				$('#pwCheckMessage').html('');
+				$('#pwCheckMessage').css("display", "none");
 			}								
 		}							
 	}//passwordCheck

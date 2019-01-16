@@ -23,9 +23,15 @@ public class MemberPhotoDeleteAction implements Action{
 		mbean.setUser_id(user_id);
 		mbean.setUser_photo(user_photo);
 		
+		System.out.println(user_photo);
+		
 		MemberDAO mdao = new MemberDAO();
 		
+		session.setAttribute("user_photo", user_photo);
+		
 		mdao.deletePhoto(mbean);
+		
+		
 		
 		return null;
 	}

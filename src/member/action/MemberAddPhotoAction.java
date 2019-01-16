@@ -43,6 +43,7 @@ public class MemberAddPhotoAction implements Action{
 		
 		mbean.setUser_id(user_id);
 		mbean.setUser_photo(user_photo);
+		
 		System.out.println(user_photo);
 		System.out.println(user_id);
 		
@@ -68,13 +69,13 @@ public class MemberAddPhotoAction implements Action{
 		session.setAttribute("user_photo", user_photo);
 		request.setAttribute("myPage_center", "../member/mypage.jsp");
 		
-		ActionForward forward = new ActionForward();
+	/*	ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
 		
-		return forward;
+		return forward;*/
 		
-		//return null;
+		return null;
 	}
 
 }

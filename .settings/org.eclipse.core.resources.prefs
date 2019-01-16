@@ -2,4 +2,5 @@ eclipse.preferences.version=1
 encoding//WebContent/member/policyForm.jsp=UTF-8
 encoding//src/admin/adFrontController.java=UTF-8
 encoding//src/admin_db/BoardDAO.java=UTF-8
+encoding/<project>=UTF-8
 separateDerivedEncodings=true
