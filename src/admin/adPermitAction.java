@@ -65,7 +65,7 @@ public class adPermitAction implements adAction {
 				
 				request.setAttribute("Reward_center", "RewardAll.jsp");
 				
-				System.out.println("============================");
+				
 				adActionForward forward = new adActionForward();
 				forward.setRedirect(false);
 				if(currentPage1 < 2){
