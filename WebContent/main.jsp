@@ -1,3 +1,5 @@
+<%@page import="admin_db.BoardBean"%>
+<%@page import="my_db.MyDAO"%>
 <%@page import="news.db.Newsbean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="news.db.NewsDAO"%>
@@ -97,7 +99,7 @@
 					<div class="box_grid1_">
 					
 					<%
-						//최신뉴스 Vector 로 받아오기
+						// 최신뉴스 Vector 로 받아오기
 						NewsDAO newsDao = new NewsDAO();
 						Vector<Newsbean> v = newsDao.getNewsList();
 						
@@ -108,7 +110,7 @@
 								<img src="./upload/<%= nbean.getReNews_img()%>" style="width : 120%;">
 								<div style="width:100%;height : 100%; position : absolute; left:0; top:0; background-color : rgba(0,0,0,0.5);"></div>
 							</div>
-							<div style="position : absolute;	top:55%; width : 80%; padding-left : 10px; box-sizing : border-box;">
+							<div style="position : absolute;	left:5%;bottom:10%; width : 50%; padding-left : 10px; box-sizing : border-box;">
 								<div style="color : #24eae0; font-size:16px; font-weight : bold; height:20px; line-height : 20px; text-align:center; border-bottom : 1px solid #24eae0; display : inline-block;">
 									<%=nbean.getReNews_category() %>
 								</div>
@@ -138,8 +140,70 @@
 					<div class="news_contents"><b>[리워드]</b> 목표금액 증액을 실시합니다</div>
 					<div class="news_contents"><b>[리워드]</b> 이런 일도 있음</div>
 				</div>
-				<div class="box_grid box_grid3">컨텐츠</div>
-				<div class="box_grid box_grid4">넣으면 됨!!</div>
+				
+				<div class="box_grid box_grid3">
+				<%
+					// 마감임박 게시글리스트 메인페이지 뿌려주기
+					MyDAO mydao = new MyDAO();
+					ArrayList<BoardBean> magamlist = mydao.getMagamList();
+				if(magamlist != null){	
+					for(BoardBean bbean : magamlist){
+				%>
+					<div class="box_grid3_cont">
+						<div style="height : 42%; overflow:hidden; display:flex; align-items:center; border-bottom:1px solid;">
+							<img src="./upload/<%=bbean.getPd_file() %>" style="width:100%;">
+						</div>
+						<div style="display:flex; justify-content : center; margin : 20px 0; font-size : 14px;">
+							<span style="display:block; height :30px;  line-height:30px; width:75px; border : 0.5px solid; text-align:center;">마감임박</span>
+							<span style="display:block; height :30px;  line-height:30px; width:60px; border : 0.5px solid; text-align:center; border-left:0;">리워드</span>
+						</div>
+						<div style="margin : 26px 0;">
+							<div style="width:80%; margin : 0 auto; text-align: center; font-size:18px; font-weight : bold;">
+								<%=bbean.getPd_subject() %>
+							</div>
+							<div style="width : 50%; margin : 0 auto; margin-top : 2rem;text-align: center; font-size : 13px;">
+								<%=bbean.getPd_category() %>
+							</div>
+						</div>						
+					</div>
+							
+				<%
+					}
+				}else{
+				%>
+					<div style="height : 100%; background-color : #e17bf7; display:flex; justify-content : center; align-items : center;">
+						<span style="color : white;">[마감임박]인 프로젝트가 없습니다.</span>
+					</div>				
+				<%
+				}
+				%><!-- 버튼 -->
+					<div class="btnCont1" >
+						<a id="left1">&nbsp;&lt;</a>
+						<div class="pagenation">
+						<!-- 밑에 동그란 점들 생기는 부분 -->							
+						</div>
+						<a id="right1">&gt;&nbsp;</a>
+					</div>	
+				</div>
+				
+				<!-- 태그 모음 부분 -->
+				<div class="box_grid box_grid4">
+					<div style="width : 90%; margin : 0 auto;">
+						<div style="text-align : center; margin-bottom : 1.5rem ; font-weight : bold;">리워드 카테고리</div>
+						<div>
+							<span onclick="cateGo('패션뷰티')">패션·뷰티</span>
+							<span onclick="cateGo('테크가전')">테크·가전</span>
+							<span onclick="cateGo('반려동물')">반려동물</span><br/>
+							<span onclick="cateGo('푸드')">푸드</span>
+							<span onclick="cateGo('홈리빙디자인소품')">홈리빙·디자인소품</span><br/>
+							<span onclick="cateGo('게임스포츠')">게임·스포츠</span>
+							<span onclick="cateGo('여행레저')">여행·레저</span>
+							<span onclick="cateGo('문화교양')">문화·교양</span><br/>
+							<span onclick="cateGo('소셜캠페인')">소셜·캠페인</span>
+							<span onclick="cateGo('교육키즈')">교육·키즈</span>
+						</div>
+					</div>
+				</div>
 				
 				
 			</div>			
@@ -148,8 +212,7 @@
 	
 <script>
 		
-	//최신뉴스부분 자바스크립트	
-		
+	//최신뉴스부분 자바스크립트	화살표 눌렀을때 슬라이드		
 	var pos=0;	
 	var totalSlides = $(".box_grid1_cont").length;
 	var sliderWidth = $(".box_grid1_cont").width();
@@ -165,17 +228,78 @@
 	function slideLeft(){
 		pos--;
 		if(pos == -1) pos = totalSlides - 1;
-		$(".box_grid1_").animate({"left":-(sliderWidth*pos)},300);
+		$(".box_grid1_").animate({"left":-(sliderWidth*pos)},600);
 		
 	}
 	
 	function slideRight(){
 		pos++;
 		if(pos == totalSlides) pos = 0;
-		$(".box_grid1_").animate({"left":-(sliderWidth*pos)},300);
+		$(".box_grid1_").animate({"left":-(sliderWidth*pos)},600);
+	}
+	//-----------------------------------------------최신뉴스부분 끝
+
+	//마감임박 리스트 페이지 슬라이드
+	var pos1 = 0;
+	var totalSlides1 = $(".box_grid3_cont").length;	
+	
+	//밑에 동그란 점들 콘텐츠 갯수만큼 만들기
+	$.each($(".box_grid3_cont"), function(){
+		
+		var div = document.createElement("div");
+		$(".pagenation").append(div);
+		
+	});
+	//처음으로 보여지고 있을 기본 값
+	$(".box_grid3_cont").eq(pos1).css("opacity","1");
+	pagenation();
+	
+	//동그란 점들 클릭했을때도 마찬가지로 슬라이드, 페이지네이션
+	$(".pagenation div").click(function(){
+		pos1 = $(this).index();
+		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
+		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
+		
+		pagenation();
+	});
+	
+	$("#left1").click(function(){
+		slideLeft1();
+	});
+	
+	$("#right1").click(function(){
+		slideRight1();
+		
+	});
+	
+	function slideLeft1(){
+		pos1--;
+		if(pos1 == -1) pos1=totalSlides1-1;
+		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
+		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
+		
+		pagenation();
 	}
 	
-
+	function slideRight1(){
+		pos1++;
+		if(pos1 == totalSlides1) pos1 =0;
+		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
+		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
+		
+		pagenation();
+	}
+	
+	function pagenation(){
+		$(".pagenation div").removeClass("pagenationActive");
+		$(".pagenation div").eq(pos1).addClass("pagenationActive");
+		
+	}	
+	//-------------------------------------------------------------
+	
+	function cateGo(cate){
+		location.href="PermitList.ad?category="+cate;
+	}
 </script>	
 	
 </body>

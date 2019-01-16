@@ -835,4 +835,71 @@ public class MyDAO {
 		}
 		return result;
 	}//delReward() 메소드 끝
+	
+	// 메인에 마감임박인 게시글 뿌려주기 메소드
+	public ArrayList<BoardBean> getMagamList(){
+		
+		ArrayList<BoardBean> list = new ArrayList<>();		
+		
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try{
+			con = getConnection();			
+			
+			sql = "select * from board where pd_end < date_add(now(), interval 3 day) and pd_result = 0 and pd_permit = 1 order by pd_no desc limit 0,5";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				BoardBean bbean = new BoardBean();
+				
+				bbean.setPd_category(rs.getString("pd_category"));
+				bbean.setPd_content(rs.getString("pd_content"));
+				bbean.setPd_count(rs.getInt("pd_count"));
+				bbean.setPd_curmoney(rs.getString("pd_curmoney"));
+				bbean.setPd_end(rs.getTimestamp("pd_end"));
+				bbean.setPd_file(rs.getString("pd_file"));
+				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
+				bbean.setPd_good(rs.getInt("pd_good"));
+				bbean.setPd_no(rs.getInt("pd_no"));
+				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bbean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bbean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bbean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bbean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				bbean.setPd_participant(rs.getInt("pd_participant"));
+				bbean.setPd_permit(rs.getInt("pd_permit"));
+				bbean.setPd_realfile(rs.getString("pd_realfile"));
+				bbean.setPd_result(rs.getInt("pd_result"));
+				bbean.setPd_start(rs.getTimestamp("pd_start"));
+				bbean.setPd_subject(rs.getString("pd_subject"));
+				bbean.setUser_id(rs.getString("user_id"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				
+				list.add(bbean);
+				
+				
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return list;
+		
+	}
 }
