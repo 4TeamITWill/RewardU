@@ -57,7 +57,6 @@ jQuery(document).ready(function(){
 
 		formData.append("user_id", $("#user_id").val());
 		formData.append("user_photo", $("input[name=user_photo]")[0].files[0]);
-		//formData.append("user_photo", $("#user_photo").val());
 	
 		/* $(document).ajaxStart(function(){
 				$('.wrap_loading').css("visibility", "visible");
@@ -72,8 +71,8 @@ jQuery(document).ready(function(){
 			contentType: false, 
 			type: 'POST',
 			success: function(data){
-				alert("업로드 중 방가방가");
-				//$('#user_photo1').attr("src","./upload/apple.jpg");
+				alert(data);
+				$('#user_photo1').attr("src","./upload/"+$.trim(data));
 				
 			},beforeSend:function(){
 		        $('.wrap_loading').css("visibility", "visible");
@@ -129,7 +128,7 @@ jQuery(document).ready(function(){
 								<img src="./img/usernull.png">
 							</c:when>
 							<c:when test="${photo ne null }">
-								<img src="./upload/${sessionScope.user_photo }">
+								<img id="user_photo1" src="./upload/${sessionScope.user_photo }">
 							</c:when>
 						<%-- 	<c:when test="">
 								<img src="../upload/">
@@ -137,8 +136,9 @@ jQuery(document).ready(function(){
 						</c:choose>
 					</div><!-- mypage_profile_photo  -->
 					<div class="profile_photo_upload">
-						<label for="user_photo" onclick="photoSubmit();">프로필 사진 수정</label>
+						<label for="user_photo">프로필 사진 수정</label>
 						<input type="file" id="user_photo" name="user_photo" value="${sessionScope.user_photo }" ><input type="button" value="삭제"><br>
+						<input type="button" value="업로드!" onclick="photoSubmit();">
 						<div class="margin3"></div>
 					</div>
 			</form>		

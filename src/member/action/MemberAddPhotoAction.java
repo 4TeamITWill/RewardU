@@ -1,5 +1,6 @@
 package member.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -68,13 +69,15 @@ public class MemberAddPhotoAction implements Action{
 		session.setAttribute("user_photo", user_photo);
 		request.setAttribute("myPage_center", "../member/mypage.jsp");
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
+		//ActionForward forward = new ActionForward();
+		//forward.setRedirect(false);
+		//forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
+		PrintWriter out = response.getWriter();
+		out.println(user_photo);
 		
-		return forward;
+		//return forward;
 		
-		//return null;
+		return null;
 	}
 
 }
