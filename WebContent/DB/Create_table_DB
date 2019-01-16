@@ -1,0 +1,209 @@
+CREATE TABLE `user` (
+	`user_id`	varchar(50)	NOT NULL,
+	`user_pw`	varchar(20)	NOT NULL,
+	`user_name`	varchar(10)	NOT NULL,
+	`user_birth`	varchar(10)	NOT NULL,
+	`user_phone`	varchar(20)	NOT NULL,
+	`user_regDate`	datetime	default now(),
+	`user_status`	int	NULL	DEFAULT 1,
+	`user_photo`	varchar(100)	NULL,
+	`user_content`	varchar(100)	NULL
+);
+
+CREATE TABLE `investmentList` (
+	`user_id`	varchar(50)	NOT NULL,
+	`pd_no`	int	NOT NULL,
+	`inv_orderno`	int	NULL,
+	`inv_name`	varchar(20)	NULL,
+	`inv_investor`	varchar(10)	NULL,
+	`inv_addr`	varchar(50)	NULL,
+	`inv_phone`	varchar(20)	NULL,
+	`inv_price`	varchar(20)	NULL,
+	`inv_date`	datetime	default now(),
+	`inv_confirm`	boolean	NULL	DEFAULT FALSE,
+	`inv_account`	varchar(30)	NULL,
+	`op1_price`	varchar(20)	NULL,
+	`op1_qty`	int	NULL,
+	`op2_price`	varchar(20)	NULL,
+	`op2_qty`	int	NULL,
+	`op3_price`	varchar(20)	NULL,
+	`op3_qty`	int	NULL,
+	`pd_realfile`	varchar(50)	NULL
+);
+
+CREATE TABLE `notice` (
+	`no`	int	NOT NULL,
+	`subject`	varchar(50)	NOT NULL,
+	`content`	varchar(20000)	NOT NULL,
+	`reg_date`	datetime	default now(),
+	`read_count`	int	NULL
+);
+
+CREATE TABLE `message_send` (
+	`no`	int	NULL,
+	`toID`	varchar(50)	NULL,
+	`fromID`	varchar(50)	NULL,
+	`subject`	varchar(100)	NULL,
+	`content`	varchar(1000)	NULL,
+	`reg_date`	datetime	default now(),
+	`read_status`	int	NULL
+);
+
+CREATE TABLE `message_receive` (
+	`no`	int	NULL,
+	`toID`	varchar(50)	NULL,
+	`fromID`	varchar(50)	NULL,
+	`subject`	varchar(100)	NULL,
+	`content`	varchar(1000)	NULL,
+	`reg_date`	datetime	default now(),
+	`read_status`	int	NULL
+);
+
+CREATE TABLE `message_store` (
+	`no`	int	NULL,
+	`toID`	varchar(50)	NULL,
+	`fromID`	varchar(50)	NULL,
+	`subject`	varchar(100)	NULL,
+	`content`	varchar(1000)	NULL,
+	`reg_date`	datetime	default now(),
+	`read_status`	int	NULL,
+	`storeID`	varchar(50)	NULL
+);
+
+CREATE TABLE `board` (
+	`pd_no`	int	NOT NULL primary key auto_increment,
+	`pd_curmoney`	varchar(50)	NOT NULL	DEFAULT 0,
+	`user_id`	varchar(50)	NOT NULL,
+	`pd_category`	varchar(50)	NOT NULL,
+	`pd_start`	datetime	NOT NULL,
+	`pd_end`	datetime	NOT NULL,
+	`pd_good`	int	NULL	DEFAULT 0,
+	`pd_count`	int	NULL	DEFAULT 0,
+	`pd_file`	varchar(50)	NOT NULL,
+	`pd_realfile`	varchar(50)	NOT NULL,
+	`pd_goalmoney`	varchar(50)	NOT NULL,
+	`pd_participant`	int	NULL	DEFAULT 0,
+	`pd_result`	int	NULL	DEFAULT 0,
+	`pd_permit`	int	NOT NULL	DEFAULT 0,
+	`pd_content`	text	NULL,
+	`pd_subject`	varchar(100)	NULL,
+	`pd_opsubject1`	varchar(1000)	NULL,
+	`pd_opcontent1`	varchar(5000)	NULL,
+	`pd_opprice1`	varchar(20)	NULL,
+	`pd_opsubject2`	varchar(1000)	NULL,
+	`pd_opcontent2`	varchar(5000)	NULL,
+	`pd_opprice2`	varchar(20)	NULL,
+	`pd_opsubject3`	varchar(1000)	NULL,
+	`pd_opcontent3`	varchar(5000)	NULL,
+	`pd_opprice3`	varchar(20)	NULL,
+	`pd_rate`	double	NULL	DEFAULT 0,
+	`pd_rateCount`	int	NULL	DEFAULT 0
+);
+
+CREATE TABLE `seller` (
+	`user_id`	varchar(50)	NOT NULL,
+	`pd_no`	int	NOT NULL primary key auto_increment,
+	`company_no`	varchar(20)	NOT NULL,
+	`company`	varchar(20)	NOT NULL,
+	`company_addr`	varchar(50)	NOT NULL,
+	`company_tell`	varchar(20)	NOT NULL,
+	`company_fax`	varchar(20)	NOT NULL,
+	`seller_date`	datetime	NULL,
+	`sellerAccount`	varchar(30)	NOT NULL
+);
+
+CREATE TABLE `saveAll` (
+	`pd_no`	int	auto_increment primary key,
+	`user_id`	varchar(50)	NULL,
+	`pd_subject`	varchar(100)	NULL,
+	`pd_category`	varchar(50)	NULL,
+	`pd_end`	datetime	default now(),
+	`pd_file`	varchar(50)	NULL,
+	`pd_realFile`	varchar(50)	NULL,
+	`pd_goalMoney`	varchar(50)	NULL,
+	`pd_curMoney`	varchar(50)	NULL,
+	`pd_content`	text	NULL,
+	`pd_opsubject1`	varchar(1000)	NULL,
+	`pd_opcontent1`	varchar(5000)	NULL,
+	`pd_opprice1`	varchar(20)	NULL,
+	`pd_opsubject2`	varchar(1000)	NULL,
+	`pd_opcontent2`	varchar(5000)	NULL,
+	`pd_opprice2`	varchar(20)	NULL,
+	`pd_opsubject3`	varchar(1000)	NULL,
+	`pd_opcontent3`	varchar(5000)	NULL,
+	`pd_opprice3`	varchar(20)	NULL,
+	`company_no`	varchar(20)	NULL,
+	`company`	varchar(20)	NULL,
+	`company_addr`	varchar(50)	NULL,
+	`company_tell`	varchar(20)	NULL,
+	`company_fax`	varchar(20)	NULL,
+	`seller_date`	datetime	default now(),
+	`sellerAccount`	varchar(30)	NULL
+);
+
+CREATE TABLE `good` (
+	`user_id`	varchar(50)	NOT NULL,
+	`pd_no`	int	NOT NULL
+);
+
+CREATE TABLE `participate` (
+	`no`	int	NOT NULL primary key auto_increment,
+	`user_id`	varchar(50)	NOT NULL,
+	`pd_no`	int	NOT NULL,
+	`par_money`	varchar(10)	NULL,
+	`inv_orderno`	int	NOT NULL
+);
+
+CREATE TABLE `reNews` (
+	`reNews_no`	int	NOT NULL,
+	`user_id`	varchar(50)	NULL,
+	`user_name`	varchar(10)	NULL,
+	`reNews_title`	varchar(50)	NULL,
+	`reNews_summary`	varchar(50)	NULL,
+	`reNews_content`	varchar(2000)	NULL,
+	`reNews_file`	varchar(50)	NULL,
+	`reNews_views`	int	NULL,
+	`reNews_date`	datetime	default now(),
+	`reNews_category`	varchar(10)	NULL,
+	`reNews_img`	varchar(100)	NULL
+);
+
+CREATE TABLE `WardNews` (
+	`WardNews_no`	int	NOT NULL,
+	`user_id`	varchar(50)	NULL,
+	`user_name`	varchar(10)	NULL,
+	`WardNews_title`	varchar(50)	NULL,
+	`WardNews_summary`	varchar(50)	NULL,
+	`WardNews_content`	varchar(2000)	NULL,
+	`WardNews_file`	varchar(50)	NULL,
+	`WardNews_views`	int	NULL,
+	`WardNews_date`	datetime	default now(),
+	`WardNews_category`	varchar(10)	NULL,
+	`WardNews_img`	varchar(100)	NULL
+);
+
+CREATE TABLE `reply` (
+	`pd_no`	int	NULL,
+	`user_id`	varchar(50)	NULL,
+	`content`	varchar(2000)	NULL,
+	`date`	datetime	default now(),
+	`re_no`	int	NULL,
+	`group_num`	int	NULL,
+	`seq`	int	NULL,
+	`lev`	int	NULL
+);
+
+CREATE TABLE `rate` (
+	`user_id`	varchar(50)	NOT NULL,
+	`pd_no`	int	NOT NULL,
+	`my_rate`	double	NOT NULL
+);
+
+CREATE table `sellernews`(
+    `no` int primary key auto_increment,
+    `pd_no` int not null,
+    `user_id` varchar(50) not null,
+    `sell_subject` varchar(200) not null,
+    `sell_content` text not null,
+    `date` datetime default now()
+);
