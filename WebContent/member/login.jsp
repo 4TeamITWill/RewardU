@@ -74,26 +74,20 @@ body { }
 
 <script type="text/javascript">
 
-	
-
-</script> 
-
-<script type="text/javascript">
-
 
 	jQuery(document).ready(function(){
 	
 		var loginVal = <%=loginVal%>
-		
 		if(loginVal == "1"){
+			/*  $('#checkTitle').html('다시 확인해주세요!'); */
 			  $('#checkMessage').html('아이디나 비밀번호가 일치하지 않습니다.');
 			  $('#myModal').show();
 			}else if (loginVal == "2") {
+				/* $('#checkTitle').html('다시 확인해주세요!'); */
 				$('#checkMessage').html('일치하는 아이디가 없습니다.');
 				$('#myModal').show();
-			}
-			/* else {
-				$('#checkMessage').html('방가방가');
+			}/* else {
+				$('#checkTitle').html('다시 확인해주세요!');
 				$('#myModal').show();
 			} */
 

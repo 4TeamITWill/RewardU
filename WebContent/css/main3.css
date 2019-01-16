@@ -1118,6 +1118,10 @@ body{
 	border : 0.5px solid rgba(200,200,200,0.8);
 }
 
+.write_content input {
+	
+}
+
 ._container {
 	padding-left : 3rem;
 	padding-top : 2rem;

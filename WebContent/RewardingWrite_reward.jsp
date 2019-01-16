@@ -23,6 +23,19 @@ $("#reward").click(function () {
     $("#f").attr("action","./RewardingWrite2.fu");
 });
 
+//콤마찍기
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+//콤마풀기
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+function inputNumberFormat(obj) {
+    obj.value = comma(uncomma(obj.value));
+}
 
 </script>
 </head>
@@ -49,7 +62,8 @@ $("#reward").click(function () {
 		
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();" value="${reward.pd_opprice1 }"> 원<br/></td>
+			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();" 
+				value="${reward.pd_opprice1 }"  style="text-align: right;" onkeyup="inputNumberFormat(this)"> 원<br/></td>
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 제목</td>
@@ -64,7 +78,8 @@ $("#reward").click(function () {
 		</tr>	
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()" value="${reward.pd_opprice2 }"> 원<br/></td>
+			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()" 
+				value="${reward.pd_opprice2 }"  style="text-align: right;" onkeyup="inputNumberFormat(this)"> 원<br/></td>
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 제목</td>
@@ -79,7 +94,8 @@ $("#reward").click(function () {
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()" value="${reward.pd_opprice3 }"> 원<br/></td>
+			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()" 
+			value="${reward.pd_opprice3 }" style="text-align: right;" onkeyup="inputNumberFormat(this)"> 원<br/></td>
 		</tr>	
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 제목</td>
@@ -99,7 +115,7 @@ $("#reward").click(function () {
 		
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();"> 원<br/></td>
+			<td><input type="text" id="pd_opprice1" name="pd_opprice1" onblur="addOp1();" style="text-align: right;" onkeyup="inputNumberFormat(this)"> 원<br/></td>
 		</tr>
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 명</td>	
@@ -114,7 +130,7 @@ $("#reward").click(function () {
 		</tr>	
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()"> 원<br/></td>
+			<td><input type="text" id="pd_opprice2" name="pd_opprice2" onblur="addOp2()" style="text-align: right;" onkeyup="inputNumberFormat(this)"> 원<br/></td>
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 명</td>
@@ -129,7 +145,7 @@ $("#reward").click(function () {
 		</tr>
 		<tr height="20">	
 			<td width="100" style="padding-left : 12px; font-weight : bold;">가격</td>
-			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()"> 원<br/></td>
+			<td><input type="text" id="pd_opprice3" name="pd_opprice3" onblur="addOp3()" style="text-align: right;" onkeyup="inputNumberFormat(this)"> 원<br/></td>
 		</tr>	
 		<tr height="20">
 			<td width="100" style="padding-left : 12px; font-weight : bold;">리워드 명</td>

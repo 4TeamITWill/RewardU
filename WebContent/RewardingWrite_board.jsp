@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/numberformatter.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 
@@ -33,15 +34,49 @@ $("#update").click(function () {
 
 
 //세션 없을때 현재날짜 넣어주기
-document.getElementById('now_date').valueAsDate = new Date();
+document.getElementById('date').valueAsDate = new Date();
 
 
-//전단위 콤마
- $(document).ready(function(){
- 	$(".number").each(function(index){
- 		$(this).text($(this).text().split(/(?=(?:\d{3})+(?:\.|$))/g).join(','));
- 	});
- });
+function dateChk() {
+	
+		var now = new Date();
+
+		var curr_date = now.getDate()
+		if (curr_date.toString().length == 1) {
+			curr_date = '0' + curr_date;
+		} //일의 숫자가 한자리면 앞에 0을 붙임
+		var curr_month = now.getMonth() + 1;
+		if (curr_month.toString().length < 2) {
+			curr_month = "0" + curr_month;
+		} //달의 숫자가 한자리면 앞에 0을 붙임 	
+		var curr_year = now.getFullYear();
+		
+		var curr = curr_year + curr_month + curr_date;
+
+		var writeDate = $("#date").val().replace(/\-/g, '');
+		
+		if (curr>writeDate) {
+			alert("마감일은 오늘 이전일 수 없습니다.");
+			$("#date").focus();
+			return false;
+		}
+		
+	};
+
+
+	//콤마찍기
+	 function comma(str) {
+	     str = String(str);
+	     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	 }
+	 //콤마풀기
+	 function uncomma(str) {
+	     str = String(str);
+	     return str.replace(/[^\d]+/g, '');
+	 }
+	 function inputNumberFormat(obj) {
+	     obj.value = comma(uncomma(obj.value));
+	 }
 
 
 </script>
@@ -52,23 +87,15 @@ document.getElementById('now_date').valueAsDate = new Date();
 
 	
 <div class="_container">		
-	<form action="" method="post" id="f" name="form" >
+	<form action="" method="post" id="f" name="form" onsubmit="return dateChk();">
 	
 <%String id = (String)session.getAttribute("id");%>
 			
 		<table width = "100%">
 <%
-		//RewardBean all = null;
 		
 		if(session.getAttribute("board") != null){
-			
-			//all = (RewardBean)session.getAttribute("board");
-			
-	
-		
-		
-		
-		//if(all != null){
+
 %>
 
 			<tr height="40">	
@@ -114,7 +141,9 @@ document.getElementById('now_date').valueAsDate = new Date();
 				
 			<tr height="40">		
 				<td style="font-weight : bold;">목표금액</td>
-				<td><input type="text" name="pd_goalMoney" style="width : 60%;" value="${board.pd_goalMoney}" class="number">원</td>
+				<td>
+					<input type="text" name="pd_goalMoney" style="width : 60%; text-align: right;" value="${board.pd_goalMoney}" onkeyup="inputNumberFormat(this)">원
+				</td>
 			</tr>
 				
 			<tr height="40">
@@ -126,7 +155,7 @@ document.getElementById('now_date').valueAsDate = new Date();
 			</tr>
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 50%;" value="${end}" ></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" value="${end}" id="date" ></td>
 																		
 			</tr>		
 <%
@@ -178,7 +207,10 @@ document.getElementById('now_date').valueAsDate = new Date();
 				
 			<tr height="40">		
 				<td style="font-weight : bold;">목표금액</td>
-				<td><input type="text" name="pd_goalMoney" style="width : 50%;" class="number" numberonly="true"> 원</td>
+				<td>
+					<input type="text" name="pd_goalMoney" style="width : 50%; text-align: right;" onkeyup="inputNumberFormat(this)" >원
+				</td>
+				
 			</tr>
 				
 			<tr height="40">
@@ -190,7 +222,7 @@ document.getElementById('now_date').valueAsDate = new Date();
 			</tr>
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
-				<td><input type="date" name="pd_end" style="width : 50%;" id="now_date"></td>
+				<td><input type="date" name="pd_end" style="width : 50%;" id="date"></td>
 																<!-- 마감일의 value값을 지정해 주지 않으면
 														사용자가 마감일을 선택하지 않고 저장하기를 할때 sql에러가 난다....
 														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->	

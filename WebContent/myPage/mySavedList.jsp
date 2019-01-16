@@ -8,78 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-#myButton {
-	background-color:#AA4CC2;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #AA4CC2;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bolder;
-	padding:6px 5px;
-	text-decoration:none;
-	/* text-shadow:0px 1px 0px #9b14b3; */
-	width: 80px;
-}
-#myButton:hover {
-	background-color:#ffffff;
-	color: #AA4CC2;
-	
-}
-#myButton:active {
-	position:relative;
-	top:1px;
-}
 
-
-
-#myButton2 {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
-	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
-	background-color:#ffffff;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-#myButton2:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
-	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
-	background-color:#f6f6f6;
-}
-#myButton2:active {
-	position:relative;
-	top:1px;
-} 
-
-</style>
 <title>Save List</title>
 </head>
 <body>
@@ -125,8 +54,8 @@
 							</div>								
 						</div>
 					</div>
-					<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveGet.fu?pd_no=${saveBoard.pd_no}'" id="myButton">수정하기 </button></div><br/>
-					<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveDelete.fu?pd_no=${saveBoard.pd_no}'" id="myButton2"> 삭제 </button></div>
+					<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveGet.fu?pd_no=${saveBoard.pd_no}'" class="ingBtn">수정하기 </button></div><br/>
+					<div style="flex : 1; text-align : center;"><button onclick="location.href='RewardingSaveDelete.fu?pd_no=${saveBoard.pd_no}'" class="ingBtn"> 삭제 </button></div>
 				</div>
 				</div>
 			</c:forEach>

@@ -43,7 +43,7 @@ public class InsertSaveSellerAction implements Action{
 				
 				out.println("<script>");
 				out.println("alert('저장에 실패했습니다. 양식을 다시 작성해주세요.');");
-				out.println("history.back();");
+				out.println("location.href='seller2.fu'");
 				out.println("</script>");
 				
 				return null;

@@ -1,3 +1,4 @@
+<%@page import="reward.db.RewardDAO"%>
 <%@page import="message.db.MessageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -74,6 +75,17 @@ fieldset{border:0;}
 		}
 	}
 	
+	
+	function ingCk() {
+		$('.modal-content').css("width","300px");
+		$('.modal-header').html("작성중인 프로젝트가 있습니다.");
+		$('#myModal').show();
+	}; 
+	  
+	function close_pop(flag) {
+        $('#myModal').hide();
+   };
+
 </script>
 
 </head>
@@ -159,10 +171,21 @@ fieldset{border:0;}
 						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;" onclick="logIn();">리워드 신청하기</a>
 					<%
 						}else{
+							RewardDAO rdao = new RewardDAO();
+							String user_id = (String)session.getAttribute("id");
+							int count = rdao.getBoardCount(user_id);
+							
+							if(count >0){
 					%>	
+						<a onclick="ingCk();" style ="color : #555; font-weight : 550;" id="makePj">리워드 신청하기</a>
+					<%
+							}else{
+					
+					%>
 						<a href="./RewardingWrite.fu"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 					<%
 						}
+					}		
 					%>
 				</div>
 				<div class="menuLine">
@@ -179,6 +202,20 @@ fieldset{border:0;}
 				</div>	
 			</div>
 		</div>
+		
+		<!-- 모달 -->
+		<div id="myModal" class="modal">
+	      <!-- Modal content -->
+	      <div class="modal-content">
+	      	<span class="close" onClick="close_pop();">&times;</span> 
+	            <div class="modal-header">다시확인해주세요!</div>
+	            <div id="checkMessage" class="modal-body">
+	                <button onclick="location.href='./mySellPro.my'" class="ingBtn">이어쓰기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                <button onclick="location.href='./RewardingWrite.fu'" class="ingBtn">새로쓰기</button>
+	            </div>
+	      </div>
+		</div>
+		<!-- 모달끝  id="checkTitle"  -->
 	
 	
 <script>
