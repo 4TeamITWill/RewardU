@@ -221,8 +221,13 @@ star-input>.input.focus {
 	<table>
 		<tr>	
 			<td>
-<%
-				if(bdto.getPd_result()==0){ //아직 펀딩이 진행 중이면
+<%	
+				if(session.getAttribute("id")==null){
+%>
+				<input type="button" class="btn" value="지금펀딩하기" onclick="alert('로그인 후 사용가능합니다.');">
+<%					
+				}
+				else if(bdto.getPd_result()==0){ //아직 펀딩이 진행 중이면
 %>
 				<input type="button" class="btn" value="지금펀딩하기" onclick="location.href='./getFunding.ad?pd_no=<%=pd_no%>&user_id=<%=id%>'">
 <%
@@ -231,6 +236,7 @@ star-input>.input.focus {
 				<input type="button" class="btn" value="지금펀딩하기" onclick="alert('기간이 종료되었습니다.');">
 <%
 				}
+		
 %>
 				
 			</td>
