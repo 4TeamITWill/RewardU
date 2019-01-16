@@ -23,9 +23,13 @@ public class MemberLoginAction implements Action{
 		
 		MemberBean mbean = mdao.getMember(user_id);
 		
-		String user_name = mbean.getUser_name();
-		String user_photo = mbean.getUser_photo();
+		String user_name = null;
+		String user_photo = null;
 		
+		if(mbean != null){
+			user_name = mbean.getUser_name();
+			user_photo = mbean.getUser_photo();
+		}
 		
 		int check = mdao.userCheck(user_id, user_pw);
 		
@@ -37,16 +41,8 @@ public class MemberLoginAction implements Action{
 			request.setAttribute("login", 1);
 			
 			out.println("<script>");
-			//out.println("alert('���̵� ��й�ȣ�� ��ġ���� �ʽ��ϴ�.')");
 			out.println("location.href='./MemberLogin.me?login=1';");
 			out.println("</script>");
-			
-			
-			/*ActionForward forward = new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath("./MemberLogin.me");
-			
-			return forward;*/
 			
 			return null;
 			
@@ -55,14 +51,11 @@ public class MemberLoginAction implements Action{
 			request.setAttribute("login", 2);
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			//out.println("alert('��ġ�ϴ� ���̵� �����ϴ�.')");
 			out.println("location.href='./MemberLogin.me?login=2';");
 			out.println("</script>");
 
-			
 			return null;
 		}
-		
 		
 		session.setAttribute("id", user_id);
 		session.setAttribute("name", user_name);
