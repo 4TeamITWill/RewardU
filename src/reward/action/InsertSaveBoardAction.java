@@ -25,7 +25,7 @@ public class InsertSaveBoardAction implements Action {
 		all.setUser_id(request.getParameter("user_id")); //세션에 있는 아이디 가져오기
 		all.setPd_subject(request.getParameter("pd_subject")); //상품이름
 		all.setPd_content(request.getParameter("pd_content")); //상품설명
-		all.setPd_goalMoney(request.getParameter("pd_goalMoney")); //목표금액
+		all.setPd_goalMoney(request.getParameter("pd_goalMoney").replace(",", "")); //목표금액
 		all.setPd_category(request.getParameter("pd_category")); //상품분류
 		all.setPd_file(request.getParameter("pd_file")); //첨부파일
 		all.setPd_realFile(request.getParameter("pd_realFile"));

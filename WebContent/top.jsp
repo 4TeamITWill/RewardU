@@ -177,7 +177,7 @@ fieldset{border:0;}
 							
 							if(count >0){
 					%>	
-						<a onclick="ingCk();" style ="color : #555; font-weight : 550;" id="makePj">리워드 신청하기</a>
+						<a onclick="ingCk();" style ="color : #555; font-weight : 550; cursor: pointer;" id="makePj">리워드 신청하기</a>
 					<%
 							}else{
 					
