@@ -77,13 +77,14 @@ fieldset{border:0;}
 	
 	
 	function ingCk() {
-		$('.modal-content').css("width","300px");
-		$('.modal-header').html("작성중인 프로젝트가 있습니다.");
-		$('#myModal').show();
+		$('.modal-content2').css("width","300px");
+		$('.modal-header2').html("작성중인 프로젝트가 있습니다.");
+		$('#checkMessage2').html("<button onclick='location.href=./mySellPro.my' class='ingBtn'>이어쓰기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick='location.href=./RewardingWrite.fu' class='ingBtn'>새로쓰기</button>");
+		$('#myModal2').show();
 	}; 
 	  
 	function close_pop(flag) {
-        $('#myModal').hide();
+        $('#myModal2').hide();
    };
 
 </script>
@@ -204,14 +205,12 @@ fieldset{border:0;}
 		</div>
 		
 		<!-- 모달 -->
-		<div id="myModal" class="modal">
+		<div id="myModal2" class="modal2">
 	      <!-- Modal content -->
-	      <div class="modal-content">
-	      	<span class="close" onClick="close_pop();">&times;</span> 
-	            <div class="modal-header">다시확인해주세요!</div>
-	            <div id="checkMessage" class="modal-body">
-	                <button onclick="location.href='./mySellPro.my'" class="ingBtn">이어쓰기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                <button onclick="location.href='./RewardingWrite.fu'" class="ingBtn">새로쓰기</button>
+	      <div class="modal-content2">
+	      	<span class="close2" onClick="close_pop();">&times;</span> 
+	            <div class="modal-header2">다시확인해주세요!</div>
+	            <div id="checkMessage2" class="modal-body2">
 	            </div>
 	      </div>
 		</div>

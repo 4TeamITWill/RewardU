@@ -53,9 +53,10 @@
     	   reader.readAsDataURL(input.files[0]);
     	   //이미지 파일의 내용을 전부 읽으면 img 태그에 출력
     	   reader.onload = function(e) {
-    		$(".thum").html("이미지 미리보기");
+    		$(".thum").html("썸네일 미리보기");
     	    $('#img').attr('src', e.target.result);
     	    $(".miri").html(filename);
+    	    $(".miriText").html("2:3 비율의 이미지 업로드를 권장합니다.");
     	   }
     	  }
     	 }
@@ -108,9 +109,10 @@
 						<br/>		
 						<!-- 미리보기 -->
 						<span class="thum" style="font-size: medium;"></span>&nbsp;<span style="font-size: small; color: #999999" class="miri"></span>
-						<div style="width : 200px; height :130px; overflow : hidden; border: 0px;" >
-							<img id="img" width="200px" style="overflow: hidden;">
+						<div style="width : 280px; height :180px; overflow : hidden; border: 0px;" >
+							<img id="img" width="280px" style="overflow: hidden;">
 						</div>
+						<div class="miriText" style="font-size: small; color: #999999;"></div>
 					</div>
 					<br><br>
 					<hr>

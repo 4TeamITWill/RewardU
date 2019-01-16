@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
-//카테고리 받아오기
+//카테고리 option값 받아오기
 <%
 String c = (String)session.getAttribute("c");
 %>
@@ -37,10 +37,10 @@ $("#update").click(function () {
 document.getElementById('date').valueAsDate = new Date();
 
 
+//오늘이전의 날짜 선택후 저장버튼눌렀을때..
 function dateChk() {
 	
 		var now = new Date();
-
 		var curr_date = now.getDate()
 		if (curr_date.toString().length == 1) {
 			curr_date = '0' + curr_date;
@@ -64,19 +64,42 @@ function dateChk() {
 	};
 
 
-	//콤마찍기
-	 function comma(str) {
-	     str = String(str);
-	     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	//-----------키보드 누를때 천단위 콤마
+		//콤마찍기
+		 function comma(str) {
+		     str = String(str);
+		     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		 }
+		 //콤마풀기
+		 function uncomma(str) {
+		     str = String(str);
+		     return str.replace(/[^\d]+/g, '');
+		 }
+		 function inputNumberFormat(obj) {
+		     obj.value = comma(uncomma(obj.value));
+		 }
+	
+		 
+	 //-----------세션에서 받올때 천단위 콤마
+ 		<%
+		RewardBean all = (RewardBean)session.getAttribute("board");
+		String com =all.getPd_goalMoney();
+		%>
+	 
+/* 	 $(document).ready(function convertComma(num) {
+		 	var num01; 
+		    var num02; 
+		    num01 = num; 
+		    console.log("num01 ==", num01); 
+		    num02 = (num01.toString()).replace(rgx1, ""); 
+		    num01 = setComma(num02); 
+		    return num01;
 	 }
-	 //콤마풀기
-	 function uncomma(str) {
-	     str = String(str);
-	     return str.replace(/[^\d]+/g, '');
-	 }
-	 function inputNumberFormat(obj) {
-	     obj.value = comma(uncomma(obj.value));
-	 }
+ */
+
+			
+
+	 
 
 
 </script>
@@ -223,9 +246,6 @@ function dateChk() {
 			<tr height="40">
 				<td style="font-weight : bold;">마감일</td>
 				<td><input type="date" name="pd_end" style="width : 50%;" id="date"></td>
-																<!-- 마감일의 value값을 지정해 주지 않으면
-														사용자가 마감일을 선택하지 않고 저장하기를 할때 sql에러가 난다....
-														default값을 주어도, NULL값이 허용이어도 에러가 나서     일단 값을 지정해 둠.-->	
 			</tr>
 
 <%			
