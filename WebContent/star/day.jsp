@@ -1,11 +1,13 @@
+<%@page import="admin_db.SellerBean"%>
 <%@page import="com.sun.corba.se.impl.encoding.CodeSetConversion.BTCConverter"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.Date"%>
 
 <%@page import="admin_db.BoardDAO"%>
 <%@page import="admin_db.BoardBean"%>
-
-
+<%@page import="admin_db.SellerDAO"%>
+<%@page import="member.db.MemberDAO"%>
+<%@page import="member.db.MemberBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -18,10 +20,57 @@
 </head>
 <style>
 
+/*판매자 프로필사진  */
+#photo{
+	margin-left:90px;		
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+
+/* hr 작은 밑줄 */
+#hrr{
+	margin-left: 15px;	
+	height: 3px;
+	background: #8a80a0;
+}
+
+
 /* 기본 글짜색 깔 */
 .txt{
 	color: #8a80a0;
 }
+
+/* 리워드 선택 */
+#res{
+	font-family: 'Bon Gothic'; 
+	margin-left: 20px; 
+	margin-top: 10px;
+	font-size: 18px;	
+}
+
+#res2{
+	font-family: 'Bon Gothic'; 
+	margin-left: 20px;
+	font-size: 16px; 
+}
+
+#res3{
+	font-family: 'Bon Gothic'; 
+	margin-left: 20px;
+	font-size: 11px;
+	opacity : 0.7;	 
+}
+
+#res4{
+	font-family: 'Bon Gothic'; 
+	margin-left: 20px;
+	font-size: 16px;
+		 
+}
+
+
 
 
 /* 남은일수구하기 */
@@ -37,7 +86,7 @@
 
 /* 버튼  */
 .btn {
-			background-color: #CEECF5;
+			background-color: #ced3f5;
 			display: inline-block;
 			height: 70px;
 			width: 200px;
@@ -45,17 +94,17 @@
 			margin: 10px;
 			border: none;
 			outline: none;
-			border-radius: 20px;
+			
 			text-align: center;
 			text-decoration: none;
 			font-size: 22px;
 			cursor: pointer;
-			box-shadow: 0 5px #B0B0B0;
-			color: #8a80a0;
+			
+			color: #8a80a0; 
 		}
-		.btn:hover { background-color: #CEECF5; }
+		.btn:hover { background-color: #ced3f5; }
 		.btn:active {
-			background-color: #CEECF5;
+			background-color: #ced3f5;
 			box-shadow: 0 5px #808080;
 			transform: translateY(3px);
 		}
@@ -180,9 +229,16 @@ star-input>.input.focus {
 	
 	BoardBean bdto = new BoardBean();
 	BoardDAO bdao = new BoardDAO();
+	SellerBean seto = new SellerBean();
+	SellerDAO seao = new SellerDAO();
+	MemberBean mbto = new MemberBean();
+	MemberDAO mbao = new MemberDAO();
+	
 
 	int GoodStatus = -1; //좋아요 상태 구분 변수
 	
+	mbto = mbao.getSellerimg(pd_no);
+	seto = seao.getSeller(pd_no);
 	bdto = bdao.getBoard(pd_no); //게시글 번호를 넘겨주어 해당 게시글번호에 해당하는 board테이블 객체얻음
 	GoodStatus = bdao.GoodStatus(id, pd_no); //사용자 아이디와, 해당 게시글 번호를 넘겨주어 사용자가 이 게시글에 좋아요눌러놓은 상태인지 아닌지 구분함
 												//눌러놨으면 GoodStatus에는 1이 , 아니라면 0이 대입
@@ -204,6 +260,7 @@ star-input>.input.focus {
 		 		 document.write('<div id="dday"><span style="font-size:33px;">'
 							+ gap + '일남음  </span><%=bdto.getPd_endf()%> 일마감</div>');  
 			 	}
+			 	document.write('<hr id ="hrr">')
 		
 				document.write('<div id="dday"><span style="font-size:33px;">'
 						+ '<%=bdto.getPd_curmoney()%>원 </span><%=bdto.getPd_goalmoney()%>원 목표금액</div>');
@@ -374,7 +431,7 @@ star-input>.input.focus {
 			</div>
 	<!-- 좋아요 기능  끝 -->
 	
-	<br/>
+	<br/>	
 	
 
 	<!-- sns 공유 ,,-->
@@ -416,17 +473,77 @@ star-input>.input.focus {
 			target="_blank"> <img src="./img/Naver.png" width="50"
 			height="50"></a>
 	</div>
+	<br/><br/><br/>
 <!-- sns 공유 ,,-->
-	<br />
-<!-- 이 게시물에 대한 평점  -->	
-
-
-		
-<!-- 이 게시물에 대한 평점  마무리 -->
-	<br />
-
-
-	<br />
+	
+	<div id="dday">	판매자 정보 <img src="img/seller.png" style="width: 30px; height: 30px;"></div>
+	<br/>	
+		<div style="height: auto; width: 250px;	 border:1px solid #8a80a0;">
+		<div>
+				<img alt="" src="./upload/<%=mbto.getUser_photo()%>" width="50"	height="50" style= "display:block;" id="photo">		
+		</div>		
+		<div id ="res2"><strong><%=seto.getUser_id() %></strong></div>
+		<br/>	
+		<div id = "res3">*회사이름</div>
+		<div id ="res2"><%=seto.getCompany() %></div>
+		<br/>
+		<div id = "res3">*회사전화번호</div>
+		<div id ="res2" style="margin-bottom: 10px;"><%=seto.getCompany_tell() %></div>			
+					
+		</div>
+	<br/>	
+	<div id="dday">리워드 선택</div>		
+	<br/> 
+	
+	
+	<div style="height: auto; width: 250px;	 border:1px solid #8a80a0;">
+		<div id="res"><strong><%=bdto.getPd_opsubject1() %></strong>  </div>
+		<br/>
+		<div id ="res2"><%=bdto.getPd_opprice1() %> 원 펀딩</div>
+		<br/>
+		<div id ="res3">배송비 </div>
+		<div id ="res4">*무료*</div>		 		
+		<br/>			
+		<div id ="res3">리워드 발송 시작일</div>
+		<div id ="res4" style="margin-bottom: 10px;">펀딩 신청후 2주일 내 예정</div>		
+	</div>			
+	
+	<%
+		if(bdto.getPd_opprice2()!=0){
+	%>
+	<br/>	
+		<div style="height: auto; width: 250px;	 border:1px solid #8a80a0; ">
+		<div id="res"><strong><%=bdto.getPd_opsubject2() %></strong>  </div>	
+		<br/>
+		<div id ="res2"><%=bdto.getPd_opprice2() %> 원 펀딩</div>
+		<br/>
+		<div id ="res3">배송비 </div>
+		<div id ="res4">*무료*</div>		 		
+		<br/>			
+		<div id ="res3">리워드 발송 시작일</div>
+		<div id ="res4" style="margin-bottom: 10px;">펀딩 신청후 2주일 내 예정</div>
+	</div>	
+	<%			
+		}if(bdto.getPd_opprice3()!=0){
+	%>
+	<br/>
+	
+		<div style="height: auto; width: 250px;	 border:1px solid #8a80a0; ">
+		<div id="res"><strong><%=bdto.getPd_opsubject3() %></strong>  </div>
+		<br/>
+		<div id ="res2"><%=bdto.getPd_opprice3() %> 원 펀딩</div>
+		<br/>
+		<div id ="res3">배송비 </div>
+		<div id ="res4">*무료*</div>		 		
+		<br/>			
+		<div id ="res3">리워드 발송 시작일</div>
+		<div id ="res4" style="margin-bottom: 10px;">펀딩 신청후 2주일 내 예정</div>
+	</div>	
+	<%
+		}
+	 %>
+				
+			 
 
 </body>
 </html>

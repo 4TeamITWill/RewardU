@@ -1,6 +1,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="admin_db.ReplyBean"%>
 <%@page import="admin_db.ReplyDAO"%>
+<%@page import="member.db.MemberDAO"%>
+<%@page import="member.db.MemberBean"%>
 <%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -51,11 +53,14 @@ div.content{
 	
 }
 
+/*   대댓글 부분 */
 #content2{
-	background: #FFFFFF;
+	background: #F4F2F2;
 	padding: 20px;
 	word-break: keep-all;
     word-wrap: break-word;
+    margin-left: 50px;
+   	border-radius: 20px;	
 }
 </style>
 </head>
@@ -74,39 +79,10 @@ int group_num= Integer.parseInt(request.getParameter("group_num"));
 
 	
 %>
-
-<!-- 답글  버튼 클릭 효과  -->
-<script type="text/javascript">
-		$(document).ready(function() { 
-					
-			$(".buttonstar").show(); 
-
-            $(".buttonstarrate").hide(); 
+	
 
 
-			
-			$(".buttonstar").on("click", function() {
-				<%
-					if(id==null){
-					%>
-						alert("로그인해주세요");	
-					<%
-					}else{
-					%>
-						$(".buttonstarrate").slideToggle('3000');
-						
-					<%
-					}
-				%>
-				
-			});
-		});	
-		
-</script>
-
-
-
-	<div class="ma2">
+	<div style="margin-left:400px; margin-right:400px;text-align: left;">
 
 
 		<div style="padding: 20px; background: #F2F2F2; border-radius: 20px;">
@@ -164,44 +140,38 @@ int group_num= Integer.parseInt(request.getParameter("group_num"));
 							<c:when test= "${rlist.seq == 0 }">
 					
 								<div class="user">
-										${rlist.user_id}
+									<img alt="" src="./img/re1.jpg" width="30"height="30">	${rlist.user_id}	
 								</div>
 								<div class="date">
 									작성 날자 : ${rlist.date}	
 								</div>
 							
 								<div  class="content">
-								${rlist.content}
+								<img src="./img/level.gif">	${rlist.content}
 								</div>
-						<tr>
-							<td><button class="buttonstar" id="button">답글</button></td>
-						</tr>		
+									
 						<tr>
 							<td>		
 							<form action="./RerepWriteActions.ad?re_no=${rlist.re_no }&group_num=${rlist.group_num}&seq=${rlist.seq}&lev=${rlist.lev}" method="post" class="buttonstarrate">
 								<input type="hidden" name="pd_no"  value="<%=pd_no%>"> 
 								<input type="hidden" name="user_id"  value="<%=id%>">
-								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="./img/rewrite.jpg" width="30" height="30"><textarea rows="1" cols="50" placeholder="답글 입력" name="content"></textarea>
-								<button type="submit" class="" > 답글입력 </button>
-							</form>
+								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="./img/rewrite.jpg" width="30" height="30"><textarea rows="1" cols="50" placeholder="답글 입력" name="content"></textarea>		 
 							</td>
 													
 						</tr>
-							<hr>
+							<button type="submit" id="replybutton" > 답글입력 </button>
+							<hr>			
+							</form>
 						</c:when>
 						<c:when test="${rlist.seq >0 }">
-							
-							<div class="buttonstarrate" id="content2">
-								<table>
-									<tr>
-										<td><img alt="" src="./img/rewrite.jpg" width="30" height="30">${rlist.user_id }</td>
-									</tr>
-									<tr>
-										<td style="font-size: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${rlist.date }</td>
-									</tr>
-								</table>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="content">${rlist.content }</div>
-							</div>
+					
+								<div style="margin-left: 30px; "><img alt="" src="./img/rewrite.jpg" width="30" height="30"><img src="./img/re2.jpg" width="30"height="30">${rlist.user_id }</div>		
+									
+								<div style="margin-left: 60px;  font-size: 10px;" >${rlist.date }</div> 
+									
+								
+								<div id="content2"><img src="./img/level.gif">${rlist.content }</div>
+						
 						</c:when>
 							</c:choose>
 							

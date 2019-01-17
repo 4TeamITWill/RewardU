@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import member.db.MemberBean;
 
 public class SellerDAO {
 
@@ -64,7 +65,12 @@ public class SellerDAO {
 		
 		return sb;
 	}
+	
+
+
+	
 }
+
 
 	
 

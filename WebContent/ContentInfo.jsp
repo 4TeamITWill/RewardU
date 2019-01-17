@@ -17,21 +17,52 @@
 <title>펀딩정보</title>
 
 <style type="text/css">
+
+
+/* a 링크 방문전 방문후 색깔변화 없애기 */
+A:link{
+	color: #8a80a0;
+}
+A:visited{
+	color :#8a80a0;
+}
+
+/* 로고  */
 div.logo {
 	height: 200px;
 	width: 100%;
+	position: relative;
 }
-
-h2.logotext {
+/* 로고 제목 위  */
+h2.logot {
 	position: absolute;
-	top: 200px;
-	left: 50;
+	top: 30%;
+	left: 50%;				
 	width: 100%;
-	font-weight: bold;
-	font-size: 15px;
+	text-align : center;	
+	font-weight: 900;			
+	font-size: 20px;
 	color: #8a80a0;
 	letter-spacing: 0px;
 	font-family: arial;
+	transform: translate( -50%, -50% );
+}
+
+
+/* 로고 제목 */
+h2.logotext {
+	position: absolute;
+	top: 50%;
+	left: 50%;		
+	width: 100%;
+	text-align : center;	
+	font-weight: 900;
+	font-size: 30px;
+	font-family: 'Bon Gothic'; 
+	color: white;
+	letter-spacing: 0px;
+	font-family: arial;
+	transform: translate( -50%, -50% );
 }
 
 div.ma0{
@@ -56,16 +87,16 @@ hr.body{
 }
 
 div.ma2 {
-	margin-left:470px;
-	margin-right:470px;
+	margin-left:400px;
+	margin-right:720px;		
 	text-align: left;
 	
 }
 
 div.ma3 {
-	margin-left:auto;
-	margin-right: auto;
-	text-align: center;
+	margin-left:400px;
+	margin-right:720px;
+	
 }
 
 div.ma4 {
@@ -96,9 +127,6 @@ div.in {
 </head>
 		
 <body>
-	
-		
-	<div class="logo">
 	<%
 	String id = (String)session.getAttribute("id"); 
 			int pd_no = Integer.parseInt(request.getParameter("pd_no"));
@@ -109,9 +137,14 @@ div.in {
 			bdo.reply(pd_no);
 			
 		%> 
-		<img src=" ./upload/<%=bdto.getPd_realfile() %> " style="opacity: 0.2" height="100%"
+		
+	<div class="logo">
+	
+		<img src=" ./upload/<%=bdto.getPd_realfile() %> " style="opacity: 0.3" height="100%"
 			width="100%">
-		<h2 class="logotext">여기 텍스트는 pd_no 를 받아 따로 db에 저장해야겠군(설명)</h2>
+		
+		<h2 class="logot"># <%=bdto.getPd_category() %></h2>	
+		<h2 class="logotext"><%=bdto.getPd_subject() %></h2>
 	</div>
 	
 	
@@ -159,9 +192,7 @@ div.in {
 			 <jsp:include page="${gogo }"/>
 			
 	</div>
-<button type="button" class="back-to-top">
-    <h3 align="right">Top</h3>
-   	</button>
+
 
 
 </body>
