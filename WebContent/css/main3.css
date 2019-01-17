@@ -491,7 +491,6 @@ body{
 #carousel_section{
     width: 100%;
     background-color: gray;
-    height : 500px;
     position : relative;
     z-index : 0;
 }
@@ -499,7 +498,7 @@ body{
     margin: 0px;
     padding: 0px;
     width: 100%;
-    height: 100%;
+    height : 100%;
     position: relative;
     overflow: hidden;
 }
@@ -515,6 +514,7 @@ body{
 #carousel_section > ul > li >img{
     list-style: none;
     width: 100%;  
+    color : #43f5d7;
 }
 
 /* myPage 부분 */

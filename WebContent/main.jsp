@@ -49,11 +49,38 @@
 	<div id="main">
 		<!-- 캐러셀 -->	
 		 <div id="carousel_section">
-	        <ul>
-	            <li > <img src="img/desk.jpg"> </li>
-	            <li > <img src="img/creative.jpg"> </li>
-	            <li > <img src="img/network.jpg"> </li>
-	            <li > <img src="img/startup.jpg"> </li>
+	        <ul>	           
+	            <li	>
+	            	<img src="img/desk.jpg" > 
+	            	<div style="position : absolute; left: 23%; width : 350px; 
+	            			box-sizing : border-box;">
+		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
+		            	<div style="font-size : 38px; margin-top : 0.4rem; margin-bottom : 1.5rem; font-weight : bold;">
+		            		노트북 팝니다 <br/>싸다 싸(제목)
+	            		</div>
+		            	<div style="color : rgba(0,0,0,0.6); font-weight : 600;">Editor가 추천하는 핫아이템</div>
+	            	</div>
+	            </li>
+	             <li> 
+	            	<img src="img/radioNews.jpg" style="height : 100%;" >
+	            	<div style="position : absolute; left: 23%;color : #fff; width : 350px; border : 3px solid; 
+	            			background-color : rgba(255,255,255,0.1); box-sizing : border-box; padding : 2rem 1rem;">
+		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
+		            	<div style="font-size : 38px; margin-top : 0.4rem; margin-bottom : 1.5rem; font-weight : bold;">
+		            		노트북 팝니다<br/> (제목)
+	            		</div>
+		            	<div style="color : rgba(255,255,255,0.9); font-weight : 600;">Editor가 추천하는 핫아이템</div>
+	            	</div>
+	            </li>
+	            <li>
+	            	<img src="img/startup.jpg">
+	            	<div style="position : absolute; width : 800px; margin:0 auto; box-sizing : border-box; border : 3px solid #fff; padding : 1rem 1rem; background-color : rgba(255,255,255,0.2);">
+		            	<div style="color : #43f5d7; font-weight : 600; text-align : center; font-size : 18px;">Editor가 추천하는 핫아이템</div>
+		            	<div style="color : rgba(10,10,10,0.8); font-size : 32px; margin-top : 1rem; margin-bottom : 1.5rem; font-weight : bold; text-align:center;">
+		            		노트북 팝니다 싸다 싸 (제목) 사라
+	            		</div>		            	
+	            	</div>
+	            </li>
 	        </ul>
 	    </div>	
 	
@@ -108,7 +135,7 @@
 						<div class="box_grid1_cont">
 							<div style="width : 100%; height : 100%; overflow:hidden; display : flex; align-items:center;">
 								<img src="./upload/<%= nbean.getReNews_img()%>" style="width : 120%;">
-								<div style="width:100%;height : 100%; position : absolute; left:0; top:0; background-color : rgba(0,0,0,0.5);"></div>
+								<div style="width:100%;height : 100%; position : absolute; left:0; top:0; background-color : rgba(0,0,0,0.4);"></div>
 							</div>
 							<div style="position : absolute;	left:5%;bottom:10%; width : 50%; padding-left : 10px; box-sizing : border-box;">
 								<div style="color : #24eae0; font-size:16px; font-weight : bold; height:20px; line-height : 20px; text-align:center; border-bottom : 1px solid #24eae0; display : inline-block;">
@@ -150,8 +177,8 @@
 					for(BoardBean bbean : magamlist){
 				%>
 					<div class="box_grid3_cont">
-						<div style="height : 42%; overflow:hidden; display:flex; align-items:center; border-bottom:1px solid;">
-							<img src="./upload/<%=bbean.getPd_file() %>" style="width:100%;">
+						<div style="height : 42%; overflow:hidden; display:flex; align-items:center; border-bottom:1px solid; ">
+							<img src="./upload/<%=bbean.getPd_file() %>" style="width:100%; background-color : #fff;">
 						</div>
 						<div style="display:flex; justify-content : center; margin : 20px 0; font-size : 14px;">
 							<span style="display:block; height :30px;  line-height:30px; width:75px; border : 0.5px solid; text-align:center;">마감임박</span>

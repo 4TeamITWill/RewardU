@@ -30,6 +30,7 @@
 				<!-- 부모글번호와 판매글 id 히든값으로 -->
 				<input type="hidden" name="pd_no" id="pd_no" value="${pd_no }"/>
 				<input type="hidden" name="seller_id" id="seller_id" value="${seller_id }"/>
+				<input type="hidden" name="pd_subject" id="pd_subject" value="${boardbean.pd_subject }"/>
 				<div><input type="text" name="sell_subject" id="sell_subject" placeholder="제목을 입력하세요"></div>
 				<div>
 				<textarea name="sell_content" id="textAreaContent" rows="20"  style="width : 100%"></textarea>
@@ -96,10 +97,11 @@ $("#insert").click(function(){
 	var sell_content = $("#textAreaContent").val();
 	var sell_subject = $("#sell_subject").val();
 	var pd_no = $("#pd_no").val();
+	var pd_subject = $("#pd_subject").val();
 		
 	$.ajax({
 		url:"sellerNewsWrite.my",		
-		data : {seller_id : seller_id, sell_content : sell_content, sell_subject : sell_subject, pd_no : pd_no},
+		data : {pd_subject : pd_subject, seller_id : seller_id, sell_content : sell_content, sell_subject : sell_subject, pd_no : pd_no},
 		success : function(data){
 			alert("작성하였습니다.");
 			$("body").html(data);

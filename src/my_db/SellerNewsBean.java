@@ -4,10 +4,16 @@ import java.sql.Timestamp;
 
 public class SellerNewsBean {
 	int pd_no, no;
-	String user_id, sell_subject, sell_content;
+	String user_id, sell_subject, sell_content, pd_subject;
 	Timestamp date;
 	
 	
+	public String getPd_subject() {
+		return pd_subject;
+	}
+	public void setPd_subject(String pd_subject) {
+		this.pd_subject = pd_subject;
+	}
 	public int getNo() {
 		return no;
 	}
