@@ -25,9 +25,11 @@ String keyWord = request.getParameter("keyWord");
 							<c:forEach var="Board" items="${requestScope.v}">
 								<div class="good_content">
 									<input type="hidden" name="pd_no" value="${Board.pd_no}">
-									<div class="content_0"><img src="./upload/sm_${Board.pd_realFile}"></div>
-									<div class="content content_1">${Board.pd_subject}</div><!-- 안나옴 -->			
-									<div class="content content_2">${Board.company}</div>
+									<div class="content_0"><img src="./upload/${Board.pd_realFile}"></div>
+									<div class="content content_1">${Board.company}</div><!-- 안나옴 -->			
+									<div class="content content_2">
+										<a href="Content.ad?pd_no=${Board.pd_no}">${Board.pd_subject}</a>
+									</div>
 									<div class="content content_3">${Board.pd_category}</div>
 									<div class="content content_4">${Board.pd_curMoney}</div>
 									<div class="content content_5">${Board.pd_start}</div>

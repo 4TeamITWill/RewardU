@@ -82,9 +82,9 @@ function dateChk() {
 		 
 	 //-----------세션에서 받올때 천단위 콤마
  		<%
-		RewardBean all = (RewardBean)session.getAttribute("board");
-		String com =all.getPd_goalMoney();
-		%>
+		//RewardBean all = (RewardBean)session.getAttribute("board");
+		//String com =all.getPd_goalMoney();
+		%> 
 	 
 /* 	 $(document).ready(function convertComma(num) {
 		 	var num01; 
@@ -255,18 +255,11 @@ function dateChk() {
 		
 <%
 	
-	int save = 0;
-	
 	if(session.getAttribute("save") != null){
-		
-		save = (Integer)session.getAttribute("save");
-	}
-	
-	if(save != 0){
-%>			
- 	<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)"/></center>
- 
+%>		
+		<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)"/></center>
 <%		
+	
  	}else{
 %>
 	<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)"/></center>
