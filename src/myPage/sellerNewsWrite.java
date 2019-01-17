@@ -20,6 +20,7 @@ public class sellerNewsWrite implements myAction {
 		String seller_id = request.getParameter("seller_id");
 		String user_id = (String)session.getAttribute("id");
 		String pd_subject = request.getParameter("pd_subject");
+		String pd_realfile = request.getParameter("pd_realfile");
 		//인서트용 nbean
 		SellerNewsBean nbean = new SellerNewsBean();
 				
@@ -28,6 +29,7 @@ public class sellerNewsWrite implements myAction {
 		nbean.setUser_id(user_id);
 		nbean.setNo(pd_no);
 		nbean.setPd_subject(pd_subject);
+		nbean.setPd_realfile(pd_realfile);
 				
 		MyDAO mdao = new MyDAO();
 		

@@ -1,3 +1,4 @@
+<%@page import="my_db.SellerNewsBean"%>
 <%@page import="admin_db.BoardBean"%>
 <%@page import="my_db.MyDAO"%>
 <%@page import="news.db.Newsbean"%>
@@ -123,10 +124,10 @@
 						<a id="prev" class="icon-left-big"></a><a id="next" class="icon-right-big"></a>
 					</div>	
 						
-					<div class="box_grid1_">
-					
+					<!-- 최신뉴스 부분 Vector 로 받아오기 -->	
+					<div class="box_grid1_">					
 					<%
-						// 최신뉴스 Vector 로 받아오기
+						
 						NewsDAO newsDao = new NewsDAO();
 						Vector<Newsbean> v = newsDao.getNewsList();
 						
@@ -135,10 +136,10 @@
 						<div class="box_grid1_cont">
 							<div style="width : 100%; height : 100%; overflow:hidden; display : flex; align-items:center;">
 								<img src="./upload/<%= nbean.getReNews_img()%>" style="width : 120%;">
-								<div style="width:100%;height : 100%; position : absolute; left:0; top:0; background-color : rgba(0,0,0,0.4);"></div>
+								<div style="width:100%;height : 100%; position : absolute; left:0; top:0; background-color : rgba(0,0,0,0.5);"></div>
 							</div>
 							<div style="position : absolute;	left:5%;bottom:10%; width : 50%; padding-left : 10px; box-sizing : border-box;">
-								<div style="color : #24eae0; font-size:16px; font-weight : bold; height:20px; line-height : 20px; text-align:center; border-bottom : 1px solid #24eae0; display : inline-block;">
+								<div style="color : #a5f; font-size:16px; font-weight : bold; height:20px; line-height : 20px; text-align:center; border-bottom : 1px solid #a5f; display : inline-block;">
 									<%=nbean.getReNews_category() %>
 								</div>
 								<div style="font-size : 32px; font-weight : 600; margin-top : 10px;">
@@ -157,20 +158,45 @@
 					</div>
 				
 				</div>
+				
+				<!-- 리워드 소식 메인에 뿌려주는곳 -->
 				<div class="box_grid box_grid2">
 					<h2>리워드 소식</h2>
-					<div class="news_contents"><b>[리워드]</b> 리워드 발송 시작합니다</div>
-					<div class="news_contents"><b>[리워드]</b> 저런 일이 있슴</div>
-					<div class="news_contents"><b>[리워드]</b> ㅇㅇㅇㅇㅇㅎㅎㅎㅎㅎㅎㅎㅎㅎ</div>
-					<div class="news_contents"><b>[리워드]</b> 좋은 소식 알려드립니다</div>
-					<div class="news_contents"><b>[리워드]</b> 안녕하세요. 디자인 바이 디자이너입니다</div>
-					<div class="news_contents"><b>[리워드]</b> 목표금액 증액을 실시합니다</div>
-					<div class="news_contents"><b>[리워드]</b> 이런 일도 있음</div>
+				<% 
+					MyDAO mdao = new MyDAO();
+					ArrayList<SellerNewsBean> sNewsList = mdao.getSellerNewsList();
+					
+					if(sNewsList != null){
+						for(SellerNewsBean sbean : sNewsList){
+				%>				
+					
+					<div class="news_contents">
+						<!-- 글부분 -->
+						<div style="flex : 2; box-sizing : border-box; padding : 0 8px;">
+							<a href="Content.ad?pd_no=<%=sbean.getPd_no()%>" style="color:#000;">
+								<b>[리워드 : <%=sbean.getPd_subject() %>]</b><br/> 
+								<font><%=sbean.getSell_subject() %></font>
+							</a>
+						</div>
+						<!-- 이미지부분 -->
+						<div style="flex : 1;">
+							<div style="width : 100%; height:100%; overflow : hidden; display : flex; align-items:center;">
+								<img src="./upload/<%=sbean.getPd_realfile() %>" style="width : 100%;"/>
+							</div>
+						</div>
+					</div>			
+				<%
+						}
+					}
+				%>
 				</div>
 				
+				
+				
+				<!-- 마감임박 게시글리스트 메인페이지 뿌려주기 -->
 				<div class="box_grid box_grid3">
 				<%
-					// 마감임박 게시글리스트 메인페이지 뿌려주기
+					
 					MyDAO mydao = new MyDAO();
 					ArrayList<BoardBean> magamlist = mydao.getMagamList();
 				if(magamlist != null){	

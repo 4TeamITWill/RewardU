@@ -691,13 +691,14 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "insert into sellernews(pd_no, user_id, sell_subject, sell_content,pd_subject) values(?,?,?,?,?)";
+			sql = "insert into sellernews(pd_no, user_id, sell_subject, sell_content,pd_subject, pd_realfile) values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, nbean.getNo());
 			pstmt.setString(2, nbean.getUser_id());
 			pstmt.setString(3, nbean.getSell_subject());
 			pstmt.setString(4, nbean.getSell_content());
 			pstmt.setString(5, nbean.getPd_subject());
+			pstmt.setString(6, nbean.getPd_realfile());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -708,7 +709,7 @@ public class MyDAO {
 	
 	}//insertSellerNews() 메소드
 
-	//목록가져오기
+	//SellerNewsList 목록가져오기
 	public ArrayList<SellerNewsBean> getSellerNewsList(int pd_no) {
 		
 		ArrayList<SellerNewsBean> list = new ArrayList<>();
@@ -733,6 +734,7 @@ public class MyDAO {
 				nbean.setSell_subject(rs.getString("sell_subject"));
 				nbean.setUser_id(rs.getString("user_id"));
 				nbean.setPd_subject(rs.getString("pd_subject"));
+				nbean.setPd_realfile(rs.getString("pd_realfile"));
 				
 				list.add(nbean);
 			}
@@ -747,6 +749,45 @@ public class MyDAO {
 		return list;
 	}//getSellerNewsList() 메소드 끝
 
+	//SellerNewsList 목록가져오기(글번호 안넣고 전체 가져오기 메인용) 오버로딩
+		public ArrayList<SellerNewsBean> getSellerNewsList() {
+			
+			ArrayList<SellerNewsBean> list = new ArrayList<>();
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			
+			try {
+				con=getConnection();
+				sql = "select * from sellernews order by no desc limit 0,7";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					SellerNewsBean nbean = new SellerNewsBean();
+					nbean.setDate(rs.getTimestamp("date"));
+					nbean.setNo(rs.getInt("no"));
+					nbean.setPd_no(rs.getInt("pd_no"));
+					nbean.setSell_content(rs.getString("sell_content"));
+					nbean.setSell_subject(rs.getString("sell_subject"));
+					nbean.setUser_id(rs.getString("user_id"));
+					nbean.setPd_subject(rs.getString("pd_subject"));
+					nbean.setPd_realfile(rs.getString("pd_realfile"));
+					
+					list.add(nbean);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				freeResource();
+			}
+			
+			
+			return list;
+		}//getSellerNewsList() 메소드 끝
+		
 	//판매자 소식 count 값 구하기
 	public int getSellerNewsCount(int pd_no){
 		
