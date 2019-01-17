@@ -83,6 +83,32 @@ public class NewsFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			
+	//여기서부터 리워드 소식
+			
+		}else if (command.equals("/sellerNewsAction.news")) {
+			
+			action = new SellerNewsAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			
+			}
+			
+		}else if (command.equals("/SellerNewsReadContentAction.news")) {
+			
+			action = new SellerNewsReadContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			
+			}	
+			
+			
+			
 	//filedown		
 		}else if (command.equals("/AttachmentDownloadAction.news")) {
 			

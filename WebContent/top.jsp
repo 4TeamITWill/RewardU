@@ -172,16 +172,16 @@ fieldset{border:0;}
 						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;" onclick="logIn();">리워드 신청하기</a>
 					<%
 						}else{
+							
 							RewardDAO rdao = new RewardDAO();
 							String user_id = (String)session.getAttribute("id");
 							int count = rdao.getBoardCount(user_id);
 							
-							if(count >0){
+							if(count >0){//로그인상태에서 임시저장된 게시물이 있으면 모달창
 					%>	
 						<a onclick="ingCk();" style ="color : #555; font-weight : 550; cursor: pointer;" id="makePj">리워드 신청하기</a>
 					<%
-							}else{
-					
+							}else{//없으면 바로 새글 작성
 					%>
 						<a href="./RewardingWrite.fu"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 					<%
@@ -199,7 +199,7 @@ fieldset{border:0;}
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">NEWS</a>
 					<a href="./NewsAction.news">리듀 소식</a>					
-					<a href="#">리워드 소식</a>
+					<a href="./sellerNewsAction.news">리워드 소식</a>
 				</div>	
 			</div>
 		</div>

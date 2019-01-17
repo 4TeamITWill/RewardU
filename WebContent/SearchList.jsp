@@ -15,10 +15,10 @@
 String keyWord = request.getParameter("keyWord");	
 %>
 
-<h3 align="center"><%=keyWord%>로 검색한 결과 입니다.</h3>
+<h3 align="center">&nbsp;&nbsp;<font size="5"><%=keyWord%></font>&nbsp;&nbsp;의 검색 결과 입니다.</h3>
 
-	<h4 align="center">${count}개의 결과를 찾았습니다.</h4>
-		
+	<c:if test="${count>0}">
+			<h4 align="center">${count}개의 결과를 찾았습니다.</h4>
 			<div id="myGoodList_main">	
 			<div class="myGoodList_content">
 						<div class="myGoodList_content_">
@@ -31,13 +31,12 @@ String keyWord = request.getParameter("keyWord");
 									<div class="content content_3">${Board.pd_category}</div>
 									<div class="content content_4">${Board.pd_curMoney}</div>
 									<div class="content content_5">${Board.pd_start}</div>
-									
-									<!--css.에 content content_5.. 더 추가하기!  -->
+
 								</div>
 								
 							</c:forEach>
 						</div>
-						
+	</c:if>
 	
 				<!-- 페이징 부분 -->
 					<div class="my_board_page">
@@ -60,7 +59,9 @@ String keyWord = request.getParameter("keyWord");
 		</div>
 
 	<c:if test="${count==0}">
-			<h4>검색 결과 없음</h4>
+		<div style="height: 500px;">
+			<h4 align="center">검색 결과 없음</h4>
+		</div>
 	</c:if>
 
 </body>
