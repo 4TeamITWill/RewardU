@@ -36,12 +36,39 @@
  
 <jsp:include page="top.jsp"/>
 
-<!-- RewardingWrite.fu / mySellPro.my / myPageReward.my / myPageGood.my-->
+<!--  로그인 안했을 시 주소창 입력으로 접근 불가한 요청 설정
+->리워드 신청
+RewardingWrite.fu 
+->마이페이지
+mySellPro.my / myPageReward.my / myPageGood.my / MemberMypageAction.me
+->메시지
+MemberModifyPw.me / MemberMessage_ReceiveList.message / MemberMessage_SendList.message
+/ MemberMessage_StoreList.message / ContentMessageAction.message / SendMessage.message
+->결제
+getFunding.ad / InvestingOptionController.in / InvestingInsertController.in
+-->
 <c:if test="${sessionScope.id eq null}">
 	<c:if test="${center eq 'RewardingWrite_index.jsp' or center eq './myPage/myIndex.jsp'
-				or center eq './myPage/myIndex.jsp' or center eq './myPage/myIndex.jsp'
-				
+				or center eq './member/modifyPw.jsp' or center eq 'message/messageBox_receivelist.jsp'
+				or center eq 'message/messageBox_sendlist.jsp' or center eq 'message/messageBox_storelist.jsp'
+				or center eq 'message/contentMessage.jsp' or center eq 'message/sendMessage.jsp'
+				or center eq 'invest/choosingFunding.jsp' or center eq 'invest/checkingOut.jsp'
+				or center eq 'invest/investResult.jsp' or center eq 'notice/writeNotice.jsp'
+				or center eq './news/newsWrite.jsp'
 	}">
+	
+		<c:set var="center" value="main.jsp"/>
+	</c:if>
+</c:if>
+
+<!-- 관리자 계정 아닌데 주소창으로 관리자권한관련 페이지로 접근하려할 때 접근 불가하기
+->관리페이지
+adminPage.ad
+->공지등록, 뉴스등록
+WriteNotice.no / NewsWrite.news
+ -->
+<c:if test="${sessionScope.id ne 'rewardu4@gmail.com'}">
+	<c:if test="${center eq './admin/admin_index.jsp' or center eq 'notice/writeNotice.jsp' or center eq './news/newsWrite.jsp'}">
 		<c:set var="center" value="main.jsp"/>
 	</c:if>
 </c:if>

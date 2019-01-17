@@ -26,10 +26,8 @@ String keyWord = request.getParameter("keyWord");
 								<div class="good_content">
 									<input type="hidden" name="pd_no" value="${Board.pd_no}">
 									<div class="content_0"><img src="./upload/${Board.pd_realFile}"></div>
-									<div class="content content_1">${Board.company}</div><!-- 안나옴 -->			
-									<div class="content content_2">
-										<a href="Content.ad?pd_no=${Board.pd_no}">${Board.pd_subject}</a>
-									</div>
+									<div class="content content_1">${Board.pd_subject}</div><!-- 안나옴 -->			
+									<div class="content content_2">${Board.company}</div>
 									<div class="content content_3">${Board.pd_category}</div>
 									<div class="content content_4">${Board.pd_curMoney}</div>
 									<div class="content content_5">${Board.pd_start}</div>
@@ -54,7 +52,7 @@ String keyWord = request.getParameter("keyWord");
 						</c:if>
 						</c:forEach>
 						<c:if test="${endPage < pageCount}">
-							<a hef="myPageGood.my?currentPage1=${startPage+5 }">다음</a>
+							<a hef="getSearchListAction.fu?currentPage1=${startPage+5 }">다음</a>
 						</c:if>
 					</div>		
 			</div>	

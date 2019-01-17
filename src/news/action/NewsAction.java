@@ -37,12 +37,12 @@ public class NewsAction implements Action{
 			
 			Vector<Newsbean> v = ndao.getNewsList(sortNews);
 			request.setAttribute("v", v);
-			count = v.size();
+			//count = v.size();
 		
 		}else {	//if searchBar(newsKeyword) has any input value
 			Vector<Newsbean> v = ndao.totalNewsSearch(newsKeyword);
 			request.setAttribute("v", v);
-			count = v.size();
+			//count = v.size();
 		}
 		
 	//paging variables	

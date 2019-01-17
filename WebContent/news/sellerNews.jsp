@@ -81,25 +81,16 @@
 						<div id="header_header">리워드 소식<span id="header_count">&nbsp;&nbsp;&nbsp;총 게시글 ${count}</span> </div>
 						<h6>전체 프로젝트의 리워드소식을 한번에 확인할 수 있는 공간입니다.</h6>
 					</div>
-					<!-- <div id="reNews_category">
-						<ul>
-							<li>전체</li>
-							<li>새소식</li>
-							<li>리듀 이야기</li>
-						</ul>
-					</div>reNews_category -->
-					<div align="right">
-					<form action="./sellerNewsAction.news" method="post">
-						<select id="news_content_sortNews" name="sortNews" onchange="this.form.submit();">
-							<option>글조회선택</option>
-							<option value="1" >최신순</option>
-							<option value="2" >조회순</option>
-						</select>
-					</form>
-					</div>
 					<hr>
-				<c:forEach var="v" items="${requestScope.v }" begin="${startRow-1 }" end="${(startRow-1) + pageSize-1 }">
-		
+				
+					<c:if test="${count==0}">
+						<div class="margin2"><br/></div>
+						<div style="color: #999999;" align="center">리워드 소식이 없습니다.</div>
+						<div class="margin2"><br/></div>
+					</c:if>
+					
+					<c:if test="${count>0}">
+						<c:forEach var="v" items="${requestScope.v }" >
 						<div class="reNews_board_content2">
 							<span><font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 17px;">no : ${v.no} / pd_no : ${v.pd_no}</font></span> 
 							<span><font style="color: #999999; font-size: 2;">${v.user_id}</font></span>
@@ -111,12 +102,11 @@
 									<span class="reNews_editor" align="right">${v.date}</span>
 								</p>
 							</a>
-							
 						</div>
-						
-		
 						<hr>
-				</c:forEach>
+						</c:forEach>
+					</c:if>	
+				
 						<div class="margin2"></div>	
 				</div><!-- reNews_content -->					
 			
@@ -126,18 +116,18 @@
 				<!-- paging section -->
 					<div class="reNews_paging">
 						<c:if test="${firstPage > pageBlock }">
-							<a href="./SellerNewsAction.news?newsCurrentP=${firstPage-pageBlock }">이전</a>
+							<a href="./sellerNewsAction.news?currentPageP=${firstPage-pageBlock }">이전</a>
 						</c:if>
 						<c:forEach var="i" begin="${firstPage }" end="${lastPage}">
 							<c:if test="${currentPage == i }">
-								<a href="./SellerNewsAction.news?newsCurrentP=${i }">${i }</a>
+								<a href="./sellerNewsAction.news?currentPageP=${i }">${i }</a>
 							</c:if>
 							<c:if test="${currentPage != i }">
-								<a href="./SellerNewsAction.news?newsCurrentP=${i }">${i }</a>
+								<a href="./sellerNewsAction.news?currentPageP=${i }">${i }</a>
 							</c:if>
 						</c:forEach>
 						<c:if test="${endPage < pageCount }">
-							<a href="./SellerNewsAction.news?newsCurrentP=${firstPage+5 }">다음</a>
+							<a href="./sellerNewsAction.news?currentPageP=${firstPage+5 }">다음</a>
 						</c:if>
 						<div class="margin2"></div>
 					</div><!-- reNews_paging -->
@@ -148,15 +138,16 @@
 			<div class="boardSection_sub">
 				<div class="section_container">
 					<form action="./sellerNewsAction.news" method="post">
+						<div></div>
 				 		<input type="text" name="newsKeyword" placeholder="키워드를  입력해주세요" class="inp-field2"><input type="button" class="btn_search" value="검색" onclick="this.form.submit();"><br>
 				 	</form>
 				 	<hr>
 				 	<div align="left">
-					 	<h4>리듀 뉴스 소개</h4>
-					 	<span>화목한 커뮤니티, 리듀의 소식을 소개합니다.</span>
+					 	<h4>리워드U</h4>
+					 	<span>화목한 커뮤니티, 리듀의 새소식을 전합니다.</span>
 					 	<hr>
-					 	<h4>리듀 뉴스 Best 조회수</h4>
-					 	<a href="./NewsReadContentAction.news?no=${bestNews.reNews_no }"><span>${bestNews.reNews_title }</span></a>
+					 	<%-- <h4>리듀 뉴스 Best 조회수</h4>
+					 	<a href="./NewsReadContentAction.news?no=${bestNews.reNews_no }"><span>${bestNews.reNews_title }</span></a> --%>
 				 	</div>
 				 	
 				 	<form name="newsReload" method="post">
