@@ -267,14 +267,14 @@ public class BoardDAO {
 			sql = "";
 			if(category.equals("N")){
 				if(result.equals("A")){
-					sql = "select * from board where pd_permit = 1 order by ? DESC limit ?, ?";
+					sql = "select b.*, s.company from board as b join seller as s on b.pd_no = s.pd_no where pd_permit = 1 order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, order);
 					pstmt.setInt(2, startRow-1);
 					pstmt.setInt(3, pageSize);
 					rs = pstmt.executeQuery();
 				}else if(!result.equals("A")){
-					sql = "select * from board where pd_permit = 1 AND pd_result = ? order by ? DESC limit ?, ?";
+					sql = "select b.*, s.company from board as b join seller as s on b.pd_no = s.pd_no where pd_permit = 1 AND pd_result = ? order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, result);
 					pstmt.setInt(2, order);
@@ -284,7 +284,7 @@ public class BoardDAO {
 				}
 			}else if(!category.equals("N")){
 				if(result.equals("A")){
-					sql = "select * from board where pd_permit = 1 AND pd_category=? order by ? DESC limit ?, ?";
+					sql = "select b.*, s.company from board as b join seller as s on b.pd_no = s.pd_no where pd_permit = 1 AND pd_category=? order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, category);
 					pstmt.setInt(2, order);
@@ -292,7 +292,7 @@ public class BoardDAO {
 					pstmt.setInt(4, pageSize);
 					rs = pstmt.executeQuery();
 				}else if(!result.equals("A")){
-					sql = "select * from board where pd_permit = 1 AND pd_result = ? AND pd_category=? order by ? DESC limit ?, ?";
+					sql = "select b.*, s.company from board as b join seller as s on b.pd_no = s.pd_no where pd_permit = 1 AND pd_result = ? AND pd_category=? order by ? DESC limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, result);
 					pstmt.setString(2, category);
@@ -327,7 +327,7 @@ public class BoardDAO {
 				bBean.setPd_opprice2(rs.getInt("pd_opprice2"));
 				bBean.setPd_opcontent3(rs.getString("pd_opcontent3"));
 				bBean.setPd_opprice3(rs.getInt("pd_opprice3"));
-				
+				bBean.setCompany(rs.getString("company"));
 				list.add(bBean);
 			}
 			con.close();
@@ -430,7 +430,7 @@ public class BoardDAO {
 		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
 		try{
 			con = getConnection();
-			sql = "select * from board where pd_permit = 1 order by pd_start DESC limit 0,3";
+			sql = "select b.*, s.company from board as b join seller as s on b.pd_no = s.pd_no where pd_permit = 1 order by pd_start DESC limit 0,3";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -458,7 +458,7 @@ public class BoardDAO {
 				bBean.setPd_opprice2(rs.getInt("pd_opprice2"));
 				bBean.setPd_opcontent3(rs.getString("pd_opcontent3"));
 				bBean.setPd_opprice3(rs.getInt("pd_opprice3"));
-				
+				bBean.setCompany(rs.getString("company"));
 				list.add(bBean);
 			}
 			con.close();
@@ -486,7 +486,7 @@ public class BoardDAO {
 		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
 		try{
 			con = getConnection();
-			sql = "select * from board where pd_permit = 1 order by pd_good DESC limit 0,3";
+			sql = "select b.*, s.company from board as b join seller as s on b.pd_no = s.pd_no where pd_permit = 1 order by pd_good DESC limit 0,3";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -514,7 +514,7 @@ public class BoardDAO {
 				bBean.setPd_opprice2(rs.getInt("pd_opprice2"));
 				bBean.setPd_opcontent3(rs.getString("pd_opcontent3"));
 				bBean.setPd_opprice3(rs.getInt("pd_opprice3"));
-				
+				bBean.setCompany(rs.getString("company"));
 				list.add(bBean);
 			}
 			con.close();
