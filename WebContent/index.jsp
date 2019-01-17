@@ -36,6 +36,16 @@
  
 <jsp:include page="top.jsp"/>
 
+<!-- RewardingWrite.fu / mySellPro.my / myPageReward.my / myPageGood.my-->
+<c:if test="${sessionScope.id eq null}">
+	<c:if test="${center eq 'RewardingWrite_index.jsp' or center eq './myPage/myIndex.jsp'
+				or center eq './myPage/myIndex.jsp' or center eq './myPage/myIndex.jsp'
+				
+	}">
+		<c:set var="center" value="main.jsp"/>
+	</c:if>
+</c:if>
+
 <jsp:include page="${center }"/>
 
 		<!-- Modal 부분 -->
