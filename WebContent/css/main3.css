@@ -1069,9 +1069,20 @@ body{
 	line-height: 100%;
 
 }
+.modal-footer1 #modal-btn4{
+	background-color: #fff;
+	/* border-radius: 0.2em; */
+	width: 50%;
+	height: 40px;
+	color: #b44af7;
+	border: none;
+	cursor: pointer;
+	line-height: 100%;
+
+}
 
 
-.modal-footer #modal-btn3:hover{
+.modal-footer1 #modal-btn4:hover{
 	background-color: #ccc;
 	font-weight: bold;
 

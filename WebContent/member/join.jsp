@@ -22,7 +22,7 @@
 .wrap{background-color: #ddd; 
 	padding: 100px 200px;
 	background-image: url("img/leaves.jpg"); 
-	background-size: 100% 100%;
+	background-size: cover;
 	background-attachment: scroll;
 	background-repeat: no-repeat; }
 

@@ -19,11 +19,12 @@ h1{
 <body>
 	<div id="footer">
 		<div class="footer_container1">
-			<h1>리듀 RewardU</h1>
-			<h2>"당신의 관심에 보답합니다. <i>Reward with You</i>"</h2>
+		
+			<div class="footerLogo" style="padding: 10px 0;"><img src="img/rewardulogo_footer.png" width="150px"></div>
+			<span id="rewardu_copy" style="color: #b44af7; font-weight: bold; font-size: 15px;">"당신의 관심에 보답합니다. <i>Reward with You</i>"</span>
 			<h3>© RewardU Corp.</h3>
 			<p>
-				리듀 (주) | 팀장 김종환 | 팀원  김민식 박소희 윤호준 이환규 정다원  | 사업자등록번호 000-00-0000 | 통신판매업신고 2019-부산-0000<br/>
+				리듀 (주) | 팀장 김종환 | 팀원  김민식, 박소희, 윤호준, 이환규, 정다원  | 사업자등록번호 000-00-0000 | 통신판매업신고 2019-부산-0000<br/>
 				부산광역시 부산진구 동천로 109 (부전동) 삼한골든게이트빌딩 7층
 			</p>
 			<h3>리듀 대표 고객센터 1661-0000 | rewardu4@gmail.com</h3>

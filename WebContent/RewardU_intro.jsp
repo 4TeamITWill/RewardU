@@ -18,7 +18,12 @@
 		
 	#intro_main {
 		width : 100%;}
-		
+	
+	.int_box img{
+		width : 100%; height : 100%;
+		padding: 30px 0;
+	}		
+
 </style>
 <script>
 
@@ -109,12 +114,13 @@ $(function(){
 		<div class="box_box" style="height : 100%;">
 			<!-- div 한개당 페이지 한개 안에 내용 넣기 -->
 			<div style="height:0;"></div>
-			<div class="int_box" style="background-color : green;"></div>
-			<div class="int_box" style="background-color : blue;"></div>
-			<div class="int_box" style="background-color : yellow;"></div>
-			<div class="int_box" style="background-color : black;"></div>
-			<div class="int_box" style="background-color : gray;"></div>
-			<div class="int_box" style="background-color : skyblue;"></div>
+			<div class="introBoxStyle">
+				<div id="intro01" class="int_box" ><img src="intropng/intro01.png"></div>
+				<div id="intro02" class="int_box" ><img src="intropng/intro02.png"></div>
+				<div id="intro03" class="int_box" ><img src="intropng/intro03.png"></div>
+				<div id="intro04" class="int_box" ><img src="intropng/intro04.png"></div>
+				<div id="intro05" class="int_box" ><img src="intropng/intro05.png"></div>
+			</div>
 			<div style="height:0;"></div>
 		</div>
 		<!-- 왼쪽 버튼 박스 -->
@@ -124,7 +130,6 @@ $(function(){
 			<div class="but" onclick="Move(2);"></div>
 			<div class="but" onclick="Move(3);"></div>
 			<div class="but" onclick="Move(4);"></div>
-			<div class="but" onclick="Move(5);"></div>
 		</div>
 	
 	</div>
