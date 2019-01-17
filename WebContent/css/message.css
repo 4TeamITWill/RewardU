@@ -110,7 +110,7 @@
 	top: 870px;
 	right: 0.5%;
 }
-.quick_msg{border: 3px groove #efefef;	border-radius: 10%;
+.quick_msg{border: 3px solid #efefef;	border-radius: 10%;
 	position: absolute;
 	bottom: 0px;
 	right: 5%;
@@ -123,7 +123,7 @@
 .quit_btn{width: 30px; height: 15px; float: right;}
 
 .quick_msg>#subject_inquiry{width: 280px; height: 20px; border-radius:4%;}
-.quick_msg>#content_inquiry{width: 250px; height: 160px; border-radius:4%;}
+.quick_msg>#content_inquiry{width: 280px; height: 160px;}
 .quick_msg #send, .quick_msg #rewrite{width: 100px; height: 25px; background-color: #fff; font-weight: 600;}
 .quick_msg #send:HOVER, .quick_msg #rewrite:HOVER{border: 2px groove #9599fc;}
 textarea {resize: none;}
