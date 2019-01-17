@@ -124,7 +124,7 @@
 						        	<strong>${list.pd_subject }</strong>
 						        	<br>
 						        	<span>${list.pd_category } ː</span>
-						        	<span>${list.user_id}</span>
+						        	<span>${list.company}</span>
 								</a>
 							</div>	
 							<div id="bar">  
