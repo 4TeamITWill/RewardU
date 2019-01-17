@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
+import admin_db.SellerBean;
+
 
 public class MemberDAO {
 	
@@ -533,4 +535,42 @@ public class MemberDAO {
 		}
 		return sb.toString();
 	}//randomNum()
+	
+	
+public MemberBean getSellerimg(int pd_no){
+		
+		
+		MemberBean st = null;
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "select a.user_photo from user a, seller b where a.user_id=b.user_id";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				st = new MemberBean();
+				st.setUser_photo(rs.getString("user_photo"));
+			
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return st;
+	}
 }

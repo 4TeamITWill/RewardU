@@ -37,19 +37,19 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int sendEmail(String to, String authNum) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "¸®µà  RewardU È¸¿ø°¡ÀÔ ÀÌ¸ÞÀÏ ÀÎÁõ¹øÈ£ ÀÔ´Ï´Ù.";
+		String subject = "í•˜í•³  RewardU í•˜í•˜í˜¸í˜¸.";
 		String content = "<div width='200' height='300px' align='center' style='background-color: #aaa;'>";
 		   content += "<h2>&nbsp;&nbsp;</h2>";
 		   content += "<span style='background-color:white; color:#b44af7; font-size: 30px; font-weight: bold;'>"; 
-		   content += "&nbsp; ¸®µà <i>RewardU</i> &nbsp; </span>"; 
+		   content += "&nbsp; ï¿½ï¿½ï¿½ï¿½ <i>RewardU</i> &nbsp; </span>"; 
 		   content += "<br><br>";
-		   content += "<font size='3' color='white'>È¸¿ø´ÔÀÇ ÀÎÁõ¹øÈ£´Â";
+		   content += "<font size='3' color='white'>È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½";
 		   content += "<font size='4' color='white'> <b>"+ authNum +" </b></font>";
-		   content += " ÀÔ´Ï´Ù.<br></font>";
+		   content += " ï¿½Ô´Ï´ï¿½.<br></font>";
 		   content += "<h2>&nbsp;&nbsp;</h2>";
 		   content += " </div>";
 		
-		Properties p = new Properties(); // Á¤º¸¸¦ ´ãÀ» °´Ã¼
+		Properties p = new Properties(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -60,7 +60,7 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ¼­¹ö¿¡ Á¢¼ÓÇÏ±â À§ÇÑ Á¤º¸µé
+		// SMTP ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 
 		try{
 		    Authenticator auth = new SMTPAuthenticatior();
@@ -68,25 +68,25 @@ public class SMTPAuthenticatior extends Authenticator {
 		     
 		    ses.setDebug(true);
 		     
-		    MimeMessage msg = new MimeMessage(ses); // ¸ÞÀÏÀÇ ³»¿ëÀ» ´ãÀ» °´Ã¼
-		    msg.setSubject(subject); // Á¦¸ñ
+		    MimeMessage msg = new MimeMessage(ses); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
+		    msg.setSubject(subject); // ï¿½ï¿½ï¿½ï¿½
 		     
 		    Address fromAddr = new InternetAddress(from);
-		    msg.setFrom(fromAddr); // º¸³»´Â »ç¶÷
+		    msg.setFrom(fromAddr); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		     
 		    Address toAddr = new InternetAddress(to);
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // ¹Þ´Â »ç¶÷
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
 		     
-		    msg.setContent(content, "text/html;charset=UTF-8"); // ³»¿ë°ú ÀÎÄÚµù
+		    msg.setContent(content, "text/html;charset=UTF-8"); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½
 		     
-		    Transport.send(msg); // Àü¼Û
+		    Transport.send(msg); // ï¿½ï¿½ï¿½ï¿½
 		    
 		    return 1;
 		    
 		} catch(Exception e){
 		    e.printStackTrace();
 		    System.out.println(e);
-		    // ¿À·ù ¹ß»ý½Ã µÚ·Î µ¹¾Æ°¡µµ·Ï
+		    // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½
 		    return 0; 
 		}
 		
@@ -95,10 +95,10 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int testsending(String user_id, String user_name, String welcomeMSG) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "¸®µà  RewardU È¸¿ø´Ô, È¯¿µÇÕ´Ï´Ù!";
+		String subject = "ï¿½ï¿½ï¿½ï¿½  RewardU È¸ï¿½ï¿½ï¿½ï¿½, È¯ï¿½ï¿½ï¿½Õ´Ï´ï¿½!";
 		String content = welcomeMSG;
 		
-		Properties p = new Properties(); // Á¤º¸¸¦ ´ãÀ» °´Ã¼
+		Properties p = new Properties(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -109,7 +109,7 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ¼­¹ö¿¡ Á¢¼ÓÇÏ±â À§ÇÑ Á¤º¸µé
+		// SMTP ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 
 		try{
 		    Authenticator auth = new SMTPAuthenticatior();
@@ -117,25 +117,25 @@ public class SMTPAuthenticatior extends Authenticator {
 		     
 		    ses.setDebug(true);
 		     
-		    MimeMessage msg = new MimeMessage(ses); // ¸ÞÀÏÀÇ ³»¿ëÀ» ´ãÀ» °´Ã¼
-		    msg.setSubject(subject); // Á¦¸ñ
+		    MimeMessage msg = new MimeMessage(ses); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
+		    msg.setSubject(subject); // ï¿½ï¿½ï¿½ï¿½
 		     
 		    Address fromAddr = new InternetAddress(from);
-		    msg.setFrom(fromAddr); // º¸³»´Â »ç¶÷
+		    msg.setFrom(fromAddr); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		     
 		    Address toAddr = new InternetAddress(user_id);
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // ¹Þ´Â »ç¶÷
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
 		     
-		    msg.setContent(content, "text/html;charset=UTF-8"); // ³»¿ë°ú ÀÎÄÚµù
+		    msg.setContent(content, "text/html;charset=UTF-8"); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½
 		     
-		    Transport.send(msg); // Àü¼Û
+		    Transport.send(msg); // ï¿½ï¿½ï¿½ï¿½
 		    
 		    return 1;
 		    
 		} catch(Exception e){
 		    e.printStackTrace();
 		    System.out.println(e);
-		    // ¿À·ù ¹ß»ý½Ã µÚ·Î µ¹¾Æ°¡µµ·Ï
+		    // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½
 		    return 0; 
 		}
 		
@@ -144,18 +144,18 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int sendPw(String user_id, String user_pw) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "¸®µà  RewardU È¸¿ø ºñ¹Ð¹øÈ£ ÀÔ´Ï´Ù.";
+		String subject = "ï¿½ï¿½ï¿½ï¿½  RewardU È¸ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½Ô´Ï´ï¿½.";
 		String content = "<div width='200' height='300px' align='center' style='background-color: #aaa;'>";
 			   content += "<h2>&nbsp;&nbsp;</h2>";
 			   content += "<span style='background-color:white; color:#b44af7; font-size: 30px; font-weight: bold;'>"; 
-			   content += "&nbsp; ¸®µà <i>RewardU</i> &nbsp; </span>"; 
+			   content += "&nbsp; ï¿½ï¿½ï¿½ï¿½ <i>RewardU</i> &nbsp; </span>"; 
 			   content += "<br><br>";
-			   content += "<font size='3' color='white'>È¸¿ø´ÔÀÇ ºñ¹Ð¹øÈ£´Â <b>"+ user_pw + " </b>ÀÔ´Ï´Ù.<br>";
-			   content += " ºñ¹Ð¹øÈ£¸¦ ¸¶ÀÌÆäÀÌÁö¿¡¼­ Àç¼³Á¤ ÇØÁÖ½Ã±æ ±ÇÀåÇÕ´Ï´Ù.</font>";
+			   content += "<font size='3' color='white'>È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ <b>"+ user_pw + " </b>ï¿½Ô´Ï´ï¿½.<br>";
+			   content += " ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ç¼³ï¿½ï¿½ ï¿½ï¿½ï¿½Ö½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.</font>";
 			   content += "<h2>&nbsp;&nbsp;</h2>";
 			   content += " </div>";
 		
-		Properties p = new Properties(); // Á¤º¸¸¦ ´ãÀ» °´Ã¼
+		Properties p = new Properties(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -166,7 +166,7 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ¼­¹ö¿¡ Á¢¼ÓÇÏ±â À§ÇÑ Á¤º¸µé
+		// SMTP ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 
 		try{
 		    Authenticator auth = new SMTPAuthenticatior();
@@ -174,25 +174,25 @@ public class SMTPAuthenticatior extends Authenticator {
 		     
 		    ses.setDebug(true);
 		     
-		    MimeMessage msg = new MimeMessage(ses); // ¸ÞÀÏÀÇ ³»¿ëÀ» ´ãÀ» °´Ã¼
-		    msg.setSubject(subject); // Á¦¸ñ
+		    MimeMessage msg = new MimeMessage(ses); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
+		    msg.setSubject(subject); // ï¿½ï¿½ï¿½ï¿½
 		     
 		    Address fromAddr = new InternetAddress(from);
-		    msg.setFrom(fromAddr); // º¸³»´Â »ç¶÷
+		    msg.setFrom(fromAddr); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		     
 		    Address toAddr = new InternetAddress(user_id);
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // ¹Þ´Â »ç¶÷
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
 		     
-		    msg.setContent(content, "text/html;charset=UTF-8"); // ³»¿ë°ú ÀÎÄÚµù
+		    msg.setContent(content, "text/html;charset=UTF-8"); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½
 		     
-		    Transport.send(msg); // Àü¼Û
+		    Transport.send(msg); // ï¿½ï¿½ï¿½ï¿½
 		    
 		    return 1;
 		    
 		} catch(Exception e){
 		    e.printStackTrace();
 		    System.out.println(e);
-		    // ¿À·ù ¹ß»ý½Ã µÚ·Î µ¹¾Æ°¡µµ·Ï
+		    // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½
 		    return 0; 
 		}
 		
@@ -202,9 +202,9 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int sendMyinfo(String to, String content){
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "¸®µà  RewardUÀÇ È¸¿øÀÌ µÇ½Å °ÍÀ» ÃàÇÏÇÕ´Ï´Ù.";
+		String subject = "ï¿½ï¿½ï¿½ï¿½  RewardUï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ç½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 		
-		Properties p = new Properties(); // Á¤º¸¸¦ ´ãÀ» °´Ã¼
+		Properties p = new Properties(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -215,18 +215,18 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ¼­¹ö¿¡ Á¢¼ÓÇÏ±â À§ÇÑ Á¤º¸µé
+		// SMTP ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		try {
 			Authenticator auth = new SMTPAuthenticatior();
 			
 			Session ses = Session.getInstance(p, auth);
 			
-			MimeMessage msg = new MimeMessage(ses); // ¸ÞÀÏÀÇ ³»¿ëÀ» ´ãÀ» °´Ã¼
-			msg.setSubject(subject); // Á¦¸ñ
+			MimeMessage msg = new MimeMessage(ses); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
+			msg.setSubject(subject); // ï¿½ï¿½ï¿½ï¿½
 			
 			Address fromAddr = new InternetAddress(from);
-			msg.setFrom(fromAddr); // º¸³»´Â »ç¶÷
+			msg.setFrom(fromAddr); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			     
 			Address toAddr = new InternetAddress(to);
 			msg.addRecipient(Message.RecipientType.TO, toAddr);

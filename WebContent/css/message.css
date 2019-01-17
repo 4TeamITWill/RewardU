@@ -110,7 +110,7 @@
 	top: 870px;
 	right: 0.5%;
 }
-.quick_msg{border: 3px solid #efefef;	border-radius: 10%;
+.quick_msg{border: 3px solid #efefef;;
 	position: absolute;
 	bottom: 0px;
 	right: 5%;
@@ -120,7 +120,8 @@
 .msg_img{width: 50px; height: 50px;}
 .msg_img:HOVER{transform : scale(1.1);}
 
-.quit_btn{width: 30px; height: 15px; float: right;}
+.quit_btn{width: 30px; height: 15px; float: right; font-size: 30px; color: black; margin-bottom: 5%;}
+.quit_btn:HOVER{color: #9599fc; cursor: pointer;}
 
 .quick_msg>#subject_inquiry{width: 280px; height: 20px; border-radius:4%;}
 .quick_msg>#content_inquiry{width: 280px; height: 160px;}

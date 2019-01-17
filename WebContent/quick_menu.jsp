@@ -72,7 +72,7 @@ if(id != null){//사용자가 로그인한 상태일 때만 문의하기 메시�
 		<li>
 			<div class="quick_msg">
 				<!-- 닫기 버튼 이미지 -->
-				<br/>1:1 문의 보내기<img src="img/quit_off.png" class="quit_btn"><br/>
+				<span class="quit_btn">&times;</span><br/>
 				<!-- 보내는 사람 : 사용자, 받는 사람 : 관리자(rewardu4@gmail.com 로 고정 -->
 				<input type="hidden" name="toID" id="toID" value="<%=id%>">
 				<input type="hidden" name="fromID" id="fromID" value="rewardu4@gmail.com">
