@@ -15,6 +15,7 @@
 <style type="text/css">
 	.current_money {display: block; height: 10px; line-height: 40px; text-align: right; 
 	background: pink; border-radius: 40px; padding: 0 10px; box-sizing: border-box; color: #fff;}
+
 </style>
 <script type="text/javascript">
 	window.onload = function(){
@@ -51,34 +52,50 @@
 		 <div id="carousel_section">
 	        <ul>	           
 	            <li	>
-	            	<img src="img/desk.jpg" > 
+	            	<img src="img/contentimg/carousel_game.png" style="height : 100%;" > 
 	            	<div style="position : absolute; left: 23%; width : 350px; 
 	            			box-sizing : border-box;">
 		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
 		            	<div style="font-size : 38px; margin-top : 0.4rem; margin-bottom : 1.5rem; font-weight : bold;">
-		            		노트북 팝니다 <br/>싸다 싸(제목)
+		            		엄마! 나 이거 사줘! <br/>
+		            		<span style="font-size: 17px; text-indent: 5px;"> &nbsp;이 게임 안 사주면 <br> &nbsp;우리애가 왕따라면서요?</span>
 	            		</div>
 		            	<div style="color : rgba(0,0,0,0.6); font-weight : 600;">Editor가 추천하는 핫아이템</div>
 	            	</div>
 	            </li>
 	             <li> 
-	            	<img src="img/radioNews.jpg" style="height : 100%;" >
-	            	<div style="position : absolute; left: 23%;color : #fff; width : 350px; border : 3px solid; 
+	            	<img src="img/contentimg/carousel_paris.png" style="height : 100%;" >
+	            	<div style="position : absolute; left: 23%;color : #fff; width : 350px;  
 	            			background-color : rgba(255,255,255,0.1); box-sizing : border-box; padding : 2rem 1rem;">
 		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
 		            	<div style="font-size : 38px; margin-top : 0.4rem; margin-bottom : 1.5rem; font-weight : bold;">
-		            		노트북 팝니다<br/> (제목)
+		            		나만 가본 Paris<br/>
+		            		<span style="font-size: 15px; font-weight: none; "> &nbsp;파리 로컬과 함께하는  <br> &nbsp;나만 가본 새로운 여행 상품!</span>
 	            		</div>
 		            	<div style="color : rgba(255,255,255,0.9); font-weight : 600;">Editor가 추천하는 핫아이템</div>
 	            	</div>
 	            </li>
 	            <li>
-	            	<img src="img/startup.jpg">
-	            	<div style="position : absolute; width : 800px; margin:0 auto; box-sizing : border-box; border : 3px solid #fff; padding : 1rem 1rem; background-color : rgba(255,255,255,0.2);">
-		            	<div style="color : #43f5d7; font-weight : 600; text-align : center; font-size : 18px;">Editor가 추천하는 핫아이템</div>
-		            	<div style="color : rgba(10,10,10,0.8); font-size : 32px; margin-top : 1rem; margin-bottom : 1.5rem; font-weight : bold; text-align:center;">
-		            		노트북 팝니다 싸다 싸 (제목) 사라
-	            		</div>		            	
+	            	<img src="img/contentimg/carousel_lipstick.png" style="height : 100%;">
+	            	<div style="position : absolute; left: 23%; width : 350px; 
+	            			box-sizing : border-box;">
+		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
+		            	<div style="font-size : 38px; margin-top : 0.4rem; margin-bottom : 1.5rem; font-weight : bold;">
+		            		착색 갑 <br/>가성비 갑
+	            		</div>
+		            	<div style="color : rgba(0,0,0,0.6); font-weight : 600;">Editor가 추천하는 핫아이템</div>
+	            	</div>
+	            
+	            </li>
+	            <li>
+	            	<img src="img/contentimg/carousel_whisky.png" style="height : 100%;">
+	            	<div style="position : absolute; left: 23%; width : 350px; 
+	            			box-sizing : border-box;">
+		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
+		            	<div style="font-size : 38px; color:#fff; margin-top : 0.4rem; margin-bottom : 1.5rem; font-weight : bold;">
+		            		위스키 <br/>즐거운딩
+	            		</div>
+		            	<div style="color : #fff; font-weight : 600;">Editor가 추천하는 핫아이템</div>
 	            	</div>
 	            </li>
 	        </ul>

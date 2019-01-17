@@ -8,7 +8,7 @@ var caInterval;
 var imgW; // 사진 한장의 너비    
 $(document).ready(function(){
  
-    carouselInit(450, 3000);
+    carouselInit(440, 3000);
 });
  
 $(window).resize(function(){
