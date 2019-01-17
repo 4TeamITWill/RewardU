@@ -5,6 +5,9 @@ import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.adActionForward;
+import admin_db.BoardBean;
+import admin_db.BoardDAO;
 import invest_db.InvestBean;
 import invest_db.InvestDAO;
 import message.db.MessageDAO;
@@ -76,6 +79,17 @@ public class inInsertingAction implements inAction{
 		//participate 테이블에 정보 삽입
 		idao.insertParticipate(user_id, pd_no, inv_price, inv_orderno);
 		
+		//board정보 설정
+		BoardDAO bdao = new BoardDAO();
+		
+		BoardBean bean = bdao.getBoard(pd_no);
+		
+		request.setAttribute("bean", bean);
+		
+		adActionForward forward1 = new adActionForward();
+		
+		
+		
 		MessageDAO mdao = new MessageDAO();
 		//메시지 내용 설정
 		StringBuffer payContent = new StringBuffer();
@@ -99,6 +113,8 @@ public class inInsertingAction implements inAction{
 		forward.setRedirect(false);
 		
 		return forward;
+		
+		
 		
 	}
 

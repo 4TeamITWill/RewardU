@@ -241,7 +241,9 @@ function checks(){
 		
 		<div id="funding_content" align="center" >
 		 <div class="ibean_hidden" align="center">
-     		<h2>${ibean.user_id}의  "${ibean.inv_name}" 상품선택내역</h2>
+     		  <h2>${ibean.user_id}의  "${ibean.inv_name}" <br/>
+     		    	 상품선택내역
+     		  </h2>
 			<hr>
 		<ul>
 		  <li><!-- 옵션1  -->
