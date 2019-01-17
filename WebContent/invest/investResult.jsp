@@ -35,10 +35,10 @@
 		<h2> '${ibean.inv_name}' 상품을 구매해주셔서 감사합니다.</h2>
 		<h3> 안녕하세요 '${ibean.user_id}'님, 신청해주신 상품이 구매완료되었습니다. 이후 구매이력 열람은 '마이페이지'->'투자 현황'에서 확인 가능합니다.</h3>
 		<hr>
-		<div class="invoice">
+	<div class="invoice">
 		<h2>주문 정보</h2>
 		<div class="table">
-		  <div class="row header">
+		  <div class="row_header">
 			<div class="cell">
 			   주문번호
 			</div>
@@ -69,7 +69,7 @@
 		 
 		  <h2>선택 옵션</h2>
 		  <!-- 옵션1  -->
-		  <div class="row header">
+		  <div class="row_header">
 			<div class="cell">
 			  상품명
 			</div>
@@ -134,6 +134,7 @@
 		
 	  <input type="button" class="pay_btn" value="투자 현황 확인" onclick="location.href='./myPageReward.my'">
 	  <input type="button" class="pay_btn" value="메인으로 돌아가기" onclick="location.href='./ReturnMain.in'">
+	  </div>
 	</div>			
 </body>
 </html>
