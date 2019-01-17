@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
-center{position: relative;
-	min-height: 700px;
+.option_center{position: relative;
+	min-height: 1000px;
 }
 
 .option_list{border: 2px groove gray; 

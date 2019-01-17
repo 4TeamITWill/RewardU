@@ -177,6 +177,9 @@ public class BoardDAO {
 				bbean.setUser_id(rs.getString("user_id"));		
 				bbean.setPd_rate(rs.getDouble("pd_rate"));
 				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				bbean.setPd_opsubject1(rs.getString("pd_opsubject1"));
+				bbean.setPd_opsubject2(rs.getString("pd_opsubject2"));
+				bbean.setPd_opsubject3(rs.getString("pd_opsubject3"));
 				
 			}
 			

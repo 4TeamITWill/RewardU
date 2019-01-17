@@ -16,6 +16,8 @@
 <link href="css/fontello-embedded1.css" rel="stylesheet"/>
 <link href="css/pay.css" rel="stylesheet" />
 <link href="css/content.css" rel="stylesheet" />
+<link href="css/invest.css" rel="stylesheet" />
+<link href="css/invest2.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/resultCheck.js"></script>
