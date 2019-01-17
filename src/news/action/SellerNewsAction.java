@@ -13,13 +13,12 @@ public class SellerNewsAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("RewardUNewsAction ()");
+		System.out.println("SellerNewsAction ()");
 		
 		request.setCharacterEncoding("utf-8");
 		
 		NewsDAO ndao = new NewsDAO();
 		
-		String sortNews = request.getParameter("sortNews");
 		String newsKeyword = request.getParameter("newsKeyword");
 		String reload = request.getParameter("reload");
 		
@@ -34,37 +33,31 @@ public class SellerNewsAction implements Action{
 		/*int pageNo = 0;*/
 		int pageSize = 8; /*pageCount(totalPage)*/
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
-		String newsCurrentP = request.getParameter("newsCurrentP");
+		String currentPageP = request.getParameter("currentPageP");
 		
-		if(newsCurrentP == null) newsCurrentP = "1"; 
+		if(currentPageP == null) currentPageP = "1"; 
 		
-		int currentPage = Integer.parseInt(newsCurrentP);
-		int startRow = (currentPage-1) * pageSize +1;
-		int pageBlock = 5;	/*pageBlock(pagePerBlock)*/
-		int firstPage = ((currentPage-1)/pageBlock)*pageBlock + 1;
-		int lastPage = firstPage + pageBlock -1;
+		int currentPage = Integer.parseInt(currentPageP); //2
+		int startRow = (currentPage-1) * pageSize +1;	// 9
+		int pageBlock = 5;	/*pageBlock(pagePerBlock)*/	
+		int firstPage = ((currentPage-1)/pageBlock)*pageBlock + 1; //2
+		int lastPage = firstPage + pageBlock -1;	//6
 		
 		if(lastPage > pageCount){lastPage = pageCount;}
 		
-		
-		
 	//get News lists
+		Vector<SellerNewsBean> v = new Vector<>();
 		if(newsKeyword == null){
 			
-			Vector<SellerNewsBean> v = ndao.getSellerNewsList(startRow, pageSize);
+			v =ndao.getSellerNewsList(startRow, pageSize);
 			request.setAttribute("v", v);
-			count = v.size();
+			System.out.println(count);
 		
 		}else {	//if searchBar(newsKeyword) has any input value
-			Vector<SellerNewsBean> v = ndao.totalSellerNewsSearch(startRow, pageSize, newsKeyword);
+			v = ndao.totalSellerNewsSearch(startRow, pageSize, newsKeyword);
 			request.setAttribute("v", v);
-			count = v.size();
 		}
 		
-		/*Newsbean bestNews = new Newsbean();
-		
-	  	bestNews = ndao.bestNewsViews();
-	  	request.setAttribute("bestNews", bestNews);*/
 		
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);
@@ -73,7 +66,7 @@ public class SellerNewsAction implements Action{
 		request.setAttribute("firstPage", firstPage);
 		request.setAttribute("lastPage", lastPage);
 		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("startRow", startRow);
+		
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

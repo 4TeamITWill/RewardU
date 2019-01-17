@@ -116,7 +116,7 @@
 				<hr>
 	
 	
-			<c:forEach var="v" items="${requestScope.v }" begin="${startRow-1 }" end="${(startRow-1) + pageSize-1 }">
+			<c:forEach var="v" items="${requestScope.v }">
 	
 					<div class="reNews_board_content">
 			<!-- 착한 관리자 눈에만 글번호가 보임 -->		
@@ -154,7 +154,7 @@
 							<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
 						</c:if>
 					</c:forEach>
-					<c:if test="${firstPage < pageCount }">
+					<c:if test="${firstPage > pageCount }">
 						<a href="./NewsAction.news?newsCurrentP=${firstPage+5 }">다음</a>
 					</c:if>
 					<div class="margin2"></div>
