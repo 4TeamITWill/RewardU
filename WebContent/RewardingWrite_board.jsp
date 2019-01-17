@@ -80,8 +80,9 @@ function dateChk() {
 		 }
 	
 		 
-	 //-----------세션에서 받올때 천단위 콤마
+	<%--  //-----------세션에서 받올때 천단위 콤마
  		<%
+<<<<<<< HEAD
 		//RewardBean all = (RewardBean)session.getAttribute("board");
 		//String com =all.getPd_goalMoney();
 		%> 
@@ -97,9 +98,14 @@ function dateChk() {
 	 }
  */
 
+=======
+		RewardBean all = (RewardBean)session.getAttribute("board");
+		String com =all.getPd_goalMoney();
+		%>
+>>>>>>> refs/remotes/origin/jonghwan2
 			
 
-	 
+	  --%>
 
 
 </script>
@@ -255,19 +261,27 @@ function dateChk() {
 		
 <%
 	
+	int save=0;
+
 	if(session.getAttribute("save") != null){
-%>		
-		<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)"/></center>
+		
+		save = (Integer)session.getAttribute("save");
+	}
+	
+	if(save != 0){
+%>			
+ 	<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)" class="ingBtn"/></center>
+ 
 <%		
 	
  	}else{
 %>
-	<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)"/></center>
+	<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)" class="ingBtn"/></center>
 <%	 
 	}
 %>	
 			
-				
+	<br/>			
 	</form>	
 </div>
 

@@ -691,12 +691,13 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "insert into sellernews(pd_no, user_id, sell_subject, sell_content) values(?,?,?,?)";
+			sql = "insert into sellernews(pd_no, user_id, sell_subject, sell_content,pd_subject) values(?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, nbean.getNo());
 			pstmt.setString(2, nbean.getUser_id());
 			pstmt.setString(3, nbean.getSell_subject());
 			pstmt.setString(4, nbean.getSell_content());
+			pstmt.setString(5, nbean.getPd_subject());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -731,6 +732,7 @@ public class MyDAO {
 				nbean.setSell_content(rs.getString("sell_content"));
 				nbean.setSell_subject(rs.getString("sell_subject"));
 				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setPd_subject(rs.getString("pd_subject"));
 				
 				list.add(nbean);
 			}

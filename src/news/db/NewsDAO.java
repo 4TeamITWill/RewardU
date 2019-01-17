@@ -446,4 +446,203 @@ public class NewsDAO {
 		}//fianlly
 		return v;
 	}
+	
+	//sellerNews 메소드------------------------------------
+	
+	//판매자 소식 총 몇개?
+	public int getSellerNewsCount(){
+		int count = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select count(*) from sellerNews";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count;
+	}//getNewsCount
+	
+	//판매자리스트 몽땅 가죠오기
+	public Vector<SellerNewsBean> getSellerNewsList(int startRow, int pageSize){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Vector<SellerNewsBean> v = new Vector<>();
+		
+		SellerNewsBean nbean = null;
+		String sql = null;
+		
+		try {
+			con = getConnection();
+			
+			/*if(sortNews == null || sortNews.isEmpty()){
+				sql = "select * from reNews order by reNews_no desc";
+			}else if(sortNews.equals("1")){
+				sql = "select * from reNews order by reNews_date desc";
+			}else if(sortNews.equals("2")){
+				sql = "select * from reNews order by reNews_views desc";
+			}*/
+			
+			sql = "select * from sellerNews order by no desc limit ?,?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				nbean = new SellerNewsBean();
+				nbean.setDate(rs.getTimestamp("date"));
+				nbean.setNo(rs.getInt("no"));
+				nbean.setPd_no(rs.getInt("pd_no"));
+				nbean.setSell_content(rs.getString("sell_content"));
+				nbean.setSell_subject(rs.getString("sell_subject"));
+				nbean.setUser_id(rs.getString("user_id"));
+				
+				v.add(nbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//fianlly
+		
+		
+		return v;
+	}//getNewsList
+	
+	//판매자소식 검색
+	public Vector<SellerNewsBean> totalSellerNewsSearch (int startRow, int pageSize, String newsKeyword){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Vector<SellerNewsBean> v = new Vector<SellerNewsBean>();
+		
+		SellerNewsBean nbean = null;
+		String sql = null;
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select * from sellerNews where user_id like '%"+ newsKeyword + "%' || sell_subject like '%"+ newsKeyword + "%'"
+					+ " order by no desc limit ?,?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				nbean = new SellerNewsBean();
+				nbean.setDate(rs.getTimestamp("date"));
+				nbean.setNo(rs.getInt("no"));
+				nbean.setPd_no(rs.getInt("pd_no"));
+				nbean.setSell_content(rs.getString("sell_content"));
+				nbean.setSell_subject(rs.getString("sell_subject"));
+				nbean.setUser_id(rs.getString("user_id"));
+				
+				v.add(nbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//fianlly
+		
+		return v;
+		
+	}//totalSellerNewsSearch
+	
+	public SellerNewsBean sellerReadContent(int no){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		SellerNewsBean nbean = null;
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select * from sellerNews where no=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				nbean = new SellerNewsBean();
+				
+				nbean.setDate(rs.getTimestamp("date"));
+				nbean.setNo(rs.getInt("no"));
+				nbean.setPd_no(rs.getInt("pd_no"));
+				nbean.setSell_content(rs.getString("sell_content"));
+				nbean.setSell_subject(rs.getString("sell_subject"));
+				nbean.setUser_id(rs.getString("user_id"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//finally
+		
+		return nbean;
+	}//readContent
+	
+	
+	
+	
 }

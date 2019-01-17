@@ -159,29 +159,7 @@ function inputNumberFormat(obj) {
 	<%
 	}
 	%>		
-		</table><br/><br/>
-	<%
-		
-
-		int save = 0;
-		
-		if(session.getAttribute("save") != null){
-			
-			save = (Integer)session.getAttribute("save");
-		}
-		
-		if(save != 0){
-	%>			 
-			<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)"/></center>
-			<center style="min-height : 20px;"><input type="submit" id="reward" value="신청하기(reward)"/></center>
-	<%		
-		}else{
-	%>		
-			<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)"/></center>
-	<%	 
-	}
-	%>	
-
+		</table><br/>
 	
 	<div class="op_teaser_container">
 		<!-- 네모박스 -->
@@ -204,6 +182,30 @@ function inputNumberFormat(obj) {
 			<div id="op3_price"></div>
 		</div>
 	</div>
+	<br/><br/>
+	<%
+		
+
+		int save = 0;
+		
+		if(session.getAttribute("save") != null){
+			
+			save = (Integer)session.getAttribute("save");
+		}
+		
+		if(save != 0){
+	%>			 
+			<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)" class="ingBtn"/>&nbsp;&nbsp;&nbsp;
+			<input type="submit" id="reward" value="신청하기(reward)" class="ingBtn"/></center>
+	<%		
+		}else{
+	%>		
+			<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)" class="ingBtn"/></center>
+	<%	 
+	}
+	%>	
+	
+	
 	
 	</form>
 		

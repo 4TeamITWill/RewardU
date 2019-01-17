@@ -50,13 +50,13 @@
 					<div>${board.pd_rate }</div>
 					
 					<c:if test="${board.pd_permit == 1 }">
-						<div>게시 중</div>
+						<div style="color: green;">게시 중</div>
 					</c:if>
 					<c:if test="${board.pd_permit == 0 }">
 						<div>승인대기</div>
 					</c:if>
 					<c:if test="${board.pd_permit == 2 }">
-						<div>승인거절</div>
+						<div style="color: red;">승인거절</div>
 					</c:if>					
 				</div>
 			</c:forEach>

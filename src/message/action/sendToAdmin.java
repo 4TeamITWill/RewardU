@@ -27,6 +27,9 @@ public class sendToAdmin extends HttpServlet{
 		String toID = request.getParameter("toID");
 		String fromID = request.getParameter("fromID");
 		String subject = request.getParameter("subject");
+		if(subject.equals("") || subject==null){
+			subject = "제목없음";
+		}
 		String content = request.getParameter("content");
 		
 		MessageDTO mdto = new MessageDTO();

@@ -21,15 +21,15 @@
 						type : 'POST',
 						url : "./sendToAdmin",
 						//요청할 데이타
-						data : { toID : $("#toID").val(), fromID : $("#fromID").val(), subject : $("#subject").val(), content : $("#content").val()},
+						data : { toID : $("#toID").val(), fromID : $("#fromID").val(), subject : $("#subject_inquiry").val(), content : $("#content_inquiry").val()},
 						
 						//요청에 성공 했을떄...응답데이터 받기 
 						success : function(result){
 							//성공적으로 메시지를 보냈다면
 							if(result == 1){
 								//메시지 작성란을 공백으로 초기화
-								$("#subject").val("");
-								$("#content").val("");
+								$("#subject_inquiry").val("");
+								$("#content_inquiry").val("");
 								alert("문의사항이 성공적으로 전송되었습니다.");
 							}else{
 								alert("전송 실패")
@@ -42,8 +42,8 @@
 		
 		//다시쓰기버튼 눌렀을 시
 		$("#rewrite").on("click", function name() {
-			$("#subject").val("");
-			$("#content").val("");
+			$("#subject_inquiry").val("");
+			$("#content_inquiry").val("");
 		});
 	});//ready함수 닫는 부분 	
 </script>
@@ -76,8 +76,8 @@ if(id != null){//사용자가 로그인한 상태일 때만 문의하기 메시�
 				<!-- 보내는 사람 : 사용자, 받는 사람 : 관리자(rewardu4@gmail.com 로 고정 -->
 				<input type="hidden" name="toID" id="toID" value="<%=id%>">
 				<input type="hidden" name="fromID" id="fromID" value="rewardu4@gmail.com">
-				<input type="text" name="subject" id="subject" placeholder="제목을 입력하세요.">
-				<textarea name="content" id="content" placeholder="문의사항을 입력하세요."></textarea><br/>
+				<input type="text" name="subject" id="subject_inquiry" placeholder="제목을 입력하세요.">
+				<textarea name="content" id="content_inquiry" placeholder="문의사항을 입력하세요."></textarea><br/>
 				<input type="button" value="전송" id="send">
 				<input type="button" value="다시쓰기" id="rewrite">
 			</div>

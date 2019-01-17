@@ -1,19 +1,15 @@
-package my_db;
+package news.db;
 
 import java.sql.Timestamp;
 
 public class SellerNewsBean {
-	int pd_no, no;
-	String user_id, sell_subject, sell_content, pd_subject;
-	Timestamp date;
-	
-	
-	public String getPd_subject() {
-		return pd_subject;
-	}
-	public void setPd_subject(String pd_subject) {
-		this.pd_subject = pd_subject;
-	}
+
+	private int no;
+	private int pd_no;
+	private String user_id;
+	private String sell_subject;
+	private String sell_content;
+	private Timestamp date;
 	public int getNo() {
 		return no;
 	}
@@ -50,6 +46,7 @@ public class SellerNewsBean {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
+	
 	
 	
 }

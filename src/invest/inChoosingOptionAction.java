@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.adActionForward;
+import admin_db.BoardBean;
+import admin_db.BoardDAO;
 import invest_db.InvestBean;
 import invest_db.InvestDAO;
 
@@ -24,6 +27,11 @@ public class inChoosingOptionAction implements inAction {
 		String inv_name = request.getParameter("pd_subject");
 		String user_id = request.getParameter("user_id");
 		String pd_realfile = request.getParameter("pd_realfile");
+		
+		//상품옵션제목
+		String pd_opsubject1 = request.getParameter("pd_opsubject1");
+		String pd_opsubject2 = request.getParameter("pd_opsubject2");
+		String pd_opsubject3 = request.getParameter("pd_opsubject3");
 		
 		//수량에 따른 각 옵션별 가격의 합을 받아옴. 이는 실제 DB와는 아무상관없으며 단순히 inv_price 값을 계산하기 위함
 		int op1_priceTotal = Integer.parseInt(request.getParameter("op1_priceTotal"));
@@ -59,6 +67,17 @@ public class inChoosingOptionAction implements inAction {
 		
 		
 		inActionForward forward = new inActionForward();
+		
+		
+		
+		BoardDAO bdao = new BoardDAO();
+		
+		BoardBean bean = bdao.getBoard(pd_no);
+		
+		request.setAttribute("bean", bean);
+		
+		adActionForward forward1 = new adActionForward();
+		
 		
 		forward.setPath("./index.jsp?center=invest/checkingOut.jsp");
 		forward.setRedirect(false);

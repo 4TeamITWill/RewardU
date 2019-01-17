@@ -56,7 +56,7 @@
     		$(".thum").html("썸네일 미리보기");
     	    $('#img').attr('src', e.target.result);
     	    $(".miri").html(filename);
-    	    $(".miriText").html("2:3 비율의 이미지 업로드를 권장합니다.");
+    	    $(".miriText").html("3:2 비율의 이미지 업로드를 권장합니다.");
     	   }
     	  }
     	 }

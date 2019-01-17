@@ -16,19 +16,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href="css/option.css" rel="stylesheet">
 <script src="jquery-3.3.1.min.js"></script>
 <style type="text/css">
 
-.margin{margin-top: 100px;}
-.margin2{margin-top: 50px;}
-.margin3{margin-top: 20px;}
-.margin4{margin-bottom: 100px;}
 
 #funding_content {
-	border: 1px solid;
-	width: 600px;
+	border: 1px solid #b44af7;
+	width: 800px;
 	font-size: 14px;
+}
+
+#funding_content hr {
+	weight : 50%;
 }
 
 #funding_content #form_font_left {
@@ -49,14 +48,63 @@
   font-size: 14px;
 }
 
-#sidebar {
-        width: 260px;
-        padding: 20px;
-        margin-bottom: 20px;
-        float: right;
-        border: 1px solid #bcbcbc;
-      }
+.pay_btn{
+	background-color: #b44af7;
+	color : #fff;
+	board : 1px solid;
+	padding : 0 1.4em;
+	height : 48px;
+	line-height : 1;
+	font-size : 17px;
+}
 
+.addr_btn{
+	background-color: #b44af7;
+	color : #fff;
+	board : 1px solid;
+	padding : 0 1em;
+	height : 30px;
+	line-height : 1;
+	font-size : 13px;
+}
+
+#searched_addr{
+	width: 580px;
+}
+
+#inv_price{
+	text-decoration: underline;
+	color : #b44af7;
+	font-size : 20px;
+}
+
+ul li{
+	padding : 15px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+ul li .opsubject{
+	margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #b44af7;
+    text-align: left;
+}
+
+ul li .opcontent{
+	margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #686868;
+	text-align: left;
+}
+
+ul li .sum{
+	font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    text-align: right
+}
 
 
 </style>
@@ -181,7 +229,6 @@ function checks(){
 	Calendar date = Calendar.getInstance();
 	SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
 %>
-결정시간 :  <b> <%= today.format(date.getTime()) %></b> 입니다. <br>
 
 
   <center>
@@ -194,16 +241,34 @@ function checks(){
 		
 		<div id="funding_content" align="center" >
 		 <div class="ibean_hidden" align="center">
-     		<h2> 아이디 : ${ibean.user_id}</h2>
-			<h2> 게시글 번호 : ${ibean.pd_no}</h2>
-			
-			<h2> 게시글 제목 : ${ibean.inv_name}</h2>
+     		  <h2>${ibean.user_id}의  "${ibean.inv_name}" <br/>
+     		    	 상품선택내역
+     		  </h2>
 			<hr>
-			<h2> 옵션1 ${ibean.op1_price} x ${ibean.op1_qty} : ${ibean.op1_price * ibean.op1_qty} </h2><br/>
-			<h2> 옵션2 ${ibean.op2_price} x ${ibean.op2_qty} : ${ibean.op2_price * ibean.op2_qty} </h2><br/>
-			<h2> 옵션3 ${ibean.op3_price} x ${ibean.op3_qty} : ${ibean.op3_price * ibean.op3_qty} </h2><br/>
-			
-			<h2 id="inv_price" value="${ibean.inv_price}"> 총 금액 : ${ibean.inv_price}원</h2>
+		<ul>
+		  <li><!-- 옵션1  -->
+			<h2 class="opsubject"> ${bean.pd_opsubject1}</h2> 
+			<p class="opcontent">${bean.pd_opcontent1}</p>
+			<p class="sum">수량 : ${ibean.op1_qty}개
+			<br/> 
+			 ${ibean.op1_price * ibean.op1_qty}원 </p>
+		  </li>
+		  <li><!-- 옵션2  -->
+			 <h2 class="opsubject"> ${bean.pd_opsubject2} </h2>
+			 <p class="opcontent">${bean.pd_opcontent2}</p>
+			<p class="sum">수량 : ${ibean.op2_qty}개 
+			<br/>
+			 ${ibean.op2_price * ibean.op2_qty}원 </p>
+		  </li>
+		  <li><!-- 옵션3  -->
+			 <h2 class="opsubject"> ${bean.pd_opsubject3}</h2>
+			 <p class="opcontent">${bean.pd_opcontent3}</p>
+			<p class="sum">수량 : ${ibean.op3_qty}개 
+			<br/>
+			 ${ibean.op3_price * ibean.op3_qty}원 </p>
+		  </li>
+		</ul>	
+			<h2 id="inv_price" value="${ibean.inv_price}"> 최종결제금액 : ${ibean.inv_price}원</h2>
 			
 			<input type="hidden" name="user_id" value="${ibean.user_id}">
 			<input type="hidden" name="pd_no" value="${ibean.pd_no}">
@@ -217,13 +282,12 @@ function checks(){
 			<input type="hidden" name="op3_qty" value="${ibean.op3_qty}">
 			<input type="hidden" name="pd_realfile" value="${ibean.pd_realfile}">
 		</div>
-		
 			<fieldset>
 				<!-- 이름 -->
 					<input type="text" name="inv_investor" id="inv_investor" placeholder="이름" ><br/>
 				<!-- 주소 -->
 					<input type="text" name="inv_addr1" id="searched_addr" placeholder="배송주소">
-					<input type="button" onclick="finding_address()" value="우편번호 찾기">
+					<input type="button" class="addr_btn" onclick="finding_address()" value="우편번호 찾기">
 					<span id="guide" style="color:#999;display:none"></span>
 					<input type="text" name="inv_addr2" id="inv_addr2" placeholder="상세주소"><br/>
 				<!-- 연락처 -->
@@ -234,8 +298,8 @@ function checks(){
 	<div class="margin3"></div>
 	
 		<fieldset class="confirm">
-			<input type="submit" value="결정"><br>
-			<input type="reset" value="취소" onclick="location.href='index.jsp'">
+			<input type="submit" class="pay_btn" value="결정"><br>
+			<input type="reset" class="pay_btn" value="취소" onclick="location.href='./ReturnMain.in'">
 		</fieldset>
 		
 		</form>
