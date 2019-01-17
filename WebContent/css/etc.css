@@ -452,6 +452,17 @@ input[id="policy_chk"]:checked + label:before {
  height: 160px;
 }
 
+.reNews_board_content2{
+ text-align: left;
+ margin: 5px 0;
+ padding: 0 5px 0 10px;
+ border: 1px solid #fff;
+ box-sizing: border-box;
+ display: inline-block;
+ width: 760px;
+ height: 90px;
+}
+
 .reNews_board_thumnail {
 	margin: 9px 25px 0 0;
 
@@ -504,6 +515,13 @@ input[id="policy_chk"]:checked + label:before {
 	text-align: left;
 	border: 1px solid red;
 }
+
+#reNewsRead_content2 { 
+	width: 800px;
+	text-align: left;
+	border: 0 ;
+}
+
 
 .reNewsRead_container {
 	border: 1px solid #fff;

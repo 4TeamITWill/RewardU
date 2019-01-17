@@ -13,6 +13,7 @@ public class sellerNews implements myAction {
 	@Override
 	public myActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		System.out.println("sellerNews()호출");
 		int pd_no = Integer.parseInt(request.getParameter("pd_no"));
 		String seller_id = request.getParameter("seller_id");
 		

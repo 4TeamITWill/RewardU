@@ -1226,12 +1226,13 @@ body{
 }
 
 .write_content input {
-	height : 23px;
+	height : 28px;
 	border : 0.5px solid rgba(200,200,200,0.8);
 }
 
-.write_content input {
-	
+.write_content input[type="button"] {
+	height : 50px;
+	border : 0.5px solid rgba(200,200,200,0.8);
 }
 
 ._container {
@@ -1373,3 +1374,4 @@ body{
 .list_content img {
 	width : 100%;	
 }
+
