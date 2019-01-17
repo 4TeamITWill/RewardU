@@ -245,8 +245,8 @@ jQuery(document).ready(function(){
             <div id="checkMessage" class="modal-body" style="border-bottom: 1px solid #aaa; ">
                 <p style="text-align: center; line-height: 1.5;">왜??</p>
             </div>
-            <div class="modal-footer">
-            <input type="button" id="modal-btn3" value="전송" onclick="modifySubmit();"><input type="button" id="modal-btn3" style="border-left: 1px solid #aaa;" value="취소" onclick="location.reload();">
+            <div class="modal-footer1">
+            <input type="button" id="modal-btn4" value="전송" onclick="modifySubmit();"><input type="button" id="modal-btn4" style="border-left: 1px solid #aaa;" value="취소" onclick="location.reload();">
             </div>
       </div>
  
