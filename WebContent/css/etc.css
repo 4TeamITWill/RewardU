@@ -599,7 +599,44 @@ input[id="policy_chk"]:checked + label:before {
 	color: #434d5b;
 	font-size: 14px;
 }
+.news_header{
+	width: 100%;
+	height: 180px;
+	background-image: url("img/radioNews.jpg"); 
+	background-size: 100% 100%;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+}
 
+#header #header_header{
+	font-size: 25px;
+	font-weight: 700;
+	margin: 10px 0;
+}
+
+#header #header_count {
+	font-size: 12px;
+	font-weight: none;
+}
+
+.boardSection_sub{
+    border: 1px solid #fff;
+ /*  clear: both;  */
+	float: right; 
+    width: 310px;
+    padding : 50px 0; 
+
+    margin: 0;
+}
+
+.boardSection_sub .section_container{
+	border-left: 1px solid #e4e4e4;
+	padding: 15px 25px;
+}
+
+.boardSection_sub .section_container hr{
+
+}
 
 /* .eye {
   margin: 100px;
