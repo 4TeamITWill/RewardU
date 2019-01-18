@@ -456,6 +456,41 @@ input[id="policy_chk"]:checked + label:before {
  text-indent: 10px;
 }
 
+.form_container	#findFrom_header {
+	font-size: 23px;
+	font-weight: none;
+	
+	margin: 27px 0 20px 0;
+	text-align: left;
+}
+
+/* modify, delete */
+.pwModify_wrap, .deleteForm_wrap{
+	background-color: #ddd;
+	padding: 100px 150px;
+	padding: 150px 200px;
+	background-image: url("img/laurel-forest.jpg"); 
+	background-size: cover;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	
+}
+
+#deleteForm{width: 430px; height:300px; 
+		border: 1px solid #aaa;
+		margin: 0 auto;
+		background-color: #fff;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#deleteForm #delete_header {
+	font-size: 25px;
+	font-weight: none;
+	text-indent: 10px;
+	margin: 25px 30px;
+	text-align: left;
+}
+
 
 /* News Area  -List*/
 
@@ -576,7 +611,7 @@ input[id="policy_chk"]:checked + label:before {
 #reNewsRead_content { 
 	width: 800px;
 	text-align: left;
-	border: 1px solid red;
+	border: 1px solid #fff;
 }
 
 #reNewsRead_content2 { 
@@ -588,6 +623,17 @@ input[id="policy_chk"]:checked + label:before {
 
 .reNewsRead_container {
 	border: 1px solid #fff;
+}
+
+.reNewsRead_container #ReadHeader {
+	background-color: #efedea;
+	padding: 5px;
+}
+
+.reNewsRead_container .reNewsRead_content {
+	border: 1px solid #fff;
+	padding: 60px 10px;
+
 }
 
 .reNewsRead_content img {

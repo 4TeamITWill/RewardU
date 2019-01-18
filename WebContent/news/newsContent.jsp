@@ -27,7 +27,7 @@
 	<div class="container" align="center">
 		<div class="news_header">
 			<br>
-			<span class="news_header_font" style=" ">News</span>
+			<div class="news_header_font" style="margin-top: 10px; ">News</div>
 		</div>
 		
 	<div id="reNewsRead_content">
@@ -39,10 +39,12 @@
 		</div>
 	</c:if>
 		<div class="reNewsRead_container">
-			<h5>${nbean.reNews_category }</h5>
-			<h3>${nbean.reNews_title}</h3>
-			<span class="reNews_editor">${nbean.user_name }(${nbean.user_id })</span>&nbsp;&nbsp;<span class="reNews_date">${nbean.reNews_date }</span>
-			<span class="reNews_date">&nbsp;&nbsp;조회수 ${nbean.reNews_views }</span>
+			<div id="ReadHeader">
+				<h5>${nbean.reNews_category }</h5>
+				<h3>${nbean.reNews_title}</h3>
+				<span class="reNews_editor">${nbean.user_name }(${nbean.user_id })</span>&nbsp;&nbsp;<span class="reNews_date">${nbean.reNews_date }</span>
+				<span class="reNews_date">&nbsp;&nbsp;조회수 ${nbean.reNews_views }</span>
+			</div>
 			<hr>
 			<div class="reNewsRead_content">
 				${nbean.reNews_content }

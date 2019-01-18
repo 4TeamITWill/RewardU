@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<h2>너의 아이디는 ${requestScope.mbean.user_id }란다</h2>
+<h2>회원님의 아이디는 ${requestScope.mbean.user_id }입니다.</h2>
 
 <input type="button" value="메인으로" onclick="location.href='./Main.me'"/>
 

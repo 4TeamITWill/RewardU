@@ -37,17 +37,17 @@ public class NewsAction implements Action{
 			
 			Vector<Newsbean> v = ndao.getNewsList(sortNews);
 			request.setAttribute("v", v);
-			//count = v.size();
+			count = v.size();
 		
 		}else {	//if searchBar(newsKeyword) has any input value
 			Vector<Newsbean> v = ndao.totalNewsSearch(newsKeyword);
 			request.setAttribute("v", v);
-			//count = v.size();
+			count = v.size();
 		}
 		
 	//paging variables	
 		int pageNo = 0;
-		int pageSize = 8; /*pageCount(totalPage)*/
+		int pageSize = 5; /*pageCount(totalPage)*/
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		String newsCurrentP = request.getParameter("newsCurrentP");
 		
@@ -69,8 +69,9 @@ public class NewsAction implements Action{
 		Newsbean bestNews = new Newsbean();
 		
 	  	bestNews = ndao.bestNewsViews();
+	  	request.setAttribute("sortNews", sortNews);
 	  	request.setAttribute("bestNews", bestNews);
-		
+		request.setAttribute("newsKeyword", newsKeyword);
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);

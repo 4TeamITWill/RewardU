@@ -197,20 +197,12 @@
 	function sendEmail() {
 		
 		var emailCheck = $('#emailCheck').val();
-		var width = 480;
-		var height = 160;
-		var winL = (screen.width - width) / 2;
-		var winT = (screen.height - height) / 2;
-		var property = "width=" + width + "," + "height=" + height + "," 
-						+ "left=" + winL + "," + "top=" + winT + " menubar=no";
+
 		var idCheck = $("#idCheck").val();
 		var user_id = $("#user_id").val();
 		
 		email_Check = false;
 		
-		
-		var loading = document.all.loadingBar;
-		loading.style.visibilty = "visible";
 
 
 		 $.ajax({
@@ -270,14 +262,14 @@
 						if($.trim(result) == 1){//결과가 1이면 사용할수 있는 아이디 
 							$('#idCheckMessage').css("visibility", "visible");
 							$('#idCheckMessage').html('&nbsp;사용하실 수 있는 아이디 입니다.&nbsp;');
-							//중복확인을 했다~~판별값을 <input>태그에 설정 
+							//중복확인을 한 판별값을 <input>태그에 설정 
 							document.getElementById("idCheck").value="0";
 							
 						}else if($.trim(result) == 0){
 							$('#idCheckMessage').css("visibility", "visible");
 							$('#idCheckMessage').html('&nbsp;중복되는 아이디 입니다.&nbsp;');
 							document.getElementById("idCheck").value="0";
-							//중복확인을 하지 않았다는 판변값을 <input>태그에 설정
+							//중복확인을 하지 않았다는 판별값을 <input>태그에 설정
 							
 						}
 						

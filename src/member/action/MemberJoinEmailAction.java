@@ -30,10 +30,7 @@ public class MemberJoinEmailAction implements Action{
 		
 		if(check==1){
 			response.setContentType("text/html; charset=UTF-8");
-			//PrintWriter out = response.getWriter();
-			//out.println("<script>");
-			//out.println("alert('인증 메일이 발송되었습니다. 인증번호 6자리를 입력해주세요.')");
-			//out.println("</script>");
+			
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./member/authMail.jsp");
@@ -42,11 +39,7 @@ public class MemberJoinEmailAction implements Action{
 			//return null;
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
-			//PrintWriter out = response.getWriter();
-			//out.println("<script>");
-			//out.println("alert('인증 메일 발송 실패! 메일 주소를 다시 확인해주세요.');");
-			//out.println("history.back();");
-			//out.println("</script>");
+			
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./member/authFail.jsp");
