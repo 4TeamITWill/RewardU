@@ -39,7 +39,7 @@
 		</div>
 	</c:if>
 		<div class="reNewsRead_container">
-			<h5>${nbean.reNews_category }</h5>
+			<div class="reNews_category_board" style="width: 80px;">${nbean.reNews_category }</div>
 			<h3>${nbean.reNews_title}</h3>
 			<span class="reNews_editor">${nbean.user_name }(${nbean.user_id })</span>&nbsp;&nbsp;<span class="reNews_date">${nbean.reNews_date }</span>
 			<span class="reNews_date">&nbsp;&nbsp;조회수 ${nbean.reNews_views }</span>

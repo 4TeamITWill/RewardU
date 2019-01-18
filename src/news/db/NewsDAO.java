@@ -111,16 +111,16 @@ public class NewsDAO {
 		
 	}//updateViews
 	
-	
+/*	
 	public List<Newsbean> getNewsList(int startRow, int pageSize){
 		Connection con = null;
 		PreparedStatement pstmt =null;
 		
 		return null;
 	}
+*/	
 	
-	
-	public Vector<Newsbean> getNewsList(String sortNews){
+	public Vector<Newsbean> getNewsList(String sortNews, int startRow, int pageSize){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -134,15 +134,16 @@ public class NewsDAO {
 			con = getConnection();
 			
 			if(sortNews == null || sortNews.isEmpty()){
-				sql = "select * from reNews order by reNews_no desc";
+				sql = "select * from reNews order by reNews_no desc limit ?,?";
 			}else if(sortNews.equals("1")){
-				sql = "select * from reNews order by reNews_date desc";
+				sql = "select * from reNews order by reNews_date desc limit ?,?";
 			}else if(sortNews.equals("2")){
-				sql = "select * from reNews order by reNews_views desc";
+				sql = "select * from reNews order by reNews_views desc limit ?,?";
 			}
 			
-			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -178,8 +179,8 @@ public class NewsDAO {
 		return v;
 	}//getNewsList
 	
-	
-	public Vector<Newsbean> totalNewsSearch (String newsKeyword){
+	//리듀누스 검색
+	public Vector<Newsbean> totalNewsSearch (String newsKeyword, int startRow, int pageSize ){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -193,9 +194,11 @@ public class NewsDAO {
 			
 			con = getConnection();
 			
-			sql = "select * from reNews where reNews_title like '%"+ newsKeyword + "%'";
+			sql = "select * from reNews where reNews_title like '%"+ newsKeyword + "%' order by reNews_no desc limit ?,?";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
 			
 			rs = pstmt.executeQuery();
 			
@@ -232,6 +235,48 @@ public class NewsDAO {
 		
 	}//totalNewsSearch
 	
+	
+	//리듀뉴스 검색 count
+	public int NewSearchCount(String newsKeyword) {
+		
+		int count = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select count(*) from reNews where "
+					+ "reNews_title like '%"+ newsKeyword + "%' order by reNews_no desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count;
+	}
+	
+
 	
 	public Newsbean readContent(int no){
 		
@@ -316,7 +361,7 @@ public class NewsDAO {
 			
 	}//deleteNews
 	
-	
+	//뉴스 전체 카운트
 	public int getNewsCount(){
 		int count = 0;
 		
@@ -501,14 +546,6 @@ public class NewsDAO {
 		try {
 			con = getConnection();
 			
-			/*if(sortNews == null || sortNews.isEmpty()){
-				sql = "select * from reNews order by reNews_no desc";
-			}else if(sortNews.equals("1")){
-				sql = "select * from reNews order by reNews_date desc";
-			}else if(sortNews.equals("2")){
-				sql = "select * from reNews order by reNews_views desc";
-			}*/
-			
 			sql = "select * from sellerNews order by no desc limit ?,?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -524,6 +561,7 @@ public class NewsDAO {
 				nbean.setSell_content(rs.getString("sell_content"));
 				nbean.setSell_subject(rs.getString("sell_subject"));
 				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setPd_subject(rs.getString("pd_subject"));
 				
 				v.add(nbean);
 			}
@@ -559,7 +597,10 @@ public class NewsDAO {
 			
 			con = getConnection();
 			
-			sql = "select * from sellerNews where user_id like '%"+ newsKeyword + "%' || sell_subject like '%"+ newsKeyword + "%'"
+			sql = "select * from sellerNews where "
+					+ "user_id like '%"+ newsKeyword + "%' || "
+					+ "sell_subject like '%"+ newsKeyword + "%' ||"
+					+ "pd_subject like '%"+ newsKeyword + "%'"
 					+ " order by no desc limit ?,?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -576,6 +617,7 @@ public class NewsDAO {
 				nbean.setSell_content(rs.getString("sell_content"));
 				nbean.setSell_subject(rs.getString("sell_subject"));
 				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setPd_subject(rs.getString("pd_subject"));
 				
 				v.add(nbean);
 			}
@@ -595,6 +637,51 @@ public class NewsDAO {
 		return v;
 		
 	}//totalSellerNewsSearch
+	
+	
+
+	//판매자 소식 중 검색결과는 총 몇개?
+	public int SellerNewSearchCount(String newsKeyword){
+		int count = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			
+			con = getConnection();
+			
+			sql = "select count(*) from sellerNews where "
+					+ "user_id like '%"+ newsKeyword + "%' || "
+					+ "sell_subject like '%"+ newsKeyword + "%' ||"
+					+ "pd_subject like '%"+ newsKeyword + "%'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count;
+	}//getsellerNewsSerchCount
+	
+	
 	
 	public SellerNewsBean sellerReadContent(int no){
 		
@@ -625,6 +712,7 @@ public class NewsDAO {
 				nbean.setSell_content(rs.getString("sell_content"));
 				nbean.setSell_subject(rs.getString("sell_subject"));
 				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setPd_subject(rs.getString("pd_subject"));
 			}
 			
 		} catch (Exception e) {
@@ -641,8 +729,8 @@ public class NewsDAO {
 		
 		return nbean;
 	}//readContent
-	
-	
+
+
 	
 	
 }
