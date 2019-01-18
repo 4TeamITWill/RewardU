@@ -14,9 +14,9 @@ CREATE TABLE `investmentList` (
 	`user_id`	varchar(50)	NOT NULL,
 	`pd_no`	int	NOT NULL,
 	`inv_orderno`	int	NULL,
-	`inv_name`	varchar(20)	NULL,
-	`inv_investor`	varchar(10)	NULL,
-	`inv_addr`	varchar(50)	NULL,
+	`inv_name`	varchar(50)	NULL,
+	`inv_investor`	varchar(20)	NULL,
+	`inv_addr`	varchar(80)	NULL,
 	`inv_phone`	varchar(20)	NULL,
 	`inv_price`	varchar(20)	NULL,
 	`inv_date`	datetime	default now(),
@@ -168,20 +168,6 @@ CREATE TABLE `reNews` (
 	`reNews_img`	varchar(100)	NULL
 );
 
-CREATE TABLE `WardNews` (
-	`WardNews_no`	int	NOT NULL,
-	`user_id`	varchar(50)	NULL,
-	`user_name`	varchar(10)	NULL,
-	`WardNews_title`	varchar(50)	NULL,
-	`WardNews_summary`	varchar(50)	NULL,
-	`WardNews_content`	varchar(2000)	NULL,
-	`WardNews_file`	varchar(50)	NULL,
-	`WardNews_views`	int	NULL,
-	`WardNews_date`	datetime	default now(),
-	`WardNews_category`	varchar(10)	NULL,
-	`WardNews_img`	varchar(100)	NULL
-);
-
 CREATE TABLE `reply` (
 	`pd_no`	int	NULL,
 	`user_id`	varchar(50)	NULL,
@@ -199,11 +185,13 @@ CREATE TABLE `rate` (
 	`my_rate`	double	NOT NULL
 );
 
-CREATE table `sellernews`(
-    `no` int primary key auto_increment,
-    `pd_no` int not null,
-    `user_id` varchar(50) not null,
-    `sell_subject` varchar(200) not null,
-    `sell_content` text not null,
-    `date` datetime default now()
+CREATE TABLE `sellernews` (
+	`no`	int	primary key auto_increment,
+	`pd_no`	int	NOT NULL,
+	`user_id`	varchar(50)	NULL,
+	`sell_subject`	varchar(200)	NULL,
+	`sell_content`	text	NULL,
+	`date`	datetime	 default now(),
+	`pd_subject`	varchar(200)	NULL,
+	`pd_realfile`	varchar(100)	NULL
 );
