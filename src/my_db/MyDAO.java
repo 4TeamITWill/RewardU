@@ -638,7 +638,7 @@ public class MyDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
-				
+								
 				BoardBean bbean = new BoardBean();
 				
 				bbean.setPd_category(rs.getString("pd_category"));
@@ -661,7 +661,16 @@ public class MyDAO {
 				bbean.setPd_realfile(rs.getString("pd_realfile"));
 				bbean.setPd_result(rs.getInt("pd_result"));
 				bbean.setPd_start(rs.getTimestamp("pd_start"));
-				bbean.setPd_subject(rs.getString("pd_subject"));
+		
+				if(rs.getString("pd_subject").length() > 60){
+					String pd_subject = rs.getString("pd_subject");
+					bbean.setPd_subject(pd_subject.substring(0,50)+"...");
+					
+				}else{
+					bbean.setPd_subject(rs.getString("pd_subject"));
+				}
+				
+				
 				bbean.setUser_id(rs.getString("user_id"));
 				bbean.setPd_rate(rs.getDouble("pd_rate"));
 				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
@@ -924,7 +933,15 @@ public class MyDAO {
 				bbean.setPd_realfile(rs.getString("pd_realfile"));
 				bbean.setPd_result(rs.getInt("pd_result"));
 				bbean.setPd_start(rs.getTimestamp("pd_start"));
-				bbean.setPd_subject(rs.getString("pd_subject"));
+				
+				if(rs.getString("pd_subject").length() > 30){
+					String pd_subject = rs.getString("pd_subject");
+					bbean.setPd_subject(pd_subject.substring(0,30)+"...");
+					
+				}else{
+					bbean.setPd_subject(rs.getString("pd_subject"));
+				}
+				
 				bbean.setUser_id(rs.getString("user_id"));
 				bbean.setPd_rate(rs.getDouble("pd_rate"));
 				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));

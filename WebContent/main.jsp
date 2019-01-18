@@ -229,15 +229,15 @@
 						</div>
 						<div style="margin : 26px 0;">
 							<div style="width:80%; margin : 0 auto; text-align: center; font-size:18px; font-weight : bold;">
-								<a href="./Content.ad?pd_no=<%=bbean.getPd_no()%>&user_id=<%=session.getAttribute("id")%>"
-								style="text-decoration: none; color: #fff;">
+								<a href="Content.ad?pd_no=<%=bbean.getPd_no() %>" style="text-decoration: none; color: #fff; display:block;">
 								<%=bbean.getPd_subject()%>
 								</a>
 							</div>
 							<div style="width : 50%; margin : 0 auto; margin-top : 2rem;text-align: center; font-size : 13px;">
-								<%=bbean.getPd_category() %>
+								<%=bbean.getPd_category() %>						
 							</div>
-						</div>						
+						</div>
+										
 					</div>
 							
 				<%
@@ -324,7 +324,10 @@
 		
 	});
 	//처음으로 보여지고 있을 기본 값
+	
 	$(".box_grid3_cont").eq(pos1).css("opacity","1");
+	$(".box_grid3_cont").eq(pos1).css("z-index","1");
+	
 	pagenation();
 	
 	//동그란 점들 클릭했을때도 마찬가지로 슬라이드, 페이지네이션
@@ -332,6 +335,8 @@
 		pos1 = $(this).index();
 		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
 		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
+		$(".box_grid3_cont").eq(pos1).css("z-index","1");
+		$(".box_grid3_cont").not(":eq("+pos1+")").css({"z-index":"0"});
 		
 		pagenation();
 	});
@@ -348,8 +353,10 @@
 	function slideLeft1(){
 		pos1--;
 		if(pos1 == -1) pos1=totalSlides1-1;
-		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
+		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);		
 		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
+		$(".box_grid3_cont").eq(pos1).css({"z-index":"1"});
+		$(".box_grid3_cont").not(":eq("+pos1+")").css({"z-index":"0"});
 		
 		pagenation();
 	}
@@ -357,8 +364,10 @@
 	function slideRight1(){
 		pos1++;
 		if(pos1 == totalSlides1) pos1 =0;
-		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
+		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);		
 		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
+		$(".box_grid3_cont").eq(pos1).css({"z-index":"1"});
+		$(".box_grid3_cont").not(":eq("+pos1+")").css({"z-index":"0"});
 		
 		pagenation();
 	}
@@ -373,6 +382,7 @@
 	function cateGo(cate){
 		location.href="PermitList.ad?category="+cate;
 	}
+	
 </script>	
 	
 </body>
