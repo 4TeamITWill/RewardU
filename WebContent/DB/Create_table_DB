@@ -75,7 +75,7 @@ CREATE TABLE `board` (
 	`pd_curmoney`	varchar(50)	NOT NULL	DEFAULT 0,
 	`user_id`	varchar(50)	NOT NULL,
 	`pd_category`	varchar(50)	NOT NULL,
-	`pd_start`	datetime	NOT NULL,
+	`pd_start`	datetime	default now(),
 	`pd_end`	datetime	NOT NULL,
 	`pd_good`	int	NULL	DEFAULT 0,
 	`pd_count`	int	NULL	DEFAULT 0,
