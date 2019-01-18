@@ -9,34 +9,27 @@
 <link href="css/etc.css" rel="stylesheet">
 <style type="text/css">
 
-.wrap {background-color: #ddd;
-padding: 150px 200px;}
-
 .margin{margin-top: 100px;}
 .margin2{margin-top: 50px;}
 .margin3{margin-top: 20px;}
 .margin4{margin-bottom: 100px;}
 
-#deleteForm{width: 430px; height:300px; 
-		border: 1px solid #aaa;
-		margin: 0 auto;
-		background-color: #fff;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-#deleteForm #delete_header {
-	font-size: 25px;
-	font-weight: none;
-	text-indent: 10px;
-	margin: 25px 30px;
-	text-align: left;
+.deleteForm_wrap{
+	background-color: #ddd;
+	padding: 100px 150px;
+	padding: 150px 200px;
+	background-image: url("img/laurel-forest.jpg"); 
+	background-size: cover;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	
 }
 
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="deleteForm_wrap">
 	<div class="container" align="center">
 	<!-- <div class="margin"></div> -->
 		<div id="deleteForm">

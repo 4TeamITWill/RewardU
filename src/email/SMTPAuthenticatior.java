@@ -37,19 +37,21 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int sendEmail(String to, String authNum) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "하핳  RewardU 하하호호.";
+
+		String subject = "리듀  RewardU 회원가입 이메일 인증번호 입니다.";
+
 		String content = "<div width='200' height='300px' align='center' style='background-color: #aaa;'>";
 		   content += "<h2>&nbsp;&nbsp;</h2>";
 		   content += "<span style='background-color:white; color:#b44af7; font-size: 30px; font-weight: bold;'>"; 
-		   content += "&nbsp; ���� <i>RewardU</i> &nbsp; </span>"; 
+		   content += "&nbsp; 리듀 <i>RewardU</i> &nbsp; </span>"; 
 		   content += "<br><br>";
-		   content += "<font size='3' color='white'>ȸ������ ������ȣ��";
+		   content += "<font size='3' color='white'>회원님의 인증번호는";
 		   content += "<font size='4' color='white'> <b>"+ authNum +" </b></font>";
-		   content += " �Դϴ�.<br></font>";
+		   content += " 입니다.<br></font>";
 		   content += "<h2>&nbsp;&nbsp;</h2>";
 		   content += " </div>";
 		
-		Properties p = new Properties(); // ������ ���� ��ü
+		Properties p = new Properties(); // 정보를 담을 객체
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -60,33 +62,37 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ������ �����ϱ� ���� ������
-		 
+
+		// SMTP 서버에 접속하기 위한 정보들		 
 		try{
 		    Authenticator auth = new SMTPAuthenticatior();
 		    Session ses = Session.getInstance(p, auth);
 		     
 		    ses.setDebug(true);
 		     
-		    MimeMessage msg = new MimeMessage(ses); // ������ ������ ���� ��ü
-		    msg.setSubject(subject); // ����
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    msg.setSubject(subject); // 제목
 		     
 		    Address fromAddr = new InternetAddress(from);
-		    msg.setFrom(fromAddr); // ������ ���
+
+		    msg.setFrom(fromAddr); // 보내는 사람
+
 		     
 		    Address toAddr = new InternetAddress(to);
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // �޴� ���
+
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
 		     
-		    msg.setContent(content, "text/html;charset=UTF-8"); // ����� ���ڵ�
+		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
 		     
-		    Transport.send(msg); // ����
+		    Transport.send(msg); // 전송
 		    
 		    return 1;
 		    
 		} catch(Exception e){
 		    e.printStackTrace();
 		    System.out.println(e);
-		    // ���� �߻��� �ڷ� ���ư�����
+
+		    // 오류 발생시 뒤로 돌아가도록
 		    return 0; 
 		}
 		
@@ -95,10 +101,12 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int testsending(String user_id, String user_name, String welcomeMSG) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "����  RewardU ȸ����, ȯ���մϴ�!";
+
+		String subject = "리듀  RewardU 회원님, 환영합니다!";
+
 		String content = welcomeMSG;
-		
-		Properties p = new Properties(); // ������ ���� ��ü
+
+		Properties p = new Properties(); // 정보를 담을 객체
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -109,33 +117,35 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ������ �����ϱ� ���� ������
-		 
+
+		// SMTP 서버에 접속하기 위한 정보들	 
 		try{
 		    Authenticator auth = new SMTPAuthenticatior();
 		    Session ses = Session.getInstance(p, auth);
 		     
 		    ses.setDebug(true);
 		     
-		    MimeMessage msg = new MimeMessage(ses); // ������ ������ ���� ��ü
-		    msg.setSubject(subject); // ����
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    msg.setSubject(subject); // 제목
 		     
 		    Address fromAddr = new InternetAddress(from);
-		    msg.setFrom(fromAddr); // ������ ���
+
+		    msg.setFrom(fromAddr); // 보내는 사람
 		     
 		    Address toAddr = new InternetAddress(user_id);
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // �޴� ���
+
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
 		     
-		    msg.setContent(content, "text/html;charset=UTF-8"); // ����� ���ڵ�
+		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
 		     
-		    Transport.send(msg); // ����
+		    Transport.send(msg); // 전송
 		    
 		    return 1;
 		    
 		} catch(Exception e){
 		    e.printStackTrace();
 		    System.out.println(e);
-		    // ���� �߻��� �ڷ� ���ư�����
+		    // 오류 발생시 뒤로 돌아가도록
 		    return 0; 
 		}
 		
@@ -144,18 +154,22 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int sendPw(String user_id, String user_pw) {
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "����  RewardU ȸ�� ��й�ȣ �Դϴ�.";
+		String subject = "리듀  RewardU 회원 비밀번호 입니다.";
+
 		String content = "<div width='200' height='300px' align='center' style='background-color: #aaa;'>";
 			   content += "<h2>&nbsp;&nbsp;</h2>";
 			   content += "<span style='background-color:white; color:#b44af7; font-size: 30px; font-weight: bold;'>"; 
-			   content += "&nbsp; ���� <i>RewardU</i> &nbsp; </span>"; 
+			   content += "&nbsp; 리듀 <i>RewardU</i> &nbsp; </span>"; 
+
 			   content += "<br><br>";
-			   content += "<font size='3' color='white'>ȸ������ ��й�ȣ�� <b>"+ user_pw + " </b>�Դϴ�.<br>";
-			   content += " ��й�ȣ�� �������������� �缳�� ���ֽñ� �����մϴ�.</font>";
+
+			   content += "<font size='3' color='white'>회원님의 비밀번호는 <b>"+ user_pw + " </b>입니다.<br>";
+			   content += " 비밀번호를 마이페이지에서 재설정 해주시길 권장합니다.</font>";
+
 			   content += "<h2>&nbsp;&nbsp;</h2>";
 			   content += " </div>";
 		
-		Properties p = new Properties(); // ������ ���� ��ü
+		Properties p = new Properties(); // 정보를 담을 객체
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -166,33 +180,36 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ������ �����ϱ� ���� ������
-		 
+
+		// SMTP 서버에 접속하기 위한 정보들		 
 		try{
 		    Authenticator auth = new SMTPAuthenticatior();
 		    Session ses = Session.getInstance(p, auth);
 		     
 		    ses.setDebug(true);
 		     
-		    MimeMessage msg = new MimeMessage(ses); // ������ ������ ���� ��ü
-		    msg.setSubject(subject); // ����
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    msg.setSubject(subject); // 제목
 		     
 		    Address fromAddr = new InternetAddress(from);
-		    msg.setFrom(fromAddr); // ������ ���
+
+		    msg.setFrom(fromAddr); // 보내는 사람
 		     
 		    Address toAddr = new InternetAddress(user_id);
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // �޴� ���
-		     
-		    msg.setContent(content, "text/html;charset=UTF-8"); // ����� ���ڵ�
-		     
-		    Transport.send(msg); // ����
+
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
+
+		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
+
+		    Transport.send(msg); // 전송
 		    
 		    return 1;
 		    
 		} catch(Exception e){
 		    e.printStackTrace();
 		    System.out.println(e);
-		    // ���� �߻��� �ڷ� ���ư�����
+
+		    // 오류 발생시 뒤로 돌아가도록
 		    return 0; 
 		}
 		
@@ -202,9 +219,9 @@ public class SMTPAuthenticatior extends Authenticator {
 	public int sendMyinfo(String to, String content){
 		
 		String from = "rewardu4@gmail.com";
-		String subject = "����  RewardU�� ȸ���� �ǽ� ���� �����մϴ�.";
-		
-		Properties p = new Properties(); // ������ ���� ��ü
+		String subject = "리듀  RewardU의 회원이 되신 것을 축하합니다.";
+
+		Properties p = new Properties(); // 정보를 담을 객체
 		 
 		p.put("mail.smtp.host","smtp.gmail.com"); // Google SMTP
 		 
@@ -215,18 +232,18 @@ public class SMTPAuthenticatior extends Authenticator {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		// SMTP ������ �����ϱ� ���� ������
 		
+		// SMTP 서버에 접속하기 위한 정보들	
 		try {
 			Authenticator auth = new SMTPAuthenticatior();
 			
 			Session ses = Session.getInstance(p, auth);
-			
-			MimeMessage msg = new MimeMessage(ses); // ������ ������ ���� ��ü
-			msg.setSubject(subject); // ����
+
+			MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+			msg.setSubject(subject); // 제목
 			
 			Address fromAddr = new InternetAddress(from);
-			msg.setFrom(fromAddr); // ������ ���
+			msg.setFrom(fromAddr); // 보내는 사람
 			     
 			Address toAddr = new InternetAddress(to);
 			msg.addRecipient(Message.RecipientType.TO, toAddr);

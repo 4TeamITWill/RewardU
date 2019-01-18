@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h2>너의 비번은 ${requestScope.mbean.user_pw }란다</h2>
+<h2>회원님의 Email로 비밀번호가 전송되었습니다.</h2>
 
 <input type="button" value="메인으로" onclick="location.href='./Main.me'"/>
 

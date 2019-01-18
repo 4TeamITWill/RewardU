@@ -55,41 +55,7 @@ body{ background: linear-gradient(90deg, #b44af7, #82caff);
 } 
 	
 </style>
-<%--  <% 
-MemberDAO mdao = new MemberDAO();
-String authNum = mdao.randomNum();
-%>
- --%>
 
- <%-- <%
-	request.setCharacterEncoding("utf-8");
-	String to = request.getParameter("to");
-	
-	MemberDAO mdao = new MemberDAO();
-	String authNum = mdao.randomNum();
-	
-	SMTPAuthenticatior smtp = new SMTPAuthenticatior();
-	int check = smtp.sendEmail(to, authNum);
-	
-	if(check == 1) {
-%> 
-<script>
-	alert("인증 메일이 발송되었습니다. 인증번호 6자리를 입력해주세요.");
-	return 3;
-</script>
-<%
-} else {
-%>
-<script>
-	alert("인증 메일 발송 실패! 메일 주소를 다시 확인해주세요.");
-	
-	$('#myModal').hide();
-	
-</script>
-<%
-}
-%>
- --%>
 <script type="text/javascript">
 	function check() {
 		var code = document.getElementById("code").value;
@@ -110,7 +76,6 @@ String authNum = mdao.randomNum();
 			
 			 if(idCheck.value == '1'){
 				 	user_id.readOnly = true;
-				 	//opener.user_id.style.color = "red";
 				 	user_id.style.fontStyle = "italic";
 				    //opener.user_id.style.display = "none";	
 				 }
