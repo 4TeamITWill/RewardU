@@ -485,8 +485,18 @@ star-input>.input.focus {
 	<div id="dday">	판매자 정보 <img src="img/seller.png" style="width: 30px; height: 30px;"></div>
 	<br/>	
 		<div style="height: auto; width: 250px;	 border:1px solid #8a80a0;">
-		<div>
-				<img alt="" src="./upload/<%=mbto.getUser_photo()%>" width="50"	height="50" style= "display:block;" id="photo">		
+		<div style="margin-top: 10px;">	
+		<%
+			if(mbto.getUser_photo() == null){
+		%>
+			<img alt="" src="img/sm_no_img.jpg" width="50"	height="50" style= "display:block;" id="photo">	
+		<%
+			}else{
+		%>
+			<img alt="" src="./upload/<%=mbto.getUser_photo()%>" width="50"	height="50" style= "display:block;" id="photo">
+		<% 
+			}
+		%>				
 		</div>		
 		<div id ="res2"><strong><%=seto.getUser_id() %></strong></div>
 		<br/>	
