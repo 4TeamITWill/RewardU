@@ -22,7 +22,7 @@ public class mySavedListAction implements myAction {
 		
 		//페이징 변수
 		//전체글 개수, 한페이지당 뿌려질 글 개수, 페이지 개수, 현재 페이지
-		int count = mydao.get1BoardCount(user_id);		
+		int count = mydao.getBoardCount(user_id);		
 		int pageSize = 3;
 		int pageCount = count/pageSize+(count%pageSize==0?0:1);		
 		String currentPage1 = request.getParameter("currentPage1");

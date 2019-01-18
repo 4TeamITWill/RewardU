@@ -24,6 +24,13 @@ padding: 150px 200px;}
 		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+#deleteForm #delete_header {
+	font-size: 25px;
+	font-weight: none;
+	text-indent: 10px;
+	margin: 25px 30px;
+	text-align: left;
+}
 
 </style>
 </head>
@@ -33,7 +40,7 @@ padding: 150px 200px;}
 	<div class="container" align="center">
 	<!-- <div class="margin"></div> -->
 		<div id="deleteForm">
-		<h2>회원탈퇴</h2>
+			<div id="delete_header">회원탈퇴</div>
 		<form action="./MemberDeleteAction.me">
 		<!-- id -->	
 			<input type="text" name="user_id" value="${id }" class="inp-field" readonly><br>

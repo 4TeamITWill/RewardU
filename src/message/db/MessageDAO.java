@@ -3,11 +3,14 @@ package message.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import member.db.MemberBean;
 
 public class MessageDAO {
 	
@@ -556,5 +559,124 @@ public class MessageDAO {
 		}
 		return count; //안읽은 메시지 수 반환
 	}//getCountDontRead()끝
+	
+	//사용자가 결제했을 때 결제되었다는 메시지를 보내는 메소드
+	public void sendPayMessage(String user_id, String payContent){
+		Connection con=null;
+		String sql="";
+		int maxNum=0;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+	
+			/*받는 사람입장에서는 message_receive에 DB작업되고 동시에 보낸 사람입장에서는 message_send에 DB작업함*/
+			
+			/*--------------------------message_receive에 INSERT작업--------------------------*/
+			/*다음 작업은 접속한 사용자가 받은 메시지들의 번호 중 가장 큰 번호를 찾는 작업*/
+			sql = "select max(no) from message_receive where fromID=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){//메시지 존재하면 기존것의 +1
+				maxNum=rs.getInt(1)+1;
+			}else{//메시지 받은게 없으면 첫 번째 번호는 1로 설정
+				maxNum=1;}  
+			
+			/*다음은 메시지 테이블에 DB작업*/
+			sql = "insert into message_receive(no,toID,fromID,subject,content,reg_date,read_status) values(?,?,?,?,?,?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, maxNum); //위에서 해당 유저의 메시지함에서 가장 마지막번호+1 로 설정해둠
+			pstmt.setString(2, "rewardu4@gmail.com");
+			pstmt.setString(3, user_id);
+			pstmt.setString(4, "리워드 결제되었습니다.");
+			pstmt.setString(5, payContent);
+			pstmt.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
+			pstmt.setInt(7, 0);
+			
+			pstmt.executeUpdate(); //작업이 정상적으로 완료되면 1을 반환하여 result에 1을 대입
+			
+			/*--------------------------message_send에 INSERT작업--------------------------*/	
+			/*다음 작업은 접속한 사용자가 보낸 메시지들의 번호 중 가장 큰 번호를 찾는 작업*/
+			sql = "select max(no) from message_send where toID=?";
+	
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "rewardu4@gmail.com");
+			rs = pstmt.executeQuery();
+			 
+			if(rs.next()){//메시지 존재하면 기존것의 +1
+				maxNum=rs.getInt(1)+1;
+			}else{//메시지 받은게 없으면 첫 번째 번호는 1로 설정
+				maxNum=1;}  
+			
+			/*다음은 메시지 테이블에 DB작업*/
+			sql = "insert into message_send(no,toID,fromID,subject,content,reg_date,read_status) values(?,?,?,?,?,?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, maxNum); //위에서 해당 유저의 메시지함에서 가장 마지막번호+1 로 설정해둠
+			pstmt.setString(2, "rewardu4@gmail.com");
+			pstmt.setString(3, user_id);
+			pstmt.setString(4, "리워드 결제되었습니다.");
+			pstmt.setString(5, payContent);
+			pstmt.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
+			pstmt.setInt(7, 0);
+			
+			pstmt.executeUpdate(); //작업이 정상적으로 완료되면 1을 반환하여 result에 1을 대입
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+				if (rs != null)rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}//sendPayMessage 끝
+	
+	public ArrayList<MemberBean> getSearchMemberList(String search){
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<MemberBean> list = new ArrayList<MemberBean>();
+		MemberBean mbean = null;
+		try {
+			con = getConnection();
+			sql = "select * from user where user_id like ? order by user_id desc limit 0,9";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + search + "%");
+			rs = pstmt.executeQuery();
+			
+			if(!search.equals("")){
+				while(rs.next()){
+					mbean = new MemberBean();
+					mbean.setUser_id(rs.getString("user_id"));
+					mbean.setUser_name(rs.getString("user_name"));
+					list.add(mbean);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) con.close();
+				if (pstmt != null) pstmt.close();
+				if (rs != null)rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//searchMember 끝
 	
 }//MessageDAO()끝

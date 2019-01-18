@@ -28,8 +28,7 @@ body {
 	overflow: hidden; // 범위를 넘엇을시 넘는 영역 숨김 
 	background-position : 0 0;//시작위치 
 	background-repeat: no-repeat; // 배경화면 반복 
-	background-attachment :
-	fixed; // 배경화면 스크롤시 고정
+	background-attachment :fixed; // 배경화면 스크롤시 고정
 	background-size : cover; // 배경화면 비율유지
 	position :relative; //위치지정 
 	overflow-y: auto;//스크롤
@@ -38,9 +37,9 @@ body {
 aside {
 	border: 1px solid;
 	border-radius: 10px 10px;
-	margin: 3em;
-	margin-top: 180px;
-	width: 350px;
+	margin: 180px 4em;
+	margin-top: ;
+	width: 320px;
 	position: fixed;
 	background: white;
 	color: #999999;
@@ -60,7 +59,7 @@ nav {
 section {
 	margin-top: 100px;
 	margin-left: 50px;
-	margin-right: 500px;
+	margin-right: 200px;
 	margin-bottom: 100px;
 	background: white;
 }
@@ -97,6 +96,7 @@ section {
 	width: 100%;
 	list-style-type: none;
 	font-size: 15px;
+	margin-left: 20px;
 }
 
 #nav ul.menu li a {
@@ -147,13 +147,13 @@ section {
 				<li><a href="#">운영정책</a></li>
 			</ul>
 			<ul class="menu">	
-				<li><a>자주묻는 질문 </a>
+				<li><a>자주묻는 질문 <img src="./img/drop.gif"></a>
 					<ul class="sub">
 						<li><a href="#howReward">> Q1. 리워드 펀딩 참여하기</a></li>
 		      			<li><a href="#howOpen">> Q2. 리워드 펀딩 오픈하기</a></li>
 		      			<li><a href="#fail">> Q3. 펀딩 실패시 어떻게 되나요?</a></li>
-		      			<li><a href="#find">> Q6. 비밀번호를 잃어버렸어요!</a></li>
-		      			<li><a href="#delete">> Q7. 회원 탈퇴하고 싶어요!</a></li>
+		      			<li><a href="#find">> Q4. 비밀번호를 잃어버렸어요!</a></li>
+		      			<li><a href="#delete">> Q5. 회원 탈퇴하고 싶어요!</a></li>
 					</ul>
 				</li>
 				<li><a href="#etc">기타</a></li>
@@ -185,7 +185,7 @@ section {
 				<p>RewardU라는 이름은 Reward with you를 줄여 만들었으며
 					RewardU는 리워드형 프로젝트만 오픈되고 참여할 수 있는 리워드 크라우드펀딩 플랫폼입니다.
 				</p>	
-				<p>	리듀에 대헤 더 자세히 알고싶다면? 리듀소개 바로가기  -> <a href="리뉴소개링크">클릭!</a></p>
+				<p>	리듀에 대헤 더 자세히 알고싶다면? <a href="RewardUIntro.my">리듀소개 바로가기</a></p>
 		</section>		
 	
 	      <section id="notShopping">
@@ -250,7 +250,7 @@ section {
 				리듀의 운영자가 3 영업일 이내로 검토 결과를 알려드립니다. <br/>
 				승인이 완료되면 프로젝트가 바로 시작되며 ‘마이페이지 > 개설프로젝트'에서 확인할수 있습니다.</p><br/>
 				
-				<p>리워드 프로젝트 오픈 신청 바로가기 -> <a href="./RewardingWrite.fu">클릭!</a></p>
+				<p> -> <a href="./RewardingWrite.fu">프로젝트 오픈 신청 바로가기</a></p>
 	          </section>
 			
 			 <section id="fail" >  
@@ -263,23 +263,23 @@ section {
 			<section id="find" >  
 	          <div class="text">Q4. 아이디/비밀번호를 잃어버렸어요!</div>
 	          <p>오른쪽 상단에 로그인을 클릭-> ID/PASS 입력부분 밑에 아이디찾기/비밀번호찾기에서 찾을수 있습니다.</p>
-	          <p>아이디찾기/비밀번호찾기 바로가기 -> <a href="./MemberFind_ID_PW.me">클릭!</a>
+	          <p> -> <a href="./MemberFind_ID_PW.me">아이디찾기/비밀번호찾기 바로가기</a>
 	        </section>
 			
 			 <section id="delete" >  
 	          <div class="text">Q5. 회원 탈퇴하고 싶어요!</div>
 	          <p>메인페이지 오른쪽 상단에 마이페이지 -> 개인정보 설정에서 탈퇴하실 수 있습니다.</p>
-	          <p>회원탈퇴 바로가기 -> 
+	          <p> -> 
 	          <%
 	         	 String id = (String)session.getAttribute("id");
 				//로그인되지 않았다면 탈퇴하기 링크 눌러도 이동되지 않음..
 	          if(id == null){
 	          %>
-	         	 <a href="#">클릭!</a>
+	         	 <a href="#">회원탈퇴 바로가기</a>
 	          <%
 	          	 }else{
 	          %>
-	          	<a href="./MemberMypageAction.me">클릭!</a>
+	          	<a href="./MemberMypageAction.me">회원탈퇴 바로가기</a>
 				<%
 		          	 }
 				%>          

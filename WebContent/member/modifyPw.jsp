@@ -20,19 +20,6 @@
 	padding: 100px 150px;
 }
 
-#pwModify_form {
-	border: 1px solid #aaa; 
-	background-color: #fff;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-	width: 400px;
-	}
-
-#pwModify_form #form_font_left {
- text-align: left;
- font-size: 10px;
- padding-left: 25px;
-}
-
 </style>
 <%
  	String mpw = (String)request.getParameter("mpw");
@@ -49,12 +36,12 @@
 		var password_pattern = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,20}$/;
 		
 		if(mpw == "2"){
-			  $('#checkMessage').html('기존 비밀번호와 입력값이 일치하지 않습니다.');
+			  $('#checkMessage').html('입력하신 기존 비밀번호가 틀립니다.');
 			  $('#myModal').show();
-			}else {
+			}/* else {
 				$('#checkMessage').html('방가방가');
 				$('#myModal').show();
-			}
+			} */
 		
 
 	});
@@ -68,22 +55,17 @@
 <script type="text/javascript">
 	//password가 서로 같은지 , 조건에 맞는지 확인하여   passwordCheckMessage에 에러메시지 출력
 	function pwCheckFunction() {
-		
-		//비밀번호 입력란에 입력한 값 얻기
+
 		var user_pw3 = $('#user_pw3').val();
-		//비밀번호 확인 입력란에 입력한 값 얻기
 		var user_pw4 = $('#user_pw4').val();
 		
 		//정규표현식  : 비밀번호는 알파벳, 숫자, 특수문자 포함 8-20
 		var password_pattern = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,20}$/;
 		
-		//숫자와 문자 포함 형태의 8~15자리 이내의 암호 정규식
-		//var password_pattern = /^[A-Za-z0-9]{8,20}$/;
-		
-		//password 조건 확인
+	
 		if(!password_pattern.test(user_pw3)){
-			
-			$('#pwCheckMessage').html('비밀번호는 알파벳,숫자, 특수문자 포함 8-20자 여야 합니다.');
+			$('#pwCheckMessage').css("visibility", "visible");
+			$('#pwCheckMessage').html('비밀번호는 알파벳,숫자,특수문자 포함 8-20자 여야 합니다.&nbsp;');
 			
 			return;
 			
@@ -93,12 +75,13 @@
 		
 			//패스워드 입력란의 값과  패스워드 확인 입력란의 값이 같은지 판단
 			if(user_pw3 != user_pw4){
-				
-				$('#pwCheckMessage').html('비밀번호가 서로 일치하지 않습니다.');
+				$('#pwCheckMessage').css("visibility", "visible");
+				$('#pwCheckMessage').html('비밀번호가 서로 일치하지 않습니다.&nbsp;');
 				
 			}else{//같을떄...
 				
 				$('#pwCheckMessage').html('');
+				$('#pwCheckMessage').css("display", "none");
 			}								
 		}							
 	}//passwordCheck
@@ -133,13 +116,14 @@
 <div class="wrap">
 	<div class="container" align="center">
 		<div id="pwModify_form">
-		<h2>회원 비밀번호 수정</h2>
+			<div id="pwModify_header">회원 비밀번호 변경</div>
+			
 			<form action="./MemberModifyPwAction.me" method="post" onsubmit="return pwchk();">
 			<!-- id -->	
 				<input type="text" name="user_id" value="${id }" class="inp-field" readonly><br>
 			<!-- pw -->
 				<input type="password" name="user_pw" id="user_pw" placeholder="기존 비밀번호를 입력해 주세요" class="inp-field"><br><br>
-				<div id="form_font_left" align="left"><span style="color:red;" id="pwCheckMessage"></span></div>
+				<div id="form_font_left" align="left"><span style="color:#434d5b;" id="pwCheckMessage"></span></div>
 				<input type="password" name="user_pw3" id="user_pw3" placeholder="새 비밀번호를 입력해 주세요" class="inp-field" onkeyup="pwCheckFunction();"><br>
 				<input type="password" name="user_pw4" id="user_pw4" placeholder="새 비밀번호를 재입력해 주세요" class="inp-field_nomargin" onkeyup="pwCheckFunction();"><br>
 				

@@ -49,8 +49,8 @@ public class FileUpAction implements Action {
 		request.setAttribute("sysFile", sysFile);
 
 
-		//저장이미지를 섬네일(작은이미지)로 변환하여 'sm_...'으로저장
-		ParameterBlock pb=new ParameterBlock();
+		//저장이미지를 섬네일(작은이미지)로 변환하여 'sm_...'으로저장 /.......필요없어서 주석처리. 썸네일은 따로 저장하는게 아닌 realFile에서 보여줌.
+		/*ParameterBlock pb=new ParameterBlock();
 		pb.add(realPath+"/"+sysFile);
 		RenderedOp rOp=JAI.create("fileload",pb);
 
@@ -62,7 +62,7 @@ public class FileUpAction implements Action {
 
 		File file=new File(realPath+"/sm_"+sysFile);
 		ImageIO.write(thumb,"jpg",file);
-
+*/
 		
 		ActionForward forward = new ActionForward();
 		

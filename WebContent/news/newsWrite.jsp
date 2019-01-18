@@ -9,19 +9,26 @@
 <style type="text/css">
 
 #newsWrite_content {
-width: 800px;
-border: 1px solid red;
-text-align: left;
+	width: 800px;
+	border: 1px solid red;
+	text-align: left;
 }
 
 </style>
+
+<script type="text/javascript">
+	
+
+
+</script>
+
 </head>
 <body>
 <div class="wrap">
 	<div class="container" align="center">
 	<h2>리듀 News Form</h2>
 		<div id="newsWrite_content">
-			<form action="./NewsWriteAction.news">
+			<form action="./NewsWriteAction.news" method="post" enctype="multipart/form-data" name="f">
 			<table width="800px">
 				<tr>
 					<td>작성자</td>
@@ -46,6 +53,10 @@ text-align: left;
 				<tr>
 					<td>글 요약</td>
 					<td><input type="text" name="reNews_summary" placeholder="글 목록에서 보여짐"></td>
+				</tr>
+				<tr>
+					<td>대표 이미지</td>
+					<td><input type="file" name="reNews_img"></td>
 				</tr>
 				<tr>
 					<td>글 내용</td>
@@ -94,6 +105,10 @@ text-align: left;
 		var sHTML = "<img src='http://localhost:8080/RewardU/upload/"+fname+"'>";
 	    oEditors.getById["reNews_content_editor"].exec("PASTE_HTML", [sHTML]);
 	}
+	
+	
+	
+	
 </script>
 </body>
 </html>

@@ -341,6 +341,7 @@ public class MyDAO {
 				ibean.setOp2_qty(rs.getInt("op2_qty"));
 				ibean.setOp3_price(rs.getString("op3_price"));
 				ibean.setOp3_qty(rs.getInt("op3_qty"));
+				ibean.setPd_realfile(rs.getString("pd_realfile"));
 		
 				BoardDAO bdao = new BoardDAO();
 				BoardBean bbean = bdao.getBoard(ibean.getPd_no());
@@ -376,7 +377,7 @@ public class MyDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from saveboard where user_id = ? order by pd_no desc";
+			sql = "select * from saveall where user_id = ? order by pd_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
@@ -416,7 +417,7 @@ public class MyDAO {
 	}
 	
 	//판매중인 프로젝트 user_id로 검색해서 글 count 가져오기
-	public int get1BoardCount(String user_id){
+	public int getBoardCount(String user_id){
 		
 		int count = 0;
 		String sql = "";
@@ -424,7 +425,7 @@ public class MyDAO {
 		try {
 			
 			con = getConnection();
-			sql = "select count(*) from board where user_id = ? and pd_result = 1";
+			sql = "select count(*) from board where user_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
@@ -442,7 +443,7 @@ public class MyDAO {
 		return count;
 	}//get1BoardCount() 메소드 끝
 	
-	//판매중인 프로젝트 user_id로 검색해서 글목록 가져오기
+	//성공한 프로젝트 user_id로 검색해서 글목록 가져오기
 	public ArrayList<BoardBean> get1BoardList(String user_id, int startRow, int pageSize){
 		
 		ArrayList<BoardBean> list = new ArrayList<>();		
@@ -514,7 +515,7 @@ public class MyDAO {
 		
 	}//get1BoardList() 메소드 끝
 
-	//판매완료 프로젝트 user_id로 검색해서 글목록 가져오기
+	//진행중인 프로젝트 user_id로 검색해서 글목록 가져오기
 	public ArrayList<BoardBean> get0BoardList(String user_id, int startRow, int pageSize){
 		
 		ArrayList<BoardBean> list = new ArrayList<>();		
@@ -587,19 +588,23 @@ public class MyDAO {
 	}//get0BoardList() 메소드 끝
 
 	//좋아요 삭제 delGood() 메소드
-	public int delGood(int pd_no) {
+	public int delGood(int pd_no, String user_id) {
 		
 		int result = 0;
 		String sql = "";
+		BoardDAO bdao = new BoardDAO();
 		
 		try {
 			
 			con = getConnection();
-			sql = "delete from good where pd_no = ?";
+			sql = "delete from good where pd_no = ? and user_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pd_no);
+			pstmt.setString(2, user_id);
 			
 			result = pstmt.executeUpdate();
+			
+			bdao.downGood(pd_no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -608,6 +613,340 @@ public class MyDAO {
 		}
 		
 		return result;
-	}
+	}//delGood
+	
+	//사용자가 개설중인 프로젝트 전체 list
+	public ArrayList<BoardBean> getBoardList(String user_id, int startRow, int pageSize){
+		
+		ArrayList<BoardBean> list = new ArrayList<>();		
+		
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String sql = "";
+		SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try{
+			con = getConnection();			
+			
+				sql = "select * from board where user_id = ? order by pd_no desc limit ?,?";
+				
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				BoardBean bbean = new BoardBean();
+				
+				bbean.setPd_category(rs.getString("pd_category"));
+				bbean.setPd_content(rs.getString("pd_content"));
+				bbean.setPd_count(rs.getInt("pd_count"));
+				bbean.setPd_curmoney(rs.getString("pd_curmoney"));
+				bbean.setPd_endf(dformat.format(rs.getTimestamp("pd_end")));
+				bbean.setPd_file(rs.getString("pd_file"));
+				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
+				bbean.setPd_good(rs.getInt("pd_good"));
+				bbean.setPd_no(rs.getInt("pd_no"));
+				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bbean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bbean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bbean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bbean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				bbean.setPd_participant(rs.getInt("pd_participant"));
+				bbean.setPd_permit(rs.getInt("pd_permit"));
+				bbean.setPd_realfile(rs.getString("pd_realfile"));
+				bbean.setPd_result(rs.getInt("pd_result"));
+				bbean.setPd_start(rs.getTimestamp("pd_start"));
+				bbean.setPd_subject(rs.getString("pd_subject"));
+				bbean.setUser_id(rs.getString("user_id"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				
+				list.add(bbean);
+		
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return list;
+		
+	}//getBoardList
 
+	//판매자 소식 insertSellerNews() 메소드
+	public void insertSellerNews(SellerNewsBean nbean) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "insert into sellernews(pd_no, user_id, sell_subject, sell_content,pd_subject, pd_realfile) values(?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, nbean.getNo());
+			pstmt.setString(2, nbean.getUser_id());
+			pstmt.setString(3, nbean.getSell_subject());
+			pstmt.setString(4, nbean.getSell_content());
+			pstmt.setString(5, nbean.getPd_subject());
+			pstmt.setString(6, nbean.getPd_realfile());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+	
+	}//insertSellerNews() 메소드
+
+	//SellerNewsList 목록가져오기
+	public ArrayList<SellerNewsBean> getSellerNewsList(int pd_no) {
+		
+		ArrayList<SellerNewsBean> list = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try {
+			con=getConnection();
+			sql = "select * from sellernews where pd_no = ? order by no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				SellerNewsBean nbean = new SellerNewsBean();
+				nbean.setDate(rs.getTimestamp("date"));
+				nbean.setNo(rs.getInt("no"));
+				nbean.setPd_no(rs.getInt("pd_no"));
+				nbean.setSell_content(rs.getString("sell_content"));
+				nbean.setSell_subject(rs.getString("sell_subject"));
+				nbean.setUser_id(rs.getString("user_id"));
+				nbean.setPd_subject(rs.getString("pd_subject"));
+				nbean.setPd_realfile(rs.getString("pd_realfile"));
+				
+				list.add(nbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		
+		
+		return list;
+	}//getSellerNewsList() 메소드 끝
+
+	//SellerNewsList 목록가져오기(글번호 안넣고 전체 가져오기 메인용) 오버로딩
+		public ArrayList<SellerNewsBean> getSellerNewsList() {
+			
+			ArrayList<SellerNewsBean> list = new ArrayList<>();
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			
+			try {
+				con=getConnection();
+				sql = "select * from sellernews order by no desc limit 0,7";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					SellerNewsBean nbean = new SellerNewsBean();
+					nbean.setDate(rs.getTimestamp("date"));
+					nbean.setNo(rs.getInt("no"));
+					nbean.setPd_no(rs.getInt("pd_no"));
+					nbean.setSell_content(rs.getString("sell_content"));
+					nbean.setSell_subject(rs.getString("sell_subject"));
+					nbean.setUser_id(rs.getString("user_id"));
+					nbean.setPd_subject(rs.getString("pd_subject"));
+					nbean.setPd_realfile(rs.getString("pd_realfile"));
+					
+					list.add(nbean);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				freeResource();
+			}
+			
+			
+			return list;
+		}//getSellerNewsList() 메소드 끝
+		
+	//판매자 소식 count 값 구하기
+	public int getSellerNewsCount(int pd_no){
+		
+		int count = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "select count(no) from sellernews where pd_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		
+		return count;
+	}//getSellerNewsCount() 메소드 끝
+
+	//delSellerNews() 메소드
+	public void delSellerNews(int no) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			
+			con=getConnection();
+			sql = "delete from sellernews where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+	}
+	//투자현황페이지 투자리스트 환불,취소 delReward() 메소드
+	public int delReward(int pd_no, String user_id, int inv_price, int inv_orderno) {
+		
+		int result = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "delete from investmentlist where pd_no = ? and user_id = ? and inv_orderno = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
+			pstmt.setString(2, user_id);
+			pstmt.setInt(3, inv_orderno);
+			result = pstmt.executeUpdate();
+			
+			if(result > 0){
+				sql = "update board set pd_curmoney = pd_curmoney-?, pd_participant = pd_participant-1 where pd_no = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, inv_price);
+				pstmt.setInt(2, pd_no);
+				pstmt.executeUpdate();
+				
+				sql = "delete from participate where pd_no = ? and user_id = ? and inv_orderno = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, pd_no);
+				pstmt.setString(2, user_id);
+				pstmt.setInt(3, inv_orderno);
+				pstmt.executeUpdate();
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return result;
+	}//delReward() 메소드 끝
+	
+	// 메인에 마감임박인 게시글 뿌려주기 메소드
+	public ArrayList<BoardBean> getMagamList(){
+		
+		ArrayList<BoardBean> list = new ArrayList<>();		
+		
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try{
+			con = getConnection();			
+			
+			sql = "select * from board where pd_end < date_add(now(), interval 3 day) and pd_result = 0 and pd_permit = 1 order by pd_no desc limit 0,5";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				BoardBean bbean = new BoardBean();
+				
+				bbean.setPd_category(rs.getString("pd_category"));
+				bbean.setPd_content(rs.getString("pd_content"));
+				bbean.setPd_count(rs.getInt("pd_count"));
+				bbean.setPd_curmoney(rs.getString("pd_curmoney"));
+				bbean.setPd_end(rs.getTimestamp("pd_end"));
+				bbean.setPd_file(rs.getString("pd_file"));
+				bbean.setPd_goalmoney(rs.getString("pd_goalmoney"));
+				bbean.setPd_good(rs.getInt("pd_good"));
+				bbean.setPd_no(rs.getInt("pd_no"));
+				bbean.setPd_opcontent1(rs.getString("pd_opcontent1"));
+				bbean.setPd_opcontent2(rs.getString("pd_opcontent2"));
+				bbean.setPd_opcontent3(rs.getString("pd_opcontent3"));
+				bbean.setPd_opprice1(rs.getInt("pd_opprice1"));
+				bbean.setPd_opprice2(rs.getInt("pd_opprice2"));
+				bbean.setPd_opprice3(rs.getInt("pd_opprice3"));
+				bbean.setPd_participant(rs.getInt("pd_participant"));
+				bbean.setPd_permit(rs.getInt("pd_permit"));
+				bbean.setPd_realfile(rs.getString("pd_realfile"));
+				bbean.setPd_result(rs.getInt("pd_result"));
+				bbean.setPd_start(rs.getTimestamp("pd_start"));
+				bbean.setPd_subject(rs.getString("pd_subject"));
+				bbean.setUser_id(rs.getString("user_id"));
+				bbean.setPd_rate(rs.getDouble("pd_rate"));
+				bbean.setPd_ratecount(rs.getInt("pd_ratecount"));
+				
+				list.add(bbean);
+				
+				
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return list;
+		
+	}
 }

@@ -7,13 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="display : flex; justify-content : flex-end; width : 800px; margin : 24px auto;">
-		<div onclick="gesul();" class="bt bt1">개설 프로젝트</div>
-		<div onclick="imsi();" class="bt bt2">임시저장 글</div>
-	</div>
-	
-	<div id="savedList_main"></div>
-	
+<div style="width : 100%; height : 100%;">
+	<div style="display : flex; padding : 5rem 6px;; width : 1000px; margin : 0 auto;">
+		<div style="margin : 24px auto; flex : 1;">
+			<div onclick="gesul();" class="bt bt1">개설 프로젝트</div>
+			<div onclick="imsi();" class="bt bt2">임시저장 글</div>
+		</div>
+		
+		<div id="savedList_main" style="flex : 6;">
+		
+		</div>
+	</div>	
+</div>	
 <script>
 
 	gesul();
@@ -54,6 +59,16 @@
 				document.getElementById("savedList_main").innerHTML = data;
 			}
 		});			
+	}
+	
+	function pageImsi(currentPage) {
+		$.ajax({
+			url : "RewardingSaveList.fu",
+			data : {"currentPage1" : currentPage},
+			success : function(data){
+				document.getElementById("savedList_main").innerHTML = data;
+			}
+		});
 	}
 		
 

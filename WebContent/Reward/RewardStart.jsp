@@ -16,7 +16,7 @@
 		</c:if>
 			<td align="center" width="333">
 				<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
-					<img src="./img/1.jpg" width="280" border="0">
+					<img src="./upload/${list.pd_realfile}" width="280" border="0" class="reward_img">
 				</a>
 				<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">
 					<p>

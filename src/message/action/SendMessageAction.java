@@ -25,6 +25,10 @@ public class SendMessageAction implements Action{
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		
+		if(subject.equals("") || subject==null){
+			subject = "제목없음";
+		}
+		
 		//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
 		ActionForward forward=new ActionForward();
 		
@@ -43,17 +47,23 @@ public class SendMessageAction implements Action{
 		result = mdao.sendMessage(mdto);
 		
 		if(result == 1){ //성공시
-			//sendRedirect() <-이방식은 이동할 페이지 주소 경로 노출 함.
-			forward.setRedirect(false);
-			//메시지함으로 이동할 페이지 주소 저장
-			forward.setPath("./MemberMessage_ReceiveList.message");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('메시지를 전송하였습니다.')");
+			out.println("location.href='./MemberMessage_ReceiveList.message'");
+			out.println("</script>");
 			
 		} else {//실패시
-			forward.setRedirect(false);
-			//메시지 전송 실패를 알리는 sendMessageFail.jsp로 이동
-			forward.setPath("./SendMessageFail.message"); 
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('메시지 전송 실패')");
+			out.println("history.back();");
+			out.println("</script>");
+			
 		}//if ~ else끝
 
-		return forward;
+		return null;
 	}//ActionForward()끝
 }//SendMessageAction()끝

@@ -1,12 +1,14 @@
 package admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //�꽴占썹뵳�딆쁽 占쎈읂占쎌뵠筌욑옙 frontController
 public class adFrontController extends HttpServlet{
@@ -23,7 +25,7 @@ public class adFrontController extends HttpServlet{
 		adAction action = null;
 		
 		if(command.equals("/adminPage.ad")){
-			
+									
 			forward = new adActionForward();
 			forward.setPath("./index.jsp?center=./admin/admin_index.jsp");
 			forward.setRedirect(false);		
@@ -116,16 +118,61 @@ public class adFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Content.ad")){
+
 			action = new ContentInfoAction();
+
 			try{
 				forward = action.execute(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/StarWriteActions.ad")){
+			action = new adStarWriteActions();
+
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/resultCheck.ad")){
+			
+			action = new resultCheck();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/supporters.ad")){
+			forward = new adActionForward();
+			forward.setPath("./index.jsp?center=ContentInfo.jsp&gogo=star/supporters.jsp");
+			forward.setRedirect(false);
+
+		}else if(command.equals("/ReplyWriteActions.ad")){
+			
+			action =  new adReplyWriteActions();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/RerepWriteActions.ad")){
+			
+			action =  new adRerepWriteActions();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
 		
 		
-		//占쎌뵠占쎈짗
 		if(forward != null){
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());

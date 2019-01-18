@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import my_db.MyDAO;
 
@@ -15,6 +16,9 @@ public class myGoodDelAction implements myAction {
 		
 		String [] delCheck = request.getParameterValues("delcheck");
 		
+		HttpSession session = request.getSession();		
+		String user_id = (String)session.getAttribute("id");
+		
 		MyDAO mdao = new MyDAO();
 		
 		if(delCheck != null){						
@@ -24,7 +28,7 @@ public class myGoodDelAction implements myAction {
 			
 			for(int i =0; i<delCheck.length; i++){				
 				
-				int result = mdao.delGood(Integer.parseInt(delCheck[i]));
+				int result = mdao.delGood(Integer.parseInt(delCheck[i]), user_id);
 				
 				//실패시 뿌려줄거 												
 				if(result == 0){

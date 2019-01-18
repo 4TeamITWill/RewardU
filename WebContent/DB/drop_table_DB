@@ -1,0 +1,16 @@
+drop table message_send;
+drop table message_receive;
+drop table message_store;
+drop table user;
+drop table notice;
+drop table seller;
+drop table investmentList;
+drop table saveAll;
+drop table board;
+drop table good;
+drop table participate;
+drop table reNews;
+drop table WardNews;
+drop table reply;
+drop table rate;
+drop table sellernews;

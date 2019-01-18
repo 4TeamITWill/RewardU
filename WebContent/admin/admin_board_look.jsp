@@ -7,28 +7,181 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="font-size : 30px;">판매자 정보</div>
-		<div>id : ${sbean.user_id }</div>
-		<div>사업자 번호 : ${sbean.company_no }</div>
-		<div>회사명 : ${sbean.company }</div>
-		<div>회사 주소 : ${sbean.company_addr }</div>
-		<div>회사 전화 : ${sbean.company_tell }</div>
-		<div>팩스 : ${sbean.company_fax }</div>
-		<div>판매자 계좌번호 : ${sbean.sellerAccount }</div>
-		<div>등록날짜 : ${sbean.seller_date }</div>
+
+<div id="adBoardLook_main" style="width : 900px; margin : 3rem auto;">
+	<table width="100%">
+		<tr height="100" >
+			<td colspan="4" >
+				<font style="font-size : 24px;">판매자 정보</font>
+			</td>
+		</tr>
+		<tr height="40">
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">ID </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${sbean.user_id }</font>
+			</td>
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">회사명 </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${sbean.company }</font>
+			</td>
+		</tr>	
 		
-	<div style="font-size : 30px;">판매 글</div>	
-		<div>글번호 : ${bbean.pd_no }, 글제목 : ${bbean.pd_subject }</div>
-		<div>아이디 : ${bbean.user_id }</div>
-		<div>좋아요 : ${bbean.pd_good }, 조회수 : ${bbean.pd_count }, 참여자 : ${bbean.pd_participant }</div>
-		<div>결과 : ${bbean.pd_result }, 승인결과 ${bbean.pd_permit }, 파일명 : ${bbean.pd_file }, 파일진짜명 : ${bbean.pd_realfile }</div>
-		<div>분류 : ${bbean.pd_category }, 목표금액 : ${bbean.pd_goalmoney }, 현재금액 : ${bbean.pd_curmoney }</div>
-		<div>내용 : ${bbean.pd_content }</div>
-		<div>시작 : ${bbean.pd_start }, 끝 : ${bbean.pd_end }</div>
-		<div>옵션 ${bbean.pd_opcontent1 }, ${bbean.pd_opcontent2 }, ${bbean.pd_opcontent3 }</div>
-		<div>${bbean.pd_opprice1 }, ${bbean.pd_opprice2 }, ${bbean.pd_opprice3 }</div>
+		<tr height="40">
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">사업자 번호 </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${sbean.company_no }</font>
+			</td>
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">회사 전화 </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${sbean.company_tell }</font>
+			</td>
+		</tr>
 		
+		<tr height="40">
+			<td colspan="1">
+				<font style="font-size : 17px; font-weight : bold;">회사 주소 </font>
+			</td>
+			<td colspan="3">
+				<font style="font-size : 17px;">${sbean.company_addr }</font>
+			</td>			
+		</tr>
+		
+		<tr height="40">
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">회사 팩스 </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${sbean.company_fax }</font>
+			</td>
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">판매자 계좌번호 </font>
+			</td>
+			<td width="30%" >
+				<font style="font-size : 17px;">${sbean.sellerAccount }</font>
+			</td>
+		</tr>
+		<tr height="40" >
+			<td colspan="1">
+				<font style="font-size : 17px; font-weight : bold;">등록 날짜 </font>
+			</td>
+			<td colspan="3" >
+				<font style="font-size : 17px;">${sbean.seller_date }</font>
+			</td>
+		</tr>
+		
+	</table>
+
+
+	<table width="100%" >
+		<tr height="100">
+			<td colspan="4">
+				<font style="font-size : 24px;">프로젝트 소개</font>
+			</td>
+		</tr>
+		<tr height="40">
+			<td colspan="4">
+				<font style="font-size : 17px; font-weight : bold;"> 글제목</font>
+			</td>
+		</tr>
+		<tr height="40">
+			<td colspan="4">
+				<font style="font-size : 17px;">${bbean.pd_subject }</font>
+			</td>
+		</tr>
+		<tr height="40">	
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">아이디  </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${bbean.user_id }</font>
+			</td>
+			<td width="20%">
+				<font style="font-size : 17px; font-weight : bold;">카테고리  </font>
+			</td>
+			<td width="30%">
+				<font style="font-size : 17px;">${bbean.pd_category }</font>
+			</td>
+		</tr>	
+		
+		<tr height="40">			
+			<td colspan="1">
+				<font style="font-size : 17px; font-weight : bold;">기간  </font>
+			</td>
+			<td colspan="3">
+				<font style="font-size : 17px;">${bbean.pd_start } ~ ${bbean.pd_end }</font>
+			</td>
+		</tr>
+		
+		<tr height="300px">
+			<td colspan="1">
+				<font style="font-size : 17px; font-weight : bold;">대표 이미지  </font>
+			</td>
+			<td colspan="3">
+				<img src="./upload/${bbean.pd_file }" style="max-width : 80%"/>
+			</td>			
+		</tr>
+		
+		<tr height="40">
+			<td colspan="1">
+				<font style="font-size : 17px; font-weight : bold;">목표금액 </font>
+			</td>
+			<td colspan="3" >
+				<font style="font-size : 17px;">${bbean.pd_goalmoney } 원</font>
+			</td>
+		</tr>
+		<tr height="40">
+			<td colspan="4">
+				<font style="font-size : 17px; font-weight : bold;">내용  </font>
+			</td>
+		</tr>
+		<tr height="400">	
+			<td colspan="4">
+				<font style="font-size : 17px;">${bbean.pd_content }</font>
+			</td>
+		</tr>
+		
+		<tr>	
+			<td colspan="1">
+				<font style="font-size : 17px;">옵션1 (${bbean.pd_opprice1 }원)</font>
+			</td>
+			<td colspan="3">
+				<font style="font-size : 17px;">${bbean.pd_opcontent1 }</font>
+			</td>
+		</tr>
+		
+		<tr>	
+			<td colspan="1">
+				<font style="font-size : 17px;">옵션2 (${bbean.pd_opprice2 }원)  </font>
+			</td>
+			<td colspan="3">
+				<font style="font-size : 17px;">${bbean.pd_opcontent2 }</font>
+			</td>
+		</tr>
+		
+		<tr>	
+			<td colspan="1">
+				<font style="font-size : 17px;">옵션3 (${bbean.pd_opprice3 }원)  </font>
+			</td>
+			<td colspan="3">
+				<font style="font-size : 17px;">${bbean.pd_opcontent3 }</font>
+			</td>
+		</tr>
+		
+		
+	</table>
+	
+	<div style="width : 100%; text-align : center;">		
 		<a href="board_permit.ad?pd_no=${bbean.pd_no }">승인</a>
 		<a href="board_deny.ad?pd_no=${bbean.pd_no }">거절</a>
+	</div>
+</div>	
 </body>
 </html>

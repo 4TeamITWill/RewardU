@@ -14,6 +14,7 @@ public class Newsbean {
 	private String reNews_views;
 	private Timestamp reNews_date;
 	private String reNews_category;
+	private String reNews_img;
 	
 	public int getReNews_no() {
 		return reNews_no;
@@ -74,6 +75,12 @@ public class Newsbean {
 	}
 	public void setReNews_category(String reNews_category) {
 		this.reNews_category = reNews_category;
+	}
+	public String getReNews_img() {
+		return reNews_img;
+	}
+	public void setReNews_img(String reNews_img) {
+		this.reNews_img = reNews_img;
 	}
 	
 	

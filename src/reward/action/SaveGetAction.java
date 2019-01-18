@@ -2,10 +2,10 @@ package reward.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import reward.db.RewardBean;
 import reward.db.RewardDAO;
-import reward.db.SaveBoard;
-import reward.db.SaveSeller;
 
 public class SaveGetAction implements Action{
 	
@@ -19,16 +19,20 @@ public class SaveGetAction implements Action{
 		
 		RewardDAO rdao = new RewardDAO();
 		
-		//하나의 저장게시물 정보를 검색해오는 메소드를 호출
-		SaveBoard saveB = rdao.getSaveBoard(pd_no);
-		SaveSeller saveS = rdao.getSaveSeller(pd_no);
-		String end = saveB.getPd_end().substring(0,10);
+
+		//하나의 저장게시물 정보를 전부~~ 검색해오는 메소드를 호출
+		RewardBean all = rdao.getSaveAll(pd_no);
+		String end = all.getPd_end().substring(0, 10);
 		
+		HttpSession session =  request.getSession();
 		
-		//request영역에 저장
-		request.setAttribute("saveB", saveB);
-		request.setAttribute("saveS", saveS);
-		request.setAttribute("end", end);
+		session.setAttribute("c", all.getPd_category());
+		session.setAttribute("board", all);
+		session.setAttribute("seller", all);
+		session.setAttribute("reward", all);
+		session.setAttribute("save", pd_no);
+		session.setAttribute("end", end);
+		
 		
 		ActionForward forward = new ActionForward();
 		
@@ -36,7 +40,10 @@ public class SaveGetAction implements Action{
 		forward.setRedirect(false);
 		
 		// 전송완료페이지로 이동!!!!할 실제 페이지 주소 저장
-		forward.setPath("index.jsp?center=RewardingUpdate.jsp"); //가상 요청 주소값 저장
+
+
+		forward.setPath("./index.jsp?center=./RewardingWrite_index.jsp"); //가상 요청 주소값 저장
+
 
 		return forward;
 		

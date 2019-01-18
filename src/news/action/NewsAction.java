@@ -14,13 +14,40 @@ public class NewsAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("RewardUNewsAction ()");
 		
+		request.setCharacterEncoding("utf-8");
+		
 		NewsDAO ndao = new NewsDAO();
 		
 		String sortNews = request.getParameter("sortNews");
+		String newsKeyword = request.getParameter("newsKeyword");
+		String reload = request.getParameter("reload");
+		
+		if(reload != null){
+			if(reload.equals("true")){
+				newsKeyword = "";
+			}
+		}
 		
 		int count = ndao.getNewsCount();
 		
-		int pageSize = 8;
+		System.out.println(newsKeyword);
+		
+	//get News lists
+		if(newsKeyword == null){
+			
+			Vector<Newsbean> v = ndao.getNewsList(sortNews);
+			request.setAttribute("v", v);
+			//count = v.size();
+		
+		}else {	//if searchBar(newsKeyword) has any input value
+			Vector<Newsbean> v = ndao.totalNewsSearch(newsKeyword);
+			request.setAttribute("v", v);
+			//count = v.size();
+		}
+		
+	//paging variables	
+		int pageNo = 0;
+		int pageSize = 8; /*pageCount(totalPage)*/
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		String newsCurrentP = request.getParameter("newsCurrentP");
 		
@@ -30,18 +57,19 @@ public class NewsAction implements Action{
 		
 		int currentPage = Integer.parseInt(newsCurrentP);
 		int startRow = (currentPage-1) * pageSize +1;
-		int pageBlock = 5;
+		int pageBlock = 5;	/*pageBlock(pagePerBlock)*/
 		int firstPage = ((currentPage-1)/pageBlock)*pageBlock + 1;
-		int lastPage = firstPage + pageSize -1;
+		int lastPage = firstPage + pageBlock -1;
 		
 		if(lastPage > pageCount){
 			lastPage = pageCount;
 		}
 		
-	//get News lists
-		Vector<Newsbean> v = ndao.getNewsList(sortNews);
 		
-		request.setAttribute("v", v);
+		Newsbean bestNews = new Newsbean();
+		
+	  	bestNews = ndao.bestNewsViews();
+	  	request.setAttribute("bestNews", bestNews);
 		
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);

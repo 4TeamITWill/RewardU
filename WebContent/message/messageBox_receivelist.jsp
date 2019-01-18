@@ -117,13 +117,13 @@ if(count > 0){ //메시지가 존재 한다면
 		} else {
 %>
 		<tr align="center">
-			<td class="readMessage" width="5%"><%=mdto.getNo()%></td>
-			<td class="readMessage" width="8%"><%=mdto.getToID()%></td>
-			<td class="readMessage" width="23%">
+			<td class="readMessage" width="80px"><%=mdto.getNo()%></td>
+			<td class="readMessage" width="230px"><%=toID%></td>
+			<td class="readMessage" width="500px">
 			<a class="subject_a" href="./ContentMessageAction.message?no=<%=mdto.getNo()%>&divide=receive&id=<%=id%>"><%=mdto.getSubject()%></a>
 			</td>
-			<td class="readMessage" width="15%"><%=sdf.format(mdto.getReg_date()) %></td>
-			<td width="5%"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
+			<td class="readMessage" width="170px"><%=sdf.format(mdto.getReg_date()) %></td>
+			<td width="100px"><input type="checkbox" name="messageCheck" value="<%=mdto.getNo()%>"></td>
 		</tr>
 <%
 		}
@@ -133,8 +133,8 @@ if(count > 0){ //메시지가 존재 한다면
 <%
 } else {//if() 메시지가 없을 경우 count==0
 %>
-	<tr>
-		<td>메시지 없음</td>
+	<tr align="center">
+		<br/>메시지 없음
 	</tr>
 <%
 }//else
@@ -144,13 +144,11 @@ if(count > 0){ //메시지가 존재 한다면
 <br/>
 <div class="messageBtn_div">
 	<!-- 클릭하면 sendMessage.jsp로 이동한다. -->
-	<input type="button" value="메시지 보내기" class="sendMessage_btn" onclick="location.href='./SendMessage.message'">
-	<!-- <a href="./SendMessage.message" ><img alt="메시지보내기" src="img/message_img/send_msg.PNG" class="sendMessage_img"> </a> -->
-	
+	<input type="button" value="메시지 보내기" class="msg_btn" onclick="location.href='./SendMessage.message?divide=receive'">
 	<!-- 클릭하면 체크된 메시지들이 삭제된다.-->
-	<input type="button" value="삭제하기" onclick="deleteMsg();">
+	<input type="button" value="삭제하기" class="msg_btn" onclick="deleteMsg();">
 	<!-- 클릭하면 체크된 메시지들이 보관함으로 간다 -->
-	<input type="button" value="보관하기" onclick="storeMsg();">
+	<input type="button" value="보관하기" class="msg_btn" onclick="storeMsg();">
 </div>
 
 </form>

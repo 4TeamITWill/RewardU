@@ -6,8 +6,16 @@ public class BoardBean {
 
 	private int pd_no, pd_good, pd_count, pd_participant, pd_result, pd_permit, pd_opprice1, pd_opprice2, pd_opprice3, pd_ratecount;
 
-	private String user_id, pd_category, pd_file, pd_realfile, pd_goalmoney,
-							pd_curmoney, pd_content, pd_subject, pd_opcontent1, pd_opcontent2, pd_opcontent3, pd_endf;
+	private String user_id, pd_category, pd_file, pd_realfile, pd_goalmoney, pd_opsubject1, pd_opsubject2, pd_opsubject3,
+
+							pd_curmoney, pd_content, pd_subject, pd_opcontent1, pd_opcontent2, pd_opcontent3, pd_endf, pd_startf,company;
+	
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
 	private Timestamp pd_start, pd_end;
 	private double pd_rate;
 	
@@ -16,6 +24,24 @@ public class BoardBean {
 	}
 	public void setPd_no(int pd_no) {
 		this.pd_no = pd_no;
+	}
+	public String getPd_opsubject1() {
+		return pd_opsubject1;
+	}
+	public void setPd_opsubject1(String pd_opsubject1) {
+		this.pd_opsubject1 = pd_opsubject1;
+	}
+	public String getPd_opsubject2() {
+		return pd_opsubject2;
+	}
+	public void setPd_opsubject2(String pd_opsubject2) {
+		this.pd_opsubject2 = pd_opsubject2;
+	}
+	public String getPd_opsubject3() {
+		return pd_opsubject3;
+	}
+	public void setPd_opsubject3(String pd_opsubject3) {
+		this.pd_opsubject3 = pd_opsubject3;
 	}
 	public int getPd_good() {
 		return pd_good;
@@ -155,11 +181,18 @@ public class BoardBean {
 	public void setPd_ratecount(int pd_ratecount) {
 		this.pd_ratecount = pd_ratecount;
 	}
+	public String getPd_startf() {
+		return pd_startf;
+	}
+	public void setPd_startf(String pd_startf) {
+		this.pd_startf = pd_startf;
+	}
 	public String getPd_endf() {
 		return pd_endf;
 	}
 	public void setPd_endf(String pd_endf) {
 		this.pd_endf = pd_endf;
 	}
+	
 	
 }	

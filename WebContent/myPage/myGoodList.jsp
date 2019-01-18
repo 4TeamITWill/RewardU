@@ -11,7 +11,7 @@
 	<div id="myGoodList_main">	
 		<div class="myGoodList_content">		
 			
-			<div style="display : flex; justify-content : space-between; align-items : center; margin-bottom : 0.5rem;">
+			<div style="display : flex; justify-content : space-between; align-items : center; margin-bottom : 0.5rem; padding : 0 2rem;">
 				<div class="good_subject">좋아요</div>	
 				<input style="width : 80px; height : 30px;"type="button" value="삭제하기" onclick="delGood();"/>
 			</div>
@@ -21,9 +21,11 @@
 					<div class="myGoodList_content_">					
 						<c:forEach var="good" items="${goodlist }">
 																										
-							<div class="good_content">	
-								<input type="checkbox"  name ="delcheck" value="${good.pd_no }" style="width : 15px; height : 15px;"/>											
-								<div class="content_0"><img src=""></div>
+						<div class="good_content">	
+							<input type="checkbox"  name ="delcheck" value="${good.pd_no }" style="width : 15px; height : 15px;"/>											
+							
+							<div class="content_0"><img src="./upload/${good.pd_realfile}"></div>
+							<div class="good_content_box">
 								<div class="content content_1">${good.user_id }</div>					
 								<div class="content content_2">${good.pd_subject }</div>
 								<div class="content content_3">${good.pd_category }</div>
@@ -31,9 +33,10 @@
 									<div>${good.pd_rate } / 5 </div><div style="font-weight : bold; color : #f34;"> ~${good.pd_endf }</div>
 								</div>
 																							
-								<a class="mybtn" onclick="reward('${good.pd_no}');" style="cursor : pointer;">투자하기</a>	
+								<a class="mybtn" onclick="location.href='./Content.ad?pd_no=${good.pd_no}'" style="cursor : pointer;">투자하기</a>	
 								
 							</div>	
+						</div>	
 												
 						</c:forEach>										
 					</div>	
@@ -42,7 +45,7 @@
 			
 			
 			<c:if test="${count <= 0 }">
-				<div>좋아요한 게시글이 없습니다.</div>
+				<div style="width : 100%; text-align :center; height : 100%;">좋아요한 게시글이 없습니다.</div>
 			</c:if>					
 			
 			<!-- 페이징 부분 -->
@@ -52,10 +55,10 @@
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:30px; height : 30px; line-height : 30px; background-color : #ccc; color : #000;">${i }</a>
+						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:15px; height : 15px; line-height : 15px; border-bottom : 1px solid #2f68ff">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a href="myPageGood.my?currentPage1=${i}">${i }</a>
+						<a href="myPageGood.my?currentPage1=${i}" style="display:block; width:15px; height : 15px; line-height : 15px;">${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">

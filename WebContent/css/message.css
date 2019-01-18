@@ -2,15 +2,16 @@
 
 .messageBox_sec,.messageContent_sec,.messageSend_sec,.messageAnswer_sec{ 
 	position: relative;
-	height: 600px; text-align: center;
+	min-height: 600px; text-align: center;
 }
 
+/* 메시지에서 버튼(보내기,삭제,보관 등)이 공유하는 CSS */
+.msg_btn{width: 100px; height: 25px; background-color: #fff; font-weight: 600;}
+.msg_btn:HOVER{border: 2px groove #9599fc;}
 
 
 /* messageBox.jsp */
-.sendMessage_btn{
-	
-}
+
 .messageBox_div{ position: absolute;
 	width: 1100px; height: auto; text-align: center;
 	left: 20%; top: 15%;
@@ -70,24 +71,36 @@
 	width: 500px; height: auto; text-align: center;
 	left: 37%; top: 15%;
 } 
-.content_func{width: 15%;}
-. class="content_result"{width: auto;}
-.content_table td{
-	border-bottom: 1px solid black;
-	text-align: center;
+
+.msg_top{border: 2px groove #d5d5d5;
+	text-align: left;
 }
+.msg_bottom{ border-bottom: 2px groove #d5d5d5;
+	text-align: left;
+}
+
 .content_btn{
 	float: right;
 	text-align: center;
 }
 
 /* sendMessage.jsp + answerMessage.jsp */
-.send_div,.answer_div{ position: absolute;
-	width: 530px; height: auto; text-align: center;
-	left: 37%; top: 15%;
+.send_div,.answer_div{ position: absolute; 
+	width: 530px; height: auto; text-align: left;
+	left: 25%; top: 15%;
 } 
 .send_TA,.answer_TA{width: 500px; height: 250px;}
 .send_FS,.answer_FS{float: left;}
+.send_FS>#fromID{width: 300px;}
+.msg_subject{width: 502px; height: 30px;}
+.search_memberDiv>.search_member{width: 300px;}
+
+.search_memberDiv{position: absolute; 
+	width: 530px; height: auto; text-align: left;
+	left: 55%; top: 15%; 
+}
+
+
 
 /* 퀵메뉴 quick_menu.jsp */
 #quick_menu {
@@ -97,7 +110,7 @@
 	top: 870px;
 	right: 0.5%;
 }
-.quick_msg{border: 3px groove #efefef;	border-radius: 10%;
+.quick_msg{border: 3px solid #efefef;;
 	position: absolute;
 	bottom: 0px;
 	right: 5%;
@@ -107,10 +120,11 @@
 .msg_img{width: 50px; height: 50px;}
 .msg_img:HOVER{transform : scale(1.1);}
 
-.quit_btn{width: 30px; height: 15px; float: right;}
+.quit_btn{width: 30px; height: 15px; float: right; font-size: 30px; color: black; margin-bottom: 5%;}
+.quit_btn:HOVER{color: #9599fc; cursor: pointer;}
 
-.quick_msg #subject{width: 250px; height: 20px; border-radius:4%;}
-.quick_msg #content{width: 250px; height: 160px; border-radius:4%;}
-.quick_msg #send, .quick_msg #rewrite{width: 100px; height: 30px; background-color: efefef;}
-.quick_msg #send:HOVER, .quick_msg #rewrite:HOVER{font-weight: bold;}
+.quick_msg>#subject_inquiry{width: 280px; height: 20px; border-radius:4%;}
+.quick_msg>#content_inquiry{width: 280px; height: 160px;}
+.quick_msg #send, .quick_msg #rewrite{width: 100px; height: 25px; background-color: #fff; font-weight: 600;}
+.quick_msg #send:HOVER, .quick_msg #rewrite:HOVER{border: 2px groove #9599fc;}
 textarea {resize: none;}

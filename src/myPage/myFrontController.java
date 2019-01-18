@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class myFrontController extends HttpServlet{
 	
@@ -58,6 +59,33 @@ public class myFrontController extends HttpServlet{
 		}else if(command.equals("/myGoodDel.my")){
 			
 			action = new myGoodDelAction();
+			
+			forward = action.execute(request, response);
+		}else if(command.equals("/RewardUIntro.my")){
+			
+			forward = new myActionForward();
+			forward.setPath("./index.jsp?center=./RewardU_intro.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/sellernews.my")){
+			
+			action = new sellerNews();
+			forward = action.execute(request, response);
+					
+		}else if(command.equals("/sellerNewsWrite.my")){
+
+			action = new sellerNewsWrite();
+			
+			forward = action.execute(request, response);
+		}else if(command.equals("/sellerNewsDel.my")){
+			
+			action = new sellerNewsDel();
+			
+			forward = action.execute(request, response);
+			
+		}else if(command.equals("/myRewardDel.my")){
+			
+			action = new myRewardDelAction();
 			
 			forward = action.execute(request, response);
 		}

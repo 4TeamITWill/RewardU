@@ -1,5 +1,6 @@
 package message.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,9 @@ public class DeleteMessageCheckboxAction implements Action{
 		//삭제를 위해 체크된 메시지 번호들을 넘겨받음
 		String[] no_checkbox = request.getParameterValues("messageCheck");
 		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		if(no_checkbox != null){//체크된것이 하나라도 존재한다면
 			ArrayList<Integer> list = new ArrayList<Integer>();
 			for(String val : no_checkbox){
@@ -32,27 +36,20 @@ public class DeleteMessageCheckboxAction implements Action{
 			//삭제될 메시지번호들을 담은 리스트를 전달하여 삭제작업 진행
 			mdao.deleteMessageCheckbox(list,id,divide);
 			
-			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
-			ActionForward forward=new ActionForward();
-			//sendRedirect() <-이방식은 이동할 페이지 주소 경로 노출 함.
-			forward.setRedirect(false);
-			//이동할 페이지 주소 저장, 구분값에 따라 이동하는 페이지 달리함
-			if(divide.equals("receive")){forward.setPath("./MemberMessage_ReceiveList.message");}
-			else if(divide.equals("send")){forward.setPath("./MemberMessage_SendList.message");}
-			else if(divide.equals("store")){forward.setPath("./MemberMessage_StoreList.message");}
+			out.println("<script>");
+			out.println("alert('메시지를 삭제하였습니다.')");
+			if(divide.equals("receive")){out.println("location.href='./MemberMessage_ReceiveList.message'");}
+			else if(divide.equals("send")){out.println("location.href='./MemberMessage_SendList.message'");}
+			else if(divide.equals("store")){out.println("location.href='./MemberMessage_StoreList.message'");}
+			out.println("</script>");
 			
-			return forward;
 		}else{//아무것도 체크되지 않았다면
-			//페이지 이동 방식 여부 값,이동페이지 경로 값 저장 하여 리턴 해주는 객체 생성
-			ActionForward forward=new ActionForward();
-			//sendRedirect() <-이방식은 이동할 페이지 주소 경로 노출 함.
-			forward.setRedirect(false);
-			//이동할 페이지 주소 저장, 구분값에 따라 이동하는 페이지 달리함
-			if(divide.equals("receive")){forward.setPath("./MemberMessage_ReceiveList.message");}
-			else if(divide.equals("send")){forward.setPath("./MemberMessage_SendList.message");}
-			else if(divide.equals("store")){forward.setPath("./MemberMessage_StoreList.message");}
 			
-			return forward;
+			out.println("<script>");
+			out.println("alert('삭제할 메시지를 선택해주세요.')");
+			out.println("history.back();");
+			out.println("</script>");
 		}
+		return null;
 	}
 }

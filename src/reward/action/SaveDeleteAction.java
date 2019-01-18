@@ -20,7 +20,7 @@ public class SaveDeleteAction implements Action{
 		
 		RewardDAO rdao = new RewardDAO();
 		
-		int result = rdao.RewardingSaveDel(pd_no);
+		int result = rdao.allDel(pd_no);
 
 		if (result != 0) { //삭제에 성공했다면
 			
@@ -29,7 +29,7 @@ public class SaveDeleteAction implements Action{
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 				out.println("alert('프로젝트를 삭제 하였습니다.')");
-				out.println("location.href='RewardingSaveList.fu'");
+				out.println("location.href='./mySellPro.my'");
 			out.println("</script>");
 		}
 		
@@ -39,7 +39,7 @@ public class SaveDeleteAction implements Action{
 	
 		out.println("<script>");
 		out.println("alert('삭제 실패');");
-		out.println("location.href='./RewardingSaveList.fu'");
+		out.println("location.href='./mySellPro.my'");
 		out.println("</script>");
 		
 

@@ -21,10 +21,10 @@ public class mySellListAction implements myAction {
 		String user_id = (String)session.getAttribute("id");
 		
 		MyDAO mydao = new MyDAO();
-		
+
 		//페이징 변수
 		//전체글 개수, 한페이지당 뿌려질 글 개수, 페이지 개수, 현재 페이지
-		int count = mydao.get1BoardCount(user_id);		
+		int count = mydao.getBoardCount(user_id);		
 		int pageSize = 3;
 		int pageCount = count/pageSize+(count%pageSize==0?0:1);		
 		String currentPage1 = request.getParameter("currentPage1");
@@ -38,15 +38,13 @@ public class mySellListAction implements myAction {
 		
 		if(endPage > pageCount) endPage = pageCount;
 				
-		//판매중인 글 가져오기
-		ArrayList<BoardBean> board1list = mydao.get1BoardList(user_id, startRow, pageSize);		
-		//판매완료 글 가져오기
-		ArrayList<BoardBean> board0list = mydao.get0BoardList(user_id, startRow, pageSize);
+		//개설프로젝트  가져오기
+		ArrayList<BoardBean> board1list = mydao.getBoardList(user_id, startRow, pageSize);		
+		
 		//임시저장글 가져오기
 		
 		
 		request.setAttribute("board1list", board1list);
-		request.setAttribute("board0list", board0list);
 		request.setAttribute("count", count);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);

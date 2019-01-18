@@ -11,17 +11,17 @@
 		<input type="text" name="user_id" id="user_id">
 		<input type="button" value="검색" onclick="member();">
 		<c:if test="${msg == 1 }">
-			<div style="display : flex; margin : 1rem 0; border-bottom : 1px solid;">
-				<div style="flex : 3;">아이디</div>
-				<div style="flex : 2;">폰번호</div>
-				<div style="flex : 1;">생년월일</div>
-				<div style="flex : 1.5;">이름</div>
-				<div style="flex : 1;">상태</div>
-				<div style="flex : 2.5;">가입날짜</div>
-				<div style="flex : 1;">ㅇㅇ</div>
+			<div style="display : flex; border-bottom : 1px solid #ccc; margin-top : 2rem;">
+				<div style="flex : 3; font-weight : bold;">아이디</div>
+				<div style="flex : 2; font-weight : bold;">폰번호</div>
+				<div style="flex : 1; font-weight : bold;">생년월일</div>
+				<div style="flex : 1.5; font-weight : bold;">이름</div>
+				<div style="flex : 1; font-weight : bold;">상태</div>
+				<div style="flex : 2.5; font-weight : bold;">가입날짜</div>
+				<div style="flex : 1; font-weight : bold;">정지</div>
 			</div>
 			<c:forEach var="mlist" items="${memberList }">
-			<div style="display : flex; border-bottom : 1px solid; padding : 10px 0;">
+			<div style="display : flex; border-bottom : 1px solid #ccc; padding : 0.5rem 0;">
 				<div style="flex:3;">${mlist.user_id }</div>
 				<div style="flex:2;">${mlist.user_phone }</div>
 				<div style="flex:1;">${mlist.user_birth }</div>

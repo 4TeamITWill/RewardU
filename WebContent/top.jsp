@@ -1,3 +1,4 @@
+<%@page import="reward.db.RewardDAO"%>
 <%@page import="message.db.MessageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,15 +9,25 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+	
+#searchBar ::-webkit-input-placeholder { font-size : 16px; color: #8a8a8e; }
 
-#searchBar input-placeholder { font-size : 16px; color: #CCC; }
+/* Firefox 4-18 */
+#searchBar :-moz-placeholder { font-size : 16px; color: #8a8a8e; }
+
+/* Firefox 19+ */
+#searchBar ::-moz-placeholder { font-size : 16px; color: #8a8a8e; }
+
+/* IE10+ */
+#searchBar :-ms-input-placeholder { font-size : 16px; color: #8a8a8e; }
+
 
 li {list-style: none;}
 
 a {text-decoration: none;}
 .hr{align: center;
 	width: 100%; height: 5px;
-	background: linear-gradient(90deg, #b44af7, #82caff);  }
+	background: linear-gradient(90deg, #b44af7, #82caff); }
 fieldset{border:0;}
 
 
@@ -64,6 +75,18 @@ fieldset{border:0;}
 		}
 	}
 	
+	
+	function ingCk() {
+		$('.modal-content2').css("width","300px");
+		$('.modal-header2').html("작성중인 프로젝트가 있습니다.");
+		$('#checkMessage2').html("<button onclick=location.href='./mySellPro.my' class='ingBtn'>이어쓰기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick=location.href='./RewardingWrite.fu' class='ingBtn'>새로쓰기</button>");
+		$('#myModal2').show();
+	}; 
+	  
+	function close_pop(flag) {
+        $('#myModal2').hide();
+   };
+
 </script>
 
 </head>
@@ -101,7 +124,9 @@ fieldset{border:0;}
 		 		if(id.equals("rewardu4@gmail.com")){ //접속한 id가 관리자 계정rewardu4@gmail.com 일 경우
 	%>				<!-- 마이페이지 대신 관리자페이지가 나타남 -->
 					<a href="./adminPage.ad">관리자페이지</a>&nbsp;&nbsp; 
-					<a href="MemberLogout.me">로그아웃</a>
+					<a href="MemberLogout.me">로그아웃</a>											
+					<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span>						
+					<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span></a>	<!-- 클릭하면 메시지함으로 -->	
 	<%
 		 		} else {//관리자 외에 일반회원일 경우 마이페이지 나타남
 	%>			
@@ -147,26 +172,49 @@ fieldset{border:0;}
 						<a href="./MemberLogin.me"  style ="color : #555; font-weight : 550;" onclick="logIn();">리워드 신청하기</a>
 					<%
 						}else{
+							
+							RewardDAO rdao = new RewardDAO();
+							String user_id = (String)session.getAttribute("id");
+							int count = rdao.getBoardCount(user_id);
+							
+							if(count >0){//로그인상태에서 임시저장된 게시물이 있으면 모달창
 					%>	
+						<a onclick="ingCk();" style ="color : #555; font-weight : 550; cursor: pointer;" id="makePj">리워드 신청하기</a>
+					<%
+							}else{//없으면 바로 새글 작성
+					%>
 						<a href="./RewardingWrite.fu"  style ="color : #555; font-weight : 550;">리워드 신청하기</a>
 					<%
 						}
+					}		
 					%>
 				</div>
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">리듀란?</a>
 					<a href="./Guide.ar">이용가이드</a>
 					<a href="./AboutReward.ar">리워드란?</a>
-					<a href="링크넣기">리듀 소개</a>					
+					<a href="RewardUIntro.my">리듀 소개</a>					
 					<a href="./Notice.no">공지사항</a>	
 				</div>	
 				<div class="menuLine">
 					<a class = "menu_boss" style="font-size : 1.1rem;">NEWS</a>
 					<a href="./NewsAction.news">리듀 소식</a>					
-					<a href="#">리워드 소식</a>
+					<a href="./sellerNewsAction.news">리워드 소식</a>
 				</div>	
 			</div>
 		</div>
+		
+		<!-- 모달 -->
+		<div id="myModal2" class="modal2">
+	      <!-- Modal content -->
+	      <div class="modal-content2">
+	      	<span class="close2" onClick="close_pop();">&times;</span> 
+	            <div class="modal-header2">다시확인해주세요!</div>
+	            <div id="checkMessage2" class="modal-body2">
+	            </div>
+	      </div>
+		</div>
+		<!-- 모달끝  id="checkTitle"  -->
 	
 	
 <script>

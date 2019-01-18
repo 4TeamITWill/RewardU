@@ -1,55 +1,113 @@
+<%@page import="admin_db.ReplyDAO"%>
+<%@page import="javax.print.attribute.standard.PDLOverrideSupported"%>
+<%@page import="org.apache.taglibs.standard.lang.jstl.test.Bean1"%>
+<%@page import="admin_db.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="s" uri="http://java.sun.com/jsp/jstl/sql"%>
+
+<%@page import="admin_db.BoardDAO"%>
+<%@page import="admin_db.BoardBean"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title></title>
-<style>
+<title>펀딩정보</title>
+
+<style type="text/css">
+
+
+/* a 링크 방문전 방문후 색깔변화 없애기 */
+A:link{
+	color: #8a80a0;
+}
+A:visited{
+	color :#8a80a0;
+}
+
+/* 로고 이미지  */
+.logoimage{
+
+filter: blur(5px);			
+		
+width: 100%;
+height: 100%;
+
+	 
+}
+
+/* 로고  */
 div.logo {
 	height: 200px;
 	width: 100%;
+	position: relative;
 }
-
-h2.logotext {
+/* 로고 제목 위  */
+h2.logot {
 	position: absolute;
-	top: 200px;
-	left: 50;
+	top: 30%;
+	left: 50%;				
 	width: 100%;
-	font-weight: bold;
-	font-size: 15px;
+	text-align : center;	
+	font-weight: 900;			
+	font-size: 20px;
 	color: #8a80a0;
 	letter-spacing: 0px;
 	font-family: arial;
+	transform: translate( -50%, -50% );
 }
 
-div.ma {
+
+/* 로고 제목 */
+h2.logotext {
+	position: absolute;
+	top: 50%;
+	left: 50%;		
+	width: 100%;
+	text-align : center;	
+	font-weight: 900;
+	font-size: 30px;
+	font-family: 'Bon Gothic'; 
+	color: white;
+	letter-spacing: 0px;
+	font-family: arial;
+	transform: translate( -50%, -50% );
+}
+
+div.ma0{
+	margin-top : 30px;
+	margin-bottom:30px;
+	height: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+/* div.ma {
 	
 	margin-top: 30px;
 	
-}
-hr {
-  border: 0;
-  border-top: 1px solid #8c8c8c;
-  border-bottom: 1px solid #fff;
+} */
 
-	margin-left: 470px;
-	margin-right: 470px;
+/* body hr 속성 주기  */
+hr.body{
+ border-top : 2px double #bbb; text-align: center; 
+ margin-left: 470px;
+ margin-right: 470px;
 }
+
 div.ma2 {
-	margin-left:470px;
-	margin-right:470px;
-	text-align: center;
+	margin-left:400px;
+	margin-right:720px;		
+	text-align: left;
 	
 }
 
 div.ma3 {
-	margin-left:auto;
-	margin-right: auto;
-	text-align: center;
+	margin-left:400px;
+	margin-right:720px;
+	
 }
 
 div.ma4 {
@@ -62,54 +120,88 @@ div.ma4 {
 /* div 영역안을 가운데 정렬하기 위해 씀 . 조건 text-align : center; */
 div.in {
 	display: inline-block;
-	
-	
 }
+
+
+/* 메뉴바 css */
+  #menubar {
+   position: relative;
+ 	 font-size: 20px;	
+ 	 font-family: arial;
+ 	 font-weight: bold;
+}
+
+
+
 </style>
+
 </head>
+		
 <body>
-
-
+	<%
+	String id = (String)session.getAttribute("id"); 
+			int pd_no = Integer.parseInt(request.getParameter("pd_no"));
+			BoardDAO bdao = new BoardDAO();
+			BoardBean bdto = new BoardBean();
+			bdto = bdao.getBoard(pd_no);
+			ReplyDAO bdo = new ReplyDAO();
+			bdo.reply(pd_no);
+			
+		%> 
+		
 	<div class="logo">
-		<img src="img/${bean.pd_img }" style="opacity: 0.2" height="100%"
-			width="100%">
-		<h2 class="logotext">여기 텍스트는 pd_no 를 받아 따로 db에 저장해야겠군(설명)</h2>
+	
+		<img src=" ./upload/<%=bdto.getPd_realfile() %>" class="logoimage">	
+		<h2 class="logot"># <%=bdto.getPd_category() %></h2>	
+		<h2 class="logotext"><%=bdto.getPd_subject() %></h2>
 	</div>
+	
+	
+	<!--내가원하는 위치로이동하기   -->
+<script type="text/javascript">
+		$(document).ready(function() {
+			$(".go_btn").click(function(event) {
+				event.prevenDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},500);
+				
+			});
+			
+		});
+	</script>
 
-
-	<div class="ma">
-		<table style="margin-left: auto; margin-right: auto;">
-			<tr>
-				<td><img alt="" src="img/${bean.pd_img }" width="500"
-					height="500"></td>
-
-				<td><jsp:include page="star/day.jsp" /></td>
-			</tr>
+	<div class = "ma0">
+		<div class="in">
+		<table width="800px" style="table-layout: fixed;" >
+				<tr>
+					<td> 
+						<a href="index.jsp?center=ContentInfo.jsp&gogo=star/Content1.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>" class="intro_a" id="menubar">펀딩소개</a>
+					 </td> 	
+					<td><a href="index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no=<%=pd_no %>&user_id=<%=id%>&group_num=<%=bdo.reply(pd_no) %>" class="go_btn" id="menubar">댓글</a></td>
+					<td>
+						<a href="sellernews.my?pd_no=<%=pd_no%>&seller_id=<%=bdto.getUser_id()%>" id="menubar">새소식</a>
+					</td>
+					<td>
+						<a href="./supporters.ad?pd_no=<%=pd_no %>" id="menubar">참여하신분들</a>
+					</td>
+				</tr>
 	
 		</table>
-		<hr>
+		</div>
 		
 	</div>
-	<div class="ma2" >
-			<jsp:include page="star/star.jsp" />	
-	</div>
-	<hr>
-	<div class="ma3">
-		<div class="in">
-			상품 내용설명 및  하단 부분 
-		</div>
 	
-	</div>
 	
-	<hr>
-	<div class="ma4">
-		<div class="in">
-			댓글 만들기 
-		</div>
+	<hr style="border-top: 1px solid #CEECF5;">
+	<div>
+		 <c:set var="gogo" value="${param.gogo}"/>
+			<c:if test="${gogo == null}"> 
+		 			<c:set var="gogo" value="star/Content1.jsp"/>
+			 </c:if>
+			 
+			 <jsp:include page="${gogo }"/>
+			
 	</div>
-<button type="button" class="back-to-top">
-    <h3 align="right">Top</h3>
-   	</button>
+
 
 
 </body>

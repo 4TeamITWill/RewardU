@@ -1,8 +1,10 @@
 package member.action;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import member.db.MemberBean;
 import member.db.MemberDAO;
@@ -15,7 +17,6 @@ public class MemberMypageAction implements Action{
 		
 		request.setCharacterEncoding("utf-8");
 		
-		ActionForward forward = new ActionForward();
 		
 		HttpSession session = request.getSession();
 		
@@ -34,6 +35,7 @@ public class MemberMypageAction implements Action{
 		
 		session.setAttribute("mbean", mbean);
 		
+		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./index.jsp?center=./myPage/myIndex.jsp");
 		

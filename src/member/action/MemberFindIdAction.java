@@ -43,7 +43,7 @@ public class MemberFindIdAction implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.print("alert('ÀÏÄ¡ÇÏ´Â ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.')");
+			out.print("alert('ì…ë ¥í•˜ì‹  ì •ë³´ì— í•´ë‹¹í•˜ëŠ” ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.')");
 			//out.println("history.back();");
 			out.println("</script>");
 		}else{
@@ -56,7 +56,7 @@ public class MemberFindIdAction implements Action{
 			
 			forward.setPath("member/idConfirm.jsp");
 			//out.println("<script>");
-			//out.print("alert('È¸¿ø´ÔÀÇ ¾ÆÀÌµğ´Â' + user_id + 'ÀÔ´Ï´Ù.')");
+			//out.print("alert('È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½' + user_id + 'ï¿½Ô´Ï´ï¿½.')");
 			//out.println("history.back();");
 			//out.println("</script>");
 			return forward;

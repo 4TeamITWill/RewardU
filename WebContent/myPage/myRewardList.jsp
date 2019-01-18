@@ -18,9 +18,9 @@
 				<div class="myRewardList_content_">
 				
 					<div style="width : 100%; display : grid; grid-template-columns : 140px 1fr; 
-									border : 1px solid rgba(150,150,150,0.5); height : 100px;align-items : center; padding-left : 0.7rem;">
+									border : 1px solid rgba(150,150,150,0.5); height : 100px;align-items : center; box-sizing : border-box; padding-left : 0.7rem;">
 						<div class="reward_img_container">
-							<img src="img/cat.jpg">
+							<img src="./upload/${invest.pd_realfile}">
 						</div>
 						
 						<div class="reward_content_container">						
@@ -48,9 +48,6 @@
 							<div>선택한 리워드</div><div>${invest.inv_name }</div>
 						</div>
 						<div class="reward_desc">
-							<div>리워드 옵션</div><div>선택한 옵션 들어가야되는데 컬럼이 없네?</div>
-						</div>
-						<div class="reward_desc">
 							<div>옵션 1 구매 가격 / 수량</div><div>${invest.op1_price}원 / ${invest.op1_qty }개</div>
 						</div>
 						<div class="reward_desc">
@@ -66,17 +63,28 @@
 							<div>배송지</div><div>${invest.inv_addr}</div>
 						</div>
 						<div class="reward_desc">
-							<div>결제수단</div><div>응 없어~</div>
+							<div>주문번호</div><div>${invest.inv_orderno}</div>
 						</div>
 						<div class="reward_desc">
 							<div>총 결제 금액</div><div>${invest.inv_price}원</div>
 						</div>						
-					</div>				
+					</div>	
+					
+					<div style="display : flex; justify-content : flex-end;">
+						<a class="justbtn" href="Content.ad?pd_no=${invest.pd_no}" >
+							프로젝트 보기
+						</a>		
+						<a class="justbtn1" 
+						href="myRewardDel.my?pd_no=${invest.pd_no }&inv_price=${invest.inv_price}&inv_orderno=${invest.inv_orderno}">
+						환불하기
+						</a>
+					</div>
+						
 				</div>	
 			</c:forEach>	
 				
 			<c:if test="${count <= 0 }">
-				<div>리워드한 게시글이 없습니다.</div>
+				<div style="width : 100%; text-align :center; height : 100%;">리워드한 프로젝트가 없습니다.</div>
 			</c:if>
 			<!-- 페이징 부분 -->
 				<div class="my_board_page">
@@ -85,10 +93,10 @@
 					</c:if>				
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">					
 					<c:if test="${currentPage == i }">
-						<a href="myPageReward.my?currentPage1=${i}" style="display:block; width:30px; background-color : #ccc; color : #000;">${i }</a>
+						<a href="myPageReward.my?currentPage1=${i}" style="display:block; width:15px; height : 15px; line-height : 15px; border-bottom : 1px solid  #2f68ff;">${i }</a>
 					</c:if>
 					<c:if test="${currentPage != i }">
-						<a href="myPageReward.my?currentPage1=${i}">${i }</a>
+						<a href="myPageReward.my?currentPage1=${i}" style="display : block; width:15px; height : 15px; line-height : 15px;">${i }</a>
 					</c:if>
 					</c:forEach>
 					<c:if test="${endPage < pageCount}">

@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
+import admin_db.SellerBean;
+
 
 public class MemberDAO {
 	
@@ -116,7 +118,7 @@ public class MemberDAO {
 		return result;
 	}//userCheck
 	
-	/*Login ȸ��üũ*/
+	/*Login ȸ��üũ*/
 	public int userCheck(String user_id, String user_pw){
 		
 		Connection con = null;
@@ -260,6 +262,7 @@ public class MemberDAO {
 		
 	}//deleteMember
 	
+	
 	public String findId(MemberBean mbean){
 		
 		Connection con = null;
@@ -374,7 +377,9 @@ public class MemberDAO {
 			pstmt.setString(1, mbean.getUser_name());
 			pstmt.setString(2, mbean.getUser_phone());
 			pstmt.setString(3, mbean.getUser_content());
+			
 			pstmt.setString(4, mbean.getUser_id());
+				
 			
 			pstmt.executeUpdate();
 			
@@ -394,6 +399,76 @@ public class MemberDAO {
 		
 	}//updateUser
 	
+	
+	public void updatePhoto (MemberBean mbean){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "update user set user_photo=? where user_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mbean.getUser_photo());
+			pstmt.setString(2, mbean.getUser_id());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//finally
+		
+	}//updatePhoto
+	
+	
+	public void deletePhoto (MemberBean mbean){
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "update user set user_photo=null where user_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			//pstmt.setString(1, mbean.getUser_photo());
+			pstmt.setString(1, mbean.getUser_id());
+			
+			pstmt.executeUpdate();
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+
+	
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}//fianlly
+	}//deletePhoto
 	
 	
 	public int updatePw(String user_id, String user_pw, String user_pw3){
@@ -460,4 +535,42 @@ public class MemberDAO {
 		}
 		return sb.toString();
 	}//randomNum()
+	
+	
+public MemberBean getSellerimg(int pd_no){
+		
+		
+		MemberBean st = null;
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			sql = "select a.user_photo from user a, seller b where a.user_id=b.user_id";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				st = new MemberBean();
+				st.setUser_photo(rs.getString("user_photo"));
+			
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(con != null)con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		return st;
+	}
 }

@@ -6,56 +6,163 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	
 	<style type="text/css">
-		div select{
-			border: solid;
+		.container{
+			width: 590px;
+			margin: 0 auto 0 auto;
+		}
+		.category {
+			width: 482px;
+			height: 115px;
+			overflow: hidden;
+			position: inherit;
+		}
+		
+		.left #left_btn {
+			height: 30px;
+			width: 30px;
+			float:left;
+			margin: 40px auto;
+			visibility: hidden;
+		}
+		.right #right_btn {
+			height: 30px;
+			width: 30px;
+			float:right;
+			margin: 40px auto;
+			visibility: visible;
+		}
+		.category ul img{
+			height: 70px;
+			width: 70px;
+		}
+		#categoryslide{
+			width: inherit;
+			padding-left: inherit;
+			margin: 0px; /* -100px 두번쨰 라인 이미지  */
+		}
+		
+		.category ul li{
+			display: inline-block;
+			padding: 10px 0px 5px 1px;
+		}
+		.category ul li b{
+			display: block;
+			color: black;
+		}
+		.select{
+			clear:both;
+			width: 950px;
+			margin : 0 auto;
+		}
+		select{
+			height: 30px;
+			border: none;
+			color: #9966FF;
+		}
+		.select div{
+			width: auto;
+		}
+		#sc{
+			margin-top:20px;
+			float:left;
+			width: 300px;
+		}
+		#sr{
+			margin-top:50px;
+			float:right;
+			width: 300px;
+		}
+		.center{
+			clear:both;
+			width: auto;
 			
 		}
-		th{
-			border: solid;
+		#more{
+			padding-bottom:20px;
+			padding-top:20px; 
 		}
-		td{
-			border: solid;
-		}
-		.category{
-			list-style:none;
-		    margin:0;
-		    padding:0;
-		}
-		.category li{
-			margin: 0 0 0 0;
-		    padding: 0 0 0 0;
-		    border : 0;
-		    float: left;
+		
+		#morebtn{
+			font-size:large;
+			font-weight: bold;
+			color:#9966FF;
+			background-color: #F6F6F6;
+			border: none;
+			height: auto;
+			width: 950px;
 		}
 	</style>
 	<script type="text/javascript">
+		var URL = location.pathname;
+		console.log(URL);
 		
-			var URL = location.pathname;
-			console.log(URL);
-		
-			function change(){
-				var result = document.getElementById("result").value;
-				var order = document.getElementById("order").value;
-				var category = document.getElementById("category").value; 
-					if(result == "A"){
-						window.open(URL+"?category="+category+"&order="+order,'_self');
-					}else{
-						window.open(URL+"?category="+category+"&result="+result+"&order="+order,'_self');	
-					}
-			};
+		$(document).ready(function(){
+			var category= $('#category').val();
+			if(category == '게임스포츠' ||
+				category == '여행레저' ||
+				category == '문화교양' ||
+				category == '소셜캠페인' ||
+				category == '교육키즈' ){
+				$("#right_btn").css("visibility","hidden");
+				$("#left_btn").css("visibility","visible");
+				$("#categoryslide").css("margin","-102px");
+			}
+			if(category == 'N'){
+				$('#1').css("color","#9966FF");
+			}else if(category == '패션뷰티'){
+				$('#2').css("color","#9966FF");
+			}else if(category == '테크가전'){
+				$('#3').css("color","#9966FF");
+			}else if(category == '반려동물'){
+				$('#4').css("color","#9966FF");
+			}else if(category == '푸드'){
+				$('#5').css("color","#9966FF");
+			}else if(category == '홈리빙디자인소품'){
+				$('#6').css("color","#9966FF");
+			}else if(category == '게임스포츠'){
+				$('#7').css("color","#9966FF");
+			}else if(category == '여행레저'){
+				$('#8').css("color","#9966FF");
+			}else if(category == '문화교양'){
+				$('#9').css("color","#9966FF");
+			}else if(category == '소셜캠페인'){
+				$('#10').css("color","#9966FF");
+			}else if(category == '교육키즈'){
+				$('#11').css("color","#9966FF");
+			}
 			
-		 	function loadmore(){
-				var order = $('#order').val();
-				var result = $('#result').val();
-				var category = $('#category').val();
-				var currentPage = $('#currentPage').val();
-					currentPage++;
-				var pageCount = $('#pageCount').val();
-				console.log(order);
-				console.log(result);
-				console.log(currentPage);
-				console.log(pageCount);
+		});
+		function right(){
+			$("#right_btn").css("visibility","hidden");
+			$("#left_btn").css("visibility","visible");
+			$("#categoryslide").css("margin","-102px");
+		};
+		function left(){
+			$("#right_btn").css("visibility","visible");
+			$("#left_btn").css("visibility","hidden");
+			$("#categoryslide").css("margin","0px");
+		};
+		function change(){
+			var result = document.getElementById("result").value;
+			var order = document.getElementById("order").value;
+			var category = document.getElementById("category").value; 
+				if(result == "A"){
+					window.open(URL+"?category="+category+"&order="+order,'_self');
+				}else{
+					window.open(URL+"?category="+category+"&result="+result+"&order="+order,'_self');	
+				}
+		};
+		
+	 	function loadmore(){
+			var order = $('#order').val();
+			var result = $('#result').val();
+			var category = $('#category').val();
+			var currentPage = $('#currentPage').val();
+				currentPage++;
+			var pageCount = $('#pageCount').val();
+			setTimeout(function(){
 				$.ajax({
 					url : "./PermitList.ad",
 					type: "POST",
@@ -74,87 +181,95 @@
 			            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			           }
 				});
-			} 
-			
+			}, 600);
+		}  
 	</script>
 </head>
 <body>
 	<input type="hidden" id="category" value="${category }">
-<%-- 	<c:choose>
-		<c:when test="${category }">
-			<h2>전체보기</h2>
-		</c:when>
-		<c:when test="${category eq 패션뷰티 }">
-			<h2>패션·뷰티</h2>
-		</c:when>
-		<c:when test="${category eq 테크가전 }">
-			<h2>테크·가전</h2>
-		</c:when>
-		<c:when test="${category eq 반려동물 }">
-			<h2>반려동물</h2>
-		</c:when>
-		<c:when test="${category eq 푸드 }">
-			<h2>푸드</h2>
-		</c:when>
-		<c:when test="${category eq 홈리빙디자인소품 }">
-			<h2>홈리빙·디자인소품</h2>
-		</c:when>
-		<c:when test="${category eq 게임스포츠 }">
-			<h2>게임·스포츠</h2>
-		</c:when>
-		<c:when test="${category eq 여행레저 }">
-			<h2>여행·레저</h2>
-		</c:when>
-		<c:when test="${category eq 문화교양 }">
-			<h2>문화·교양</h2>
-		</c:when>
-		<c:when test="${category eq 소셜캠페인 }">
-			<h2>소셜캠페인</h2>
-		</c:when>
-		<c:when test="${category eq 교육키즈 }">
-			<h2>교육·키즈</h2>
-		</c:when>
-	</c:choose> --%>
-	<div align="center">
-		<form>
-			<ul class="category">
-				<li><a href="./PermitList.ad?category=N"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
-				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/Tech.jpg" width="80" border="0"></a></li>
+	<div class="container" align="center">
+		<span class="left">
+			<input type="image"  onclick="left()" id="left_btn" src="./img/category/left-arrow.png"/>
+		</span>
+		<span class="right">
+			<input type="image" onclick="right()" id="right_btn" src="./img/category/right-arrow.png"/>
+		</span>
+		<div class="category" align="center">	
+			<ul id="categoryslide">
+				<li><a href="./PermitList.ad?category=N"><img src="./img/category/select-all.png" width="80" border="0"><b id="1">전체 보기</b></a></li>
+				<li><a href="./PermitList.ad?category=패션뷰티"><img  src="./img/category/product.png" width="80" border="0"><b id="2">패션·뷰티</b></a></li>
+				<li><a href="./PermitList.ad?category=테크가전"><img src="./img/category/devices.png" width="80" border="0"><b id="3">테크·가전</b></a></li>
+				<li><a href="./PermitList.ad?category=반려동물"><img  src="./img/category/pawprints.png" width="80" border="0"><b id="4">반려동물</b></a></li>
+				<li><a href="./PermitList.ad?category=푸드"><img src="./img/category/diet.png" width="80" border="0"><b id="5">푸드</b></a></li>
+				<li><a href="./PermitList.ad?category=홈리빙디자인소품"><img src="./img/category/living-room.png" width="80" border="0"><b id="6">홈리빙·디자인</b></a></li>
+				<li><a href="./PermitList.ad?category=게임스포츠"><img src="./img/category/jogo-das-argolas.png" width="80" border="0"><b id="7">게임·스포츠</b></a></li>
+				<li><a href="./PermitList.ad?category=여행레저"><img src="./img/category/travel.png" width="80" border="0"><b id="8">여행·레저</b></a></li>
+				<li><a href="./PermitList.ad?category=문화교양"><img src="./img/category/concert.png" width="80" border="0"><b id="9">문화·교양</b></a></li>
+				<li><a href="./PermitList.ad?category=소셜캠페인"><img src="./img/category/social-media-campaign.png" width="80" border="0"><b id="10">소셜·캠페인</b></a></li>
+				<li><a href="./PermitList.ad?category=교육키즈"><img src="./img/category/social-media-campaign.png" width="80" border="0"></a><b id="11">교육·키즈</b></li>
 			</ul>
-		</form>
+		</div>
 	</div>
-	<hr>
 	<c:set var="center" value="${Reward_center }"/>
-	<div align="right">		
-		<span>
-			<c:set var="result"  value="${param.result }"/>
-			<select id="result" onchange="change()">
-				<option value="A" <c:if test="${result eq 'A'}">selected</c:if>>전체</option>
-				<option value="0" <c:if test="${result eq '0'}">selected</c:if>>펀딩중</option>
-				<option value="1" <c:if test="${result eq '1'}">selected</c:if>>성공된</option>
-				<option value="2" <c:if test="${result eq '2'}">selected</c:if>>실패된</option>
-			</select>
-		</span>
-		<span>
-			<c:set var="order"  value="${param.order }"/>
-			<select id="order" onchange="change()">
-				<option value="7"<c:if test="${order eq '7'}">selected</c:if>>추천수</option>
-				<option value="8"<c:if test="${order eq '8'}">selected</c:if>>조회수</option>
-				<option value="5"<c:if test="${order eq '5'}">selected</c:if>>최신순</option>
-				<option value="12"<c:if test="${order eq '12'}">selected</c:if>>참여자순</option>
-			</select>
-		</span>
+	<div class="select">
+		<div id="sc" align="left">	
+				<h2>
+				<c:choose>
+					<c:when test="${category eq 'N' }">
+					전체보기
+					</c:when>
+					<c:when test="${category eq '패션뷰티' }">
+					패션·뷰티
+					</c:when>
+					<c:when test="${category eq '테크가전' }">
+					테크·가전
+					</c:when>
+					<c:when test="${category eq '반려동물' }">
+					반려동물
+					</c:when>
+					<c:when test="${category eq '푸드' }">
+					푸드
+					</c:when>
+					<c:when test="${category eq '홈리빙디자인소품' }">
+					홈리빙·디자인소품
+					</c:when>
+					<c:when test="${category eq '게임스포츠' }">
+					게임·스포츠
+					</c:when>
+					<c:when test="${category eq '여행레저' }">
+					여행·레저
+					</c:when>
+					<c:when test="${category eq '문화교양' }">
+					문화·교양
+					</c:when>
+					<c:when test="${category eq '소셜캠페인' }">
+					소셜·캠페인
+					</c:when>
+					<c:when test="${category eq '교육키즈' }">
+					교육·키즈
+					</c:when>
+				</c:choose>
+				</h2>
+		</div>
+		<div id="sr" align="right">
+				<c:set var="result"  value="${param.result }"/>
+				<select id="result" onchange="change()">
+					<option value="A" <c:if test="${result eq 'A'}">selected</c:if>>전체</option>
+					<option value="0" <c:if test="${result eq '0'}">selected</c:if>>펀딩중</option>
+					<option value="1" <c:if test="${result eq '1'}">selected</c:if>>성공된</option>
+					<option value="2" <c:if test="${result eq '2'}">selected</c:if>>실패된</option>
+				</select>
+			
+				<c:set var="order"  value="${param.order }"/>
+				<select id="order" onchange="change()">
+					<option value="7"<c:if test="${order eq '7'}">selected</c:if>>추천수</option>
+					<option value="8"<c:if test="${order eq '8'}">selected</c:if>>조회수</option>
+					<option value="5"<c:if test="${order eq '5'}">selected</c:if>>최신순</option>
+					<option value="12"<c:if test="${order eq '12'}">selected</c:if>>참여자순</option>
+				</select>
+		</div>
 	</div>
-	<hr>
+	<hr style="clear: both;">
 	<div class="center">
 		<form id="form">	
 			<jsp:include page="${center }"/>
@@ -179,15 +294,16 @@
 --%>
 	<div class="center">
 		<tr id="loadmore">
-			<td colspn="5">
+			<td colspan="3" align=>
 			<c:if test="${currentPage < pageCount }">
-				<div id="more" class="btns">
+				<div id="more" class="btns" align="center">
 					<input type="hidden" id="order" value="${order }">
 					<input type="hidden" id="result" value="${result }">
 					<input type="hidden" id="currentPage" value="${currentPage }">
 					<input type="hidden" id="pageCount" value="${pageCount }">
-					<input type="button" onclick="loadmore()" value="더보기">
+					<input id="morebtn" type="button" onclick="loadmore()" value="더보기">
 				</div>
+				<div class="loading"></div>
 			</c:if>
 			</td>
 		</tr>

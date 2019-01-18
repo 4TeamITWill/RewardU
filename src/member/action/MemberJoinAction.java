@@ -38,11 +38,11 @@ public class MemberJoinAction implements Action{
 		
 		result = mdao.insertMember(mbean);
 		
-		//request¿µ¿ª¿¡  mbean°´Ã¼¸¦ ´ã´Â´Ù
+		//requestï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  mbeanï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½Â´ï¿½
 		request.setAttribute("mbean", mbean);
 		
 		if(result == false){
-			System.out.println("---Join null---");
+			System.out.println("---Join fail---");
 			return null;
 		}
 		
@@ -55,7 +55,7 @@ public class MemberJoinAction implements Action{
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./MemberJoinConfirm.me");
+		forward.setPath("./member/joinConfirm.jsp");
 		
 		return forward;
 	}

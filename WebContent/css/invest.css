@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+.next_btn{
+	background-color: #b44af7;
+	color : #fff;
+	board : 1px solid;
+	padding : 0 1.4em;
+	height : 48px;
+	line-height : 1;
+	font-size : 17px;
+}
+
+.section_chk{
+	text-align: center;
+	font-size : 20px;
+	font-weight: 500;
+}
+
+.section_chk #total_price{
+	text-decoration: underline;
+	color : #b44af7;
+	font-size : 20px;
+	width: 80px;
+}
+
+#expense_price1, #expense_price2, #expense_price3{
+	border : 0;
+	width : 55px;
+}
+#expense_total1,#expense_total2,#expense_total3{
+	width : 80px;
+}
+
+.option_list input[type=text]{
+	border : 1px solid #b44af7;
+	height: 30px;
+	text-align: right;
+	padding: 0 10px;
+	font-size : 20px;
+}
+
+.option_list input[type=button]{
+	
+	background-color: #b44af7
+	
+}
+
+.option_list input[type=button] {
+	background-color:#b44af7;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:2px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Impact;
+	font-size:17px;
+	font-weight:bold;
+	padding:2px 5px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.option_list input[type=button]:hover {
+	background-color:#5cbf2a;
+}
+.option_list input[type=button]:active {
+	position:relative;
+	top:1px;
+}
+
+
+#expense_amount1, #expense_amount2, #expense_amount3{
+	width : 20px;
+}
