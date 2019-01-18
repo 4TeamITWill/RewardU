@@ -1,0 +1,15 @@
+<!-- 관리자 계정 insert  -->
+insert into user values('rewardu4@gmail.com', '!admin12', '관리자', '0000-00-00', '00000000000', sysdate(), 1, null, null);
+
+<!-- 테스트용 계정 insert -->
+insert into user values('java@naver.com', '1234', '테스트맨', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('eclipse@naver.com', '1234', '사원A', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('lotte@hanmail.com', '1234', '사원B', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('coffee@naver.com', '1234', '사원C', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('caffemocha@gmail.com', '1234', '사원D', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('americano@gmail.com', '1234', '사원E', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('cappuccino@gmail.com', '1234', '사원F', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('latte@gmail.com', '1234', '사원G', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('dutchcoffee@gmail.com', '1234', '사원H', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('espresso@gmail.com', '1234', '사원I', '1111-11-11', '00000000000', sysdate(), 1, null, null);
+insert into user values('seller@gmail.com', '!jsppass123', 'allen', '1990-01-26', '01012345678', '2019-01-01 09:58:44', '1', null, null);
