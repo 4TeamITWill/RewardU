@@ -362,6 +362,7 @@ body{
 }
 
 #main .box1 .box_grid3 .box_grid3_cont {
+	display:none;
 	opacity : 0;
 	position : absolute;
 	left:0;

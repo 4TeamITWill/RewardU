@@ -1,3 +1,4 @@
+<%@page import="admin_db.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
@@ -26,11 +27,11 @@
 		<c:if test="${count > 0 }">
 			<c:forEach var="board" items="${board1list }">
 				<div class="savedList_bottom_content" >	
-					
+										
 					<div style="display : flex; align-items : center;">
 					
 						<div style="width : 130px; height :130px; overflow : hidden;"><img src="./upload/${board.pd_realfile }" width="130px" height="130px"/></div>
-						<div style="padding : 10px 10px;">
+						<div style="flex : 1; padding : 10px 10px;">
 						<c:if test="${board.pd_permit == 1 }">
 							<a href="./Content.ad?pd_no=${board.pd_no}" style="color:#000;">
 							<font style="font-size : 18px;">${board.pd_subject }</font><br/>
