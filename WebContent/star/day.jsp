@@ -488,7 +488,6 @@ star-input>.input.focus {
 		<div style="margin-top: 10px;">	
 		<%
 			if(mbto.getUser_photo() == null){
-			System.out.println(">>>>>"+mbto.getUser_photo()+"<<<<<");
 		%>
 			<img alt="" src="./upload/sm_no_img.jpg" width="50"	height="50" style= "display:block;" id="photo">	
 		<%
