@@ -44,7 +44,7 @@ th, td {
 			<tr>
 				<td style="table-layout: fixed; max-height: 100%; padding: 0 40px;" valign="top"> <img alt="" src="./upload/<%=bdto.getPd_realfile() %>" width="600"	
 					height="500" style= "display:block;">	
-		
+					<br/>
 					<div style="padding:20px;  background:#ced3f5;	">
 				          <p style="color:#8a80a0;font-size:13px;line-height:20px;">
 				        	  <strong>목표 금액</strong> <%=bdto.getPd_goalmoney()%> 원 &nbsp; &nbsp; <strong>펀딩기간</strong> <%=bdto.getPd_startf()%> - <%=bdto.getPd_endf()%>
@@ -55,6 +55,7 @@ th, td {
 		         			 이 프로젝트는 펀딩 마감일까지 목표 금액이 100% 모이지 않으면 결제가 진행되지 않습니다.</p>
       
        				 </div>
+       				 <br/>
 					<div class="in">
 							
 							<%=bdto.getPd_content()%>
