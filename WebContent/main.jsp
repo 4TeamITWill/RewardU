@@ -326,7 +326,7 @@
 	//처음으로 보여지고 있을 기본 값
 	
 	$(".box_grid3_cont").eq(pos1).css("opacity","1");
-	$(".box_grid3_cont").eq(pos1).css("display","block");
+	$(".box_grid3_cont").eq(pos1).css("z-index","1");
 	
 	pagenation();
 	
@@ -335,8 +335,8 @@
 		pos1 = $(this).index();
 		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);
 		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
-		$(".box_grid3_cont").eq(pos1).css({"display":"block"});
-		$(".box_grid3_cont").not(":eq("+pos1+")").css({"display":"none"});
+		$(".box_grid3_cont").eq(pos1).css("z-index","1");
+		$(".box_grid3_cont").not(":eq("+pos1+")").css({"z-index":"0"});
 		
 		pagenation();
 	});
@@ -355,8 +355,8 @@
 		if(pos1 == -1) pos1=totalSlides1-1;
 		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);		
 		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
-		$(".box_grid3_cont").eq(pos1).css({"display":"block"});
-		$(".box_grid3_cont").not(":eq("+pos1+")").css({"display":"none"});
+		$(".box_grid3_cont").eq(pos1).css({"z-index":"1"});
+		$(".box_grid3_cont").not(":eq("+pos1+")").css({"z-index":"0"});
 		
 		pagenation();
 	}
@@ -366,8 +366,8 @@
 		if(pos1 == totalSlides1) pos1 =0;
 		$(".box_grid3_cont").eq(pos1).animate({"opacity":"1"},300);		
 		$(".box_grid3_cont").not(":eq("+pos1+")").animate({"opacity":"0"},300);
-		$(".box_grid3_cont").eq(pos1).css({"display":"block"});
-		$(".box_grid3_cont").not(":eq("+pos1+")").css({"display":"none"});
+		$(".box_grid3_cont").eq(pos1).css({"z-index":"1"});
+		$(".box_grid3_cont").not(":eq("+pos1+")").css({"z-index":"0"});
 		
 		pagenation();
 	}
