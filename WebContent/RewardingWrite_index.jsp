@@ -15,7 +15,7 @@
 
 <div id="write_top">
 	<div class="write_top_cont"></div>
-</div>
+
 
 <div id="write_main">
 	<div class="write_tab">
@@ -26,7 +26,6 @@
 	</div>
 		
 	<div class="write_content">
-	
 	</div>
 </div>	
 

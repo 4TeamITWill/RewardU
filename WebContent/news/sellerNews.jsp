@@ -97,8 +97,8 @@
 						<div class="margin2"><br/></div>
 					</c:if>
 					
-					<c:if test="${countS==0&&keyward ne ''}">
-						<c:if test="${keyward!=null}">
+					<c:if test="${countS==0&&keyword ne ''}">
+						<c:if test="${keyword!=null}">
 							<div class="margin2"><br/></div>
 							<div style="color: #999999;" align="center">검색된 리워드 소식이 없습니다.</div>
 							<div class="margin2"><br/></div>
@@ -137,6 +137,8 @@
 				
 			
 				<!-- paging section -->
+				<!-- 검색어 없는 경우 페이징 -->
+				<c:if test="${keyword eq ''||keyword eq null }">
 					<div class="reNews_paging">
 						<c:if test="${firstPage > pageBlock }">
 							<a href="./sellerNewsAction.news?currentPageP=${firstPage-pageBlock }">이전</a>
@@ -149,12 +151,33 @@
 								<a href="./sellerNewsAction.news?currentPageP=${i }">${i }</a>
 							</c:if>
 						</c:forEach>
-						<c:if test="${endPage < pageCount }">
+						<c:if test="${lastPage < pageCount }">
 							<a href="./sellerNewsAction.news?currentPageP=${firstPage+5 }">다음</a>
 						</c:if>
 						<div class="margin2"></div>
 					</div><!-- reNews_paging -->
+				</c:if>
 				
+				<!-- 검색어 있는 경우 페이징 -->
+				<c:if test="${keyword ne null}">
+					<div class="reNews_paging">
+						<c:if test="${firstPage > pageBlock }">
+							<a href="./sellerNewsAction.news?currentPageP=${firstPage-pageBlock }&newsKeyword=${keyword}">이전</a>
+						</c:if>
+						<c:forEach var="i" begin="${firstPage }" end="${lastPage}">
+							<c:if test="${currentPage == i }">
+								<a href="./sellerNewsAction.news?currentPageP=${i }&newsKeyword=${keyword}">${i }</a>
+							</c:if>
+							<c:if test="${currentPage != i }">
+								<a href="./sellerNewsAction.news?currentPageP=${i }&newsKeyword=${keyword}">${i }</a>
+							</c:if>
+						</c:forEach>
+						<c:if test="${lastPage < pageCount }">
+							<a href="./sellerNewsAction.news?currentPageP=${firstPage+5 }&newsKeyword=${keyword}">다음</a>
+						</c:if>
+						<div class="margin2"></div>
+					</div><!-- reNews_paging -->
+				</c:if>
 			
 			</div><!-- reNews_board -->	
 			
