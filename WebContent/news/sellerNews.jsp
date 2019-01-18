@@ -138,7 +138,7 @@
 			
 				<!-- paging section -->
 				<!-- 검색어 없는 경우 페이징 -->
-				<c:if test="${keyword eq ''||keyword eq null }">
+				<c:if test="${keyword eq ''||keyword eq null}">
 					<div class="reNews_paging">
 						<c:if test="${firstPage > pageBlock }">
 							<a href="./sellerNewsAction.news?currentPageP=${firstPage-pageBlock }">이전</a>
