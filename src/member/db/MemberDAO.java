@@ -548,8 +548,9 @@ public MemberBean getSellerimg(int pd_no){
 		
 		try {
 			con = getConnection();
-			sql = "select a.user_photo from user a, seller b where a.user_id=b.user_id";
+			sql = "select a.user_photo from user a, seller b where a.user_id=b.user_id and pd_no = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_no);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
