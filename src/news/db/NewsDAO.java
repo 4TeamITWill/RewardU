@@ -728,7 +728,89 @@ public class NewsDAO {
 		return nbean;
 	}//readContent
 
+	public void sellerDelelteNews (int no){
+		Connection con = null;
+		PreparedStatement pstmt = null;
 
+		String sql = "";
+		
+		try {
+			con = getConnection();
+			
+			sql = "delete from sellerNews where no=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+			
+	}//sellerDeleteNews
+	
+	//판매자리스트 몽땅 가죠오기
+		/*public SellerNewsBean getOne(){
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			Vector<SellerNewsBean> v = new Vector<>();
+			
+			SellerNewsBean nbean = null;
+			String sql = null;
+			
+			try {
+				con = getConnection();
+				
+				sql = "select * from sellerNews order by no desc limit ?,?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow-1);
+				pstmt.setInt(2, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					nbean = new SellerNewsBean();
+					nbean.setDate(rs.getTimestamp("date"));
+					nbean.setNo(rs.getInt("no"));
+					nbean.setPd_no(rs.getInt("pd_no"));
+					nbean.setSell_content(rs.getString("sell_content"));
+					nbean.setSell_subject(rs.getString("sell_subject"));
+					nbean.setUser_id(rs.getString("user_id"));
+					nbean.setPd_subject(rs.getString("pd_subject"));
+					
+					v.add(nbean);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(con != null) con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}//fianlly
+			
+			
+			return v;
+		}//getNewsList
+		
+	*/
 	
 	
 }

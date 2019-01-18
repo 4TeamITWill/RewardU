@@ -36,7 +36,21 @@ function selectID(i) { //onclick="selectID(번호); 는 userList.jsp에 있다."
 <!-- 세션id값 전달받기  -->
 <% String id=(String)session.getAttribute("id"); 
 	String divide = request.getParameter("divide");
+	String send_id=(String)request.getParameter("user_id");	
 %>
+<script type="text/javascript">
+$(document).ready(function() {
+	if(<%=send_id%>!=null) {
+		$("#fromID").val('<%=send_id%>');
+	}else{
+		$("#fromID").val('');
+	}
+	
+	
+});
+
+</script>
+
 
 <section class="messageSend_sec"><!-- TOP과 FOOTER 사이를 차지하는 공간. -->
 
@@ -48,7 +62,7 @@ function selectID(i) { //onclick="selectID(번호); 는 userList.jsp에 있다."
 
 <fieldset class="send_FS" name="send_FS"> 
 	<label><b>받는사람</b> </label>
-	<input type="text" name="fromID" id="fromID" placeholder="받는사람의 ID를 입력하세요."> <br/><br/>
+	<input type="text" name="fromID" id="fromID" placeholder="받는사람의 ID를 입력하세요." value="<%=send_id%>"> <br/><br/>
 	<input type="text" name="subject" class="msg_subject" placeholder="제목을 입력하세요.">
 	<br/>
 	<!-- 내용 -->

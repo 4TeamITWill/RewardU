@@ -85,7 +85,7 @@ public class NewsFrontController extends HttpServlet{
 			}
 			
 			
-	//여기서부터 리워드 소식
+	//--------------------------------------------------여기서부터 리워드 소식--------------------------------------------
 			
 		}else if (command.equals("/sellerNewsAction.news")) {
 			
@@ -107,7 +107,16 @@ public class NewsFrontController extends HttpServlet{
 			
 			}	
 			
+		}else if (command.equals("/SellerNewsDeleteAction.news")) {
 			
+			action = new SellerNewsDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+				
 			
 	//filedown		
 		}else if (command.equals("/AttachmentDownloadAction.news")) {

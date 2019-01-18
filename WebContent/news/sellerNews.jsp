@@ -1,3 +1,4 @@
+<%@page import="news.db.SellerNewsBean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="news.db.NewsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -109,12 +110,27 @@
 							<div class="reNews_board_content2" style="height: 70px;">
 								<a href="./SellerNewsReadContentAction.news?no=${v.no}">						
 									<div  style="padding-top:5px;">
-											<font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 15px;">no${v.no}</font>
+											<font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 15px;">no ${v.no}</font>
 											<font class="sellNewsSub" style="font-size : 18px; font-weight : bold; color: black;" >${v.sell_subject}</font>
 									</div> 
 									
 									<div class="sellNewsSub" style="margin-left: 42px; margin-top: 10px;" >
-										<font  style="color : #999999; align:right;"> ${v.pd_subject}</font>
+										<font  style="color : #999999; align:right;"> 
+									<%-- 	<%
+											NewsDAO ndao= new NewsDAO();
+											SellerNewsBean seller = new SellerNewsBean();
+											seller = ndao.getOne();
+											int length = v.getPd_subject().length();
+											String newSub = null;
+											if(length>40){
+												newSub = (v.getPd_subject().substring(0,40))+"....";
+											}
+											%>
+										
+											<%=newSub%>
+									 --%>
+										${v.pd_subject}
+										</font>
 										<font style="color: #999999; font-size: 2;" >(${v.user_id})</font>
 									<!-- <input type="hidden" value="${v.user_id}">-->
 									</div>

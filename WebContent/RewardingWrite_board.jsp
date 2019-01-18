@@ -79,33 +79,6 @@ function dateChk() {
 		     obj.value = comma(uncomma(obj.value));
 		 }
 	
-		 
-	<%--  //-----------세션에서 받올때 천단위 콤마
- 		<%
-<<<<<<< HEAD
-		//RewardBean all = (RewardBean)session.getAttribute("board");
-		//String com =all.getPd_goalMoney();
-		%> 
-	 
-/* 	 $(document).ready(function convertComma(num) {
-		 	var num01; 
-		    var num02; 
-		    num01 = num; 
-		    console.log("num01 ==", num01); 
-		    num02 = (num01.toString()).replace(rgx1, ""); 
-		    num01 = setComma(num02); 
-		    return num01;
-	 }
- */
-
-=======
-		RewardBean all = (RewardBean)session.getAttribute("board");
-		String com =all.getPd_goalMoney();
-		%>
->>>>>>> refs/remotes/origin/jonghwan2
-			
-
-	  --%>
 
 
 </script>
