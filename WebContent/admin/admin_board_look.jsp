@@ -125,7 +125,7 @@
 				<font style="font-size : 17px; font-weight : bold;">대표 이미지  </font>
 			</td>
 			<td colspan="3">
-				<img src="./upload/${bbean.pd_file }"/>
+				<img src="./upload/${bbean.pd_file }" style="max-width : 80%"/>
 			</td>			
 		</tr>
 		

@@ -588,19 +588,23 @@ public class MyDAO {
 	}//get0BoardList() 메소드 끝
 
 	//좋아요 삭제 delGood() 메소드
-	public int delGood(int pd_no) {
+	public int delGood(int pd_no, String user_id) {
 		
 		int result = 0;
 		String sql = "";
+		BoardDAO bdao = new BoardDAO();
 		
 		try {
 			
 			con = getConnection();
-			sql = "delete from good where pd_no = ?";
+			sql = "delete from good where pd_no = ? and user_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pd_no);
+			pstmt.setString(2, user_id);
 			
 			result = pstmt.executeUpdate();
+			
+			bdao.downGood(pd_no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
