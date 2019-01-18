@@ -27,6 +27,17 @@ A:visited{
 	color :#8a80a0;
 }
 
+/* 로고 이미지  */
+.logoimage{
+
+filter: blur(5px);			
+		
+width: 100%;
+height: 100%;
+
+	 
+}
+
 /* 로고  */
 div.logo {
 	height: 200px;
@@ -140,9 +151,7 @@ div.in {
 		
 	<div class="logo">
 	
-		<img src=" ./upload/<%=bdto.getPd_realfile() %> " style="opacity: 0.3" height="100%"
-			width="100%">
-		
+		<img src=" ./upload/<%=bdto.getPd_realfile() %>" class="logoimage">	
 		<h2 class="logot"># <%=bdto.getPd_category() %></h2>	
 		<h2 class="logotext"><%=bdto.getPd_subject() %></h2>
 	</div>
