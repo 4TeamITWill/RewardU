@@ -21,52 +21,58 @@ public class SellerNewsAction implements Action{
 		
 		String newsKeyword = request.getParameter("newsKeyword");
 		String reload = request.getParameter("reload");
+		String currentPageP = request.getParameter("currentPageP");
+		if(currentPageP == null) currentPageP = "1"; 
+		int currentPage = Integer.parseInt(currentPageP); //2
+		int pageSize = 5;
+		int startRow = (currentPage-1) * pageSize +1;	// 9
+		int countS = 0;
+		int pageCount =0;
+		int pageBlock=5;/*pageBlock(pagePerBlock)*/	
+		int firstPage=0;
+		int lastPage=0;
 		
+		int count = ndao.getSellerNewsCount();
+
 		if(reload != null){
 			if(reload.equals("true")){
 				newsKeyword = "";
 			}
 		}
 		
-		int count = ndao.getSellerNewsCount();
-		//paging variables	
-		/*int pageNo = 0;*/
-		int pageSize = 8; /*pageCount(totalPage)*/
-		int pageCount = count/pageSize + (count%pageSize==0?0:1);
-		String currentPageP = request.getParameter("currentPageP");
-		
-		if(currentPageP == null) currentPageP = "1"; 
-		
-		int currentPage = Integer.parseInt(currentPageP); //2
-		int startRow = (currentPage-1) * pageSize +1;	// 9
-		int pageBlock = 5;	/*pageBlock(pagePerBlock)*/	
-		int firstPage = ((currentPage-1)/pageBlock)*pageBlock + 1; //2
-		int lastPage = firstPage + pageBlock -1;	//6
-		
-		if(lastPage > pageCount){lastPage = pageCount;}
-		
-	//get News lists
+		//get News lists
 		Vector<SellerNewsBean> v = new Vector<>();
-		if(newsKeyword == null){
-			
+		if(newsKeyword == null || newsKeyword==""){
 			v =ndao.getSellerNewsList(startRow, pageSize);
 			request.setAttribute("v", v);
-			System.out.println(count);
+			pageCount = count/pageSize + (count%pageSize==0?0:1);	
 		
 		}else {	//if searchBar(newsKeyword) has any input value
+			countS = ndao.SellerNewSearchCount(newsKeyword);
 			v = ndao.totalSellerNewsSearch(startRow, pageSize, newsKeyword);
 			request.setAttribute("v", v);
+			pageCount = countS/pageSize + (countS%pageSize==0?0:1);
+
 		}
 		
+		firstPage = ((currentPage-1)/pageBlock)*pageBlock + 1;
+		lastPage = firstPage + pageBlock -1;	
 		
+		if(lastPage > pageCount){lastPage = pageCount;}
+
+		//count = ndao.getSellerNewsCount();
+		//paging variables	
+		/*int pageNo = 0;*/
+
 		request.setAttribute("count", count);
+		request.setAttribute("countS", countS);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("firstPage", firstPage);
 		request.setAttribute("lastPage", lastPage);
 		request.setAttribute("pageBlock", pageBlock);
-		
+		request.setAttribute("keyward", newsKeyword);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

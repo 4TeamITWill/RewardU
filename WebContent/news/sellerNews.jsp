@@ -53,6 +53,10 @@
 
 }
 
+.sellNewsSub {
+	padding-left: 5px;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -78,39 +82,58 @@
 				
 				<div id="reNews_content" >
 					<div id="header" >
-						<div id="header_header">리워드 소식<span id="header_count">&nbsp;&nbsp;&nbsp;총 게시글 ${count}</span> </div>
-						<h6>전체 프로젝트의 리워드소식을 한번에 확인할 수 있는 공간입니다.</h6>
+						<div id="header_header">리워드 소식<span id="header_count">&nbsp;&nbsp;&nbsp;총 게시글 ${count}</span>
+						<c:if test="${countS!=0}">
+							<span id="header_count">&nbsp;&nbsp;&nbsp;겸색결과 ${countS}</span>		
+						</c:if>
+						 </div>
+						<h6>${currentPage }/${pageCount }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전체 프로젝트의 리워드소식을 한번에 확인할 수 있는 공간입니다.</h6>
 					</div>
 					<hr>
-				
+					
 					<c:if test="${count==0}">
 						<div class="margin2"><br/></div>
 						<div style="color: #999999;" align="center">리워드 소식이 없습니다.</div>
 						<div class="margin2"><br/></div>
 					</c:if>
 					
-					<c:if test="${count>0}">
-						<c:forEach var="v" items="${requestScope.v }" >
-						<div class="reNews_board_content2">
-							<span><font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 17px;">no : ${v.no} / pd_no : ${v.pd_no}</font></span> 
-							<span><font style="color: #999999; font-size: 2;">${v.user_id}</font></span>
-							<a href="./SellerNewsReadContentAction.news?no=${v.no}">
-								<p><font style="font-size : 18px; font-weight : bold; color: black;" >
-									${v.sell_subject} 
-								</font></p>
-								<p class="content_info2" align="right">
-									<span class="reNews_editor" align="right">${v.date}</span>
-								</p>
-							</a>
-						</div>
-						<hr>
-						</c:forEach>
+					<c:if test="${countS==0&&keyward ne ''}">
+						<c:if test="${keyward!=null}">
+							<div class="margin2"><br/></div>
+							<div style="color: #999999;" align="center">검색된 리워드 소식이 없습니다.</div>
+							<div class="margin2"><br/></div>
+						</c:if>
 					</c:if>	
+						<c:if test="${(count>0||countS>0)}">
+							<c:forEach var="v" items="${requestScope.v }" >
+							<div class="reNews_board_content2" style="height: 70px;">
+								<a href="./SellerNewsReadContentAction.news?no=${v.no}">						
+									<div  style="padding-top:5px;">
+											<font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 15px;">no${v.no}</font>
+											<font class="sellNewsSub" style="font-size : 18px; font-weight : bold; color: black;" >${v.sell_subject}</font>
+									</div> 
+									
+									<div class="sellNewsSub" style="margin-left: 42px; margin-top: 10px;" >
+										<font  style="color : #999999; align:right;"> ${v.pd_subject}</font>
+										<font style="color: #999999; font-size: 2;" >(${v.user_id})</font>
+									<!-- <input type="hidden" value="${v.user_id}">-->
+									</div>
+									<div align="right"><span class="reNews_date">${v.date }</span></div>
+								</a>
+								<!-- <span class="reNews_editor" style="width: 100px; text-align: right;">${v.date}</span> -->
+								
+							</div>
+							<hr>
+							</c:forEach>
+						</c:if>	
+						
 				
+					
 						<div class="margin2"></div>	
 				</div><!-- reNews_content -->					
 			
 				<%-- <h6>${currentPage }/${pageCount }</h6> --%>
+				
 				
 			
 				<!-- paging section -->
@@ -138,13 +161,15 @@
 			<div class="boardSection_sub">
 				<div class="section_container">
 					<form action="./sellerNewsAction.news" method="post">
-						<div></div>
+						
 				 		<input type="text" name="newsKeyword" placeholder="키워드를  입력해주세요" class="inp-field2"><input type="button" class="btn_search" value="검색" onclick="this.form.submit();"><br>
 				 	</form>
 				 	<hr>
 				 	<div align="left">
-					 	<h4>리워드U</h4>
-					 	<span>화목한 커뮤니티, 리듀의 새소식을 전합니다.</span>
+					 	<h5>소식이 궁금한 프로젝트 또는 작성자를 검색해보세요!</h5>
+					 	<div style="margin-top: 10px;">
+						 	<span style="font-size: small;"><font style="color : rgba(255,0,130,0.9); font-weight : bold;">ex)</font> 프로젝트 이름이 '블랙헤드도 한번에 씻는 클렌저'인 프로젝트를 찾고 싶다면 '블랙헤드', '클렌저' 등의 키워드만으로 검색이 가능합니다.</span>
+						 </div>
 					 	<hr>
 					 	<%-- <h4>리듀 뉴스 Best 조회수</h4>
 					 	<a href="./NewsReadContentAction.news?no=${bestNews.reNews_no }"><span>${bestNews.reNews_title }</span></a> --%>
@@ -153,7 +178,6 @@
 				 	<form name="newsReload" method="post">
 						<input type="hidden" name="reload" value="true">
 					</form>
-				 	
 				</div>
 			</div><!-- boardSection_sub -->
 		

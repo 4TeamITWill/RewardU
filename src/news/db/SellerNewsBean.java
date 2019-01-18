@@ -9,6 +9,7 @@ public class SellerNewsBean {
 	private String user_id;
 	private String sell_subject;
 	private String sell_content;
+	private String pd_subject;
 	private Timestamp date;
 	public int getNo() {
 		return no;
@@ -46,7 +47,12 @@ public class SellerNewsBean {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
-	
+	public String getPd_subject() {
+		return pd_subject;
+	}
+	public void setPd_subject(String pd_subject) {
+		this.pd_subject = pd_subject;
+	}
 	
 	
 }

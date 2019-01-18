@@ -39,9 +39,12 @@
 		</div>
 	</c:if>
 		<div class="reNewsRead_container">
-			<font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 17px;">no : ${nbean.no} / pd_no : ${nbean.pd_no}</font>
+			<font style="color : rgba(255,0,130,0.9); font-weight : bold; font-size : 17px;">no${nbean.no}</font>
 			<h3>${nbean.sell_subject }</h3>
-			<div align="right"><span class="reNews_editor">작성자 : ${nbean.user_id }</span>&nbsp;&nbsp;<span class="reNews_date">${nbean.date }</span></div>
+			<div class="sellNewsSub" style="margin-left: 42px; margin-top: 10px; color: #999999; text-align: right;" >
+									<font> ${nbean.pd_subject}</font>
+			</div>
+			<div align="right"><span class="reNews_editor">${nbean.user_id }</span>&nbsp;&nbsp;<span class="reNews_date">${nbean.date }</span></div>
 			<%-- <span class="reNews_date">&nbsp;&nbsp;조회수 ${nbean.}</span> --%>
 			<hr>
 			<div class="reNewsRead_content">
