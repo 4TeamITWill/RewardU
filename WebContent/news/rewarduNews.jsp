@@ -14,6 +14,16 @@
 
 .wrap{ /* clear: both; */ }
 
+.news_header{
+	width: 100%;
+	height: 180px;
+	background-image: url("img/radioNews.jpg"); 
+	background-size: 100% 100%;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+}
+
+
 
 </style>
 <script type="text/javascript">
@@ -31,8 +41,8 @@
 <div class="wrap">
 	<div class="container" align="center">
 		<div class="news_header">
-			<br>
-			<span class="news_header_font" style="">News</span>
+			
+			<div class="news_header_font" style="">News</div>
 		</div>
 			<div class="margin2"></div>
 		<div class="reNews_section_container">
@@ -64,21 +74,16 @@
 				</c:if>
 				</div>
 				<hr>
-				<div class="reNews_board_content">
-					<span class="reNews_category_board">새소식</span>
-					<a href="#"><p class="reNews_board_title">team4에서 RewardU로 새롭게 시작합니다!</p>
-						<p class="reNews_board_summary">RewardU 리듀는 당신에게 돌려드린다는 의미입니다.</p></a>
-					<p class="content_info">
-						<span class="reNews_editor">정만득</span>
-						<span class="reNews_date">19.01.02</span>
-					</p>
-					
-				</div>
-				<div class="reNews_board_thumnail">난나라날난 사진 들어감니당 ㅎㅎㅎ 헤헷호호호호호</div>
-				<hr>
+				
+	<c:if test="${count==0}">
+						<div class="margin2"><br/></div>
+						<div style="color: #999999;" align="center">리워드 소식이 없습니다.</div>
+						<div class="margin2"><br/></div>
+	</c:if>
+
 	
-	
-			<c:forEach var="v" items="${requestScope.v }">
+	<c:if test="${count>0}">
+			<c:forEach var="v" items="${requestScope.v }" begin="${startRow-1 }" end="${(startRow-1) + pageSize-1 }">
 	
 					<div class="reNews_board_content">
 			<!-- 착한 관리자 눈에만 글번호가 보임 -->		
@@ -100,24 +105,25 @@
 	
 					<hr>
 			</c:forEach>
+	</c:if>			
 					<div class="margin2"></div>	
 			</div><!-- reNews_content -->					
 			
 			<!-- paging section -->
 				<div class="reNews_paging">
 					<c:if test="${firstPage > pageBlock }">
-						<a href="./NewsAction.news?newsCurrentP=${firstPage-pageBlock }">이전</a>
+						<a href="./NewsAction.news?newsCurrentP=${firstPage-pageBlock }&newsKeyword=${newsKeyword}">이전</a>
 					</c:if>
 					<c:forEach var="i" begin="${firstPage }" end="${lastPage}">
 						<c:if test="${currentPage == i }">
-							<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
+							<a href="./NewsAction.news?newsCurrentP=${i }&newsKeyword=${newsKeyword}">${i }</a>
 						</c:if>
 						<c:if test="${currentPage != i }">
-							<a href="./NewsAction.news?newsCurrentP=${i }">${i }</a>
+							<a href="./NewsAction.news?newsCurrentP=${i }&newsKeyword=${newsKeyword}">${i }</a>
 						</c:if>
 					</c:forEach>
-					<c:if test="${firstPage > pageCount }">
-						<a href="./NewsAction.news?newsCurrentP=${firstPage+5 }">다음</a>
+					<c:if test="${firstPage < pageCount }">
+						<a href="./NewsAction.news?newsCurrentP=${firstPage+5 }&newsKeyword=${newsKeyword}">다음</a>
 					</c:if>
 					<div class="margin2"></div>
 				</div><!-- reNews_paging -->

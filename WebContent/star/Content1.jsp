@@ -12,6 +12,19 @@ th, td {
 	padding: 0;
 }
 
+	
+
+.to img{
+width : 100%;	
+	
+}
+
+.to{
+ 
+	text-align: left;
+	
+}
+
 /* /* 레이어 고정 이동 */	
 #layer_fixed
 {
@@ -40,9 +53,9 @@ th, td {
 
 
 <div class="ma">
-		<table style="margin-left: 400px; margin-right: auto; ">		
+		<table style="margin-left: 400px;">			
 			<tr>
-				<td style="table-layout: fixed; max-height: 100%; padding: 0 40px;" valign="top"> <img alt="" src="./upload/<%=bdto.getPd_realfile() %>" width="600"	
+				<td style="table-layout: fixed; max-height: 100%; padding: 0 40px;" valign="top" width="50%"> <img alt="" src="./upload/<%=bdto.getPd_realfile() %>" width="700"	
 					height="500" style= "display:block;">	
 					<br/>
 					<div style="padding:20px;  background:#ced3f5;	">
@@ -55,10 +68,10 @@ th, td {
 		         			 이 프로젝트는 펀딩 마감일까지 목표 금액이 100% 모이지 않으면 결제가 진행되지 않습니다.</p>
       
        				 </div>
-       				 <br/>
-					<div class="in">
-							
-							<%=bdto.getPd_content()%>
+       				 <div class="to">
+						<div class="in">
+							<%=bdto.getPd_content()%>		
+						</div>
 					</div>			
 				</td >			
 				<td style="table-layout: fixed; max-height: 100%; padding-top :80px;" valign="top">	

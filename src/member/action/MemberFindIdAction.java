@@ -43,23 +43,27 @@ public class MemberFindIdAction implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.print("alert('입력하신 정보에 해당하는 아이디가 존재하지 않습니다.')");
-			//out.println("history.back();");
+			out.println("alert('입력하신 정보에 해당하는 아이디가 존재하지 않습니다.')");
+			out.println("history.back();");
 			out.println("</script>");
 		}else{
 			System.out.println("---yessssss--");
 			
-			ActionForward forward = new ActionForward();
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			
+			out.println("<script>");
+			out.println("alert('회원님의 아이디는 "+ user_id +"입니다.')");
+			out.println("history.back();");
+			out.println("</script>");
+			
+			/*ActionForward forward = new ActionForward();
 			
 			forward.setRedirect(false);
 			
 			forward.setPath("member/idConfirm.jsp");
-			//out.println("<script>");
-			//out.print("alert('ȸ������ ���̵��' + user_id + '�Դϴ�.')");
-			//out.println("history.back();");
-			//out.println("</script>");
-			return forward;
+			return forward;*/
+			
 		}	
 		
 	return null;

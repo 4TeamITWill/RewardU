@@ -56,7 +56,7 @@
 <section class="supporters_sec">
 
 
-<table style="margin-left: auto; margin-right: auto;">
+<table style="margin-left: auto; margin-right: auto; margin-top: 10%;">
 	
 	<tr>
 	<c:choose>
@@ -80,8 +80,6 @@
 		</td>
 		</c:otherwise>
 	</c:choose>
-	
-		<td><jsp:include page="day.jsp" /> </td>
 	</tr>
 
 </table>

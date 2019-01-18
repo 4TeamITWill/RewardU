@@ -10,16 +10,16 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <style type="text/css">
 
-.margin{margin-top: 100px;}
-.margin2{margin-top: 50px;}
-.margin3{margin-top: 20px;}
-.margin4{margin-bottom: 100px;}
-
 .wrap{
 	background-color: #ddd;
 	padding: 100px 150px;
-}
 
+	background-image: url("img/laurel-forest.jpg"); 
+	background-size: cover;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	
+}
 </style>
 <%
  	String mpw = (String)request.getParameter("mpw");
@@ -38,22 +38,13 @@
 		if(mpw == "2"){
 			  $('#checkMessage').html('입력하신 기존 비밀번호가 틀립니다.');
 			  $('#myModal').show();
-			}/* else {
-				$('#checkMessage').html('방가방가');
-				$('#myModal').show();
-			} */
+			}
 		
-
 	});
-	
 
-	function close_pop(flag) {
-        $('#myModal').hide();
-   };
-   
 </script>
 <script type="text/javascript">
-	//password가 서로 같은지 , 조건에 맞는지 확인하여   passwordCheckMessage에 에러메시지 출력
+
 	function pwCheckFunction() {
 
 		var user_pw3 = $('#user_pw3').val();
@@ -69,7 +60,7 @@
 			
 			return;
 			
-		}else{ //정규표현식에 만족할경우(제대로 password를 입력 했을 경우 )
+		}else{ //정규표현식에 만족할경우
 			
 			$('#pwCheckMessage').html('');
 		
@@ -78,7 +69,7 @@
 				$('#pwCheckMessage').css("visibility", "visible");
 				$('#pwCheckMessage').html('비밀번호가 서로 일치하지 않습니다.&nbsp;');
 				
-			}else{//같을떄...
+			}else{//같으면
 				
 				$('#pwCheckMessage').html('');
 				$('#pwCheckMessage').css("display", "none");
@@ -107,7 +98,11 @@
 			return false;
 		}
 	};	//pwchk
-	 
+	
+	//modal close(x)
+	function close_pop(flag) {
+        $('#myModal').hide();
+   };
 
 </script>
 </head>
