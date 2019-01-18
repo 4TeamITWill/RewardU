@@ -72,7 +72,7 @@ public class SellerNewsAction implements Action{
 		request.setAttribute("firstPage", firstPage);
 		request.setAttribute("lastPage", lastPage);
 		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("keyward", newsKeyword);
+		request.setAttribute("keyword", newsKeyword);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
