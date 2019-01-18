@@ -793,6 +793,11 @@ body{
 
 .good_content_box {
 	border : 0.5px solid rgba(170,170,170,0.6);
+	height : 160px;
+}
+
+.good_content {
+	position : relative;
 }
 
 .good_content .content{
@@ -800,7 +805,9 @@ body{
 }
 
 .good_content .content_0 {
-	height : 55%;
+	height : 170px;
+	border : 1px solid rgba(170,170,170,0.6);
+	border-bottom : 0;
 }
 
 .good_content img {
@@ -816,13 +823,12 @@ body{
 }
 
 .good_content .content_2 {
-	font-size : 1.2rem;
 	font-weight : bold;
 }
 
 .good_content .content_3 {
 	color : #34f;
-	font-size : 14px;
+	font-size : 12px;
 }
 
 .good_content .content_4 {
@@ -832,7 +838,10 @@ body{
 }
 
 .mybtn {
+	position : absolute ;
+	bottom : 0;
 	display : block;
+	width : 100%;
 	border-top : 1px solid #aaa;
 	height : 30px;
 	line-height : 30px;

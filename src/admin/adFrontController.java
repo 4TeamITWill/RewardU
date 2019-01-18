@@ -1,12 +1,14 @@
 package admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //�꽴占썹뵳�딆쁽 占쎈읂占쎌뵠筌욑옙 frontController
 public class adFrontController extends HttpServlet{
@@ -23,7 +25,7 @@ public class adFrontController extends HttpServlet{
 		adAction action = null;
 		
 		if(command.equals("/adminPage.ad")){
-			
+									
 			forward = new adActionForward();
 			forward.setPath("./index.jsp?center=./admin/admin_index.jsp");
 			forward.setRedirect(false);		
