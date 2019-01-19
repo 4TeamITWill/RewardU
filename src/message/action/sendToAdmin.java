@@ -26,11 +26,11 @@ public class sendToAdmin extends HttpServlet{
 		//메시지 작성에 필요한 값 받아오기
 		String toID = request.getParameter("toID");
 		String fromID = request.getParameter("fromID");
-		String subject = request.getParameter("subject");
+		String subject = request.getParameter("subject_inquiry");
 		if(subject.equals("") || subject==null){
 			subject = "제목없음";
 		}
-		String content = request.getParameter("content");
+		String content = request.getParameter("content_inquiry");
 		
 		MessageDTO mdto = new MessageDTO();
 		MessageDAO mdao = new MessageDAO();

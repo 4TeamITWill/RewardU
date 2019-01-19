@@ -21,7 +21,7 @@
 						type : 'POST',
 						url : "./sendToAdmin",
 						//요청할 데이타
-						data : { toID : $("#toID").val(), fromID : $("#fromID").val(), subject : $("#subject_inquiry").val(), content : $("#content_inquiry").val()},
+						data : { toID : $("#toID").val(), fromID : $("#fromID").val(), subject_inquiry : $("#subject_inquiry").val(), content_inquiry : $("#content_inquiry").val()},
 						
 						//요청에 성공 했을떄...응답데이터 받기 
 						success : function(result){
