@@ -44,7 +44,8 @@ public class adReplyWriteActions implements adAction {
 		
 		adActionForward forward=new adActionForward();
 		forward.setRedirect(true);
-		forward.setPath("./Content.ad?pd_no="+pd_no);
+		//forward.setPath("./Content.ad?pd_no="+pd_no);
+		forward.setPath("index.jsp?center=ContentInfo.jsp&gogo=star/reviewwrite.jsp&pd_no="+pd_no+"&group_num=1");
 		return forward;
 	}
 
