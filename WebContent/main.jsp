@@ -53,7 +53,7 @@
 		 <div id="carousel_section">
 	        <ul>	           
 	            <li	>
-	            	<img src="img/contentimg/carousel_game.png" style="height : 100%;" > 
+	            	<img src="./upload/carousel_game.png" style="height : 100%;" > 
 	            	<div style="position : absolute; left: 23%; width : 350px; 
 	            			box-sizing : border-box;">
 		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
@@ -65,7 +65,7 @@
 	            	</div>
 	            </li>
 	             <li> 
-	            	<img src="img/contentimg/carousel_paris.png" style="height : 100%;" >
+	            	<img src="./upload/carousel_paris.png" style="height : 100%;" >
 	            	<div style="position : absolute; left: 23%;color : #fff; width : 350px;  
 	            			background-color : rgba(255,255,255,0.1); box-sizing : border-box; padding : 2rem 1rem;">
 		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
@@ -77,7 +77,7 @@
 	            	</div>
 	            </li>
 	            <li>
-	            	<img src="img/contentimg/carousel_lipstick.png" style="height : 100%;">
+	            	<img src="./upload/carousel_lipstick.png" style="height : 100%;">
 	            	<div style="position : absolute; left: 23%; width : 350px; 
 	            			box-sizing : border-box;">
 		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
@@ -89,7 +89,7 @@
 	            
 	            </li>
 	            <li>
-	            	<img src="img/contentimg/carousel_whisky.png" style="height : 100%;">
+	            	<img src="./upload/carousel_whisky.png" style="height : 100%;">
 	            	<div style="position : absolute; left: 23%; width : 350px; 
 	            			box-sizing : border-box;">
 		            	<div style="color:#a5f; font-weight : bold;">리워드</div> 
@@ -191,7 +191,7 @@
 						<!-- 글부분 -->
 						<div style="flex : 2; box-sizing : border-box; padding : 0 8px;">
 							<a href="Content.ad?pd_no=<%=sbean.getPd_no()%>" style="color:#000;">
-								<b>[리워드 : <%=sbean.getPd_subject() %>]</b><br/> 
+								<b>[<%=sbean.getPd_subject() %>]</b><br/> 
 								<font><%=sbean.getSell_subject() %></font>
 							</a>
 						</div>

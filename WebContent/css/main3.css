@@ -330,8 +330,8 @@ body{
 #main .box1 .box_grid2 .news_contents {
 	color : rgba(0,0,0,1);
 	font-size : 0.8rem;
-	height : 70px;
-	padding : 1rem 0;
+	
+	padding : 0.7rem 0;
 	border-bottom : 0.6px solid rgba(0,0,0,0.3);
 	line-height : 1.3rem;
 	display : flex;

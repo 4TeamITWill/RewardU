@@ -131,7 +131,6 @@
 									 --%>
 										${v.pd_subject}
 										</font>
-										<font style="color: #999999; font-size: 2;" >(${v.user_id})</font>
 									<!-- <input type="hidden" value="${v.user_id}">-->
 									</div>
 									<div align="right"><span class="reNews_date">${v.date }</span></div>

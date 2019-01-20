@@ -773,7 +773,7 @@ public class MyDAO {
 			
 			try {
 				con=getConnection();
-				sql = "select * from sellernews order by no desc limit 0,7";
+				sql = "select * from sellernews order by no desc limit 0,5";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
