@@ -16,7 +16,7 @@
 }
 .supporters_div{
 	width: 630px; height: auto; text-align: center;
-	left: 20%; top: 15%;
+	left: 20%; top: 15%; margin-top: 10%;
 }
 .support{border-bottom: 1px groove #acacac; 
 	padding-bottom: 3%; margin-bottom: 5%;
@@ -80,8 +80,6 @@
 		</td>
 		</c:otherwise>
 	</c:choose>
-	
-		<td><jsp:include page="day.jsp" /> </td>
 	</tr>
 
 </table>

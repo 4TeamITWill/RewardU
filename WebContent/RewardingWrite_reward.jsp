@@ -195,12 +195,12 @@ function inputNumberFormat(obj) {
 		
 		if(save != 0){
 	%>			 
-			<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기(update)" class="ingBtn"/>&nbsp;&nbsp;&nbsp;
+			<center style="min-height : 20px;"><input type="submit" id="update" value="저장하기" class="ingBtn"/>&nbsp;&nbsp;&nbsp;
 			<input type="submit" id="reward" value="신청하기(reward)" class="ingBtn"/></center>
 	<%		
 		}else{
 	%>		
-			<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기(insert)" class="ingBtn"/></center>
+			<center style="min-height : 20px;"><input type="submit" id="insert" value="저장하기" class="ingBtn"/></center>
 	<%	 
 	}
 	%>	

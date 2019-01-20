@@ -93,7 +93,8 @@
 				 ${ibean.op1_qty}개
 				</div>
 				<div class="cell_addr">
-				 <a href="javascript:;" id="op1_price" value="${ibean.op1_price * ibean.op1_qty}">${ibean.op1_price * ibean.op1_qty}원</a>
+				 <a href="javascript:;" id="op1_price" value="${ibean.op1_price * ibean.op1_qty}"
+				 style="color: #000; cursor: default;">${ibean.op1_price * ibean.op1_qty}원</a>
 				</div> 
 			</div> <!-- row  -->
 			
@@ -109,7 +110,8 @@
 				 ${ibean.op2_qty}개
 				</div>
 				<div class="cell_addr">
-				 <a href="javascript:;" id="op2_price" value="${ibean.op2_price * ibean.op2_qty}">${ibean.op2_price * ibean.op2_qty}원</a>
+				 <a href="javascript:;" id="op2_price" value="${ibean.op2_price * ibean.op2_qty}"
+				 style="color: #000; cursor: default;">${ibean.op2_price * ibean.op2_qty}원</a>
 				</div> 
 			</div> <!-- row  -->
 			
@@ -125,7 +127,8 @@
 				 ${ibean.op3_qty}개
 				</div>
 				<div class="cell_addr">
-				 <a href="javascript:;" id="op3_price" value="${ibean.op3_price * ibean.op3_qty}">${ibean.op3_price * ibean.op3_qty}원</a>
+				 <a href="javascript:;" id="op3_price" value="${ibean.op3_price * ibean.op3_qty}"
+				 style="color: #000; cursor: default;">${ibean.op3_price * ibean.op3_qty}원</a>
 				</div> 
 			</div> <!-- row  -->
 		  </div> <!-- row header  -->

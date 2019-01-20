@@ -14,7 +14,14 @@
 
 .wrap{ /* clear: both; */ }
 
-
+.news_header{
+	width: 100%;
+	height: 180px;
+	background-image: url("img/radioNews.jpg"); 
+	background-size: 100% 100%;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+}
 </style>
 <script type="text/javascript">
 

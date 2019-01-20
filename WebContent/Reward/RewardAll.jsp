@@ -1,7 +1,7 @@
 <%@page import="admin_db.BoardDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <%@page import="admin_db.BoardBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -121,7 +121,16 @@
 							</div>
 							<div id="subject" align="left">
 								<a href="./Content.ad?pd_no=${list.pd_no}&user_id=<%=id%>">			        	
-						        	<strong>${list.pd_subject }</strong>
+						        	<strong>
+						        		<c:choose>
+											<c:when test="${fn:length(list.pd_subject)>20 }">
+												<c:out value="${fn:substring(list.pd_subject,0,19) }"/>...					
+											</c:when>
+											<c:otherwise>
+												<c:out value="${list.pd_subject }"/>
+											</c:otherwise>
+										</c:choose>
+						        	</strong>
 						        	<br>
 						        	<span>${list.pd_category } ː</span>
 						        	<span>${list.company}</span>

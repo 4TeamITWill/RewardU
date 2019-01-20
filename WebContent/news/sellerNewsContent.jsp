@@ -59,7 +59,7 @@ function delCon(){
 			<div class="sellNewsSub" style="margin-left: 42px; margin-top: 10px; color: #999999; text-align: right;" >
 									<a href="./Content.ad?pd_no=${nbean.pd_no}">
 									
-									<%
+									<%-- <%
 									SellerNewsBean nbean = (SellerNewsBean)request.getAttribute("nbean");
 									int length = nbean.getPd_subject().length();
 									String newSub = null;
@@ -68,7 +68,9 @@ function delCon(){
 									}
 									%>
 									
-									<%=newSub%></a>
+									<%=newSub%> --%>
+									
+									${nbean.pd_subject }</a>
 			</div>
 			<div align="right"><span class="reNews_editor"><a href="./SendMessage.message?divide=receive&user_id=${nbean.user_id}">${nbean.user_id}</a></span>&nbsp;&nbsp;<span class="reNews_date">${nbean.date }</span></div>
 			<%-- <span class="reNews_date">&nbsp;&nbsp;조회수 ${nbean.}</span> --%>

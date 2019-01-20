@@ -11,6 +11,13 @@ table { border-collapse: collapse; }
 th, td {
 	padding: 0;
 }
+.in{
+	max-width: 100%;
+}
+
+.in img{
+	max-width: 100%;
+}
 
 /* /* 레이어 고정 이동 */	
 #layer_fixed
@@ -40,9 +47,9 @@ th, td {
 
 
 <div class="ma">
-		<table style="margin-left: 400px; margin-right: auto; ">		
+		<table style="width:1000px;margin: 0 auto; ">		
 			<tr>
-				<td style="table-layout: fixed; max-height: 100%; padding: 0 40px;" valign="top"> <img alt="" src="./upload/<%=bdto.getPd_realfile() %>" width="600"	
+				<td style="table-layout: fixed; max-height: 100%; width:65%; padding: 0 40px;" valign="top"> <img alt="" src="./upload/<%=bdto.getPd_realfile() %>" width="100%"	
 					height="500" style= "display:block;">	
 					<br/>
 					<div style="padding:20px;  background:#ced3f5;	width: 600;">
@@ -61,7 +68,7 @@ th, td {
 							<%=bdto.getPd_content()%>
 					</div>			
 				</td >			
-				<td style="table-layout: fixed; max-height: 100%; padding-top :80px;" valign="top">	
+				<td style="table-layout: fixed; max-height: 100%; width:35%;padding-top :80px;" valign="top">	
 				 			<jsp:include page="day.jsp"/> 
 				</td> 	
 						

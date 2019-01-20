@@ -30,7 +30,7 @@ A:visited{
 /* 로고 이미지  */
 .logoimage{
 
-filter: blur(5px);			
+filter: blur(5px) brightness(90%) saturate(70%);			
 		
 width: 100%;
 height: 100%;
@@ -51,9 +51,9 @@ h2.logot {
 	left: 50%;				
 	width: 100%;
 	text-align : center;	
-	font-weight: 900;			
+	font-weight: 900;
 	font-size: 20px;
-	color: #8a80a0;
+	color: #ddd;
 	letter-spacing: 0px;
 	font-family: arial;
 	transform: translate( -50%, -50% );
@@ -77,12 +77,13 @@ h2.logotext {
 }
 
 div.ma0{
-	margin-top : 30px;
-	margin-bottom:30px;
-	height: 10px;
+	margin-bottom:20px;
+	height: 50px;
 	width: 100%;
 	text-align: center;
+	background-color: #b44af7;
 }
+div.ma0 a{color: #000;}
 
 /* div.ma {
 	
@@ -120,6 +121,7 @@ div.ma4 {
 /* div 영역안을 가운데 정렬하기 위해 씀 . 조건 text-align : center; */
 div.in {
 	display: inline-block;
+	margin-top: 13px;
 }
 
 
@@ -129,6 +131,7 @@ div.in {
  	 font-size: 20px;	
  	 font-family: arial;
  	 font-weight: bold;
+ 	 color:white;
 }
 
 
@@ -191,7 +194,7 @@ div.in {
 	</div>
 	
 	
-	<hr style="border-top: 1px solid #CEECF5;">
+	
 	<div>
 		 <c:set var="gogo" value="${param.gogo}"/>
 			<c:if test="${gogo == null}"> 

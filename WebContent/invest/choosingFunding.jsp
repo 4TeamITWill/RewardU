@@ -44,7 +44,13 @@ request.setCharacterEncoding("UTF-8");
   	<input type="hidden" name="pd_opsubject2" value="${bean.pd_opsubject2}">
   	<input type="hidden" name="pd_opsubject3" value="${bean.pd_opsubject3}">
   
-<div class="option_list">
+  
+<div class="wrap"> 
+	<div id="opt_header">옵션선택 페이지</div>
+
+<div class="option_list" align="center">
+
+<div class="option_div">
 	<!-- 제목 -->
 	<h2 class="subject_title">${bean.pd_subject}</h2>
     
@@ -100,16 +106,19 @@ request.setCharacterEncoding("UTF-8");
 		합계 : <input type="text" name="op3_priceTotal" id="expense_total3" size="10" value="0" readonly >	 
 	 </h4>
 	</div>
+</div><!-- option_div -->
+	
 	<br/><br/>
 	
 	<div class="section_chk">
-		${bean.pd_subject}에 <input type="text" id="total_price" value="0" readonly>
+		${bean.pd_subject}에 <br/><input type="text" id="total_price" value="0" readonly>
 		원을 펀딩합니다.
 		 <br/><br/>
 		<input type="submit" value="다음 단계로  >" class="next_btn">
 	</div>
-</div>
-		
+</div><!-- optionlist -->
+
+</div><!-- wrap -->		
 	</form>
   </center>
 </body>
