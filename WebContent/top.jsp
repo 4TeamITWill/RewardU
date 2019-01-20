@@ -132,12 +132,12 @@ fieldset{border:0;}
 	%>			
 				<a id="goMypage" style="cursor : pointer;">마이페이지</a>&nbsp;&nbsp;
 							
-				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span></a>
+				<a href="./MemberMessage_ReceiveList.message"><span class="icon-mail">메시지</span></a><!-- 클릭하면 메시지함으로 -->
 	<%
 				//받은 메세지가 0이면 숫자안뜸 1이상이면 뜸
 				if(dontReadCount > 0){	
 	%>							
-				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span><!-- 클릭하면 메시지함으로 -->		
+				<span class="msg_font">&nbsp;<%=dontReadCount%>&nbsp; </span>		
 	<%		
 				}
 		 	}

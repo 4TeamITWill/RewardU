@@ -15,7 +15,6 @@ $('.search_member').on("keyup keypress",function(){
 		url : "./SearchMember.message",
 		data :  {"search" : $(".search_member").val()},
 		success : function(data){
-			//document.getElementById("members_div").innerHTML = data;
 			$('#members_div').html(data);
 		}
 	});	

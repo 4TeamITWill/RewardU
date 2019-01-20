@@ -59,15 +59,15 @@
 /* ----------------------------------------공지사항---------------------------------------- */
 .notice_sec{
 	position: relative;
-	min-height: 1100px; text-align: center;}
+	min-height:1100px; max-height:2000px; text-align: center;}
 .writeNotice_sec,.contentNotice_sec{
 	position: relative; 
-	height: 600px; text-align: center;}
+	 min-height:1100px;  max-height: auto; text-align: center;}
 	
 /* notice.jsp */
 .notice_div{
 	position: absolute;
-	width: 700px; height: auto; text-align: center;
+	width: 700px; min-height:1000px;  max-height: auto; text-align: center;
 	left: 30%; top: 15%;
 }
 .notices{text-align: left; border-bottom: 2px groove gray;}
@@ -97,7 +97,7 @@
 /* contentNotice.jsp */
 .contentNotice_div{
 	position: absolute; border: none;
-	width: 1000px; height: auto; text-align: center;
+	width: 1000px;  min-height:1000px;  max-height: auto; text-align: center;
 	left: 23%; top: 15%;
 }
 .contentNotice_btnDiv{
@@ -105,5 +105,7 @@
 	right: 1%;
 	width: 300px; 
 }
+.notice_btn{width: 100px; height: 25px; background-color: #fff; font-weight: 600;}
+.notice_btn:HOVER {border: 2px groove #9599fc;}
 /* -------------------------------------------------------------------------------- */
 

@@ -38,11 +38,11 @@
 			</tr>
 		</table>
 		<div class="contentNotice_btnDiv">
-			<input type="button" value="돌아가기" onclick="location.href='./Notice.no'">
+			<input type="button" value="돌아가기" onclick="location.href='./Notice.no'" class="notice_btn">
 <%
 			if(id != null && id.equals("rewardu4@gmail.com")){
 %>
-			<input type="button" value="삭제" onclick="location.href='./DeleteNoticeAction.no?no=<%=ndto.getNo()%>'">
+			<input type="button" value="삭제" onclick="location.href='./DeleteNoticeAction.no?no=<%=ndto.getNo()%>'" class="notice_btn">
 <%
 			} 
 %>
